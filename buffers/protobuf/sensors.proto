@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+message AmurSensors{
+
+   message Accelerometer{
+	float x = 1;
+	float y = 2;
+	float z = 3;
+   }
+
+   message Gyroscope{
+	float x = 1;
+	float y = 2;
+	float z = 3;	
+   }
+   
+   message Magnitometer{
+	float x = 1;
+	float y = 2;
+	float z = 3;	
+   }
+
+   message WheelEncoders{
+	int32 leftAngle = 1;
+	int32 rightAngle = 2;
+   }
+   
+   message HandEncoders{
+	int32 leftInternalAngle = 1;
+	int32 rightInternalAngle = 2;
+	int32 leftOutterAngle = 3;
+	int32 rightOutterAngle = 4;
+   }
+   
+   message Temperature{
+	int32 tempAccelerometer = 1;
+	int32 tempCPU = 2;
+	int32 tempPressure = 3;
+   }
+
+   message Misc{
+	int32 gas = 1;
+	int32 batteryVoltage = 2;
+	float pressure = 3;
+   }
+
+   Accelerometer accelerometer = 1;
+   Gyroscope gyroscope = 2;
+   Magnitometer magnitometer = 3;
+   WheelEncoders wheelEncoders = 4;
+   HandEncoders handEncoders = 5;
+   Temperature temperature = 6;
+   Misc misc = 7;
+
+}
