@@ -36,13 +36,13 @@ void HC165::loadRegister()
     // load
     disableClock();
     
-    pulse(latch);
-    digitalWrite(latch, 0);
+    pulse(loadLatch);
+    digitalWrite(loadLatch, 0);
     
     enableClock();
 }
 
-unsigned char HC165::returnByte()
+unsigned char HC165::readByte()
 {
     unsigned char byte = 0;
     

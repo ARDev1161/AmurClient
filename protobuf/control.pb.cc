@@ -158,14 +158,12 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_control_2eproto::offsets[] PRO
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::AmurControls_HandMotors, leftinternalpower_),
-  PROTOBUF_FIELD_OFFSET(::AmurControls_HandMotors, leftinternaltime_),
-  PROTOBUF_FIELD_OFFSET(::AmurControls_HandMotors, rightinternalpower_),
-  PROTOBUF_FIELD_OFFSET(::AmurControls_HandMotors, rightinternaltime_),
-  PROTOBUF_FIELD_OFFSET(::AmurControls_HandMotors, leftouterpower_),
-  PROTOBUF_FIELD_OFFSET(::AmurControls_HandMotors, leftoutertime_),
-  PROTOBUF_FIELD_OFFSET(::AmurControls_HandMotors, rightouterpower_),
-  PROTOBUF_FIELD_OFFSET(::AmurControls_HandMotors, rightoutertime_),
+  PROTOBUF_FIELD_OFFSET(::AmurControls_HandMotors, leftpower_),
+  PROTOBUF_FIELD_OFFSET(::AmurControls_HandMotors, lefttime_),
+  PROTOBUF_FIELD_OFFSET(::AmurControls_HandMotors, rightpower_),
+  PROTOBUF_FIELD_OFFSET(::AmurControls_HandMotors, righttime_),
+  PROTOBUF_FIELD_OFFSET(::AmurControls_HandMotors, leftrelay_),
+  PROTOBUF_FIELD_OFFSET(::AmurControls_HandMotors, rightrelay_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::AmurControls_Light, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -196,9 +194,9 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 0, -1, sizeof(::AmurControls_CameraServos)},
   { 7, -1, sizeof(::AmurControls_WheelMotors)},
   { 16, -1, sizeof(::AmurControls_HandMotors)},
-  { 29, -1, sizeof(::AmurControls_Light)},
-  { 36, -1, sizeof(::AmurControls_System)},
-  { 44, -1, sizeof(::AmurControls)},
+  { 27, -1, sizeof(::AmurControls_Light)},
+  { 34, -1, sizeof(::AmurControls_System)},
+  { 42, -1, sizeof(::AmurControls)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -211,7 +209,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_control_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\rcontrol.proto\"\311\005\n\014AmurControls\0220\n\014came"
+  "\n\rcontrol.proto\"\357\004\n\014AmurControls\0220\n\014came"
   "raServos\030\001 \001(\0132\032.AmurControls.CameraServ"
   "os\022.\n\013wheelMotors\030\002 \001(\0132\031.AmurControls.W"
   "heelMotors\022,\n\nhandMotors\030\003 \001(\0132\030.AmurCon"
@@ -220,16 +218,14 @@ const char descriptor_table_protodef_control_2eproto[] PROTOBUF_SECTION_VARIABLE
   "ols.System\032.\n\014CameraServos\022\016\n\006xAngle\030\001 \001"
   "(\005\022\016\n\006yAngle\030\002 \001(\005\032Y\n\013WheelMotors\022\021\n\tlef"
   "tPower\030\001 \001(\005\022\020\n\010leftTime\030\002 \001(\005\022\022\n\nrightP"
-  "ower\030\003 \001(\005\022\021\n\trightTime\030\004 \001(\005\032\330\001\n\nHandMo"
-  "tors\022\031\n\021leftInternalPower\030\001 \001(\005\022\030\n\020leftI"
-  "nternalTime\030\002 \001(\005\022\032\n\022rightInternalPower\030"
-  "\003 \001(\005\022\031\n\021rightInternalTime\030\004 \001(\005\022\026\n\016left"
-  "OuterPower\030\005 \001(\005\022\025\n\rleftOuterTime\030\006 \001(\005\022"
-  "\027\n\017rightOuterPower\030\007 \001(\005\022\026\n\016rightOuterTi"
-  "me\030\010 \001(\005\0324\n\005Light\022\024\n\014ledLeftPower\030\001 \001(\005\022"
-  "\025\n\rledRightPower\030\002 \001(\005\032C\n\006System\022\020\n\010halt"
-  "Flag\030\001 \001(\010\022\023\n\013restartFlag\030\002 \001(\010\022\022\n\ntimeO"
-  "nAmur\030\003 \001(\tb\006proto3"
+  "ower\030\003 \001(\005\022\021\n\trightTime\030\004 \001(\005\032\177\n\nHandMot"
+  "ors\022\021\n\tleftPower\030\001 \001(\005\022\020\n\010leftTime\030\002 \001(\005"
+  "\022\022\n\nrightPower\030\003 \001(\005\022\021\n\trightTime\030\004 \001(\005\022"
+  "\021\n\tleftRelay\030\005 \001(\010\022\022\n\nrightRelay\030\006 \001(\010\0324"
+  "\n\005Light\022\024\n\014ledLeftPower\030\001 \001(\005\022\025\n\rledRigh"
+  "tPower\030\002 \001(\005\032C\n\006System\022\020\n\010haltFlag\030\001 \001(\010"
+  "\022\023\n\013restartFlag\030\002 \001(\010\022\022\n\ntimeOnAmur\030\003 \001("
+  "\tb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_control_2eproto_deps[1] = {
 };
@@ -244,7 +240,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_con
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_control_2eproto_once;
 static bool descriptor_table_control_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_control_2eproto = {
-  &descriptor_table_control_2eproto_initialized, descriptor_table_protodef_control_2eproto, "control.proto", 739,
+  &descriptor_table_control_2eproto_initialized, descriptor_table_protodef_control_2eproto, "control.proto", 649,
   &descriptor_table_control_2eproto_once, descriptor_table_control_2eproto_sccs, descriptor_table_control_2eproto_deps, 6, 0,
   schemas, file_default_instances, TableStruct_control_2eproto::offsets,
   file_level_metadata_control_2eproto, 6, file_level_enum_descriptors_control_2eproto, file_level_service_descriptors_control_2eproto,
@@ -750,16 +746,16 @@ AmurControls_HandMotors::AmurControls_HandMotors(const AmurControls_HandMotors& 
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  ::memcpy(&leftinternalpower_, &from.leftinternalpower_,
-    static_cast<size_t>(reinterpret_cast<char*>(&rightoutertime_) -
-    reinterpret_cast<char*>(&leftinternalpower_)) + sizeof(rightoutertime_));
+  ::memcpy(&leftpower_, &from.leftpower_,
+    static_cast<size_t>(reinterpret_cast<char*>(&rightrelay_) -
+    reinterpret_cast<char*>(&leftpower_)) + sizeof(rightrelay_));
   // @@protoc_insertion_point(copy_constructor:AmurControls.HandMotors)
 }
 
 void AmurControls_HandMotors::SharedCtor() {
-  ::memset(&leftinternalpower_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&rightoutertime_) -
-      reinterpret_cast<char*>(&leftinternalpower_)) + sizeof(rightoutertime_));
+  ::memset(&leftpower_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&rightrelay_) -
+      reinterpret_cast<char*>(&leftpower_)) + sizeof(rightrelay_));
 }
 
 AmurControls_HandMotors::~AmurControls_HandMotors() {
@@ -785,9 +781,9 @@ void AmurControls_HandMotors::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&leftinternalpower_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&rightoutertime_) -
-      reinterpret_cast<char*>(&leftinternalpower_)) + sizeof(rightoutertime_));
+  ::memset(&leftpower_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&rightrelay_) -
+      reinterpret_cast<char*>(&leftpower_)) + sizeof(rightrelay_));
   _internal_metadata_.Clear();
 }
 
@@ -798,59 +794,45 @@ const char* AmurControls_HandMotors::_InternalParse(const char* ptr, ::PROTOBUF_
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // int32 leftInternalPower = 1;
+      // int32 leftPower = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          leftinternalpower_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          leftpower_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 leftInternalTime = 2;
+      // int32 leftTime = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          leftinternaltime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          lefttime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 rightInternalPower = 3;
+      // int32 rightPower = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          rightinternalpower_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          rightpower_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 rightInternalTime = 4;
+      // int32 rightTime = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
-          rightinternaltime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          righttime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 leftOuterPower = 5;
+      // bool leftRelay = 5;
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
-          leftouterpower_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          leftrelay_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 leftOuterTime = 6;
+      // bool rightRelay = 6;
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
-          leftoutertime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // int32 rightOuterPower = 7;
-      case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
-          rightouterpower_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // int32 rightOuterTime = 8;
-      case 8:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 64)) {
-          rightoutertime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          rightrelay_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -880,52 +862,40 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 leftInternalPower = 1;
-  if (this->leftinternalpower() != 0) {
+  // int32 leftPower = 1;
+  if (this->leftpower() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_leftinternalpower(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_leftpower(), target);
   }
 
-  // int32 leftInternalTime = 2;
-  if (this->leftinternaltime() != 0) {
+  // int32 leftTime = 2;
+  if (this->lefttime() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_leftinternaltime(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_lefttime(), target);
   }
 
-  // int32 rightInternalPower = 3;
-  if (this->rightinternalpower() != 0) {
+  // int32 rightPower = 3;
+  if (this->rightpower() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_rightinternalpower(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_rightpower(), target);
   }
 
-  // int32 rightInternalTime = 4;
-  if (this->rightinternaltime() != 0) {
+  // int32 rightTime = 4;
+  if (this->righttime() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_rightinternaltime(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_righttime(), target);
   }
 
-  // int32 leftOuterPower = 5;
-  if (this->leftouterpower() != 0) {
+  // bool leftRelay = 5;
+  if (this->leftrelay() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_leftouterpower(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(5, this->_internal_leftrelay(), target);
   }
 
-  // int32 leftOuterTime = 6;
-  if (this->leftoutertime() != 0) {
+  // bool rightRelay = 6;
+  if (this->rightrelay() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->_internal_leftoutertime(), target);
-  }
-
-  // int32 rightOuterPower = 7;
-  if (this->rightouterpower() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(7, this->_internal_rightouterpower(), target);
-  }
-
-  // int32 rightOuterTime = 8;
-  if (this->rightoutertime() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(8, this->_internal_rightoutertime(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(6, this->_internal_rightrelay(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -944,60 +914,42 @@ size_t AmurControls_HandMotors::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // int32 leftInternalPower = 1;
-  if (this->leftinternalpower() != 0) {
+  // int32 leftPower = 1;
+  if (this->leftpower() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_leftinternalpower());
+        this->_internal_leftpower());
   }
 
-  // int32 leftInternalTime = 2;
-  if (this->leftinternaltime() != 0) {
+  // int32 leftTime = 2;
+  if (this->lefttime() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_leftinternaltime());
+        this->_internal_lefttime());
   }
 
-  // int32 rightInternalPower = 3;
-  if (this->rightinternalpower() != 0) {
+  // int32 rightPower = 3;
+  if (this->rightpower() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_rightinternalpower());
+        this->_internal_rightpower());
   }
 
-  // int32 rightInternalTime = 4;
-  if (this->rightinternaltime() != 0) {
+  // int32 rightTime = 4;
+  if (this->righttime() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_rightinternaltime());
+        this->_internal_righttime());
   }
 
-  // int32 leftOuterPower = 5;
-  if (this->leftouterpower() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_leftouterpower());
+  // bool leftRelay = 5;
+  if (this->leftrelay() != 0) {
+    total_size += 1 + 1;
   }
 
-  // int32 leftOuterTime = 6;
-  if (this->leftoutertime() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_leftoutertime());
-  }
-
-  // int32 rightOuterPower = 7;
-  if (this->rightouterpower() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_rightouterpower());
-  }
-
-  // int32 rightOuterTime = 8;
-  if (this->rightoutertime() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_rightoutertime());
+  // bool rightRelay = 6;
+  if (this->rightrelay() != 0) {
+    total_size += 1 + 1;
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1031,29 +983,23 @@ void AmurControls_HandMotors::MergeFrom(const AmurControls_HandMotors& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.leftinternalpower() != 0) {
-    _internal_set_leftinternalpower(from._internal_leftinternalpower());
+  if (from.leftpower() != 0) {
+    _internal_set_leftpower(from._internal_leftpower());
   }
-  if (from.leftinternaltime() != 0) {
-    _internal_set_leftinternaltime(from._internal_leftinternaltime());
+  if (from.lefttime() != 0) {
+    _internal_set_lefttime(from._internal_lefttime());
   }
-  if (from.rightinternalpower() != 0) {
-    _internal_set_rightinternalpower(from._internal_rightinternalpower());
+  if (from.rightpower() != 0) {
+    _internal_set_rightpower(from._internal_rightpower());
   }
-  if (from.rightinternaltime() != 0) {
-    _internal_set_rightinternaltime(from._internal_rightinternaltime());
+  if (from.righttime() != 0) {
+    _internal_set_righttime(from._internal_righttime());
   }
-  if (from.leftouterpower() != 0) {
-    _internal_set_leftouterpower(from._internal_leftouterpower());
+  if (from.leftrelay() != 0) {
+    _internal_set_leftrelay(from._internal_leftrelay());
   }
-  if (from.leftoutertime() != 0) {
-    _internal_set_leftoutertime(from._internal_leftoutertime());
-  }
-  if (from.rightouterpower() != 0) {
-    _internal_set_rightouterpower(from._internal_rightouterpower());
-  }
-  if (from.rightoutertime() != 0) {
-    _internal_set_rightoutertime(from._internal_rightoutertime());
+  if (from.rightrelay() != 0) {
+    _internal_set_rightrelay(from._internal_rightrelay());
   }
 }
 
@@ -1078,14 +1024,12 @@ bool AmurControls_HandMotors::IsInitialized() const {
 void AmurControls_HandMotors::InternalSwap(AmurControls_HandMotors* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  swap(leftinternalpower_, other->leftinternalpower_);
-  swap(leftinternaltime_, other->leftinternaltime_);
-  swap(rightinternalpower_, other->rightinternalpower_);
-  swap(rightinternaltime_, other->rightinternaltime_);
-  swap(leftouterpower_, other->leftouterpower_);
-  swap(leftoutertime_, other->leftoutertime_);
-  swap(rightouterpower_, other->rightouterpower_);
-  swap(rightoutertime_, other->rightoutertime_);
+  swap(leftpower_, other->leftpower_);
+  swap(lefttime_, other->lefttime_);
+  swap(rightpower_, other->rightpower_);
+  swap(righttime_, other->righttime_);
+  swap(leftrelay_, other->leftrelay_);
+  swap(rightrelay_, other->rightrelay_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata AmurControls_HandMotors::GetMetadata() const {

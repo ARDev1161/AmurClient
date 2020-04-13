@@ -22,23 +22,23 @@ This is application for communicate with robot on RPi base with [AmurClient].
   4) Motor hand outter: left, right
 
 ## GPIO using:
-  GPIO4   -   Data from 74HC165
-  GPIO17  -   Clk 74HC165
-  GPIO18  -   Not master reset 74HC595
-  GPIO27  -   SH/Not(LD) 74HC165
-  GPIO22  -   Clk inh 74HC165
-  GPIO23  -   Data to 74HC595
-  GPIO24  -   SHcp 74HC595
-  GPIO25  -   STcp 74HC595
-  GPIO5   -   freePin 3
-  GPIO6   -   freePin 4
-  GPIO12  -   PWM1 right
-  GPIO13  -   PWM1 left
-  GPIO19  -   freePin 1
-  GPIO16  -   Not OE 74HC595
-  GPIO26  -   freePin 2
-  GPIO20  -   PWM2 right
-  GPIO21  -   PWM2 left
+  * GPIO4   -   Data from 74HC165
+  * GPIO17  -   Clk 74HC165
+  * GPIO18  -   Not master reset 74HC595
+  * GPIO27  -   SH/Not(LD) 74HC165
+  * GPIO22  -   Clk inh 74HC165
+  * GPIO23  -   Data to 74HC595
+  * GPIO24  -   SHcp 74HC595
+  * GPIO25  -   STcp 74HC595
+  * GPIO5   -   freePin 3
+  * GPIO6   -   freePin 4
+  * GPIO12  -   PWM1 right
+  * GPIO13  -   PWM1 left
+  * GPIO19  -   freePin 1
+  * GPIO16  -   Not OE 74HC595
+  * GPIO26  -   freePin 2
+  * GPIO20  -   PWM2 right
+  * GPIO21  -   PWM2 left
   
   I2C1    -   sensors: ADS1115
   
@@ -47,43 +47,49 @@ This is application for communicate with robot on RPi base with [AmurClient].
   SPI0    -   LoRa: SX1278
   
 ## 74HC595 using:
+  bites trancieve in register from last to first: from 16 to 1
+
   (First byte - right)
-  1bit    -   right relay
-  2bit    -   clk2 right motor shield
-  3bit    -   clk1 right motor shield
-  4bit    -   cnt1 right motor shield
-  5bit    -   cnt2 right motor shield
-  6bit    -   en1 right motor shield
-  7bit    -   en2 right motor shield
-  8bit    -   freeOutPinR
+  * 1bit    -   right relay
+  * 2bit    -   clk2 right motor shield (Hand right motor - A2 input)
+  * 3bit    -   clk1 right motor shield (Wheel right motor - A1 input)
+  * 4bit    -   cnt1 right motor shield (Wheel right motor - B1 input)
+  * 5bit    -   cnt2 right motor shield (Hand right motor - B2 input)
+  * 6bit    -   en1 right motor shield (Wheel right motor)
+  * 7bit    -   en2 right motor shield (Hand right motor)
+  * 8bit    -   freeOutPinR
 
   (Second byte - left)
-  9bit    -   left relay
-  10bit   -   clk2 left motor shield
-  11bit   -   clk1 left motor shield
-  12bit   -   cnt1 left motor shield
-  13bit   -   cnt2 left motor shield
-  14bit   -   en1 left motor shield
-  15bit   -   en2 left motor shield
-  16bit   -   freeOutPinL
+  * 9bit    -   left relay
+  * 10bit   -   clk2 left motor shield (Wheel left motor - A2 input)
+  * 11bit   -   clk1 left motor shield (Hand left motor - A1 input)
+  * 12bit   -   cnt1 left motor shield (Hand left motor - B1 input)
+  * 13bit   -   cnt2 left motor shield (Wheel left motor - B2 input)
+  * 14bit   -   en1 left motor shield (Hand left motor)
+  * 15bit   -   en2 left motor shield (Wheel left motor)
+  * 16bit   -   freeOutPinL
   
 ## 74HC165 using:
-  1bit    -   LR2B encoder
-  2bit    -   LR1B encoder
-  3bit    -   LL2B encoder
-  4bit    -   LL1B encoder
-  5bit    -   LL1A encoder
-  6bit    -   LL2A encoder
-  7bit    -   LR1A encoder
-  8bit    -   LR2A encoder
+  bites recieve by register from first to last: from 1 to 16
 
-  9bit    -   freeInPin
-  10bit   -   freeInPin
-  11bit   -   freeInPin
-  12bit   -   freeInPin
-  13bit   -   R1A encoder
-  14bit   -   R1B encoder
-  15bit   -   R2B encoder
-  16bit   -   R2A encoder
+  (First byte - right)
+  * 1bit    -   LR2B encoder
+  * 2bit    -   LR1B encoder
+  * 3bit    -   LL2B encoder
+  * 4bit    -   LL1B encoder
+  * 5bit    -   LL1A encoder
+  * 6bit    -   LL2A encoder
+  * 7bit    -   LR1A encoder
+  * 8bit    -   LR2A encoder
+
+  (Second byte - left)
+  * 9bit    -   freeInPin
+  * 10bit   -   freeInPin
+  * 11bit   -   freeInPin
+  * 12bit   -   freeInPin
+  * 13bit   -   R1A encoder
+  * 14bit   -   R1B encoder
+  * 15bit   -   R2B encoder
+  * 16bit   -   R2A encoder
 
 [AmurClient]:https://github.com/ARDev1161/AmurClient

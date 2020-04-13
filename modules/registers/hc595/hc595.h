@@ -5,16 +5,16 @@
 
 class HC595
 {
-    int data = 0;
-    int clk = 0;
-    int latch = 0;
-    int notReset = 0; 
-    int notEnable = 0;
+    int data;       // Connects to data pin the 595
+    int clk;        // Connects to clock pin the 595
+    int latch;      // Connects to latch pin the 595
+    int notReset;   // Connects to notReset pin the 595
+    int notEnable;  // Connects to notEnable pin the 595
     
     void pulse(int pin);
 public:
     HC595(int dataPin, int clkPin, int latchPin, int notResetPin, int notEnablePin);
-    void sendByte(unsigned char byte);
+    void writeByte(unsigned char byte);
     void latchSignal();
     void enable();
     void disable();

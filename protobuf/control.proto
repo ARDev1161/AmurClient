@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+message AmurControls{
+ message CameraServos{
+     int32 xAngle = 1;
+     int32 yAngle = 2;
+ }
+
+ message WheelMotors{
+     int32 leftPower = 1; // -255 to 255
+     int32 leftTime = 2; // 0 to 10000
+     int32 rightPower = 3; // -255 to 255
+     int32 rightTime = 4; // 0 to 10000
+ }
+
+ message HandMotors{
+     int32 leftPower = 1; // -255 to 255
+     int32 leftTime = 2; // 0 to 10000
+     int32 rightPower = 3; // -255 to 255
+     int32 rightTime = 4; // 0 to 10000
+
+     bool leftRelay = 5;
+     bool rightRelay = 6;
+ }
+
+ message Light{
+     int32 ledLeftPower = 1; // 0 to 255
+     int32 ledRightPower = 2; // 0 to 255
+ }
+
+ message System{
+     bool haltFlag = 1;
+     bool restartFlag = 2;
+     string timeOnAmur = 3;
+ }
+
+   CameraServos cameraServos = 1;
+   WheelMotors wheelMotors = 2;
+   HandMotors handMotors = 3;
+   Light light = 4;
+   System system = 5;
+
+}

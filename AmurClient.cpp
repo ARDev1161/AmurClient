@@ -1,9 +1,10 @@
-#include <iostream>
+#include "logiccontroller.h"
 
 using namespace std;
 
 int main()
 {
-    cout << "Hello World!" << endl;
+    LogicController amurLogic;
+
     return 0;
 }

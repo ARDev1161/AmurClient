@@ -22,7 +22,7 @@ void HC595::pulse(int pin)
     digitalWrite(pin, 1);
 }
  
-void HC595::sendByte(unsigned char byte)
+void HC595::writeByte(unsigned char byte)
 {
     int i; 
     for(i=0;i<8;i++)

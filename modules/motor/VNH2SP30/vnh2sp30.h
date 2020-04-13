@@ -1,24 +1,27 @@
 #ifndef VNH2SP30_H
 #define VNH2SP30_H
 
-#define INA 3     // выходы arduino
-#define INB 4 
-#define EN 2
-#define PWM 6
+#include "wiringPi.h"
 
 class VNH2SP30
 {
-    int motorSpeed = 255; //  скорость мотора
+    int motorSpeed = 0;
+
+    int inputA = 0;
+    int inputB = 0;
+    int enable = 0;
+    int pwm = 0;
+
 public:
-    void setTempCPU(float temp);
-    void setTempAccelerometer(float temp);
-    void setTempPressure(float temp);
-    
-    float getTempCPU();
-    float getTempAccelerometer();
-    float getTempPressure();
+    VNH2SP30(int inputAPin, int inputBPin, int enablePin, int pwmPin);
+
+    void enableMotor();
+    void disableMotor();
+    void setPWM(int dutyCycle);
+
+    void forward();
+    void backward();
+
 };
 
 #endif // VNH2SP30_H
- 
-

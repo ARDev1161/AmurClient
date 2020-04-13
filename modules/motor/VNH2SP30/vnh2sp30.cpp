@@ -1,48 +1,36 @@
 #include "vnh2sp30.h"
 
-void setup(){
-  pinMode(INA, OUTPUT);   
-  pinMode(INB, OUTPUT);  
-  pinMode(EN, OUTPUT);   
-
-  digitalWrite(EN, HIGH);
-}
-
-void loop()
+VNH2SP30::VNH2SP30(int inputAPin, int inputBPin, int enablePin, int pwmPin):
+inputA(inputAPin), inputB(inputBPin), enable(enablePin), pwm(pwmPin)
 {
-     digitalWrite(INA, LOW);      // крутим мотор в одну сторону
-     digitalWrite(INB, HIGH);    
-     analogWrite(PWM,motorSpeed);  
-     delay(1000);
-     
-     digitalWrite(INA, HIGH);    // крутим мотор в противоположную сторону
-     digitalWrite(INB, LOW);
-     analogWrite(PWM, motorSpeed);  
-     delay(1000);
-     
-     digitalWrite(EN, LOW);     // выключаем
-     delay(1000);
-     digitalWrite(EN, HIGH);
-      
-}  
-
-
-void Temperature::setTempCPU(float temp){
-    tempCPU = temp;
-}
-void Temperature::setTempAccelerometer(float temp){
-    tempAccelerometer = temp;
-}
-void Temperature::setTempPressure(float temp){
-    tempPressure = temp;
+    pinMode(inputA, OUTPUT);
+    pinMode(inputB, OUTPUT);
+    pinMode(enable, OUTPUT);
 }
 
-float Temperature::getTempCPU(){
-    return tempCPU;
+void VNH2SP30::enableMotor()
+{
+    digitalWrite(enable, 1);
 }
-float Temperature::getTempAccelerometer(){
-    return tempAccelerometer;
+
+void VNH2SP30::disableMotor()
+{
+    digitalWrite(enable, 0);
 }
-float Temperature::getTempPressure(){
-    return tempPressure;
+
+void VNH2SP30::setPWM(int dutyCycle)
+{
+    motorSpeed = dutyCycle;
+}
+
+void VNH2SP30::forward()
+{
+    digitalWrite(inputA, 1);
+    digitalWrite(inputB, 0);
+}
+
+void VNH2SP30::backward()
+{
+    digitalWrite(inputA, 0);
+    digitalWrite(inputB, 1);
 }
