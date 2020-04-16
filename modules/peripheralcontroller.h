@@ -36,10 +36,8 @@
 
 //Encoder section
 #define ENCODER_SECTORS_COUNT 100 // Count sectors on encoders disk
-#define MOTOR_FREQ 100 // Motor speed
+#define MOTOR_FREQ 100 // Motor speed: rpm
 #define POLLING_FREQ (ENCODER_SECTORS_COUNT*MOTOR_FREQ)*3 // Encoder sampling rate
-
-unsigned char bytes[8] = {0x01,0x02,0x04,0x08,0x10,0x20,0x40,0x80};
 
 class PeripheralController
 {
@@ -54,15 +52,20 @@ class PeripheralController
 
     int handLeftInternalAngle;
     int handRightInternalAngle;
-
     int handLeftOuterAngle;
     int handRightOuterAngle;
+
+    unsigned char leftHC165 = 0x00;
+    unsigned char rightHC165 = 0x00;
 
     void initPWM();
     void wiringPiInit();
 
     unsigned char leftOutRegisterToByte();
     unsigned char rightOutRegisterToByte();
+
+    void parseBytesHC165(unsigned char right, unsigned char left);
+    void writeEncoderAngles();
 public:
     PeripheralController(AmurControls *controls, AmurSensors *sensors);
 

@@ -28,8 +28,8 @@ message AmurSensors{
    message HandEncoders{
 	int32 leftInternalAngle = 1;
 	int32 rightInternalAngle = 2;
-	int32 leftOutterAngle = 3;
-	int32 rightOutterAngle = 4;
+        int32 leftOuterAngle = 3;
+        int32 rightOuterAngle = 4;
    }
    
    message Temperature{

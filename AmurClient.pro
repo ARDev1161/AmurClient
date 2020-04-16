@@ -25,11 +25,10 @@ SOURCES += \
     network/tcp/tcp.cpp
 
 DISTFILES += \
-    ADB-0.42 GPIO info.txt \
-    README.md \
     protobuf/control.proto \
+    protobuf/sensors.proto \
     protobuf/rebuild.sh \
-    protobuf/sensors.proto
+    README.md
 
 HEADERS += \
     protobuf/control.pb.h \

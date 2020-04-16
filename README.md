@@ -73,23 +73,23 @@ This is application for communicate with robot on RPi base with [AmurClient].
   bites recieve by register from first to last: from 1 to 16
 
   (First byte - right)
-  * 1bit    -   LR2B encoder
-  * 2bit    -   LR1B encoder
-  * 3bit    -   LL2B encoder
-  * 4bit    -   LL1B encoder
-  * 5bit    -   LL1A encoder
-  * 6bit    -   LL2A encoder
-  * 7bit    -   LR1A encoder
-  * 8bit    -   LR2A encoder
+  * 1bit    -   LR2B encoder (Hand outer right encoder - B signal)
+  * 2bit    -   LR1B encoder (Hand internal right encoder - B signal)
+  * 3bit    -   LL2B encoder (Hand outer left encoder - B signal)
+  * 4bit    -   LL1B encoder (Hand internal left encoder - B signal)
+  * 5bit    -   LL1A encoder (Hand internal left encoder - A signal)
+  * 6bit    -   LL2A encoder (Hand outer left encoder - A signal)
+  * 7bit    -   LR1A encoder (Hand internal right encoder - A signal)
+  * 8bit    -   LR2A encoder (Hand outer right encoder - A signal)
 
   (Second byte - left)
   * 9bit    -   freeInPin
   * 10bit   -   freeInPin
   * 11bit   -   freeInPin
   * 12bit   -   freeInPin
-  * 13bit   -   R1A encoder
-  * 14bit   -   R1B encoder
-  * 15bit   -   R2B encoder
-  * 16bit   -   R2A encoder
+  * 13bit   -   R1A encoder (Wheel left encoder - A signal)
+  * 14bit   -   R1B encoder (Wheel left encoder - B signal)
+  * 15bit   -   R2B encoder (Wheel right encoder - B signal)
+  * 16bit   -   R2A encoder (Wheel right encoder - A signal)
 
 [AmurClient]:https://github.com/ARDev1161/AmurClient

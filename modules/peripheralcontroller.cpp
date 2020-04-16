@@ -120,9 +120,113 @@ void PeripheralController::writeRegisterData()
 
 void PeripheralController::readRegisterData()
 {
+    registers->refreshInputData();
 
+    unsigned char right = registers->readByte();
+    unsigned char left = registers->readByte();
+
+    parseBytesHC165(right, left);
+
+    rightHC165 = right;
+    leftHC165 = left;
+
+    writeEncoderAngles();
 }
 
+void PeripheralController::parseBytesHC165(unsigned char right, unsigned char left)
+{
+    int signalA = 0;
+    int signalB = 0;
+
+    // Wheel left encoder: 5 & 6 bits in left register
+    if ((left & 0x10) > (leftHC165 & 0x10)) signalA++; //A signal - 5 bit in left register
+    if ((left & 0x20) > (leftHC165 & 0x20)) signalB++; //B signal - 6 bit in left register
+    if(signalA > signalB) wheelLeftAngle++;
+    if(signalA < signalB) wheelLeftAngle--;
+    signalA = 0;
+    signalB = 0;
+
+    // Wheel right encoder: 7 & 8 bits in left register
+    if ((left & 0x40) != (leftHC165 & 0x40)) signalB++; //B signal - 7 bit in left register
+    if ((left & 0x80) != (leftHC165 & 0x80)) signalA++; //A signal - 8 bit in left register
+    if(signalA > signalB) wheelRightAngle++;
+    if(signalA < signalB) wheelRightAngle--;
+    signalA = 0;
+    signalB = 0;
+
+
+    // Hand internal left encoder: 4 & 5 bits in right register
+    if ((right & 0x08) > (rightHC165 & 0x08)) signalB++; //B signal - 4 bit in right register
+    if ((right & 0x10) > (rightHC165 & 0x10)) signalA++; //A signal - 5 bit in right register
+    if(signalA > signalB) wheelLeftAngle++;
+    if(signalA < signalB) wheelLeftAngle--;
+    signalA = 0;
+    signalB = 0;
+
+    // Hand internal right encoder: 2 & 7 bits in right register
+    if ((right & 0x02) != (rightHC165 & 0x02)) signalB++; //B signal - 2 bit in right register
+    if ((right & 0x40) != (rightHC165 & 0x40)) signalA++; //A signal - 7 bit in right register
+    if(signalA > signalB) wheelRightAngle++;
+    if(signalA < signalB) wheelRightAngle--;
+    signalA = 0;
+    signalB = 0;
+
+
+    // Hand outer left encoder: 3 & 6 bits in right register
+    if ((right & 0x04) > (rightHC165 & 0x04)) signalB++; //B signal - 3 bit in right register
+    if ((right & 0x20) > (rightHC165 & 0x20)) signalA++; //A signal - 6 bit in right register
+    if(signalA > signalB) wheelLeftAngle++;
+    if(signalA < signalB) wheelLeftAngle--;
+    signalA = 0;
+    signalB = 0;
+
+    // Hand outer right encoder: 1 & 8 bits in right register
+    if ((right & 0x01) != (rightHC165 & 0x01)) signalB++; //B signal - 1 bit in right register
+    if ((right & 0x80) != (rightHC165 & 0x80)) signalA++; //A signal - 8 bit in right register
+    if(signalA > signalB) wheelRightAngle++;
+    if(signalA < signalB) wheelRightAngle--;
+    signalA = 0;
+    signalB = 0;
+}
+
+void PeripheralController::writeEncoderAngles()
+{
+    // Write wheel left angle to protobuf
+    if(wheelLeftAngle != 0){
+        sensorsPeri->mutable_wheelencoders()->set_leftangle(wheelLeftAngle);
+        wheelLeftAngle = 0;
+    }
+
+    // Write wheel right angle to protobuf
+    if(wheelRightAngle != 0){
+        sensorsPeri->mutable_wheelencoders()->set_rightangle(wheelRightAngle);
+        wheelRightAngle = 0;
+    }
+
+    // Write hand internal left angle to protobuf
+    if(handLeftInternalAngle != 0){
+        sensorsPeri->mutable_handencoders()->set_leftinternalangle(handLeftInternalAngle);
+        handLeftInternalAngle = 0;
+    }
+
+    // Write hand internal right angle to protobuf
+    if(handRightInternalAngle != 0){
+        sensorsPeri->mutable_handencoders()->set_rightinternalangle(handRightInternalAngle);
+        handRightInternalAngle = 0;
+    }
+
+    // Write hand internal left angle to protobuf
+    if(handLeftOuterAngle != 0){
+        sensorsPeri->mutable_handencoders()->set_leftouterangle(handLeftInternalAngle);
+        handLeftOuterAngle = 0;
+    }
+
+    // Write hand internal right angle to protobuf
+    if(handRightOuterAngle != 0){
+        sensorsPeri->mutable_handencoders()->set_leftouterangle(handRightInternalAngle);
+        handRightOuterAngle = 0;
+    }
+}
 
 int PeripheralController::getWheelLeftAngle() const
 {

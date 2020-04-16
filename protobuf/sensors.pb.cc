@@ -215,8 +215,8 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_sensors_2eproto::offsets[] PRO
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::AmurSensors_HandEncoders, leftinternalangle_),
   PROTOBUF_FIELD_OFFSET(::AmurSensors_HandEncoders, rightinternalangle_),
-  PROTOBUF_FIELD_OFFSET(::AmurSensors_HandEncoders, leftoutterangle_),
-  PROTOBUF_FIELD_OFFSET(::AmurSensors_HandEncoders, rightoutterangle_),
+  PROTOBUF_FIELD_OFFSET(::AmurSensors_HandEncoders, leftouterangle_),
+  PROTOBUF_FIELD_OFFSET(::AmurSensors_HandEncoders, rightouterangle_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::AmurSensors_Temperature, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -269,7 +269,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_sensors_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\rsensors.proto\"\243\006\n\013AmurSensors\0221\n\raccel"
+  "\n\rsensors.proto\"\241\006\n\013AmurSensors\0221\n\raccel"
   "erometer\030\001 \001(\0132\032.AmurSensors.Acceleromet"
   "er\022)\n\tgyroscope\030\002 \001(\0132\026.AmurSensors.Gyro"
   "scope\022/\n\014magnitometer\030\003 \001(\0132\031.AmurSensor"
@@ -282,14 +282,14 @@ const char descriptor_table_protodef_sensors_2eproto[] PROTOBUF_SECTION_VARIABLE
   " \001(\002\032,\n\tGyroscope\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022"
   "\t\n\001z\030\003 \001(\002\032/\n\014Magnitometer\022\t\n\001x\030\001 \001(\002\022\t\n"
   "\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\0326\n\rWheelEncoders\022\021\n\t"
-  "leftAngle\030\001 \001(\005\022\022\n\nrightAngle\030\002 \001(\005\032x\n\014H"
+  "leftAngle\030\001 \001(\005\022\022\n\nrightAngle\030\002 \001(\005\032v\n\014H"
   "andEncoders\022\031\n\021leftInternalAngle\030\001 \001(\005\022\032"
-  "\n\022rightInternalAngle\030\002 \001(\005\022\027\n\017leftOutter"
-  "Angle\030\003 \001(\005\022\030\n\020rightOutterAngle\030\004 \001(\005\032O\n"
-  "\013Temperature\022\031\n\021tempAccelerometer\030\001 \001(\005\022"
-  "\017\n\007tempCPU\030\002 \001(\005\022\024\n\014tempPressure\030\003 \001(\005\032="
-  "\n\004Misc\022\013\n\003gas\030\001 \001(\005\022\026\n\016batteryVoltage\030\002 "
-  "\001(\005\022\020\n\010pressure\030\003 \001(\002b\006proto3"
+  "\n\022rightInternalAngle\030\002 \001(\005\022\026\n\016leftOuterA"
+  "ngle\030\003 \001(\005\022\027\n\017rightOuterAngle\030\004 \001(\005\032O\n\013T"
+  "emperature\022\031\n\021tempAccelerometer\030\001 \001(\005\022\017\n"
+  "\007tempCPU\030\002 \001(\005\022\024\n\014tempPressure\030\003 \001(\005\032=\n\004"
+  "Misc\022\013\n\003gas\030\001 \001(\005\022\026\n\016batteryVoltage\030\002 \001("
+  "\005\022\020\n\010pressure\030\003 \001(\002b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_sensors_2eproto_deps[1] = {
 };
@@ -306,7 +306,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_sen
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_sensors_2eproto_once;
 static bool descriptor_table_sensors_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_sensors_2eproto = {
-  &descriptor_table_sensors_2eproto_initialized, descriptor_table_protodef_sensors_2eproto, "sensors.proto", 829,
+  &descriptor_table_sensors_2eproto_initialized, descriptor_table_protodef_sensors_2eproto, "sensors.proto", 827,
   &descriptor_table_sensors_2eproto_once, descriptor_table_sensors_2eproto_sccs, descriptor_table_sensors_2eproto_deps, 8, 0,
   schemas, file_default_instances, TableStruct_sensors_2eproto::offsets,
   file_level_metadata_sensors_2eproto, 8, file_level_enum_descriptors_sensors_2eproto, file_level_service_descriptors_sensors_2eproto,
@@ -1251,15 +1251,15 @@ AmurSensors_HandEncoders::AmurSensors_HandEncoders(const AmurSensors_HandEncoder
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&leftinternalangle_, &from.leftinternalangle_,
-    static_cast<size_t>(reinterpret_cast<char*>(&rightoutterangle_) -
-    reinterpret_cast<char*>(&leftinternalangle_)) + sizeof(rightoutterangle_));
+    static_cast<size_t>(reinterpret_cast<char*>(&rightouterangle_) -
+    reinterpret_cast<char*>(&leftinternalangle_)) + sizeof(rightouterangle_));
   // @@protoc_insertion_point(copy_constructor:AmurSensors.HandEncoders)
 }
 
 void AmurSensors_HandEncoders::SharedCtor() {
   ::memset(&leftinternalangle_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&rightoutterangle_) -
-      reinterpret_cast<char*>(&leftinternalangle_)) + sizeof(rightoutterangle_));
+      reinterpret_cast<char*>(&rightouterangle_) -
+      reinterpret_cast<char*>(&leftinternalangle_)) + sizeof(rightouterangle_));
 }
 
 AmurSensors_HandEncoders::~AmurSensors_HandEncoders() {
@@ -1286,8 +1286,8 @@ void AmurSensors_HandEncoders::Clear() {
   (void) cached_has_bits;
 
   ::memset(&leftinternalangle_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&rightoutterangle_) -
-      reinterpret_cast<char*>(&leftinternalangle_)) + sizeof(rightoutterangle_));
+      reinterpret_cast<char*>(&rightouterangle_) -
+      reinterpret_cast<char*>(&leftinternalangle_)) + sizeof(rightouterangle_));
   _internal_metadata_.Clear();
 }
 
@@ -1312,17 +1312,17 @@ const char* AmurSensors_HandEncoders::_InternalParse(const char* ptr, ::PROTOBUF
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 leftOutterAngle = 3;
+      // int32 leftOuterAngle = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          leftoutterangle_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          leftouterangle_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 rightOutterAngle = 4;
+      // int32 rightOuterAngle = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
-          rightoutterangle_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          rightouterangle_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1364,16 +1364,16 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_rightinternalangle(), target);
   }
 
-  // int32 leftOutterAngle = 3;
-  if (this->leftoutterangle() != 0) {
+  // int32 leftOuterAngle = 3;
+  if (this->leftouterangle() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_leftoutterangle(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_leftouterangle(), target);
   }
 
-  // int32 rightOutterAngle = 4;
-  if (this->rightoutterangle() != 0) {
+  // int32 rightOuterAngle = 4;
+  if (this->rightouterangle() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_rightoutterangle(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_rightouterangle(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1406,18 +1406,18 @@ size_t AmurSensors_HandEncoders::ByteSizeLong() const {
         this->_internal_rightinternalangle());
   }
 
-  // int32 leftOutterAngle = 3;
-  if (this->leftoutterangle() != 0) {
+  // int32 leftOuterAngle = 3;
+  if (this->leftouterangle() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_leftoutterangle());
+        this->_internal_leftouterangle());
   }
 
-  // int32 rightOutterAngle = 4;
-  if (this->rightoutterangle() != 0) {
+  // int32 rightOuterAngle = 4;
+  if (this->rightouterangle() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-        this->_internal_rightoutterangle());
+        this->_internal_rightouterangle());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1457,11 +1457,11 @@ void AmurSensors_HandEncoders::MergeFrom(const AmurSensors_HandEncoders& from) {
   if (from.rightinternalangle() != 0) {
     _internal_set_rightinternalangle(from._internal_rightinternalangle());
   }
-  if (from.leftoutterangle() != 0) {
-    _internal_set_leftoutterangle(from._internal_leftoutterangle());
+  if (from.leftouterangle() != 0) {
+    _internal_set_leftouterangle(from._internal_leftouterangle());
   }
-  if (from.rightoutterangle() != 0) {
-    _internal_set_rightoutterangle(from._internal_rightoutterangle());
+  if (from.rightouterangle() != 0) {
+    _internal_set_rightouterangle(from._internal_rightouterangle());
   }
 }
 
@@ -1488,8 +1488,8 @@ void AmurSensors_HandEncoders::InternalSwap(AmurSensors_HandEncoders* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(leftinternalangle_, other->leftinternalangle_);
   swap(rightinternalangle_, other->rightinternalangle_);
-  swap(leftoutterangle_, other->leftoutterangle_);
-  swap(rightoutterangle_, other->rightoutterangle_);
+  swap(leftouterangle_, other->leftouterangle_);
+  swap(rightouterangle_, other->rightouterangle_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata AmurSensors_HandEncoders::GetMetadata() const {

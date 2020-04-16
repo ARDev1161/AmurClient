@@ -788,8 +788,8 @@ class AmurSensors_HandEncoders :
   enum : int {
     kLeftInternalAngleFieldNumber = 1,
     kRightInternalAngleFieldNumber = 2,
-    kLeftOutterAngleFieldNumber = 3,
-    kRightOutterAngleFieldNumber = 4,
+    kLeftOuterAngleFieldNumber = 3,
+    kRightOuterAngleFieldNumber = 4,
   };
   // int32 leftInternalAngle = 1;
   void clear_leftinternalangle();
@@ -809,22 +809,22 @@ class AmurSensors_HandEncoders :
   void _internal_set_rightinternalangle(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // int32 leftOutterAngle = 3;
-  void clear_leftoutterangle();
-  ::PROTOBUF_NAMESPACE_ID::int32 leftoutterangle() const;
-  void set_leftoutterangle(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // int32 leftOuterAngle = 3;
+  void clear_leftouterangle();
+  ::PROTOBUF_NAMESPACE_ID::int32 leftouterangle() const;
+  void set_leftouterangle(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_leftoutterangle() const;
-  void _internal_set_leftoutterangle(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_leftouterangle() const;
+  void _internal_set_leftouterangle(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // int32 rightOutterAngle = 4;
-  void clear_rightoutterangle();
-  ::PROTOBUF_NAMESPACE_ID::int32 rightoutterangle() const;
-  void set_rightoutterangle(::PROTOBUF_NAMESPACE_ID::int32 value);
+  // int32 rightOuterAngle = 4;
+  void clear_rightouterangle();
+  ::PROTOBUF_NAMESPACE_ID::int32 rightouterangle() const;
+  void set_rightouterangle(::PROTOBUF_NAMESPACE_ID::int32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_rightoutterangle() const;
-  void _internal_set_rightoutterangle(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_rightouterangle() const;
+  void _internal_set_rightouterangle(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:AmurSensors.HandEncoders)
@@ -834,8 +834,8 @@ class AmurSensors_HandEncoders :
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::int32 leftinternalangle_;
   ::PROTOBUF_NAMESPACE_ID::int32 rightinternalangle_;
-  ::PROTOBUF_NAMESPACE_ID::int32 leftoutterangle_;
-  ::PROTOBUF_NAMESPACE_ID::int32 rightoutterangle_;
+  ::PROTOBUF_NAMESPACE_ID::int32 leftouterangle_;
+  ::PROTOBUF_NAMESPACE_ID::int32 rightouterangle_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_sensors_2eproto;
 };
@@ -1670,44 +1670,44 @@ inline void AmurSensors_HandEncoders::set_rightinternalangle(::PROTOBUF_NAMESPAC
   // @@protoc_insertion_point(field_set:AmurSensors.HandEncoders.rightInternalAngle)
 }
 
-// int32 leftOutterAngle = 3;
-inline void AmurSensors_HandEncoders::clear_leftoutterangle() {
-  leftoutterangle_ = 0;
+// int32 leftOuterAngle = 3;
+inline void AmurSensors_HandEncoders::clear_leftouterangle() {
+  leftouterangle_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurSensors_HandEncoders::_internal_leftoutterangle() const {
-  return leftoutterangle_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 AmurSensors_HandEncoders::_internal_leftouterangle() const {
+  return leftouterangle_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurSensors_HandEncoders::leftoutterangle() const {
-  // @@protoc_insertion_point(field_get:AmurSensors.HandEncoders.leftOutterAngle)
-  return _internal_leftoutterangle();
+inline ::PROTOBUF_NAMESPACE_ID::int32 AmurSensors_HandEncoders::leftouterangle() const {
+  // @@protoc_insertion_point(field_get:AmurSensors.HandEncoders.leftOuterAngle)
+  return _internal_leftouterangle();
 }
-inline void AmurSensors_HandEncoders::_internal_set_leftoutterangle(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void AmurSensors_HandEncoders::_internal_set_leftouterangle(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
-  leftoutterangle_ = value;
+  leftouterangle_ = value;
 }
-inline void AmurSensors_HandEncoders::set_leftoutterangle(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_leftoutterangle(value);
-  // @@protoc_insertion_point(field_set:AmurSensors.HandEncoders.leftOutterAngle)
+inline void AmurSensors_HandEncoders::set_leftouterangle(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_leftouterangle(value);
+  // @@protoc_insertion_point(field_set:AmurSensors.HandEncoders.leftOuterAngle)
 }
 
-// int32 rightOutterAngle = 4;
-inline void AmurSensors_HandEncoders::clear_rightoutterangle() {
-  rightoutterangle_ = 0;
+// int32 rightOuterAngle = 4;
+inline void AmurSensors_HandEncoders::clear_rightouterangle() {
+  rightouterangle_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurSensors_HandEncoders::_internal_rightoutterangle() const {
-  return rightoutterangle_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 AmurSensors_HandEncoders::_internal_rightouterangle() const {
+  return rightouterangle_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurSensors_HandEncoders::rightoutterangle() const {
-  // @@protoc_insertion_point(field_get:AmurSensors.HandEncoders.rightOutterAngle)
-  return _internal_rightoutterangle();
+inline ::PROTOBUF_NAMESPACE_ID::int32 AmurSensors_HandEncoders::rightouterangle() const {
+  // @@protoc_insertion_point(field_get:AmurSensors.HandEncoders.rightOuterAngle)
+  return _internal_rightouterangle();
 }
-inline void AmurSensors_HandEncoders::_internal_set_rightoutterangle(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void AmurSensors_HandEncoders::_internal_set_rightouterangle(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
-  rightoutterangle_ = value;
+  rightouterangle_ = value;
 }
-inline void AmurSensors_HandEncoders::set_rightoutterangle(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_rightoutterangle(value);
-  // @@protoc_insertion_point(field_set:AmurSensors.HandEncoders.rightOutterAngle)
+inline void AmurSensors_HandEncoders::set_rightouterangle(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_rightouterangle(value);
+  // @@protoc_insertion_point(field_set:AmurSensors.HandEncoders.rightOuterAngle)
 }
 
 // -------------------------------------------------------------------
