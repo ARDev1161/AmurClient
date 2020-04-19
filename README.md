@@ -5,6 +5,7 @@ This is application for communicate with robot on RPi base with [AmurClient].
   1) WiringPi
   2) Protobuf
   3) libconfig
+  4) GStreamer
 
 ## Sensors of Amur:
   1) Camera - OV5647

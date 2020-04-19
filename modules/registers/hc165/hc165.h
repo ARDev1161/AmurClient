@@ -12,7 +12,7 @@ class HC165
     int clk;         // Connects to the Clock(CLK) pin the 165
     int clkInhibite; // Connects to Clock Enable(CLK INH) pin the 165
 
-    void pulse(int pin);
+    inline void pulse(int pin);
 public:    
     HC165(int dataPin, int loadLatchPin, int clkPin, int clkInhibitePin);
     unsigned char readByte();

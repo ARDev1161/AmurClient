@@ -18,6 +18,7 @@ class LogicController
     PeripheralController *periphery;
 public:
     LogicController();
+    ~LogicController();
 
     void writeToPeriphery();
     void readFromPeriphery();

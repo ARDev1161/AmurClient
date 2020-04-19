@@ -58,16 +58,19 @@ class PeripheralController
     unsigned char leftHC165 = 0x00;
     unsigned char rightHC165 = 0x00;
 
+
     void initPWM();
     void wiringPiInit();
 
-    unsigned char leftOutRegisterToByte();
-    unsigned char rightOutRegisterToByte();
+    unsigned char leftOutRegisterToByte(); // Generate output byte from protobuf
+    unsigned char rightOutRegisterToByte(); // Generate output byte from protobuf
 
-    void parseBytesHC165(unsigned char right, unsigned char left);
-    void writeEncoderAngles();
+    void parseBytesHC165(unsigned char right, unsigned char left); // Parsing input bytes to encoders angles
+    void writeEncodersAngles(); // Write encoders angles to protobuf
+
 public:
     PeripheralController(AmurControls *controls, AmurSensors *sensors);
+    ~PeripheralController();
 
     void changeWheelsPWM();
     void changeHandsPWM();
@@ -75,20 +78,6 @@ public:
     void writeRegisterData();
     void readRegisterData();
 
-    int getWheelLeftAngle() const;
-    void setWheelLeftAngle(int value);
-    int getWheelRightAngle() const;
-    void setWheelRightAngle(int value);
-
-    int getHandLeftInternalAngle() const;
-    void setHandLeftInternalAngle(int value);
-    int getHandRightInternalAngle() const;
-    void setHandRightInternalAngle(int value);
-
-    int getHandLeftOuterAngle() const;
-    void setHandLeftOuterAngle(int value);
-    int getHandRightOuterAngle() const;
-    void setHandRightOuterAngle(int value);
 };
 
 #endif // PERIPHERALCONTROLLER_H

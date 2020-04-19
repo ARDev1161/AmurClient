@@ -14,7 +14,7 @@ data(dataPin), loadLatch(loadLatchPin), clk(clkPin), clkInhibite(clkInhibitePin)
     digitalWrite(clkInhibite, 0);
 }
 
-void HC165::pulse(int pin)
+inline void HC165::pulse(int pin)
 {
     digitalWrite(pin, 0);
     delayMicroseconds(PULSE_WIDTH_USEC);

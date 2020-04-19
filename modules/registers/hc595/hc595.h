@@ -11,7 +11,7 @@ class HC595
     int notReset;   // Connects to notReset pin the 595
     int notEnable;  // Connects to notEnable pin the 595
     
-    void pulse(int pin);
+    inline void pulse(int pin);
 public:
     HC595(int dataPin, int clkPin, int latchPin, int notResetPin, int notEnablePin);
     void writeByte(unsigned char byte);

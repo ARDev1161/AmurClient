@@ -16,7 +16,7 @@ data(dataPin), clk(clkPin), latch(latchPin), notReset(notResetPin), notEnable(no
     digitalWrite(notEnable, 0);
 }
 
-void HC595::pulse(int pin)
+inline void HC595::pulse(int pin)
 {
     digitalWrite(pin, 0);
     digitalWrite(pin, 1);

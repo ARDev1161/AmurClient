@@ -10,6 +10,15 @@ PeripheralController::PeripheralController(AmurControls *controls, AmurSensors *
     initPWM();
 }
 
+PeripheralController::~PeripheralController()
+{
+    sensorsPeri = nullptr;
+    controlsPeri = nullptr;
+
+    delete registers;
+    delete pwm;
+}
+
 void PeripheralController::wiringPiInit()
 {
     if(wiringPiSetupGpio() != 0) //setup GPIO, this uses actual BCM pin numbers
@@ -112,25 +121,27 @@ void PeripheralController::changeHandsPWM()
     pwm->softPWMChange(PWM_SOFT_LEFT, abs(controlsPeri->mutable_handmotors()->leftpower()));
 }
 
-void PeripheralController::writeRegisterData()
+void PeripheralController::writeRegisterData() // Read data from protobuf & write to HC595
 {
-    registers->writeByte(leftOutRegisterToByte());
-    registers->writeByte(rightOutRegisterToByte());
+    registers->writeByte(leftOutRegisterToByte()); // Write left byte to HC595
+    registers->writeByte(rightOutRegisterToByte()); // Write right byte to HC595
+
+    registers->refreshOutputData(); // Load data (latch pulse)
 }
 
-void PeripheralController::readRegisterData()
+void PeripheralController::readRegisterData() // Read data from HC165 & write to protobuf
 {
-    registers->refreshInputData();
+    registers->refreshInputData(); // Load data (latch pulse)
 
-    unsigned char right = registers->readByte();
-    unsigned char left = registers->readByte();
+    unsigned char right = registers->readByte(); // Read right byte from HC165
+    unsigned char left = registers->readByte(); // Read left byte from HC165
 
     parseBytesHC165(right, left);
 
     rightHC165 = right;
     leftHC165 = left;
 
-    writeEncoderAngles();
+    writeEncodersAngles();
 }
 
 void PeripheralController::parseBytesHC165(unsigned char right, unsigned char left)
@@ -185,11 +196,9 @@ void PeripheralController::parseBytesHC165(unsigned char right, unsigned char le
     if ((right & 0x80) != (rightHC165 & 0x80)) signalA++; //A signal - 8 bit in right register
     if(signalA > signalB) wheelRightAngle++;
     if(signalA < signalB) wheelRightAngle--;
-    signalA = 0;
-    signalB = 0;
 }
 
-void PeripheralController::writeEncoderAngles()
+void PeripheralController::writeEncodersAngles()
 {
     // Write wheel left angle to protobuf
     if(wheelLeftAngle != 0){
@@ -226,58 +235,4 @@ void PeripheralController::writeEncoderAngles()
         sensorsPeri->mutable_handencoders()->set_leftouterangle(handRightInternalAngle);
         handRightOuterAngle = 0;
     }
-}
-
-int PeripheralController::getWheelLeftAngle() const
-{
-    return wheelLeftAngle;
-}
-void PeripheralController::setWheelLeftAngle(int value)
-{
-    wheelLeftAngle = value;
-}
-
-int PeripheralController::getWheelRightAngle() const
-{
-    return wheelRightAngle;
-}
-void PeripheralController::setWheelRightAngle(int value)
-{
-    wheelRightAngle = value;
-}
-
-int PeripheralController::getHandLeftInternalAngle() const
-{
-    return handLeftInternalAngle;
-}
-void PeripheralController::setHandLeftInternalAngle(int value)
-{
-    handLeftInternalAngle = value;
-}
-
-int PeripheralController::getHandRightInternalAngle() const
-{
-    return handRightInternalAngle;
-}
-void PeripheralController::setHandRightInternalAngle(int value)
-{
-    handRightInternalAngle = value;
-}
-
-int PeripheralController::getHandLeftOuterAngle() const
-{
-    return handLeftOuterAngle;
-}
-void PeripheralController::setHandLeftOuterAngle(int value)
-{
-    handLeftOuterAngle = value;
-}
-
-int PeripheralController::getHandRightOuterAngle() const
-{
-    return handRightOuterAngle;
-}
-void PeripheralController::setHandRightOuterAngle(int value)
-{
-    handRightOuterAngle = value;
 }

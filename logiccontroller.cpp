@@ -8,6 +8,14 @@ LogicController::LogicController()
     periphery = new PeripheralController(controls, sensors);
 }
 
+LogicController::~LogicController()
+{
+    delete sensors;
+    delete controls;
+
+    delete periphery;
+}
+
 void LogicController::writeToPeriphery()
 {
 

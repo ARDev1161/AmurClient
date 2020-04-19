@@ -8,6 +8,12 @@ RegisterController::RegisterController
     inputRegister = new HC165(dataPinHC165, loadLatchPinHC165, clkPinHC165, clkInhibitePinHC165);
 }
 
+RegisterController::~RegisterController()
+{
+    delete outputRegister;
+    delete inputRegister;
+}
+
 void RegisterController::writeByte(unsigned char writingByte)
 {
         outputRegister->writeByte(writingByte);
