@@ -13,22 +13,16 @@
 #include <netdb.h> // Функции для преобразования протокольных имен и имен хостов в числовые адреса. Используются локальные данные аналогично DNS.
 #include <arpa/inet.h> // Функции для работы с числовыми IP-адресами.
 
+#define COUNT_CONNECT_TRYING 7
+
 class TCPClient
 {
     int sockfd = 0;
-    std::string host;
-    unsigned int port;
-
     bool connected;
-
-    struct sockaddr_in servAddr;
-    struct hostent *server;
-
     char buffer[1024];
 
     bool hasError();
-    inline void clientError(std::string msg);
-
+    inline void clientError(std::string const& msg);
     int enable_keepalive(int sock);
 public:
     TCPClient(std::string host, unsigned int port);
@@ -39,7 +33,7 @@ public:
     int connect(std::string host, unsigned int port);
     inline void disconnect();
 
-    int write(std::string mesg);
+    int write(std::string const& mesg);
     std::string read();
     std::string readAll();
 };

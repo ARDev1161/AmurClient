@@ -20,7 +20,7 @@ int TCPServer::init(unsigned int port) {
     int yes = 1;
 
     if(setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes)) == -1)
-        cerr << errno << "  " << strerror(errno) << endl;
+        serverError("Error: ");
 
     enable_keepalive(sockfd);
 
@@ -32,32 +32,37 @@ int TCPServer::init(unsigned int port) {
     return 0;
 }
 
+inline void TCPServer::serverError(std::string const& msg)
+{
+    std::cerr << msg << errno << "  " << strerror(errno) << std::endl;
+}
+
 int TCPServer::enable_keepalive(int sock) {
     int yes = 1;
 
     if(setsockopt(sock, SOL_SOCKET, SO_KEEPALIVE, &yes, sizeof(int)) == -1) {
-        cerr << errno << "  " << strerror(errno) << endl;
+        serverError("Error: ");
         return -1;
     }
 
     int idle = 1;
 
     if(setsockopt(sock, IPPROTO_TCP, TCP_KEEPIDLE, &idle, sizeof(int)) == -1) {
-        cerr << errno << "  " << strerror(errno) << endl;
+        serverError("Error: ");
         return -1;
     }
 
     int interval = 1;
 
     if(setsockopt(sock, IPPROTO_TCP, TCP_KEEPINTVL, &interval, sizeof(int)) == -1) {
-        cerr << errno << "  " << strerror(errno) << endl;
+        serverError("Error: ");
         return -1;
     }
 
     int maxpkt = 10;
 
     if(setsockopt(sock, IPPROTO_TCP, TCP_KEEPCNT, &maxpkt, sizeof(int)) == -1) {
-        cerr << errno << "  " << strerror(errno) << endl;
+        serverError("Error: ");
         return -1;
     }
 
@@ -69,21 +74,21 @@ TCPClient TCPServer::accept() {
         int newsockfd = ::accept(sockfd, (struct sockaddr*) &cliaddr, &clilen);
 
         if(newsockfd == -1)
-            cerr << errno << "  " << strerror(errno) << endl;
+            serverError("Error: ");
 
-        return clientSock(newsockfd);
+        return TCPClient(newsockfd);
     }
-    else return clientSock();
+    else return TCPClient();
 }
 
 int TCPServer::start() {
     if(listeningPort == 0) {
-        cerr << "ERROR No port defined to listen to" << endl;
+         serverError("ERROR No port defined to listen to");
         return 1;
     }
 
     if(bind(sockfd, (struct sockaddr*) &servaddr, sizeof(servaddr)) < 0) {
-        cerr << errno << "  " << strerror(errno) << endl;
+        serverError("Binding error: ");
         return 1;
     }
 
@@ -116,7 +121,7 @@ int TCPServer::stop() {
     int res = close(sockfd);
 
     if(res < 0)
-        cerr << errno << "  " << strerror(errno) << endl;
+        serverError("Error: ");
 
     return 0;
 }

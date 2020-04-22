@@ -55,12 +55,18 @@ class PeripheralController
     int handLeftOuterAngle;
     int handRightOuterAngle;
 
-    unsigned char leftHC165 = 0x00;
-    unsigned char rightHC165 = 0x00;
+    unsigned char prevLeftHC165 = 0x00;
+    unsigned char prevRightHC165 = 0x00;
 
 
     void initPWM();
     void wiringPiInit();
+
+    inline void getChangeEncoderAngle(unsigned char addrA,
+                                      unsigned char addrB,
+                                      unsigned char const byte,
+                                      unsigned char const previousByte,
+                                      int const *angle);
 
     unsigned char leftOutRegisterToByte(); // Generate output byte from protobuf
     unsigned char rightOutRegisterToByte(); // Generate output byte from protobuf

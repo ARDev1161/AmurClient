@@ -4,9 +4,11 @@ PeripheralController::PeripheralController(AmurControls *controls, AmurSensors *
      sensorsPeri(sensors), controlsPeri(controls)
 {
     wiringPiInit();
+
     registers = new RegisterController(DATA_595, SHIFT_CLK_595, LATCH_CLK_595, NOT_RESET_595, NOT_ENABLE_595,
                                        DATA_165, LOAD_165, CLK_165, CLK_INH_165);
     pwm = new PWMController();
+
     initPWM();
 }
 
@@ -30,24 +32,28 @@ void PeripheralController::wiringPiInit()
 
 void PeripheralController::initPWM()
 {
+    // Setup hardware PWM for wheel motors
     pwm->hardPWMCreate(PWM_HARD_RIGHT);
     pwm->hardPWMCreate(PWM_HARD_LEFT);
 
+    // Setup software PWM for hand motors
     pwm->softPWMCreate(PWM_SOFT_RIGHT);
     pwm->softPWMCreate(PWM_SOFT_LEFT);
 }
 
 unsigned char PeripheralController::leftOutRegisterToByte()
 {
-    unsigned char byte = 0x00; //((byte & (0x80 >> i)) > 0)
+    unsigned char byte = 0x00;
 
-    // first bit is empty - pin is free(freeOutPinL)
+    // left LED light input
+    byte |= (controlsPeri->mutable_light()->ledleftpower() > 0);
+    byte <<=1;
 
-    // enable wheel left motor
+    // enable input: wheel left motor
     byte |= ( abs(controlsPeri->mutable_wheelmotors()->leftpower()) > 0);
     byte <<=1;
 
-    // enable hand left motor
+    // enable input: hand left motor
     byte |= ( abs(controlsPeri->mutable_handmotors()->leftpower()) > 0);
     byte <<=1;
 
@@ -69,7 +75,6 @@ unsigned char PeripheralController::leftOutRegisterToByte()
 
     // left relay bit
     byte |= controlsPeri->mutable_handmotors()->leftrelay();
-    byte <<=1;
 
     return byte;
 }
@@ -77,7 +82,9 @@ unsigned char PeripheralController::rightOutRegisterToByte()
 {
     unsigned char byte = 0x00;
 
-    // first bit is empty - pin is free(freeOutPinR)
+    // right LED light input
+    byte |= (controlsPeri->mutable_light()->ledrightpower() > 0);
+    byte <<=1;
 
     // enable hand right motor
     byte |= ( abs(controlsPeri->mutable_handmotors()->rightpower()) > 0);
@@ -105,7 +112,6 @@ unsigned char PeripheralController::rightOutRegisterToByte()
 
     // right relay bit
     byte |= controlsPeri->mutable_handmotors()->rightrelay();
-    byte <<=1;
 
     return byte;
 }
@@ -138,64 +144,44 @@ void PeripheralController::readRegisterData() // Read data from HC165 & write to
 
     parseBytesHC165(right, left);
 
-    rightHC165 = right;
-    leftHC165 = left;
+    prevRightHC165 = right;
+    prevLeftHC165 = left;
 
     writeEncodersAngles();
 }
 
-void PeripheralController::parseBytesHC165(unsigned char right, unsigned char left)
+inline void PeripheralController::getChangeEncoderAngle
+(unsigned char addrA, unsigned char addrB, unsigned char const byte,  unsigned char const previousByte, int const *angle)
 {
     int signalA = 0;
     int signalB = 0;
 
-    // Wheel left encoder: 5 & 6 bits in left register
-    if ((left & 0x10) > (leftHC165 & 0x10)) signalA++; //A signal - 5 bit in left register
-    if ((left & 0x20) > (leftHC165 & 0x20)) signalB++; //B signal - 6 bit in left register
-    if(signalA > signalB) wheelLeftAngle++;
-    if(signalA < signalB) wheelLeftAngle--;
-    signalA = 0;
-    signalB = 0;
+    // encoder: addrA & addrB bits in left register
+    if ((byte & addrA) > (previousByte & addrA)) signalA++; //A signal in register
+    if ((byte & addrB) > (previousByte & addrB)) signalB++; //B signal in register
+    if(signalA > signalB) angle++;
+    if(signalA < signalB) angle--;
+}
 
-    // Wheel right encoder: 7 & 8 bits in left register
-    if ((left & 0x40) != (leftHC165 & 0x40)) signalB++; //B signal - 7 bit in left register
-    if ((left & 0x80) != (leftHC165 & 0x80)) signalA++; //A signal - 8 bit in left register
-    if(signalA > signalB) wheelRightAngle++;
-    if(signalA < signalB) wheelRightAngle--;
-    signalA = 0;
-    signalB = 0;
+void PeripheralController::parseBytesHC165(unsigned char right, unsigned char left)
+{
+    // Wheel left encoder: 5(A) - 0x10 & 6(B) - 0x20 bits in left register
+    getChangeEncoderAngle(0x10, 0x20, left, prevLeftHC165, &wheelLeftAngle);
 
+    // Wheel right encoder: 8(A) - 0x80 & 7(B) - 0x40 bits in left register
+    getChangeEncoderAngle(0x80, 0x40, left, prevLeftHC165, &wheelRightAngle);
 
-    // Hand internal left encoder: 4 & 5 bits in right register
-    if ((right & 0x08) > (rightHC165 & 0x08)) signalB++; //B signal - 4 bit in right register
-    if ((right & 0x10) > (rightHC165 & 0x10)) signalA++; //A signal - 5 bit in right register
-    if(signalA > signalB) wheelLeftAngle++;
-    if(signalA < signalB) wheelLeftAngle--;
-    signalA = 0;
-    signalB = 0;
+    // Hand internal left encoder: 5(A) - 0x10 & 4(B) - 0x08 bits in right register
+    getChangeEncoderAngle(0x10, 0x08, right, prevRightHC165, &handLeftInternalAngle);
 
-    // Hand internal right encoder: 2 & 7 bits in right register
-    if ((right & 0x02) != (rightHC165 & 0x02)) signalB++; //B signal - 2 bit in right register
-    if ((right & 0x40) != (rightHC165 & 0x40)) signalA++; //A signal - 7 bit in right register
-    if(signalA > signalB) wheelRightAngle++;
-    if(signalA < signalB) wheelRightAngle--;
-    signalA = 0;
-    signalB = 0;
+    // Hand internal right encoder: 7(A) - 0x40 & 2(B) - 0x02 bits in right register
+    getChangeEncoderAngle(0x40, 0x02, right, prevRightHC165, &handRightInternalAngle);
 
+    // Hand outer left encoder: 6(A) - 0x20 & 3(B) - 0x04 bits in right register
+    getChangeEncoderAngle(0x20, 0x04, right, prevRightHC165, &handLeftOuterAngle);
 
-    // Hand outer left encoder: 3 & 6 bits in right register
-    if ((right & 0x04) > (rightHC165 & 0x04)) signalB++; //B signal - 3 bit in right register
-    if ((right & 0x20) > (rightHC165 & 0x20)) signalA++; //A signal - 6 bit in right register
-    if(signalA > signalB) wheelLeftAngle++;
-    if(signalA < signalB) wheelLeftAngle--;
-    signalA = 0;
-    signalB = 0;
-
-    // Hand outer right encoder: 1 & 8 bits in right register
-    if ((right & 0x01) != (rightHC165 & 0x01)) signalB++; //B signal - 1 bit in right register
-    if ((right & 0x80) != (rightHC165 & 0x80)) signalA++; //A signal - 8 bit in right register
-    if(signalA > signalB) wheelRightAngle++;
-    if(signalA < signalB) wheelRightAngle--;
+    // Hand outer right encoder: 8(A) - 0x80 & 1(B) - 0x01 bits in right register
+    getChangeEncoderAngle(0x80, 0x01, right, prevRightHC165, &handRightOuterAngle);
 }
 
 void PeripheralController::writeEncodersAngles()

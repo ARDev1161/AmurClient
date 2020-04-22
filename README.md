@@ -40,13 +40,41 @@ This is application for communicate with robot on RPi base with [AmurClient].
   * GPIO26  -   freePin 2
   * GPIO20  -   PWM2 right
   * GPIO21  -   PWM2 left
-  
-  I2C1    -   sensors: ADS1115
-  
-  UART0   -   sensors
-  
-  SPI0    -   LoRa: SX1278
-  
+
+
+## Voltage jumper(for peripheral devices - Vpd):
+  1) Left - 3.3V
+  2) Right - 5V
+
+## I2C1 header(from left to right):
+    Use for ADS1115
+  1) Vpd
+  2) SCL
+  3) SDA
+  4) GND
+
+## UART0 header(from left to right):
+  1) Vpd
+  2) Tx
+  3) Rx
+  4) GND
+
+
+## SPI0 header(from up to down):
+    Use for LoRa(SX1278)
+  1) CE1
+  2) CE0
+  3) SCLK
+  4) MISO
+  5) MOSI
+
+## GPIO freePins header(from left to right):
+    Use for LoRa(SX1278)
+  1) GPIO19 - Rx enable
+  2) GPIO26 - Tx enable
+  3) GPIO5 - DI0
+  4) GPIO6 - Reset
+
 ## 74HC595 using:
   bites trancieve in register from last to first: from 16 to 1
 
@@ -58,7 +86,7 @@ This is application for communicate with robot on RPi base with [AmurClient].
   * 5bit    -   cnt2 right motor shield (Hand right motor - B2 input)
   * 6bit    -   en1 right motor shield (Wheel right motor)
   * 7bit    -   en2 right motor shield (Hand right motor)
-  * 8bit    -   freeOutPinR
+  * 8bit    -   right LED light
 
   (Second byte - left)
   * 9bit    -   left relay
@@ -68,7 +96,7 @@ This is application for communicate with robot on RPi base with [AmurClient].
   * 13bit   -   cnt2 left motor shield (Wheel left motor - B2 input)
   * 14bit   -   en1 left motor shield (Hand left motor)
   * 15bit   -   en2 left motor shield (Wheel left motor)
-  * 16bit   -   freeOutPinL
+  * 16bit   -   left LED light
   
 ## 74HC165 using:
   bites recieve by register from first to last: from 1 to 16

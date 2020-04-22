@@ -2,7 +2,6 @@
 
 TCPClient::TCPClient(std::string host, unsigned int port):
     sockfd(-1),
-    host(host), port(port),
     connected(false)
 {
     connect(host, port);
@@ -16,7 +15,7 @@ TCPClient::TCPClient(int sock):
 
 TCPClient::TCPClient()
 {
-    //disconnect();
+
 }
 
 TCPClient::~TCPClient()
@@ -24,17 +23,16 @@ TCPClient::~TCPClient()
     disconnect();
 }
 
-int TCPClient::connect(std::string host, unsigned int port){
-    disconnect();
-
-    TCPClient::host = host;
-    TCPClient::port = port;
+int TCPClient::connect(std::string host, unsigned int port)
+{
+    struct sockaddr_in servAddr;
+    struct hostent *server;
 
     std::memset(&servAddr, 0, sizeof(servAddr));
     servAddr.sin_family = AF_INET;
 
     server = gethostbyname(host.data());
-    bcopy((char*) server->h_addr, (char*) &servAddr.sin_addr.s_addr, server->h_length);
+    memmove((char*) &servAddr.sin_addr.s_addr, (char*) server->h_addr, server->h_length);
     servAddr.sin_port = htons(port);
 
     if(connected)
@@ -42,30 +40,30 @@ int TCPClient::connect(std::string host, unsigned int port){
 
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
 
-    /*struct timeval tv;
-    tv.tv_sec = 5;//5 Secs Timeout
-    tv.tv_usec = 0;//Not init'ing this can cause strange errors
-    setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, (char*)&tv, sizeof(struct timeval));*/
+//    struct timeval tv;
+//    tv.tv_sec = 5; //5 Secs Timeout
+//    tv.tv_usec = 0; //Not init'ing this can cause strange errors
+//    setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, (char*)&tv, sizeof(struct timeval)); // Set time interval for recieve
 
     enable_keepalive(sockfd);
 
-    for(size_t i = 0; i < 3; i++) { //try to connect 3 times
+    for(size_t i = 0; i < COUNT_CONNECT_TRYING; i++) { //try to connect several times
         if(::connect(sockfd, (struct sockaddr*) &servAddr, sizeof(servAddr)) < 0)
             clientError("Error on connecting: ");
         else {
             connected = true;
             return 0;
         }
+        sleep(1); // Wait 1 second
     }
 
     connected = false;
     return 1;
 }
 
-inline void TCPClient::clientError(std::string msg)
+inline void TCPClient::clientError(std::string const& msg)
 {
     std::cerr << msg << errno << "  " << strerror(errno) << std::endl;
-//    perror(msg);
 }
 
 bool TCPClient::hasError() {
@@ -111,7 +109,7 @@ inline void TCPClient::disconnect() {
     }
 }
 
-int TCPClient::write(std::string mesg) {
+int TCPClient::write(std::string const& mesg) {
     if(!connected)
         return 1;
 
@@ -189,6 +187,7 @@ std::string TCPClient::read() {
                     if(tResp.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890") == std::string::npos) //but only allow valid chars
                         resp += tResp;
                 }
+                //    perror(msg);
                 else
                     clientError("Error: ");
 

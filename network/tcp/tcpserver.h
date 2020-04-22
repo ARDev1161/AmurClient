@@ -33,6 +33,7 @@ class TCPServer
     bool started;
     bool stopSock;
 
+    inline void serverError(std::string const& msg);
 public:
     TCPServer(unsigned int port);
     TCPServer();
