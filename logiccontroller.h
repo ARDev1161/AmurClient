@@ -9,6 +9,7 @@
 #include "modules/peripheralcontroller.h"
 
 //Network headers
+#include "network/networkcontroller.h"
 
 class LogicController
 {
@@ -16,6 +17,7 @@ class LogicController
     AmurControls *controls;
 
     PeripheralController *periphery;
+    NetworkController *network;
 public:
     LogicController();
     ~LogicController();

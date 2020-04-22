@@ -11,9 +11,9 @@ This is application for communicate with robot on RPi base with [AmurClient].
   1) Camera - OV5647
   2) Inertial sensor - MPU-9250
   3) Barometer - BMP-280
-  4) Encoders wheel: left, right
-  5) Encoders hand internal: left, right
-  6) Encoders hand outter: left, right
+  4) Encoders wheel: left, right - HOA0901
+  5) Encoders hand internal: left, right - HOA0901
+  6) Encoders hand outter: left, right - HOA0901
   7) Battery voltage
 
 ## Controls of Amur:

@@ -6,6 +6,7 @@ LogicController::LogicController()
     sensors = new AmurSensors();
 
     periphery = new PeripheralController(controls, sensors);
+    network = new NetworkController();
 }
 
 LogicController::~LogicController()
@@ -14,6 +15,7 @@ LogicController::~LogicController()
     delete controls;
 
     delete periphery;
+    delete network;
 }
 
 void LogicController::writeToPeriphery()
