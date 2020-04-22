@@ -66,7 +66,7 @@ class PeripheralController
                                       unsigned char addrB,
                                       unsigned char const byte,
                                       unsigned char const previousByte,
-                                      int const *angle);
+                                      int *const angle);
 
     unsigned char leftOutRegisterToByte(); // Generate output byte from protobuf
     unsigned char rightOutRegisterToByte(); // Generate output byte from protobuf

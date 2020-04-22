@@ -151,7 +151,7 @@ void PeripheralController::readRegisterData() // Read data from HC165 & write to
 }
 
 inline void PeripheralController::getChangeEncoderAngle
-(unsigned char addrA, unsigned char addrB, unsigned char const byte,  unsigned char const previousByte, int const *angle)
+(unsigned char addrA, unsigned char addrB, unsigned char const byte,  unsigned char const previousByte, int *const angle)
 {
     int signalA = 0;
     int signalB = 0;
@@ -159,8 +159,8 @@ inline void PeripheralController::getChangeEncoderAngle
     // encoder: addrA & addrB bits in left register
     if ((byte & addrA) > (previousByte & addrA)) signalA++; //A signal in register
     if ((byte & addrB) > (previousByte & addrB)) signalB++; //B signal in register
-    if(signalA > signalB) angle++;
-    if(signalA < signalB) angle--;
+    if(signalA > signalB) (*angle)++;
+    if(signalA < signalB) (*angle)--;
 }
 
 void PeripheralController::parseBytesHC165(unsigned char right, unsigned char left)
