@@ -45,6 +45,14 @@ class AmurSensors_TemperatureDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<AmurSensors_Temperature> _instance;
 } _AmurSensors_Temperature_default_instance_;
+class AmurSensors_WheelCurrentDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<AmurSensors_WheelCurrent> _instance;
+} _AmurSensors_WheelCurrent_default_instance_;
+class AmurSensors_HandCurrentDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<AmurSensors_HandCurrent> _instance;
+} _AmurSensors_HandCurrent_default_instance_;
 class AmurSensors_MiscDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<AmurSensors_Misc> _instance;
@@ -102,6 +110,20 @@ static void InitDefaultsscc_info_AmurSensors_Gyroscope_sensors_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_AmurSensors_Gyroscope_sensors_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_AmurSensors_Gyroscope_sensors_2eproto}, {}};
 
+static void InitDefaultsscc_info_AmurSensors_HandCurrent_sensors_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::_AmurSensors_HandCurrent_default_instance_;
+    new (ptr) ::AmurSensors_HandCurrent();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::AmurSensors_HandCurrent::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_AmurSensors_HandCurrent_sensors_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_AmurSensors_HandCurrent_sensors_2eproto}, {}};
+
 static void InitDefaultsscc_info_AmurSensors_HandEncoders_sensors_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -158,6 +180,20 @@ static void InitDefaultsscc_info_AmurSensors_Temperature_sensors_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_AmurSensors_Temperature_sensors_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_AmurSensors_Temperature_sensors_2eproto}, {}};
 
+static void InitDefaultsscc_info_AmurSensors_WheelCurrent_sensors_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::_AmurSensors_WheelCurrent_default_instance_;
+    new (ptr) ::AmurSensors_WheelCurrent();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::AmurSensors_WheelCurrent::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_AmurSensors_WheelCurrent_sensors_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_AmurSensors_WheelCurrent_sensors_2eproto}, {}};
+
 static void InitDefaultsscc_info_AmurSensors_WheelEncoders_sensors_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -172,7 +208,7 @@ static void InitDefaultsscc_info_AmurSensors_WheelEncoders_sensors_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_AmurSensors_WheelEncoders_sensors_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_AmurSensors_WheelEncoders_sensors_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_sensors_2eproto[8];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_sensors_2eproto[10];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_sensors_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_sensors_2eproto = nullptr;
 
@@ -226,12 +262,27 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_sensors_2eproto::offsets[] PRO
   PROTOBUF_FIELD_OFFSET(::AmurSensors_Temperature, tempcpu_),
   PROTOBUF_FIELD_OFFSET(::AmurSensors_Temperature, temppressure_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::AmurSensors_WheelCurrent, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::AmurSensors_WheelCurrent, leftcurrent_),
+  PROTOBUF_FIELD_OFFSET(::AmurSensors_WheelCurrent, rightcurrent_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::AmurSensors_HandCurrent, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::AmurSensors_HandCurrent, leftcurrent_),
+  PROTOBUF_FIELD_OFFSET(::AmurSensors_HandCurrent, rightcurrent_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::AmurSensors_Misc, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::AmurSensors_Misc, gas_),
   PROTOBUF_FIELD_OFFSET(::AmurSensors_Misc, batteryvoltage_),
+  PROTOBUF_FIELD_OFFSET(::AmurSensors_Misc, raspberryvoltage_),
   PROTOBUF_FIELD_OFFSET(::AmurSensors_Misc, pressure_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::AmurSensors, _internal_metadata_),
@@ -253,8 +304,10 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 24, -1, sizeof(::AmurSensors_WheelEncoders)},
   { 31, -1, sizeof(::AmurSensors_HandEncoders)},
   { 40, -1, sizeof(::AmurSensors_Temperature)},
-  { 48, -1, sizeof(::AmurSensors_Misc)},
-  { 56, -1, sizeof(::AmurSensors)},
+  { 48, -1, sizeof(::AmurSensors_WheelCurrent)},
+  { 55, -1, sizeof(::AmurSensors_HandCurrent)},
+  { 62, -1, sizeof(::AmurSensors_Misc)},
+  { 71, -1, sizeof(::AmurSensors)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -264,12 +317,14 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_AmurSensors_WheelEncoders_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_AmurSensors_HandEncoders_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_AmurSensors_Temperature_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_AmurSensors_WheelCurrent_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_AmurSensors_HandCurrent_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_AmurSensors_Misc_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::_AmurSensors_default_instance_),
 };
 
 const char descriptor_table_protodef_sensors_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\rsensors.proto\"\241\006\n\013AmurSensors\0221\n\raccel"
+  "\n\rsensors.proto\"\260\007\n\013AmurSensors\0221\n\raccel"
   "erometer\030\001 \001(\0132\032.AmurSensors.Acceleromet"
   "er\022)\n\tgyroscope\030\002 \001(\0132\026.AmurSensors.Gyro"
   "scope\022/\n\014magnitometer\030\003 \001(\0132\031.AmurSensor"
@@ -287,29 +342,35 @@ const char descriptor_table_protodef_sensors_2eproto[] PROTOBUF_SECTION_VARIABLE
   "\n\022rightInternalAngle\030\002 \001(\005\022\026\n\016leftOuterA"
   "ngle\030\003 \001(\005\022\027\n\017rightOuterAngle\030\004 \001(\005\032O\n\013T"
   "emperature\022\031\n\021tempAccelerometer\030\001 \001(\005\022\017\n"
-  "\007tempCPU\030\002 \001(\005\022\024\n\014tempPressure\030\003 \001(\005\032=\n\004"
-  "Misc\022\013\n\003gas\030\001 \001(\005\022\026\n\016batteryVoltage\030\002 \001("
-  "\005\022\020\n\010pressure\030\003 \001(\002b\006proto3"
+  "\007tempCPU\030\002 \001(\005\022\024\n\014tempPressure\030\003 \001(\005\0329\n\014"
+  "WheelCurrent\022\023\n\013leftCurrent\030\001 \001(\005\022\024\n\014rig"
+  "htCurrent\030\002 \001(\005\0328\n\013HandCurrent\022\023\n\013leftCu"
+  "rrent\030\001 \001(\005\022\024\n\014rightCurrent\030\002 \001(\005\032W\n\004Mis"
+  "c\022\013\n\003gas\030\001 \001(\005\022\026\n\016batteryVoltage\030\002 \001(\005\022\030"
+  "\n\020raspberryVoltage\030\003 \001(\005\022\020\n\010pressure\030\004 \001"
+  "(\002b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_sensors_2eproto_deps[1] = {
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_sensors_2eproto_sccs[8] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_sensors_2eproto_sccs[10] = {
   &scc_info_AmurSensors_sensors_2eproto.base,
   &scc_info_AmurSensors_Accelerometer_sensors_2eproto.base,
   &scc_info_AmurSensors_Gyroscope_sensors_2eproto.base,
+  &scc_info_AmurSensors_HandCurrent_sensors_2eproto.base,
   &scc_info_AmurSensors_HandEncoders_sensors_2eproto.base,
   &scc_info_AmurSensors_Magnitometer_sensors_2eproto.base,
   &scc_info_AmurSensors_Misc_sensors_2eproto.base,
   &scc_info_AmurSensors_Temperature_sensors_2eproto.base,
+  &scc_info_AmurSensors_WheelCurrent_sensors_2eproto.base,
   &scc_info_AmurSensors_WheelEncoders_sensors_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_sensors_2eproto_once;
 static bool descriptor_table_sensors_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_sensors_2eproto = {
-  &descriptor_table_sensors_2eproto_initialized, descriptor_table_protodef_sensors_2eproto, "sensors.proto", 827,
-  &descriptor_table_sensors_2eproto_once, descriptor_table_sensors_2eproto_sccs, descriptor_table_sensors_2eproto_deps, 8, 0,
+  &descriptor_table_sensors_2eproto_initialized, descriptor_table_protodef_sensors_2eproto, "sensors.proto", 970,
+  &descriptor_table_sensors_2eproto_once, descriptor_table_sensors_2eproto_sccs, descriptor_table_sensors_2eproto_deps, 10, 0,
   schemas, file_default_instances, TableStruct_sensors_2eproto::offsets,
-  file_level_metadata_sensors_2eproto, 8, file_level_enum_descriptors_sensors_2eproto, file_level_service_descriptors_sensors_2eproto,
+  file_level_metadata_sensors_2eproto, 10, file_level_enum_descriptors_sensors_2eproto, file_level_service_descriptors_sensors_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -1739,6 +1800,438 @@ void AmurSensors_Temperature::InternalSwap(AmurSensors_Temperature* other) {
 
 // ===================================================================
 
+void AmurSensors_WheelCurrent::InitAsDefaultInstance() {
+}
+class AmurSensors_WheelCurrent::_Internal {
+ public:
+};
+
+AmurSensors_WheelCurrent::AmurSensors_WheelCurrent()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:AmurSensors.WheelCurrent)
+}
+AmurSensors_WheelCurrent::AmurSensors_WheelCurrent(const AmurSensors_WheelCurrent& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&leftcurrent_, &from.leftcurrent_,
+    static_cast<size_t>(reinterpret_cast<char*>(&rightcurrent_) -
+    reinterpret_cast<char*>(&leftcurrent_)) + sizeof(rightcurrent_));
+  // @@protoc_insertion_point(copy_constructor:AmurSensors.WheelCurrent)
+}
+
+void AmurSensors_WheelCurrent::SharedCtor() {
+  ::memset(&leftcurrent_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&rightcurrent_) -
+      reinterpret_cast<char*>(&leftcurrent_)) + sizeof(rightcurrent_));
+}
+
+AmurSensors_WheelCurrent::~AmurSensors_WheelCurrent() {
+  // @@protoc_insertion_point(destructor:AmurSensors.WheelCurrent)
+  SharedDtor();
+}
+
+void AmurSensors_WheelCurrent::SharedDtor() {
+}
+
+void AmurSensors_WheelCurrent::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const AmurSensors_WheelCurrent& AmurSensors_WheelCurrent::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_AmurSensors_WheelCurrent_sensors_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void AmurSensors_WheelCurrent::Clear() {
+// @@protoc_insertion_point(message_clear_start:AmurSensors.WheelCurrent)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&leftcurrent_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&rightcurrent_) -
+      reinterpret_cast<char*>(&leftcurrent_)) + sizeof(rightcurrent_));
+  _internal_metadata_.Clear();
+}
+
+const char* AmurSensors_WheelCurrent::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // int32 leftCurrent = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          leftcurrent_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 rightCurrent = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          rightcurrent_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* AmurSensors_WheelCurrent::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:AmurSensors.WheelCurrent)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 leftCurrent = 1;
+  if (this->leftcurrent() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_leftcurrent(), target);
+  }
+
+  // int32 rightCurrent = 2;
+  if (this->rightcurrent() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_rightcurrent(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:AmurSensors.WheelCurrent)
+  return target;
+}
+
+size_t AmurSensors_WheelCurrent::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:AmurSensors.WheelCurrent)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 leftCurrent = 1;
+  if (this->leftcurrent() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_leftcurrent());
+  }
+
+  // int32 rightCurrent = 2;
+  if (this->rightcurrent() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_rightcurrent());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void AmurSensors_WheelCurrent::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:AmurSensors.WheelCurrent)
+  GOOGLE_DCHECK_NE(&from, this);
+  const AmurSensors_WheelCurrent* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<AmurSensors_WheelCurrent>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:AmurSensors.WheelCurrent)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:AmurSensors.WheelCurrent)
+    MergeFrom(*source);
+  }
+}
+
+void AmurSensors_WheelCurrent::MergeFrom(const AmurSensors_WheelCurrent& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:AmurSensors.WheelCurrent)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.leftcurrent() != 0) {
+    _internal_set_leftcurrent(from._internal_leftcurrent());
+  }
+  if (from.rightcurrent() != 0) {
+    _internal_set_rightcurrent(from._internal_rightcurrent());
+  }
+}
+
+void AmurSensors_WheelCurrent::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:AmurSensors.WheelCurrent)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void AmurSensors_WheelCurrent::CopyFrom(const AmurSensors_WheelCurrent& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:AmurSensors.WheelCurrent)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool AmurSensors_WheelCurrent::IsInitialized() const {
+  return true;
+}
+
+void AmurSensors_WheelCurrent::InternalSwap(AmurSensors_WheelCurrent* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(leftcurrent_, other->leftcurrent_);
+  swap(rightcurrent_, other->rightcurrent_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata AmurSensors_WheelCurrent::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void AmurSensors_HandCurrent::InitAsDefaultInstance() {
+}
+class AmurSensors_HandCurrent::_Internal {
+ public:
+};
+
+AmurSensors_HandCurrent::AmurSensors_HandCurrent()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:AmurSensors.HandCurrent)
+}
+AmurSensors_HandCurrent::AmurSensors_HandCurrent(const AmurSensors_HandCurrent& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&leftcurrent_, &from.leftcurrent_,
+    static_cast<size_t>(reinterpret_cast<char*>(&rightcurrent_) -
+    reinterpret_cast<char*>(&leftcurrent_)) + sizeof(rightcurrent_));
+  // @@protoc_insertion_point(copy_constructor:AmurSensors.HandCurrent)
+}
+
+void AmurSensors_HandCurrent::SharedCtor() {
+  ::memset(&leftcurrent_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&rightcurrent_) -
+      reinterpret_cast<char*>(&leftcurrent_)) + sizeof(rightcurrent_));
+}
+
+AmurSensors_HandCurrent::~AmurSensors_HandCurrent() {
+  // @@protoc_insertion_point(destructor:AmurSensors.HandCurrent)
+  SharedDtor();
+}
+
+void AmurSensors_HandCurrent::SharedDtor() {
+}
+
+void AmurSensors_HandCurrent::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const AmurSensors_HandCurrent& AmurSensors_HandCurrent::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_AmurSensors_HandCurrent_sensors_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void AmurSensors_HandCurrent::Clear() {
+// @@protoc_insertion_point(message_clear_start:AmurSensors.HandCurrent)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&leftcurrent_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&rightcurrent_) -
+      reinterpret_cast<char*>(&leftcurrent_)) + sizeof(rightcurrent_));
+  _internal_metadata_.Clear();
+}
+
+const char* AmurSensors_HandCurrent::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // int32 leftCurrent = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          leftcurrent_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 rightCurrent = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          rightcurrent_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* AmurSensors_HandCurrent::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:AmurSensors.HandCurrent)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 leftCurrent = 1;
+  if (this->leftcurrent() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_leftcurrent(), target);
+  }
+
+  // int32 rightCurrent = 2;
+  if (this->rightcurrent() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_rightcurrent(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:AmurSensors.HandCurrent)
+  return target;
+}
+
+size_t AmurSensors_HandCurrent::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:AmurSensors.HandCurrent)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 leftCurrent = 1;
+  if (this->leftcurrent() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_leftcurrent());
+  }
+
+  // int32 rightCurrent = 2;
+  if (this->rightcurrent() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_rightcurrent());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void AmurSensors_HandCurrent::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:AmurSensors.HandCurrent)
+  GOOGLE_DCHECK_NE(&from, this);
+  const AmurSensors_HandCurrent* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<AmurSensors_HandCurrent>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:AmurSensors.HandCurrent)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:AmurSensors.HandCurrent)
+    MergeFrom(*source);
+  }
+}
+
+void AmurSensors_HandCurrent::MergeFrom(const AmurSensors_HandCurrent& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:AmurSensors.HandCurrent)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.leftcurrent() != 0) {
+    _internal_set_leftcurrent(from._internal_leftcurrent());
+  }
+  if (from.rightcurrent() != 0) {
+    _internal_set_rightcurrent(from._internal_rightcurrent());
+  }
+}
+
+void AmurSensors_HandCurrent::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:AmurSensors.HandCurrent)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void AmurSensors_HandCurrent::CopyFrom(const AmurSensors_HandCurrent& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:AmurSensors.HandCurrent)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool AmurSensors_HandCurrent::IsInitialized() const {
+  return true;
+}
+
+void AmurSensors_HandCurrent::InternalSwap(AmurSensors_HandCurrent* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(leftcurrent_, other->leftcurrent_);
+  swap(rightcurrent_, other->rightcurrent_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata AmurSensors_HandCurrent::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
 void AmurSensors_Misc::InitAsDefaultInstance() {
 }
 class AmurSensors_Misc::_Internal {
@@ -1816,9 +2309,16 @@ const char* AmurSensors_Misc::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // float pressure = 3;
+      // int32 raspberryVoltage = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 29)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          raspberryvoltage_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // float pressure = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 37)) {
           pressure_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
         } else goto handle_unusual;
@@ -1861,10 +2361,16 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_batteryvoltage(), target);
   }
 
-  // float pressure = 3;
+  // int32 raspberryVoltage = 3;
+  if (this->raspberryvoltage() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_raspberryvoltage(), target);
+  }
+
+  // float pressure = 4;
   if (!(this->pressure() <= 0 && this->pressure() >= 0)) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(3, this->_internal_pressure(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(4, this->_internal_pressure(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1897,7 +2403,14 @@ size_t AmurSensors_Misc::ByteSizeLong() const {
         this->_internal_batteryvoltage());
   }
 
-  // float pressure = 3;
+  // int32 raspberryVoltage = 3;
+  if (this->raspberryvoltage() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_raspberryvoltage());
+  }
+
+  // float pressure = 4;
   if (!(this->pressure() <= 0 && this->pressure() >= 0)) {
     total_size += 1 + 4;
   }
@@ -1939,6 +2452,9 @@ void AmurSensors_Misc::MergeFrom(const AmurSensors_Misc& from) {
   if (from.batteryvoltage() != 0) {
     _internal_set_batteryvoltage(from._internal_batteryvoltage());
   }
+  if (from.raspberryvoltage() != 0) {
+    _internal_set_raspberryvoltage(from._internal_raspberryvoltage());
+  }
   if (!(from.pressure() <= 0 && from.pressure() >= 0)) {
     _internal_set_pressure(from._internal_pressure());
   }
@@ -1967,6 +2483,7 @@ void AmurSensors_Misc::InternalSwap(AmurSensors_Misc* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(gas_, other->gas_);
   swap(batteryvoltage_, other->batteryvoltage_);
+  swap(raspberryvoltage_, other->raspberryvoltage_);
   swap(pressure_, other->pressure_);
 }
 
@@ -2458,6 +2975,12 @@ template<> PROTOBUF_NOINLINE ::AmurSensors_HandEncoders* Arena::CreateMaybeMessa
 }
 template<> PROTOBUF_NOINLINE ::AmurSensors_Temperature* Arena::CreateMaybeMessage< ::AmurSensors_Temperature >(Arena* arena) {
   return Arena::CreateInternal< ::AmurSensors_Temperature >(arena);
+}
+template<> PROTOBUF_NOINLINE ::AmurSensors_WheelCurrent* Arena::CreateMaybeMessage< ::AmurSensors_WheelCurrent >(Arena* arena) {
+  return Arena::CreateInternal< ::AmurSensors_WheelCurrent >(arena);
+}
+template<> PROTOBUF_NOINLINE ::AmurSensors_HandCurrent* Arena::CreateMaybeMessage< ::AmurSensors_HandCurrent >(Arena* arena) {
+  return Arena::CreateInternal< ::AmurSensors_HandCurrent >(arena);
 }
 template<> PROTOBUF_NOINLINE ::AmurSensors_Misc* Arena::CreateMaybeMessage< ::AmurSensors_Misc >(Arena* arena) {
   return Arena::CreateInternal< ::AmurSensors_Misc >(arena);

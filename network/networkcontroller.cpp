@@ -34,15 +34,15 @@ void NetworkController::disconnect()
     client->disconnect();
 }
 
-void NetworkController::sendData()
+void NetworkController::sendBufferAsString()
 {
     controlsPeri->SerializeToString(serializedControls);
 
     client->write(*serializedControls);
 }
-void NetworkController::recvData()
+void NetworkController::recvBufferAsString()
 {
-
+    sensorsPeri->ParseFromString( client->read() );
 }
 
 void NetworkController::setHost(const std::string &value)

@@ -24,7 +24,7 @@ message AmurSensors{
 	int32 leftAngle = 1;
 	int32 rightAngle = 2;
    }
-   
+
    message HandEncoders{
 	int32 leftInternalAngle = 1;
 	int32 rightInternalAngle = 2;
@@ -38,10 +38,21 @@ message AmurSensors{
 	int32 tempPressure = 3;
    }
 
+   message WheelCurrent{
+        int32 leftCurrent = 1;
+        int32 rightCurrent = 2;
+   }
+
+   message HandCurrent{
+        int32 leftCurrent = 1;
+        int32 rightCurrent = 2;
+   }
+
    message Misc{
-	int32 gas = 1;
-	int32 batteryVoltage = 2;
-	float pressure = 3;
+        int32 gas = 1;
+        int32 batteryVoltage = 2;
+        int32 raspberryVoltage = 3;
+        float pressure = 4;
    }
 
    Accelerometer accelerometer = 1;

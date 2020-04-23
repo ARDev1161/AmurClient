@@ -11,6 +11,10 @@
 //Network headers
 #include "network/networkcontroller.h"
 
+// Server settings
+#define SERVER_HOSTNAME "10.0.0.10"
+#define SERVER_PORT 420
+
 class LogicController
 {
     AmurSensors *sensors;
@@ -24,6 +28,11 @@ public:
 
     void writeToPeriphery();
     void readFromPeriphery();
+
+    void connectToServer(std::string host, unsigned int port);
+
+    void recvBuffer();
+    void sendBuffer();
 };
 
 #endif // LOGICCONTROLLER_H

@@ -28,8 +28,8 @@ public:
     void connect();
     void disconnect();
 
-    void sendData();
-    void recvData();
+    void sendBufferAsString();
+    void recvBufferAsString();
 
     void setHost(const std::string &value);
     void setPort(unsigned int value);
