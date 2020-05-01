@@ -50,11 +50,11 @@ unsigned char PeripheralController::leftOutRegisterToByte()
     byte <<=1;
 
     // enable input: wheel left motor
-    byte |= ( abs(controlsPeri->mutable_wheelmotors()->leftpower()) > 0);
+    byte |= (( abs(controlsPeri->mutable_wheelmotors()->leftpower()) > 0) & (controlsPeri->mutable_wheelmotors()->lefttime() > 0));
     byte <<=1;
 
     // enable input: hand left motor
-    byte |= ( abs(controlsPeri->mutable_handmotors()->leftpower()) > 0);
+    byte |= ( abs(controlsPeri->mutable_handmotors()->leftpower()) > 0) & (controlsPeri->mutable_handmotors()->lefttime() > 0);
     byte <<=1;
 
     // B2 input: wheel left motor
@@ -87,11 +87,11 @@ unsigned char PeripheralController::rightOutRegisterToByte()
     byte <<=1;
 
     // enable hand right motor
-    byte |= ( abs(controlsPeri->mutable_handmotors()->rightpower()) > 0);
+    byte |= ( abs(controlsPeri->mutable_handmotors()->rightpower()) > 0) & (controlsPeri->mutable_handmotors()->righttime() > 0);
     byte <<=1;
 
     // enable wheel right motor
-    byte |= ( abs(controlsPeri->mutable_wheelmotors()->rightpower()) > 0);
+    byte |= ( abs(controlsPeri->mutable_wheelmotors()->rightpower()) > 0) & (controlsPeri->mutable_wheelmotors()->righttime() > 0);
     byte <<=1;
 
     // B2 input: hand right motor
@@ -142,12 +142,12 @@ void PeripheralController::readRegisterData() // Read data from HC165 & write to
     unsigned char right = registers->readByte(); // Read right byte from HC165
     unsigned char left = registers->readByte(); // Read left byte from HC165
 
-    parseBytesHC165(right, left);
+    parseBytesHC165(right, left); // Parse bytes on angles
 
-    prevRightHC165 = right;
-    prevLeftHC165 = left;
+    prevRightHC165 = right; // Write prev bytes
+    prevLeftHC165 = left; // Write prev bytes
 
-    writeEncodersAngles();
+    writeEncodersAngles(); // Write angles
 }
 
 inline void PeripheralController::getChangeEncoderAngle

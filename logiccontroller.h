@@ -2,7 +2,7 @@
 #define LOGICCONTROLLER_H
 
 //Protobuf headers
-#include "protobuf/control.pb.h"
+#include "protobuf/controls.pb.h"
 #include "protobuf/sensors.pb.h"
 
 //Peripheral controller header

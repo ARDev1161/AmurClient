@@ -1,7 +1,7 @@
 #ifndef NETWORKCONTROLLER_H
 #define NETWORKCONTROLLER_H
 
-#include "protobuf/control.pb.h"
+#include "protobuf/controls.pb.h"
 #include "protobuf/sensors.pb.h"
 
 #include "tcp/tcpclient.h"

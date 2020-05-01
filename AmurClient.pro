@@ -8,8 +8,6 @@ SOURCES += \
     network/networkcontroller.cpp \
     network/tcp/tcpclient.cpp \
     network/tcp/tcpserver.cpp \
-    protobuf/control.pb.cc \
-    protobuf/sensors.pb.cc \
     logiccontroller.cpp \
     modules/interfaces/i2c/I2C.cpp \
     modules/interfaces/spi/SPI.cpp \
@@ -18,20 +16,21 @@ SOURCES += \
     modules/pwm/pwmcontroller.cpp \
     modules/registers/hc165/hc165.cpp \
     modules/registers/hc595/hc595.cpp \
-    modules/registers/registercontroller.cpp
+    modules/registers/registercontroller.cpp \
+    protobuf/controls.pb.cc \
+    protobuf/sensors.pb.cc
 
 DISTFILES += \
-    protobuf/control.proto \
-    protobuf/sensors.proto \
+    protobuf/controls.proto \
     protobuf/rebuild.sh \
-    README.md
+    README.md \
+    protobuf/sensors.proto
 
 HEADERS += \
     network/networkcontroller.h \
     network/tcp/tcpclient.h \
     network/tcp/tcpserver.h \
-    protobuf/control.pb.h \
-    protobuf/sensors.pb.h \
+    protobuf/buffers.pb.h \
     logiccontroller.h \
     modules/interfaces/i2c/I2C.h \
     modules/interfaces/spi/SPI.h \
@@ -40,4 +39,6 @@ HEADERS += \
     modules/pwm/pwmcontroller.h \
     modules/registers/hc165/hc165.h \
     modules/registers/hc595/hc595.h \
-    modules/registers/registercontroller.h
+    modules/registers/registercontroller.h \
+    protobuf/controls.pb.h \
+    protobuf/sensors.pb.h

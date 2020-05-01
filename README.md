@@ -1,4 +1,4 @@
-# Amur Client for RaspberryPi
+# Amur Client for Amur distribution board (ADB-0.42)
 This is application for communicate with robot on RPi base with [AmurClient].
 
 ## Requirements:
@@ -10,11 +10,13 @@ This is application for communicate with robot on RPi base with [AmurClient].
 ## Sensors of Amur:
   1) Camera - OV5647
   2) Inertial sensor - MPU-9250
-  3) Barometer - BMP-280
-  4) Encoders wheel: left, right - HOA0901
-  5) Encoders hand internal: left, right - HOA0901
-  6) Encoders hand outter: left, right - HOA0901
-  7) Battery voltage
+  3) Encoders wheel: left, right - HOA0901
+  4) Encoders hand internal: left, right - HOA0901
+  5) Encoders hand outter: left, right - HOA0901
+  6) ADC module - ADS1115(address - 0x48)
+  7) RTC module - DS3231(address - 0x68) with AT24C32(address - 0x57)
+  8) Barometer - BMP-280
+  9) Battery voltage
 
 ## Controls of Amur:
   1) ServoX, ServoY - MG90S

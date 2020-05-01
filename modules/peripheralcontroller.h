@@ -4,10 +4,11 @@
 #include <stdio.h>
 #include <cstdlib>
 #include <math.h>
+#include <sys/time.h>
 #include <wiringPi.h>
 
 //Protobuf headers
-#include "protobuf/control.pb.h"
+#include "protobuf/controls.pb.h"
 #include "protobuf/sensors.pb.h"
 
 #include "registers/registercontroller.h"
