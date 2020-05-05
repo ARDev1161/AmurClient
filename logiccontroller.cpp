@@ -18,15 +18,6 @@ LogicController::~LogicController()
     delete network;
 }
 
-void LogicController::writeToPeriphery()
-{
-    periphery->writeRegisterData();
-}
-void LogicController::readFromPeriphery()
-{
-    periphery->readRegisterData();
-}
-
 void LogicController::connectToServer(std::string host, unsigned int port)
 {
     network->connect(host, port);

@@ -217,10 +217,10 @@ const char descriptor_table_protodef_controls_2eproto[] PROTOBUF_SECTION_VARIABL
   "ontrols.Light\022$\n\006system\030\005 \001(\0132\024.AmurCont"
   "rols.System\032.\n\014CameraServos\022\016\n\006xAngle\030\001 "
   "\001(\005\022\016\n\006yAngle\030\002 \001(\005\032Y\n\013WheelMotors\022\021\n\tle"
-  "ftPower\030\001 \001(\005\022\020\n\010leftTime\030\002 \001(\005\022\022\n\nright"
-  "Power\030\003 \001(\005\022\021\n\trightTime\030\004 \001(\005\032\177\n\nHandMo"
+  "ftPower\030\001 \001(\005\022\020\n\010leftTime\030\002 \001(\r\022\022\n\nright"
+  "Power\030\003 \001(\005\022\021\n\trightTime\030\004 \001(\r\032\177\n\nHandMo"
   "tors\022\021\n\tleftPower\030\001 \001(\005\022\020\n\010leftTime\030\002 \001("
-  "\005\022\022\n\nrightPower\030\003 \001(\005\022\021\n\trightTime\030\004 \001(\005"
+  "\r\022\022\n\nrightPower\030\003 \001(\005\022\021\n\trightTime\030\004 \001(\r"
   "\022\021\n\tleftRelay\030\005 \001(\010\022\022\n\nrightRelay\030\006 \001(\010\032"
   "4\n\005Light\022\024\n\014ledLeftPower\030\001 \001(\005\022\025\n\rledRig"
   "htPower\030\002 \001(\005\032C\n\006System\022\020\n\010haltFlag\030\001 \001("
@@ -537,7 +537,7 @@ const char* AmurControls_WheelMotors::_InternalParse(const char* ptr, ::PROTOBUF
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 leftTime = 2;
+      // uint32 leftTime = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           lefttime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
@@ -551,7 +551,7 @@ const char* AmurControls_WheelMotors::_InternalParse(const char* ptr, ::PROTOBUF
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 rightTime = 4;
+      // uint32 rightTime = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
           righttime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
@@ -590,10 +590,10 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_leftpower(), target);
   }
 
-  // int32 leftTime = 2;
+  // uint32 leftTime = 2;
   if (this->lefttime() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_lefttime(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_lefttime(), target);
   }
 
   // int32 rightPower = 3;
@@ -602,10 +602,10 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_rightpower(), target);
   }
 
-  // int32 rightTime = 4;
+  // uint32 rightTime = 4;
   if (this->righttime() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_righttime(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(4, this->_internal_righttime(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -631,10 +631,10 @@ size_t AmurControls_WheelMotors::ByteSizeLong() const {
         this->_internal_leftpower());
   }
 
-  // int32 leftTime = 2;
+  // uint32 leftTime = 2;
   if (this->lefttime() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_lefttime());
   }
 
@@ -645,10 +645,10 @@ size_t AmurControls_WheelMotors::ByteSizeLong() const {
         this->_internal_rightpower());
   }
 
-  // int32 rightTime = 4;
+  // uint32 rightTime = 4;
   if (this->righttime() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_righttime());
   }
 
@@ -801,7 +801,7 @@ const char* AmurControls_HandMotors::_InternalParse(const char* ptr, ::PROTOBUF_
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 leftTime = 2;
+      // uint32 leftTime = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           lefttime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
@@ -815,7 +815,7 @@ const char* AmurControls_HandMotors::_InternalParse(const char* ptr, ::PROTOBUF_
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 rightTime = 4;
+      // uint32 rightTime = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
           righttime_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
@@ -868,10 +868,10 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_leftpower(), target);
   }
 
-  // int32 leftTime = 2;
+  // uint32 leftTime = 2;
   if (this->lefttime() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_lefttime(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_lefttime(), target);
   }
 
   // int32 rightPower = 3;
@@ -880,10 +880,10 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_rightpower(), target);
   }
 
-  // int32 rightTime = 4;
+  // uint32 rightTime = 4;
   if (this->righttime() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_righttime(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(4, this->_internal_righttime(), target);
   }
 
   // bool leftRelay = 5;
@@ -921,10 +921,10 @@ size_t AmurControls_HandMotors::ByteSizeLong() const {
         this->_internal_leftpower());
   }
 
-  // int32 leftTime = 2;
+  // uint32 leftTime = 2;
   if (this->lefttime() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_lefttime());
   }
 
@@ -935,10 +935,10 @@ size_t AmurControls_HandMotors::ByteSizeLong() const {
         this->_internal_rightpower());
   }
 
-  // int32 rightTime = 4;
+  // uint32 rightTime = 4;
   if (this->righttime() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_righttime());
   }
 

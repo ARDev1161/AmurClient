@@ -18,6 +18,7 @@
 #include <sys/stat.h>
 #include <netdb.h>
 #include <unistd.h>
+#include <future>
 
 class TCPServer
 {

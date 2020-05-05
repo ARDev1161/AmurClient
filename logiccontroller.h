@@ -12,8 +12,8 @@
 #include "network/networkcontroller.h"
 
 // Server settings
-#define SERVER_HOSTNAME "10.0.0.10"
-#define SERVER_PORT 420
+#define SERVER_HOSTNAME "10.11.11.11"
+#define SERVER_PORT 7777
 
 class LogicController
 {
@@ -25,9 +25,6 @@ class LogicController
 public:
     LogicController();
     ~LogicController();
-
-    void writeToPeriphery();
-    void readFromPeriphery();
 
     void connectToServer(std::string host, unsigned int port);
 

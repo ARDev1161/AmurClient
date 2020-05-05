@@ -18,7 +18,8 @@ SOURCES += \
     modules/registers/hc595/hc595.cpp \
     modules/registers/registercontroller.cpp \
     protobuf/controls.pb.cc \
-    protobuf/sensors.pb.cc
+    protobuf/sensors.pb.cc \
+    timer/cppTimer/CppTimer.cpp
 
 DISTFILES += \
     protobuf/controls.proto \
@@ -41,4 +42,6 @@ HEADERS += \
     modules/registers/hc595/hc595.h \
     modules/registers/registercontroller.h \
     protobuf/controls.pb.h \
-    protobuf/sensors.pb.h
+    protobuf/sensors.pb.h \
+    timer/cppTimer/CppTimer.h \
+    timer/cppTimer/CppTimerCallback.h

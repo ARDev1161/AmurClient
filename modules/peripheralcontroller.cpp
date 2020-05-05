@@ -8,17 +8,39 @@ PeripheralController::PeripheralController(AmurControls *controls, AmurSensors *
     registers = new RegisterController(DATA_595, SHIFT_CLK_595, LATCH_CLK_595, NOT_RESET_595, NOT_ENABLE_595,
                                        DATA_165, LOAD_165, CLK_165, CLK_INH_165);
     pwm = new PWMController();
-
     initPWM();
+
+
+    peripheralTimer.registerEventRunnable(*this);
+    peripheralTimer.start(10000000); // 10 milliseconds
 }
 
 PeripheralController::~PeripheralController()
 {
+    peripheralTimer.stop();
+
     sensorsPeri = nullptr;
     controlsPeri = nullptr;
 
     delete registers;
     delete pwm;
+}
+
+void PeripheralController::run()
+{
+    checkMotorsTime();
+    updateData();
+}
+
+void PeripheralController::updateData()
+{
+    // Update output registers data & input registers buffers
+    writeRegisterData();
+    readRegisterData();
+
+    // Update PWM values
+    changeWheelsPWM();
+    changeHandsPWM();
 }
 
 void PeripheralController::wiringPiInit()
@@ -33,12 +55,12 @@ void PeripheralController::wiringPiInit()
 void PeripheralController::initPWM()
 {
     // Setup hardware PWM for wheel motors
-    pwm->hardPWMCreate(PWM_HARD_RIGHT);
-    pwm->hardPWMCreate(PWM_HARD_LEFT);
+    pwm->hardPWMCreate(PWM_WHEEL_RIGHT);
+    pwm->hardPWMCreate(PWM_WHEEL_LEFT);
 
     // Setup software PWM for hand motors
-    pwm->softPWMCreate(PWM_SOFT_RIGHT);
-    pwm->softPWMCreate(PWM_SOFT_LEFT);
+    pwm->softPWMCreate(PWM_HAND_RIGHT);
+    pwm->softPWMCreate(PWM_HAND_LEFT);
 }
 
 unsigned char PeripheralController::leftOutRegisterToByte()
@@ -50,11 +72,11 @@ unsigned char PeripheralController::leftOutRegisterToByte()
     byte <<=1;
 
     // enable input: wheel left motor
-    byte |= (( abs(controlsPeri->mutable_wheelmotors()->leftpower()) > 0) & (controlsPeri->mutable_wheelmotors()->lefttime() > 0));
+    byte |= ( abs(controlsPeri->mutable_wheelmotors()->leftpower()) > 0);
     byte <<=1;
 
     // enable input: hand left motor
-    byte |= ( abs(controlsPeri->mutable_handmotors()->leftpower()) > 0) & (controlsPeri->mutable_handmotors()->lefttime() > 0);
+    byte |= ( abs(controlsPeri->mutable_handmotors()->leftpower()) > 0);
     byte <<=1;
 
     // B2 input: wheel left motor
@@ -87,11 +109,11 @@ unsigned char PeripheralController::rightOutRegisterToByte()
     byte <<=1;
 
     // enable hand right motor
-    byte |= ( abs(controlsPeri->mutable_handmotors()->rightpower()) > 0) & (controlsPeri->mutable_handmotors()->righttime() > 0);
+    byte |= ( abs(controlsPeri->mutable_handmotors()->rightpower()) > 0);
     byte <<=1;
 
     // enable wheel right motor
-    byte |= ( abs(controlsPeri->mutable_wheelmotors()->rightpower()) > 0) & (controlsPeri->mutable_wheelmotors()->righttime() > 0);
+    byte |= ( abs(controlsPeri->mutable_wheelmotors()->rightpower()) > 0);
     byte <<=1;
 
     // B2 input: hand right motor
@@ -118,23 +140,28 @@ unsigned char PeripheralController::rightOutRegisterToByte()
 
 void PeripheralController::changeWheelsPWM()
 {
-    pwm->hardPWMChange(PWM_HARD_RIGHT, abs(controlsPeri->mutable_wheelmotors()->rightpower()));
-    pwm->hardPWMChange(PWM_HARD_LEFT, abs(controlsPeri->mutable_wheelmotors()->leftpower()));
+    pwm->hardPWMChange(PWM_WHEEL_RIGHT, abs(controlsPeri->mutable_wheelmotors()->rightpower()));
+    pwm->hardPWMChange(PWM_WHEEL_LEFT, abs(controlsPeri->mutable_wheelmotors()->leftpower()));
 }
 void PeripheralController::changeHandsPWM()
 {
-    pwm->softPWMChange(PWM_SOFT_RIGHT, abs(controlsPeri->mutable_handmotors()->rightpower()));
-    pwm->softPWMChange(PWM_SOFT_LEFT, abs(controlsPeri->mutable_handmotors()->leftpower()));
+    pwm->softPWMChange(PWM_HAND_RIGHT, abs(controlsPeri->mutable_handmotors()->rightpower()));
+    pwm->softPWMChange(PWM_HAND_LEFT, abs(controlsPeri->mutable_handmotors()->leftpower()));
 }
 
 void PeripheralController::writeRegisterData() // Read data from protobuf & write to HC595
 {
-    registers->writeByte(leftOutRegisterToByte()); // Write left byte to HC595
-    registers->writeByte(rightOutRegisterToByte()); // Write right byte to HC595
+    unsigned char leftRegister = leftOutRegisterToByte();
+    unsigned char rightRegister = rightOutRegisterToByte();
 
-    registers->refreshOutputData(); // Load data (latch pulse)
+    if((prevLeftHC595 != leftRegister)||(prevRightHC595 != rightRegister)){
+
+        registers->writeByte(leftRegister); // Write left byte to HC595
+        registers->writeByte(rightRegister); // Write right byte to HC595
+
+        registers->refreshOutputData(); // Load data (latch pulse)
+    }
 }
-
 void PeripheralController::readRegisterData() // Read data from HC165 & write to protobuf
 {
     registers->refreshInputData(); // Load data (latch pulse)
@@ -142,12 +169,15 @@ void PeripheralController::readRegisterData() // Read data from HC165 & write to
     unsigned char right = registers->readByte(); // Read right byte from HC165
     unsigned char left = registers->readByte(); // Read left byte from HC165
 
-    parseBytesHC165(right, left); // Parse bytes on angles
+    if((prevRightHC165 != right) || (prevLeftHC165 != left))
+    {
+        parseBytesHC165(right, left); // Parse bytes on angles
 
-    prevRightHC165 = right; // Write prev bytes
-    prevLeftHC165 = left; // Write prev bytes
+        prevRightHC165 = right; // Write prev bytes
+        prevLeftHC165 = left; // Write prev bytes
 
-    writeEncodersAngles(); // Write angles
+        writeEncodersAngles(); // Write angles
+    }
 }
 
 inline void PeripheralController::getChangeEncoderAngle
@@ -220,5 +250,37 @@ void PeripheralController::writeEncodersAngles()
     if(handRightOuterAngle != 0){
         sensorsPeri->mutable_handencoders()->set_leftouterangle(handRightInternalAngle);
         handRightOuterAngle = 0;
+    }
+}
+
+void PeripheralController::checkMotorsTime()
+{
+    if(controlsPeri->mutable_wheelmotors()->lefttime() > 10)
+        controlsPeri->mutable_wheelmotors()->set_lefttime( controlsPeri->mutable_wheelmotors()->lefttime() - 10);
+    else {
+        controlsPeri->mutable_wheelmotors()->set_leftpower(0);
+        controlsPeri->mutable_wheelmotors()->set_lefttime(0);
+    }
+
+    if(controlsPeri->mutable_wheelmotors()->righttime() > 10)
+        controlsPeri->mutable_wheelmotors()->set_righttime( controlsPeri->mutable_wheelmotors()->righttime() - 10);
+    else  {
+        controlsPeri->mutable_wheelmotors()->set_rightpower(0);
+        controlsPeri->mutable_wheelmotors()->set_righttime(0);
+    }
+
+
+    if(controlsPeri->mutable_handmotors()->lefttime() > 10)
+        controlsPeri->mutable_handmotors()->set_lefttime( controlsPeri->mutable_handmotors()->lefttime() - 10);
+    else  {
+        controlsPeri->mutable_handmotors()->set_leftpower(0);
+        controlsPeri->mutable_handmotors()->set_lefttime(0);
+    }
+
+    if(controlsPeri->mutable_handmotors()->righttime() > 10)
+        controlsPeri->mutable_handmotors()->set_righttime( controlsPeri->mutable_handmotors()->righttime() - 10);
+    else  {
+        controlsPeri->mutable_handmotors()->set_rightpower(0);
+        controlsPeri->mutable_handmotors()->set_righttime(0);
     }
 }

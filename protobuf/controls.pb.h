@@ -342,13 +342,13 @@ class AmurControls_WheelMotors :
   void _internal_set_leftpower(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // int32 leftTime = 2;
+  // uint32 leftTime = 2;
   void clear_lefttime();
-  ::PROTOBUF_NAMESPACE_ID::int32 lefttime() const;
-  void set_lefttime(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 lefttime() const;
+  void set_lefttime(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_lefttime() const;
-  void _internal_set_lefttime(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_lefttime() const;
+  void _internal_set_lefttime(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // int32 rightPower = 3;
@@ -360,13 +360,13 @@ class AmurControls_WheelMotors :
   void _internal_set_rightpower(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // int32 rightTime = 4;
+  // uint32 rightTime = 4;
   void clear_righttime();
-  ::PROTOBUF_NAMESPACE_ID::int32 righttime() const;
-  void set_righttime(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 righttime() const;
+  void set_righttime(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_righttime() const;
-  void _internal_set_righttime(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_righttime() const;
+  void _internal_set_righttime(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:AmurControls.WheelMotors)
@@ -375,9 +375,9 @@ class AmurControls_WheelMotors :
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::int32 leftpower_;
-  ::PROTOBUF_NAMESPACE_ID::int32 lefttime_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 lefttime_;
   ::PROTOBUF_NAMESPACE_ID::int32 rightpower_;
-  ::PROTOBUF_NAMESPACE_ID::int32 righttime_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 righttime_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_controls_2eproto;
 };
@@ -505,13 +505,13 @@ class AmurControls_HandMotors :
   void _internal_set_leftpower(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // int32 leftTime = 2;
+  // uint32 leftTime = 2;
   void clear_lefttime();
-  ::PROTOBUF_NAMESPACE_ID::int32 lefttime() const;
-  void set_lefttime(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 lefttime() const;
+  void set_lefttime(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_lefttime() const;
-  void _internal_set_lefttime(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_lefttime() const;
+  void _internal_set_lefttime(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // int32 rightPower = 3;
@@ -523,13 +523,13 @@ class AmurControls_HandMotors :
   void _internal_set_rightpower(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
-  // int32 rightTime = 4;
+  // uint32 rightTime = 4;
   void clear_righttime();
-  ::PROTOBUF_NAMESPACE_ID::int32 righttime() const;
-  void set_righttime(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 righttime() const;
+  void set_righttime(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_righttime() const;
-  void _internal_set_righttime(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_righttime() const;
+  void _internal_set_righttime(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // bool leftRelay = 5;
@@ -556,9 +556,9 @@ class AmurControls_HandMotors :
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::int32 leftpower_;
-  ::PROTOBUF_NAMESPACE_ID::int32 lefttime_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 lefttime_;
   ::PROTOBUF_NAMESPACE_ID::int32 rightpower_;
-  ::PROTOBUF_NAMESPACE_ID::int32 righttime_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 righttime_;
   bool leftrelay_;
   bool rightrelay_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -1143,22 +1143,22 @@ inline void AmurControls_WheelMotors::set_leftpower(::PROTOBUF_NAMESPACE_ID::int
   // @@protoc_insertion_point(field_set:AmurControls.WheelMotors.leftPower)
 }
 
-// int32 leftTime = 2;
+// uint32 leftTime = 2;
 inline void AmurControls_WheelMotors::clear_lefttime() {
-  lefttime_ = 0;
+  lefttime_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurControls_WheelMotors::_internal_lefttime() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 AmurControls_WheelMotors::_internal_lefttime() const {
   return lefttime_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurControls_WheelMotors::lefttime() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 AmurControls_WheelMotors::lefttime() const {
   // @@protoc_insertion_point(field_get:AmurControls.WheelMotors.leftTime)
   return _internal_lefttime();
 }
-inline void AmurControls_WheelMotors::_internal_set_lefttime(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void AmurControls_WheelMotors::_internal_set_lefttime(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   lefttime_ = value;
 }
-inline void AmurControls_WheelMotors::set_lefttime(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void AmurControls_WheelMotors::set_lefttime(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_lefttime(value);
   // @@protoc_insertion_point(field_set:AmurControls.WheelMotors.leftTime)
 }
@@ -1183,22 +1183,22 @@ inline void AmurControls_WheelMotors::set_rightpower(::PROTOBUF_NAMESPACE_ID::in
   // @@protoc_insertion_point(field_set:AmurControls.WheelMotors.rightPower)
 }
 
-// int32 rightTime = 4;
+// uint32 rightTime = 4;
 inline void AmurControls_WheelMotors::clear_righttime() {
-  righttime_ = 0;
+  righttime_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurControls_WheelMotors::_internal_righttime() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 AmurControls_WheelMotors::_internal_righttime() const {
   return righttime_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurControls_WheelMotors::righttime() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 AmurControls_WheelMotors::righttime() const {
   // @@protoc_insertion_point(field_get:AmurControls.WheelMotors.rightTime)
   return _internal_righttime();
 }
-inline void AmurControls_WheelMotors::_internal_set_righttime(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void AmurControls_WheelMotors::_internal_set_righttime(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   righttime_ = value;
 }
-inline void AmurControls_WheelMotors::set_righttime(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void AmurControls_WheelMotors::set_righttime(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_righttime(value);
   // @@protoc_insertion_point(field_set:AmurControls.WheelMotors.rightTime)
 }
@@ -1227,22 +1227,22 @@ inline void AmurControls_HandMotors::set_leftpower(::PROTOBUF_NAMESPACE_ID::int3
   // @@protoc_insertion_point(field_set:AmurControls.HandMotors.leftPower)
 }
 
-// int32 leftTime = 2;
+// uint32 leftTime = 2;
 inline void AmurControls_HandMotors::clear_lefttime() {
-  lefttime_ = 0;
+  lefttime_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurControls_HandMotors::_internal_lefttime() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 AmurControls_HandMotors::_internal_lefttime() const {
   return lefttime_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurControls_HandMotors::lefttime() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 AmurControls_HandMotors::lefttime() const {
   // @@protoc_insertion_point(field_get:AmurControls.HandMotors.leftTime)
   return _internal_lefttime();
 }
-inline void AmurControls_HandMotors::_internal_set_lefttime(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void AmurControls_HandMotors::_internal_set_lefttime(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   lefttime_ = value;
 }
-inline void AmurControls_HandMotors::set_lefttime(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void AmurControls_HandMotors::set_lefttime(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_lefttime(value);
   // @@protoc_insertion_point(field_set:AmurControls.HandMotors.leftTime)
 }
@@ -1267,22 +1267,22 @@ inline void AmurControls_HandMotors::set_rightpower(::PROTOBUF_NAMESPACE_ID::int
   // @@protoc_insertion_point(field_set:AmurControls.HandMotors.rightPower)
 }
 
-// int32 rightTime = 4;
+// uint32 rightTime = 4;
 inline void AmurControls_HandMotors::clear_righttime() {
-  righttime_ = 0;
+  righttime_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurControls_HandMotors::_internal_righttime() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 AmurControls_HandMotors::_internal_righttime() const {
   return righttime_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurControls_HandMotors::righttime() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 AmurControls_HandMotors::righttime() const {
   // @@protoc_insertion_point(field_get:AmurControls.HandMotors.rightTime)
   return _internal_righttime();
 }
-inline void AmurControls_HandMotors::_internal_set_righttime(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void AmurControls_HandMotors::_internal_set_righttime(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   righttime_ = value;
 }
-inline void AmurControls_HandMotors::set_righttime(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void AmurControls_HandMotors::set_righttime(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_righttime(value);
   // @@protoc_insertion_point(field_set:AmurControls.HandMotors.rightTime)
 }

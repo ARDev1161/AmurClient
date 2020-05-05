@@ -32,17 +32,3 @@ void PWMController::hardPWMStop(int pin)
 {
     pwmWrite(pin, 0);
 }
-
-//Direct memory access PWM section: time resolution - 1uS
-void PWMController::dmaPWMCreate(int pin)
-{
-
-}
-void PWMController::dmaPWMChange(int pin, int dutyCycle)
-{
-
-}
-void PWMController::dmaPWMStop(int pin)
-{
-
-}

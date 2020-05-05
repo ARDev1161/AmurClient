@@ -4,7 +4,6 @@
 #include <wiringPi.h>
 #include <softPwm.h>
 
-#include "dma/dmapwm.h"
 
 class PWMController
 {
@@ -15,15 +14,12 @@ public:
 
     void hardPWMCreate(int pin);
     int softPWMCreate(int pin);
-    void dmaPWMCreate(int pin);
 
     void hardPWMChange(int pin, int dutyCycle);
     void softPWMChange(int pin, int dutyCycle);
-    void dmaPWMChange(int pin, int dutyCycle);
 
     void hardPWMStop(int pin);
     void softPWMStop(int pin);
-    void dmaPWMStop(int pin);
 
 
 };

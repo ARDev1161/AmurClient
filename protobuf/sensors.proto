@@ -39,13 +39,13 @@ message AmurSensors{
    }
 
    message WheelCurrent{
-        int32 leftCurrent = 1;
-        int32 rightCurrent = 2;
+        uint32 leftCurrent = 1;
+        uint32 rightCurrent = 2;
    }
 
    message HandCurrent{
-        int32 leftCurrent = 1;
-        int32 rightCurrent = 2;
+        uint32 leftCurrent = 1;
+        uint32 rightCurrent = 2;
    }
 
    message Misc{

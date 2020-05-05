@@ -1108,22 +1108,22 @@ class AmurSensors_WheelCurrent :
     kLeftCurrentFieldNumber = 1,
     kRightCurrentFieldNumber = 2,
   };
-  // int32 leftCurrent = 1;
+  // uint32 leftCurrent = 1;
   void clear_leftcurrent();
-  ::PROTOBUF_NAMESPACE_ID::int32 leftcurrent() const;
-  void set_leftcurrent(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 leftcurrent() const;
+  void set_leftcurrent(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_leftcurrent() const;
-  void _internal_set_leftcurrent(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_leftcurrent() const;
+  void _internal_set_leftcurrent(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
-  // int32 rightCurrent = 2;
+  // uint32 rightCurrent = 2;
   void clear_rightcurrent();
-  ::PROTOBUF_NAMESPACE_ID::int32 rightcurrent() const;
-  void set_rightcurrent(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 rightcurrent() const;
+  void set_rightcurrent(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_rightcurrent() const;
-  void _internal_set_rightcurrent(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_rightcurrent() const;
+  void _internal_set_rightcurrent(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:AmurSensors.WheelCurrent)
@@ -1131,8 +1131,8 @@ class AmurSensors_WheelCurrent :
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::int32 leftcurrent_;
-  ::PROTOBUF_NAMESPACE_ID::int32 rightcurrent_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 leftcurrent_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 rightcurrent_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_sensors_2eproto;
 };
@@ -1247,22 +1247,22 @@ class AmurSensors_HandCurrent :
     kLeftCurrentFieldNumber = 1,
     kRightCurrentFieldNumber = 2,
   };
-  // int32 leftCurrent = 1;
+  // uint32 leftCurrent = 1;
   void clear_leftcurrent();
-  ::PROTOBUF_NAMESPACE_ID::int32 leftcurrent() const;
-  void set_leftcurrent(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 leftcurrent() const;
+  void set_leftcurrent(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_leftcurrent() const;
-  void _internal_set_leftcurrent(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_leftcurrent() const;
+  void _internal_set_leftcurrent(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
-  // int32 rightCurrent = 2;
+  // uint32 rightCurrent = 2;
   void clear_rightcurrent();
-  ::PROTOBUF_NAMESPACE_ID::int32 rightcurrent() const;
-  void set_rightcurrent(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 rightcurrent() const;
+  void set_rightcurrent(::PROTOBUF_NAMESPACE_ID::uint32 value);
   private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_rightcurrent() const;
-  void _internal_set_rightcurrent(::PROTOBUF_NAMESPACE_ID::int32 value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 _internal_rightcurrent() const;
+  void _internal_set_rightcurrent(::PROTOBUF_NAMESPACE_ID::uint32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:AmurSensors.HandCurrent)
@@ -1270,8 +1270,8 @@ class AmurSensors_HandCurrent :
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::int32 leftcurrent_;
-  ::PROTOBUF_NAMESPACE_ID::int32 rightcurrent_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 leftcurrent_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 rightcurrent_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_sensors_2eproto;
 };
@@ -2077,42 +2077,42 @@ inline void AmurSensors_Temperature::set_temppressure(::PROTOBUF_NAMESPACE_ID::i
 
 // AmurSensors_WheelCurrent
 
-// int32 leftCurrent = 1;
+// uint32 leftCurrent = 1;
 inline void AmurSensors_WheelCurrent::clear_leftcurrent() {
-  leftcurrent_ = 0;
+  leftcurrent_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurSensors_WheelCurrent::_internal_leftcurrent() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 AmurSensors_WheelCurrent::_internal_leftcurrent() const {
   return leftcurrent_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurSensors_WheelCurrent::leftcurrent() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 AmurSensors_WheelCurrent::leftcurrent() const {
   // @@protoc_insertion_point(field_get:AmurSensors.WheelCurrent.leftCurrent)
   return _internal_leftcurrent();
 }
-inline void AmurSensors_WheelCurrent::_internal_set_leftcurrent(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void AmurSensors_WheelCurrent::_internal_set_leftcurrent(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   leftcurrent_ = value;
 }
-inline void AmurSensors_WheelCurrent::set_leftcurrent(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void AmurSensors_WheelCurrent::set_leftcurrent(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_leftcurrent(value);
   // @@protoc_insertion_point(field_set:AmurSensors.WheelCurrent.leftCurrent)
 }
 
-// int32 rightCurrent = 2;
+// uint32 rightCurrent = 2;
 inline void AmurSensors_WheelCurrent::clear_rightcurrent() {
-  rightcurrent_ = 0;
+  rightcurrent_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurSensors_WheelCurrent::_internal_rightcurrent() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 AmurSensors_WheelCurrent::_internal_rightcurrent() const {
   return rightcurrent_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurSensors_WheelCurrent::rightcurrent() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 AmurSensors_WheelCurrent::rightcurrent() const {
   // @@protoc_insertion_point(field_get:AmurSensors.WheelCurrent.rightCurrent)
   return _internal_rightcurrent();
 }
-inline void AmurSensors_WheelCurrent::_internal_set_rightcurrent(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void AmurSensors_WheelCurrent::_internal_set_rightcurrent(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   rightcurrent_ = value;
 }
-inline void AmurSensors_WheelCurrent::set_rightcurrent(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void AmurSensors_WheelCurrent::set_rightcurrent(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_rightcurrent(value);
   // @@protoc_insertion_point(field_set:AmurSensors.WheelCurrent.rightCurrent)
 }
@@ -2121,42 +2121,42 @@ inline void AmurSensors_WheelCurrent::set_rightcurrent(::PROTOBUF_NAMESPACE_ID::
 
 // AmurSensors_HandCurrent
 
-// int32 leftCurrent = 1;
+// uint32 leftCurrent = 1;
 inline void AmurSensors_HandCurrent::clear_leftcurrent() {
-  leftcurrent_ = 0;
+  leftcurrent_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurSensors_HandCurrent::_internal_leftcurrent() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 AmurSensors_HandCurrent::_internal_leftcurrent() const {
   return leftcurrent_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurSensors_HandCurrent::leftcurrent() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 AmurSensors_HandCurrent::leftcurrent() const {
   // @@protoc_insertion_point(field_get:AmurSensors.HandCurrent.leftCurrent)
   return _internal_leftcurrent();
 }
-inline void AmurSensors_HandCurrent::_internal_set_leftcurrent(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void AmurSensors_HandCurrent::_internal_set_leftcurrent(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   leftcurrent_ = value;
 }
-inline void AmurSensors_HandCurrent::set_leftcurrent(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void AmurSensors_HandCurrent::set_leftcurrent(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_leftcurrent(value);
   // @@protoc_insertion_point(field_set:AmurSensors.HandCurrent.leftCurrent)
 }
 
-// int32 rightCurrent = 2;
+// uint32 rightCurrent = 2;
 inline void AmurSensors_HandCurrent::clear_rightcurrent() {
-  rightcurrent_ = 0;
+  rightcurrent_ = 0u;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurSensors_HandCurrent::_internal_rightcurrent() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 AmurSensors_HandCurrent::_internal_rightcurrent() const {
   return rightcurrent_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 AmurSensors_HandCurrent::rightcurrent() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 AmurSensors_HandCurrent::rightcurrent() const {
   // @@protoc_insertion_point(field_get:AmurSensors.HandCurrent.rightCurrent)
   return _internal_rightcurrent();
 }
-inline void AmurSensors_HandCurrent::_internal_set_rightcurrent(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void AmurSensors_HandCurrent::_internal_set_rightcurrent(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   
   rightcurrent_ = value;
 }
-inline void AmurSensors_HandCurrent::set_rightcurrent(::PROTOBUF_NAMESPACE_ID::int32 value) {
+inline void AmurSensors_HandCurrent::set_rightcurrent(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _internal_set_rightcurrent(value);
   // @@protoc_insertion_point(field_set:AmurSensors.HandCurrent.rightCurrent)
 }

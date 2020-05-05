@@ -343,9 +343,9 @@ const char descriptor_table_protodef_sensors_2eproto[] PROTOBUF_SECTION_VARIABLE
   "ngle\030\003 \001(\005\022\027\n\017rightOuterAngle\030\004 \001(\005\032O\n\013T"
   "emperature\022\031\n\021tempAccelerometer\030\001 \001(\005\022\017\n"
   "\007tempCPU\030\002 \001(\005\022\024\n\014tempPressure\030\003 \001(\005\0329\n\014"
-  "WheelCurrent\022\023\n\013leftCurrent\030\001 \001(\005\022\024\n\014rig"
-  "htCurrent\030\002 \001(\005\0328\n\013HandCurrent\022\023\n\013leftCu"
-  "rrent\030\001 \001(\005\022\024\n\014rightCurrent\030\002 \001(\005\032W\n\004Mis"
+  "WheelCurrent\022\023\n\013leftCurrent\030\001 \001(\r\022\024\n\014rig"
+  "htCurrent\030\002 \001(\r\0328\n\013HandCurrent\022\023\n\013leftCu"
+  "rrent\030\001 \001(\r\022\024\n\014rightCurrent\030\002 \001(\r\032W\n\004Mis"
   "c\022\013\n\003gas\030\001 \001(\005\022\026\n\016batteryVoltage\030\002 \001(\005\022\030"
   "\n\020raspberryVoltage\030\003 \001(\005\022\020\n\010pressure\030\004 \001"
   "(\002b\006proto3"
@@ -1863,14 +1863,14 @@ const char* AmurSensors_WheelCurrent::_InternalParse(const char* ptr, ::PROTOBUF
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // int32 leftCurrent = 1;
+      // uint32 leftCurrent = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           leftcurrent_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 rightCurrent = 2;
+      // uint32 rightCurrent = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           rightcurrent_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
@@ -1903,16 +1903,16 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 leftCurrent = 1;
+  // uint32 leftCurrent = 1;
   if (this->leftcurrent() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_leftcurrent(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_leftcurrent(), target);
   }
 
-  // int32 rightCurrent = 2;
+  // uint32 rightCurrent = 2;
   if (this->rightcurrent() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_rightcurrent(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_rightcurrent(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1931,17 +1931,17 @@ size_t AmurSensors_WheelCurrent::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // int32 leftCurrent = 1;
+  // uint32 leftCurrent = 1;
   if (this->leftcurrent() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_leftcurrent());
   }
 
-  // int32 rightCurrent = 2;
+  // uint32 rightCurrent = 2;
   if (this->rightcurrent() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_rightcurrent());
   }
 
@@ -2079,14 +2079,14 @@ const char* AmurSensors_HandCurrent::_InternalParse(const char* ptr, ::PROTOBUF_
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // int32 leftCurrent = 1;
+      // uint32 leftCurrent = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           leftcurrent_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // int32 rightCurrent = 2;
+      // uint32 rightCurrent = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           rightcurrent_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
@@ -2119,16 +2119,16 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 leftCurrent = 1;
+  // uint32 leftCurrent = 1;
   if (this->leftcurrent() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_leftcurrent(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_leftcurrent(), target);
   }
 
-  // int32 rightCurrent = 2;
+  // uint32 rightCurrent = 2;
   if (this->rightcurrent() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_rightcurrent(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->_internal_rightcurrent(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2147,17 +2147,17 @@ size_t AmurSensors_HandCurrent::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // int32 leftCurrent = 1;
+  // uint32 leftCurrent = 1;
   if (this->leftcurrent() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_leftcurrent());
   }
 
-  // int32 rightCurrent = 2;
+  // uint32 rightCurrent = 2;
   if (this->rightcurrent() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->_internal_rightcurrent());
   }
 
