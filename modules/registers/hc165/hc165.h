@@ -1,8 +1,14 @@
 #ifndef HC165_H
 #define HC165_H
 
-#include <wiringPi.h>
+#if __has_include(<wiringPi.h>)
+    #include <wiringPi.h>
+#else
+    #include <iostream>
+#endif
  
+
+
 #define PULSE_WIDTH_USEC   1 // задержка импульса при считывании данных (каждый бит)
 
 class HC165

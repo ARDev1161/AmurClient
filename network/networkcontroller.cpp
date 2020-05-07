@@ -17,17 +17,19 @@ NetworkController::NetworkController(AmurControls *controls, AmurSensors *sensor
 
 NetworkController::~NetworkController()
 {
+    disconnect();
+
     delete serializedControls;
     delete client;
 }
 
-void NetworkController::connect(std::string host, unsigned int port)
+bool NetworkController::connect(std::string host, unsigned int port)
 {
-    client->connect(host, port);
+    return client->connect(host, port);
 }
-void NetworkController::connect()
+bool  NetworkController::connect()
 {
-    client->connect(serverHost, serverPort);
+    return client->connect(serverHost, serverPort);
 }
 void NetworkController::disconnect()
 {

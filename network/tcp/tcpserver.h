@@ -51,7 +51,7 @@ public:
     int stop();
 
 protected:
-    future<void> thr;
+    std::future<void> thr;
 
 };
 

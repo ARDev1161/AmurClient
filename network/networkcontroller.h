@@ -24,8 +24,8 @@ public:
     NetworkController(AmurControls *controls, AmurSensors *sensors);
     ~NetworkController();
 
-    void connect(std::string host, unsigned int port);
-    void connect();
+    bool connect(std::string host, unsigned int port);
+    bool connect();
     void disconnect();
 
     void sendBufferAsString();

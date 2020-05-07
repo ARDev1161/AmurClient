@@ -3,15 +3,20 @@ CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
+LIBS += -L$$LIBS_PATH /
+LIBS += -lprotobuf \
+        -lpthread \
+        -lrt
+
 SOURCES += \
     AmurClient.cpp \
+    modules/interfaces/i2c/i2c.cpp \
+    modules/interfaces/spi/spi.cpp \
+    modules/interfaces/uart/uart.cpp \
     network/networkcontroller.cpp \
     network/tcp/tcpclient.cpp \
     network/tcp/tcpserver.cpp \
     logiccontroller.cpp \
-    modules/interfaces/i2c/I2C.cpp \
-    modules/interfaces/spi/SPI.cpp \
-    modules/interfaces/uart/UART.cpp \
     modules/peripheralcontroller.cpp \
     modules/pwm/pwmcontroller.cpp \
     modules/registers/hc165/hc165.cpp \
@@ -28,14 +33,14 @@ DISTFILES += \
     protobuf/sensors.proto
 
 HEADERS += \
+    modules/interfaces/i2c/i2c.h \
+    modules/interfaces/spi/spi.h \
+    modules/interfaces/uart/uart.h \
     network/networkcontroller.h \
     network/tcp/tcpclient.h \
     network/tcp/tcpserver.h \
     protobuf/buffers.pb.h \
     logiccontroller.h \
-    modules/interfaces/i2c/I2C.h \
-    modules/interfaces/spi/SPI.h \
-    modules/interfaces/uart/UART.h \
     modules/peripheralcontroller.h \
     modules/pwm/pwmcontroller.h \
     modules/registers/hc165/hc165.h \

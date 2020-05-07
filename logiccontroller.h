@@ -15,6 +15,7 @@
 #define SERVER_HOSTNAME "10.11.11.11"
 #define SERVER_PORT 7777
 
+
 class LogicController
 {
     AmurSensors *sensors;
@@ -27,9 +28,12 @@ public:
     ~LogicController();
 
     void connectToServer(std::string host, unsigned int port);
+    void connectToServer();
 
     void recvBuffer();
     void sendBuffer();
+
+    void peripheryUpdate();
 };
 
 #endif // LOGICCONTROLLER_H

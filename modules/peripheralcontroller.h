@@ -1,11 +1,13 @@
 ﻿#ifndef PERIPHERALCONTROLLER_H
 #define PERIPHERALCONTROLLER_H
 
-#include <stdio.h>
+#include <iostream>
 #include <cstdlib>
 #include <math.h>
 
-#include <wiringPi.h>
+#if __has_include(<wiringPi.h>)
+    #include <wiringPi.h>
+#endif
 
 #include "timer/cppTimer/CppTimerCallback.h"
 
@@ -95,15 +97,16 @@ class PeripheralController: public CppTimerCallback::Runnable
                                       unsigned char const previousByte,
                                       int *const angle);
     // Peripheral timer methods
+    void initTimer();
     void run();
 
+    void checkMotorsTime();
 public:
     PeripheralController(AmurControls *controls, AmurSensors *sensors);
-    ~PeripheralController();
+    virtual ~PeripheralController();
 
     void updateData();
 
-    void checkMotorsTime();
 };
 
 #endif // PERIPHERALCONTROLLER_H

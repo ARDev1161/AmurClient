@@ -23,7 +23,7 @@ TCPClient::~TCPClient()
     disconnect();
 }
 
-int TCPClient::connect(std::string host, unsigned int port)
+bool TCPClient::connect(std::string host, unsigned int port)
 {
     struct sockaddr_in servAddr;
     struct hostent *server;
@@ -52,13 +52,14 @@ int TCPClient::connect(std::string host, unsigned int port)
             clientError("Error on connecting: ");
         else {
             connected = true;
-            return 0;
+            return true;
         }
-        sleep(1); // Wait 1 second
+
+        std::this_thread::sleep_for(std::chrono::seconds(1));// Wait 1 second
     }
 
     connected = false;
-    return 1;
+    return false;
 }
 
 inline void TCPClient::clientError(std::string const& msg)

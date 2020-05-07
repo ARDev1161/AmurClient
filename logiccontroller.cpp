@@ -22,6 +22,10 @@ void LogicController::connectToServer(std::string host, unsigned int port)
 {
     network->connect(host, port);
 }
+void LogicController::connectToServer()
+{
+    network->connect();
+}
 
 void LogicController::recvBuffer()
 {
@@ -30,4 +34,9 @@ void LogicController::recvBuffer()
 void LogicController::sendBuffer()
 {
     network->sendBufferAsString();
+}
+
+void LogicController::peripheryUpdate()
+{
+    periphery->updateData();
 }

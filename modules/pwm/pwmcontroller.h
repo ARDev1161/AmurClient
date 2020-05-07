@@ -1,8 +1,12 @@
 #ifndef PWMCONTROLLER_H
 #define PWMCONTROLLER_H
 
-#include <wiringPi.h>
-#include <softPwm.h>
+#if __has_include(<wiringPi.h>)
+    #include <wiringPi.h>
+    #include <softPwm.h>
+#else
+    #include <iostream>
+#endif
 
 
 class PWMController

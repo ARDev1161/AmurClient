@@ -16,7 +16,7 @@ RegisterController::~RegisterController()
 
 void RegisterController::writeByte(unsigned char writingByte)
 {
-        outputRegister->writeByte(writingByte);
+    outputRegister->writeByte(writingByte);
 }
 
 unsigned char RegisterController::readByte()

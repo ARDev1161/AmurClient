@@ -10,9 +10,7 @@ PeripheralController::PeripheralController(AmurControls *controls, AmurSensors *
     pwm = new PWMController();
     initPWM();
 
-
-    peripheralTimer.registerEventRunnable(*this);
-    peripheralTimer.start(10000000); // 10 milliseconds
+    initTimer();
 }
 
 PeripheralController::~PeripheralController()
@@ -29,7 +27,6 @@ PeripheralController::~PeripheralController()
 void PeripheralController::run()
 {
     checkMotorsTime();
-    updateData();
 }
 
 void PeripheralController::updateData()
@@ -43,13 +40,23 @@ void PeripheralController::updateData()
     changeHandsPWM();
 }
 
+void PeripheralController::initTimer()
+{
+    peripheralTimer.registerEventRunnable(*this);
+    peripheralTimer.start(10000000); // 10 milliseconds
+}
+
 void PeripheralController::wiringPiInit()
 {
+#if __has_include(<wiringPi.h>)
     if(wiringPiSetupGpio() != 0) //setup GPIO, this uses actual BCM pin numbers
     {
-        printf("setup wiringPi failed !");
+        std::cout << "setup wiringPi failed !" << std::endl;
         abort();
     }
+#else
+    std::cout << "WiringPi not installed !!!" << std::endl;
+#endif
 }
 
 void PeripheralController::initPWM()
@@ -255,32 +262,56 @@ void PeripheralController::writeEncodersAngles()
 
 void PeripheralController::checkMotorsTime()
 {
-    if(controlsPeri->mutable_wheelmotors()->lefttime() > 10)
+    int changes = 0;
+
+    if(controlsPeri->mutable_wheelmotors()->lefttime() >= 10)
         controlsPeri->mutable_wheelmotors()->set_lefttime( controlsPeri->mutable_wheelmotors()->lefttime() - 10);
     else {
-        controlsPeri->mutable_wheelmotors()->set_leftpower(0);
-        controlsPeri->mutable_wheelmotors()->set_lefttime(0);
+        if(controlsPeri->mutable_wheelmotors()->lefttime() > 0)
+        {
+            controlsPeri->mutable_wheelmotors()->set_leftpower(0);
+            controlsPeri->mutable_wheelmotors()->set_lefttime(0);
+
+            changes++;
+        }
     }
 
-    if(controlsPeri->mutable_wheelmotors()->righttime() > 10)
+    if(controlsPeri->mutable_wheelmotors()->righttime() >= 10)
         controlsPeri->mutable_wheelmotors()->set_righttime( controlsPeri->mutable_wheelmotors()->righttime() - 10);
     else  {
-        controlsPeri->mutable_wheelmotors()->set_rightpower(0);
-        controlsPeri->mutable_wheelmotors()->set_righttime(0);
+        if(controlsPeri->mutable_wheelmotors()->righttime() > 0)
+        {
+            controlsPeri->mutable_wheelmotors()->set_rightpower(0);
+            controlsPeri->mutable_wheelmotors()->set_righttime(0);
+
+            changes++;
+        }
     }
 
 
-    if(controlsPeri->mutable_handmotors()->lefttime() > 10)
+    if(controlsPeri->mutable_handmotors()->lefttime() >= 10)
         controlsPeri->mutable_handmotors()->set_lefttime( controlsPeri->mutable_handmotors()->lefttime() - 10);
     else  {
-        controlsPeri->mutable_handmotors()->set_leftpower(0);
-        controlsPeri->mutable_handmotors()->set_lefttime(0);
+        if(controlsPeri->mutable_handmotors()->lefttime() > 0)
+        {
+            controlsPeri->mutable_handmotors()->set_leftpower(0);
+            controlsPeri->mutable_handmotors()->set_lefttime(0);
+
+            changes++;
+        }
     }
 
-    if(controlsPeri->mutable_handmotors()->righttime() > 10)
+    if(controlsPeri->mutable_handmotors()->righttime() >= 10)
         controlsPeri->mutable_handmotors()->set_righttime( controlsPeri->mutable_handmotors()->righttime() - 10);
-    else  {
-        controlsPeri->mutable_handmotors()->set_rightpower(0);
-        controlsPeri->mutable_handmotors()->set_righttime(0);
+    else {
+        if(controlsPeri->mutable_handmotors()->righttime() > 0)
+        {
+            controlsPeri->mutable_handmotors()->set_rightpower(0);
+            controlsPeri->mutable_handmotors()->set_righttime(0);
+
+            changes++;
+        }
     }
+
+    if(changes > 0) updateData();
 }

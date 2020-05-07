@@ -1,7 +1,11 @@
 #ifndef HC595_H
 #define HC595_H
 
-#include <wiringPi.h>
+#if __has_include(<wiringPi.h>)
+    #include <wiringPi.h>
+#endif
+
+#include <iostream> // for debugging
 
 class HC595
 {

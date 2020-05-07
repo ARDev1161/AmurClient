@@ -12,6 +12,8 @@
 #include <netinet/in.h> // Семейства адресов/протоколов PF_INET и PF_INET6. Широко используются в сети Интернет, включают в себя IP-адреса, а также номера портов TCP и UDP.
 #include <netdb.h> // Функции для преобразования протокольных имен и имен хостов в числовые адреса. Используются локальные данные аналогично DNS.
 #include <arpa/inet.h> // Функции для работы с числовыми IP-адресами.
+#include <chrono>
+#include <thread>
 
 #define COUNT_CONNECT_TRYING 7
 
@@ -30,7 +32,7 @@ public:
     TCPClient();
     ~TCPClient();
 
-    int connect(std::string host, unsigned int port);
+    bool connect(std::string host, unsigned int port);
     inline void disconnect();
 
     int write(std::string const& mesg);
