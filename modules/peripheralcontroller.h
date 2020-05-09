@@ -19,36 +19,13 @@
 #include "registers/registercontroller.h"
 #include "pwm/pwmcontroller.h"
 
-
-//HC595 section
-#define   DATA_595   23   //595 serial data input
-#define   LATCH_CLK_595  25   //595 latch clock input( STcp )
-#define   SHIFT_CLK_595 24   //595 data clock input( SHcp )
-#define   NOT_RESET_595 18   //595 not reset input( Not MR )
-#define   NOT_ENABLE_595 16   //595 not enable input( Not OE )
-
-//HC165 sectionunsigned long now
-#define   DATA_165  4   //165 serial data output
-#define   CLK_165  17   //165 data clock input
-#define   CLK_INH_165 22   //165 inhibite clock input
-#define   LOAD_165 27   //165 load register input( SH/Not(LD) )
-
-//PWM hardware pins
-#define PWM_WHEEL_RIGHT 12 //hardware pwm pin: right wheel motor
-#define PWM_WHEEL_LEFT 13 //hardware pwm pin: left wheel motor
-
-//PWM software pins
-#define PWM_HAND_RIGHT 20 //software pwm pin: right hand motor
-#define PWM_HAND_LEFT 21 //software pwm pin: left hand motor
-
-//Encoder section
-#define ENCODER_SECTORS_COUNT 100 // Count sectors on encoders disk
-#define MOTOR_FREQ 100 // Motor speed: rpm
-#define POLLING_FREQ (ENCODER_SECTORS_COUNT*MOTOR_FREQ)*3 // Encoder sampling rate
+#include "peripheralsettings.h"
 
 class PeripheralController: public CppTimerCallback::Runnable
 {
     // Fields
+
+    PeripheralSettings settings;
 
     RegisterController *registers;
     PWMController *pwm;

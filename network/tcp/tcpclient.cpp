@@ -47,7 +47,8 @@ bool TCPClient::connect(std::string host, unsigned int port)
 
     enable_keepalive(sockfd);
 
-    for(size_t i = 0; i < COUNT_CONNECT_TRYING; i++) { //try to connect several times
+    for(size_t i = 0; i < COUNT_CONNECT_TRYING; i++) //try to connect several times
+    {
         if(::connect(sockfd, (struct sockaddr*) &servAddr, sizeof(servAddr)) < 0)
             clientError("Error on connecting: ");
         else {

@@ -5,8 +5,16 @@ PeripheralController::PeripheralController(AmurControls *controls, AmurSensors *
 {
     wiringPiInit();
 
-    registers = new RegisterController(DATA_595, SHIFT_CLK_595, LATCH_CLK_595, NOT_RESET_595, NOT_ENABLE_595,
-                                       DATA_165, LOAD_165, CLK_165, CLK_INH_165);
+    registers = new RegisterController(settings.outputRegisters.outputDataPin,
+                                       settings.outputRegisters.outputClkPin,
+                                       settings.outputRegisters.outputLatchClkPin,
+                                       settings.outputRegisters.outputNResetPin,
+                                       settings.outputRegisters.outputNEnablePin,
+
+                                       settings.inputRegisters.dataPin,
+                                       settings.inputRegisters.loadPin,
+                                       settings.inputRegisters.clkPin,
+                                       settings.inputRegisters.clkInhibitePin);
     pwm = new PWMController();
     initPWM();
 
@@ -62,12 +70,12 @@ void PeripheralController::wiringPiInit()
 void PeripheralController::initPWM()
 {
     // Setup hardware PWM for wheel motors
-    pwm->hardPWMCreate(PWM_WHEEL_RIGHT);
-    pwm->hardPWMCreate(PWM_WHEEL_LEFT);
+    pwm->hardPWMCreate( settings.pwm.wheelRightPin );
+    pwm->hardPWMCreate( settings.pwm.wheelLeftPin );
 
     // Setup software PWM for hand motors
-    pwm->softPWMCreate(PWM_HAND_RIGHT);
-    pwm->softPWMCreate(PWM_HAND_LEFT);
+    pwm->softPWMCreate( settings.pwm.handRightPin );
+    pwm->softPWMCreate( settings.pwm.handLeftPin );
 }
 
 unsigned char PeripheralController::leftOutRegisterToByte()
@@ -147,13 +155,13 @@ unsigned char PeripheralController::rightOutRegisterToByte()
 
 void PeripheralController::changeWheelsPWM()
 {
-    pwm->hardPWMChange(PWM_WHEEL_RIGHT, abs(controlsPeri->mutable_wheelmotors()->rightpower()));
-    pwm->hardPWMChange(PWM_WHEEL_LEFT, abs(controlsPeri->mutable_wheelmotors()->leftpower()));
+    pwm->hardPWMChange( settings.pwm.wheelRightPin, abs(controlsPeri->mutable_wheelmotors()->rightpower()) );
+    pwm->hardPWMChange( settings.pwm.wheelLeftPin, abs(controlsPeri->mutable_wheelmotors()->leftpower()) );
 }
 void PeripheralController::changeHandsPWM()
 {
-    pwm->softPWMChange(PWM_HAND_RIGHT, abs(controlsPeri->mutable_handmotors()->rightpower()));
-    pwm->softPWMChange(PWM_HAND_LEFT, abs(controlsPeri->mutable_handmotors()->leftpower()));
+    pwm->softPWMChange( settings.pwm.handRightPin, abs(controlsPeri->mutable_handmotors()->rightpower()) );
+    pwm->softPWMChange( settings.pwm.handLeftPin, abs(controlsPeri->mutable_handmotors()->leftpower()) );
 }
 
 void PeripheralController::writeRegisterData() // Read data from protobuf & write to HC595

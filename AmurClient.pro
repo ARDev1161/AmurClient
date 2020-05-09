@@ -27,6 +27,7 @@ SOURCES += \
     timer/cppTimer/CppTimer.cpp
 
 DISTFILES += \
+    Doxyfile \
     protobuf/controls.proto \
     protobuf/rebuild.sh \
     README.md \
@@ -36,6 +37,7 @@ HEADERS += \
     modules/interfaces/i2c/i2c.h \
     modules/interfaces/spi/spi.h \
     modules/interfaces/uart/uart.h \
+    modules/peripheralsettings.h \
     network/networkcontroller.h \
     network/tcp/tcpclient.h \
     network/tcp/tcpserver.h \
