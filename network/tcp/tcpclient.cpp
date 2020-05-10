@@ -52,8 +52,8 @@ bool TCPClient::connect(std::string host, unsigned int port)
         if(::connect(sockfd, (struct sockaddr*) &servAddr, sizeof(servAddr)) < 0)
             clientError("Error on connecting: ");
         else {
-            connected = true;
-            return true;
+            connected = hasError();
+            return connected;
         }
 
         std::this_thread::sleep_for(std::chrono::seconds(1));// Wait 1 second
@@ -74,6 +74,7 @@ bool TCPClient::hasError() {
 
     int error = 0;
     socklen_t len = sizeof(error);
+
     int retval = getsockopt(sockfd, SOL_SOCKET, SO_ERROR, &error, &len);
 
     if(retval != 0 || error != 0){
@@ -112,21 +113,22 @@ inline void TCPClient::disconnect() {
 }
 
 int TCPClient::write(std::string const& mesg) {
+
     if(!connected)
         return 1;
 
     struct timeval tv;
     tv.tv_sec = 10;
     tv.tv_usec = 0;
+
     fd_set writefds;
     FD_ZERO(&writefds);
     FD_SET(sockfd, &writefds);
 
-    //cout << "w: " << mesg << endl;
-
     int sentBytes = 0;
 
     for(size_t i = 0; i < mesg.length(); i += sentBytes) {
+
         FD_ZERO(&writefds);
         FD_SET(sockfd, &writefds);
         int rv = select(sockfd + 1, NULL, &writefds, NULL, &tv);
@@ -149,12 +151,14 @@ int TCPClient::write(std::string const& mesg) {
 }
 
 std::string TCPClient::read() {
+
     if(!connected)
         return "";
 
     struct timeval tv;
     tv.tv_sec = 10;
     tv.tv_usec = 0;
+
     fd_set readfds;
     FD_ZERO(&readfds);
     FD_SET(sockfd, &readfds);

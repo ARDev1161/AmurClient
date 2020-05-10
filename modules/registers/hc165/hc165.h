@@ -6,21 +6,19 @@
 #else
     #include <iostream>
 #endif
- 
+
+#include "modules/peripheralsettings.h"
 
 
 #define PULSE_WIDTH_USEC   1 // задержка импульса при считывании данных (каждый бит)
 
 class HC165
 {
-    int data;        // Connects to the Q7 pin the 165
-    int loadLatch;   // Connects to Parallel load(SH/LD) pin the 165
-    int clk;         // Connects to the Clock(CLK) pin the 165
-    int clkInhibite; // Connects to Clock Enable(CLK INH) pin the 165
+    HC165Pins registerPins;
 
     inline void pulse(int pin);
 public:    
-    HC165(int dataPin, int loadLatchPin, int clkPin, int clkInhibitePin);
+    HC165(HC165Pins pins);
     unsigned char readByte();
     void loadRegister();        
     void disableClock();

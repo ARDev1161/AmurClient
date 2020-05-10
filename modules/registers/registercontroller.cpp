@@ -1,11 +1,10 @@
 #include "registercontroller.h"
 
 RegisterController::RegisterController
-    (int dataPinHC595, int clkPinHC595, int latchPinHC595, int notResetPinHC595, int notEnablePinHC595,
-     int dataPinHC165, int loadLatchPinHC165, int clkPinHC165, int clkInhibitePinHC165)
+    (HC595Pins outputPins, HC165Pins inputPins)
 {
-    outputRegister = new HC595(dataPinHC595, clkPinHC595, latchPinHC595, notResetPinHC595, notEnablePinHC595);
-    inputRegister = new HC165(dataPinHC165, loadLatchPinHC165, clkPinHC165, clkInhibitePinHC165);
+    outputRegister = new HC595(outputPins);
+    inputRegister = new HC165(inputPins);
 }
 
 RegisterController::~RegisterController()

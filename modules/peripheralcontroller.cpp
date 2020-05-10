@@ -5,16 +5,8 @@ PeripheralController::PeripheralController(AmurControls *controls, AmurSensors *
 {
     wiringPiInit();
 
-    registers = new RegisterController(settings.outputRegisters.outputDataPin,
-                                       settings.outputRegisters.outputClkPin,
-                                       settings.outputRegisters.outputLatchClkPin,
-                                       settings.outputRegisters.outputNResetPin,
-                                       settings.outputRegisters.outputNEnablePin,
-
-                                       settings.inputRegisters.dataPin,
-                                       settings.inputRegisters.loadPin,
-                                       settings.inputRegisters.clkPin,
-                                       settings.inputRegisters.clkInhibitePin);
+    registers = new RegisterController(settings.outputRegisters,
+                                       settings.inputRegisters);
     pwm = new PWMController();
     initPWM();
 

@@ -1,18 +1,18 @@
 #include "hc165.h"
  
-HC165::HC165(int dataPin, int loadLatchPin, int clkPin, int clkInhibitePin):
-data(dataPin), loadLatch(loadLatchPin), clk(clkPin), clkInhibite(clkInhibitePin)
+HC165::HC165(HC165Pins pins):
+registerPins(pins)
 {
 #if __has_include(<wiringPi.h>)
-    pinMode(data, INPUT);
+    pinMode( registerPins.dataPin , INPUT);
 
-    pinMode(loadLatch, OUTPUT);
-    pinMode(clk, OUTPUT);
-    pinMode(clkInhibite, OUTPUT);
+    pinMode( registerPins.loadPin , OUTPUT);
+    pinMode( registerPins.clkPin , OUTPUT);
+    pinMode( registerPins.clkInhibitePin , OUTPUT);
 
-    digitalWrite(loadLatch, 0);
-    digitalWrite(clk, 0);
-    digitalWrite(clkInhibite, 0);
+    digitalWrite( registerPins.loadPin , 0);
+    digitalWrite( registerPins.clkPin , 0);
+    digitalWrite( registerPins.clkInhibitePin , 0);
 #endif
 }
 
@@ -30,7 +30,7 @@ inline void HC165::pulse(int pin)
 void HC165::disableClock()
 {
 #if __has_include(<wiringPi.h>)
-    digitalWrite(clkInhibite, 1);
+    digitalWrite( registerPins.clkInhibitePin , 1);
 #else
     std::cout << "HC165 disable" << std::endl;
 #endif
@@ -39,7 +39,7 @@ void HC165::disableClock()
 void HC165::enableClock()
 {    
 #if __has_include(<wiringPi.h>)
-    digitalWrite(clkInhibite, 0);
+    digitalWrite( registerPins.clkInhibitePin , 0);
 #else
     std::cout << "HC165 enable" << std::endl;
 #endif
@@ -51,8 +51,8 @@ void HC165::loadRegister()
 #if __has_include(<wiringPi.h>)
     disableClock();
 
-    pulse(loadLatch);
-    digitalWrite(loadLatch, 0);
+    pulse( registerPins.loadPin );
+    digitalWrite( registerPins.loadPin , 0);
 
     enableClock();
 #else
@@ -68,8 +68,8 @@ unsigned char HC165::readByte()
     // shiftin
     for(int i = 0; i < 8; i++)
     {
-        byte |= (digitalRead(data) << (7 - i));
-        pulse(clk);
+        byte |= (digitalRead( registerPins.dataPin ) << (7 - i));
+        pulse( registerPins.clkPin );
     }
 #else
     std::cout << "HC165 read - " << byte << std::endl;

@@ -25,7 +25,6 @@ public:
     void hardPWMStop(int pin);
     void softPWMStop(int pin);
 
-
 };
 
 #endif // PWMCONTROLLER_H
