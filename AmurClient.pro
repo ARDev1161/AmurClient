@@ -28,6 +28,7 @@ SOURCES += \
 
 DISTFILES += \
     Doxyfile \
+    Makefile \
     protobuf/controls.proto \
     protobuf/rebuild.sh \
     README.md \
