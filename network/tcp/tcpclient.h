@@ -15,7 +15,7 @@
 #include <chrono>
 #include <thread>
 
-#define COUNT_CONNECT_TRYING 7
+#define COUNT_CONNECT_TRYING 3
 
 class TCPClient
 {
@@ -32,6 +32,7 @@ public:
     TCPClient();
     ~TCPClient();
 
+    bool checkAlive();
     bool connect(std::string host, unsigned int port);
     inline void disconnect();
 

@@ -9,8 +9,8 @@
 
 class NetworkController
 {
-    std::string serverHost;
-    unsigned int serverPort;
+    std::string serverHost = "";
+    unsigned int serverPort = 0;
 
     AmurSensors *sensorsPeri;
     AmurControls *controlsPeri;
@@ -28,8 +28,10 @@ public:
     bool connect();
     void disconnect();
 
+    bool checkAlive();
+
     void sendBufferAsString();
-    void recvBufferAsString();
+    void recvBufferAsString();    
 
     void setHost(const std::string &value);
     void setPort(unsigned int value);

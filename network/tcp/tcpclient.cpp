@@ -23,6 +23,11 @@ TCPClient::~TCPClient()
     disconnect();
 }
 
+bool TCPClient::checkAlive()
+{
+    return (connected && (sockfd != -1));
+}
+
 bool TCPClient::connect(std::string host, unsigned int port)
 {
     struct sockaddr_in servAddr;

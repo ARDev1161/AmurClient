@@ -29,11 +29,19 @@ bool NetworkController::connect(std::string host, unsigned int port)
 }
 bool  NetworkController::connect()
 {
-    return client->connect(serverHost, serverPort);
+    bool res = false;
+    if((serverPort > 0) && (serverHost !=""))
+        res = client->connect(serverHost, serverPort);
+    return res;
 }
 void NetworkController::disconnect()
 {
     client->disconnect();
+}
+
+bool NetworkController::checkAlive()
+{
+    return client->checkAlive();
 }
 
 void NetworkController::sendBufferAsString()

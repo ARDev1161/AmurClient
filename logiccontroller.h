@@ -11,18 +11,26 @@
 //Network headers
 #include "network/networkcontroller.h"
 
-// Server settings
-#define SERVER_HOSTNAME "10.11.11.11"
-#define SERVER_PORT 7777
+
+#include "timer/cppTimer/CppTimerCallback.h"
 
 
-class LogicController
+class LogicController: public CppTimerCallback::Runnable
 {
+    // Server settings
+    std::string host = "10.11.11.11";
+    int port = 7777;
+
     AmurSensors *sensors;
     AmurControls *controls;
 
     PeripheralController *periphery;
     NetworkController *network;
+
+    CppTimerCallback logicTimer;
+
+    void initTimer();
+    void run();
 public:
     LogicController();
     ~LogicController();
