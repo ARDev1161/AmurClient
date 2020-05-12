@@ -1,11 +1,18 @@
 #include "spi.h"
 
+/*!
+  Создаёт экземпляр класса для работы с интерфейсом I2C.
+*/
 SPI::SPI()
 {
 
 }
 
-void SPI::init(){
+/*!
+  Инициирует работу с интерфейсом SPI.
+  \return Возвращает 0 если удалось открыть порт
+*/
+int SPI::init(){
 
     std::cout << "SPI initializing" << std::endl ;
 

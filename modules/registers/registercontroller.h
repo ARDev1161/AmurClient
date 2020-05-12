@@ -6,6 +6,11 @@
 
 #include "modules/peripheralsettings.h"
 
+/*!
+    \brief Класс контроллера регистров
+
+    Данный класс инкапсулирует управление входными и выходными регистрами.
+*/
 class RegisterController
 {
     HC595 *outputRegister;

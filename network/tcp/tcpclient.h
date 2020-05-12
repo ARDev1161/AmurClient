@@ -17,6 +17,11 @@
 
 #define COUNT_CONNECT_TRYING 3
 
+/*!
+    \brief Класс сетевого клиента с протоколом TCP
+
+    Данный класс инкапсулирует логику сетевого клиента с протоколом TCP.
+*/
 class TCPClient
 {
     int sockfd = 0;

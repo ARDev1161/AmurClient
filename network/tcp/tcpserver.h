@@ -20,6 +20,11 @@
 #include <unistd.h>
 #include <future>
 
+/*!
+    \brief Класс сетевого сервера с протоколом TCP
+
+    Данный класс инкапсулирует логику сетевого сервера с протоколом TCP.
+*/
 class TCPServer
 {
     int enable_keepalive(int sock);
@@ -44,7 +49,7 @@ public:
 
     bool inited;
 
-    int init(unsigned int port);//!<Necessary only if not already done by using constructor with port
+    void init(unsigned int port);//!<Necessary only if not already done by using constructor with port
     int start();
     int run(std::function<void(TCPServer* sock)> fn);
     int runBlocking(std::function<void(TCPServer* sock)> fn);

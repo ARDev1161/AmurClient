@@ -21,6 +21,11 @@
 
 #include "peripheralsettings.h"
 
+/*!
+    \brief Класс управления периферией робота
+
+    Данный класс позволяет управлять периферическим оборудование робота.
+*/
 class PeripheralController: public CppTimerCallback::Runnable
 {
     // Fields

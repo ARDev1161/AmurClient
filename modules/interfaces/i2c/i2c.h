@@ -10,6 +10,11 @@
     #include <iostream>
 #endif
 
+/*!
+    \brief Класс работы с интерфейсом I2C
+
+    Данный класс инкапсулирует взаимодействие с интерфейсом I2C.
+*/
 class I2C
 {
     // channel is the wiringPi name for the chip select (or chip enable) pin.

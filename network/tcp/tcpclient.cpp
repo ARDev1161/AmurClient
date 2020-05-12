@@ -1,5 +1,10 @@
 #include "tcpclient.h"
 
+/*!
+  Создаёт экземпляр класса сетевого клиента с протоколом TCP.
+  \param[in] host Адрес сервера
+  \param[in] port Порт сервера
+*/
 TCPClient::TCPClient(std::string host, unsigned int port):
     sockfd(-1),
     connected(false)
@@ -7,12 +12,19 @@ TCPClient::TCPClient(std::string host, unsigned int port):
     connect(host, port);
 }
 
+/*!
+  Создаёт экземпляр класса сетевого клиента с протоколом TCP.
+  \param[in] sock Установленный сокет
+*/
 TCPClient::TCPClient(int sock):
     sockfd(sock)
 {
     connected = true;
 }
 
+/*!
+  Создаёт экземпляр класса сетевого клиента с протоколом TCP.
+*/
 TCPClient::TCPClient()
 {
 
@@ -23,11 +35,21 @@ TCPClient::~TCPClient()
     disconnect();
 }
 
+/*!
+  Проверка активности подключения к серверу.
+  \return Результат подключения, true если соединение установлено
+*/
 bool TCPClient::checkAlive()
 {
     return (connected && (sockfd != -1));
 }
 
+/*!
+  Инициирует подключение к серверу.
+  \param[in] host Адрес сервера
+  \param[in] port Порт сервера
+  \return Результат подключения, true если соединение установлено
+*/
 bool TCPClient::connect(std::string host, unsigned int port)
 {
     struct sockaddr_in servAddr;
@@ -68,11 +90,19 @@ bool TCPClient::connect(std::string host, unsigned int port)
     return false;
 }
 
+/*!
+  Вывод в консоль сообщения об ошибке.
+  \param[in] &msg Ссылка на выводимое сообщение
+*/
 inline void TCPClient::clientError(std::string const& msg)
 {
     std::cerr << msg << errno << "  " << strerror(errno) << std::endl;
 }
 
+/*!
+  Проверка сокета на ошибки.
+  \return Результат проверки сокета на ошибки, true если ошибки обнаружены
+*/
 bool TCPClient::hasError() {
     if(sockfd == -1)
         return true;
@@ -90,6 +120,11 @@ bool TCPClient::hasError() {
         return false;
 }
 
+/*!
+  Включение у сокета функции KEEPALIVE.
+  \param[in] sock Установленный сокет
+  \return Результат включения KEEPALIVE, -1 если не удалось
+*/
 int TCPClient::enable_keepalive(int sock) {
     int yes = 1;
     if(setsockopt(sock, SOL_SOCKET, SO_KEEPALIVE, &yes, sizeof(int)) == -1)
@@ -110,6 +145,9 @@ int TCPClient::enable_keepalive(int sock) {
     return 0;
 }
 
+/*!
+  Инициирует отключение от сервера.
+*/
 inline void TCPClient::disconnect() {
     if(connected){
         close(sockfd);
@@ -117,6 +155,11 @@ inline void TCPClient::disconnect() {
     }
 }
 
+/*!
+  Отправляет строку на сервер.
+  \param[in] &mesg Ссылка на отправляемую строку
+  \return Результат отправки строки, 0 если строка отправлена
+*/
 int TCPClient::write(std::string const& mesg) {
 
     if(!connected)
@@ -155,6 +198,10 @@ int TCPClient::write(std::string const& mesg) {
     return 0;
 }
 
+/*!
+  Принимает строку с сервера.
+  \return Принятая строка
+*/
 std::string TCPClient::read() {
 
     if(!connected)
@@ -181,6 +228,9 @@ std::string TCPClient::read() {
             clientError("Error: ");
         else if(rv == 0)
             break;
+        /*!
+          Инициирует отключение от сервера.
+        */
         else if(rv > 0 && FD_ISSET(sockfd, &readfds)) {
 
             int tn = ::read(sockfd, buffer, sizeof(buffer) - 1);//avoid signcompare warning
@@ -220,6 +270,10 @@ std::string TCPClient::read() {
     return resp;
 }
 
+/*!
+  Принимает набор строк с сервера и конкатенирует их в одну.
+  \return Результирующая принятая строка
+*/
 std::string TCPClient::readAll() {
     std::string full = read();
 

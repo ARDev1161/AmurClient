@@ -7,6 +7,11 @@
 #include "tcp/tcpclient.h"
 //#include "tcp/tcpserver.h" //Not used, only client mode
 
+/*!
+    \brief Класс контроллера работы с сетью
+
+    Данный класс инкапсулирует логику работы с сетью.
+*/
 class NetworkController
 {
     std::string serverHost = "";

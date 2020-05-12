@@ -14,7 +14,11 @@
 
 #include "timer/cppTimer/CppTimerCallback.h"
 
+/*!
+    \brief Класс логики управления роботом
 
+    Данный класс реализует логику управления роботом.
+*/
 class LogicController: public CppTimerCallback::Runnable
 {
     // Server settings

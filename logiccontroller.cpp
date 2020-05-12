@@ -1,5 +1,8 @@
 #include "logiccontroller.h"
 
+/*!
+Создаёт экземпляр класса логики управления роботом.
+*/
 LogicController::LogicController()
 {
     controls = new AmurControls();
@@ -19,6 +22,9 @@ LogicController::~LogicController()
     delete network;
 }
 
+/*!
+Создаёт экземпляр класса для работы с периферическим оборудованием.
+*/
 void LogicController::initTimer()
 {
     logicTimer.registerEventRunnable(*this);
@@ -27,6 +33,9 @@ void LogicController::initTimer()
     std::this_thread::sleep_for(std::chrono::seconds(1));// Wait 1 second
 }
 
+/*!
+  Функция таймера, вызывает проверку активности подключения к серверу. Если соединение неактивно, то инициирует его.
+*/
 void LogicController::run()
 {
     if(network->checkAlive()){
@@ -40,6 +49,11 @@ void LogicController::run()
     }
 }
 
+/*!
+  Инициирует подключение к серверу.
+\param[in] host Адрес сервера
+\param[in] port Порт сервера
+*/
 void LogicController::connectToServer(std::string host, unsigned int port)
 {
     this->host = host;
@@ -47,20 +61,34 @@ void LogicController::connectToServer(std::string host, unsigned int port)
 
     network->connect(host, port);
 }
+
+/*!
+  Инициирует подключение к серверу с адресом и портом по умолчанию.
+*/
 void LogicController::connectToServer()
 {
     network->connect();
 }
 
+/*!
+  Принимает сериализованный буфер управления с сервера.
+*/
 void LogicController::recvBuffer()
 {
     network->recvBufferAsString();
 }
+
+/*!
+  Отправляет сериализованный буфер сенсоров на сервер.
+*/
 void LogicController::sendBuffer()
 {
     network->sendBufferAsString();
 }
 
+/*!
+  Обновляет данные периферического оборудования.
+*/
 void LogicController::peripheryUpdate()
 {
     periphery->updateData();

@@ -10,6 +10,11 @@
 #endif
 
 
+/*!
+    \brief Класс работы с интерфейсом SPI
+
+    Данный класс инкапсулирует взаимодействие с интерфейсом SPI.
+*/
 class SPI
 {
     // channel is the wiringPi name for the chip select (or chip enable) pin.
@@ -18,7 +23,7 @@ class SPI
 
 public:
     SPI();
-    void init();
+    int init();
 };
 
 #endif // SPI_H

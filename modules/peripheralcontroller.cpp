@@ -1,5 +1,10 @@
 #include "peripheralcontroller.h"
 
+/*!
+Создаёт экземпляр класса для работы с периферическим оборудованием.
+\param[in] *controls Указатель на protobuf буффер AmurControls
+\param[in] *sensors Указатель на protobuf буффер AmurSensors
+*/
 PeripheralController::PeripheralController(AmurControls *controls, AmurSensors *sensors):
      sensorsPeri(sensors), controlsPeri(controls)
 {
@@ -24,11 +29,17 @@ PeripheralController::~PeripheralController()
     delete pwm;
 }
 
+/*!
+Функция таймера, вызывает проверку времени работы моторов.
+*/
 void PeripheralController::run()
 {
     checkMotorsTime();
 }
 
+/*!
+Функция для обновления данных регистров и сигналов PWM.
+*/
 void PeripheralController::updateData()
 {
     // Update output registers data & input registers buffers
@@ -40,12 +51,18 @@ void PeripheralController::updateData()
     changeHandsPWM();
 }
 
+/*!
+Функция настройки и запуска таймера.
+*/
 void PeripheralController::initTimer()
 {
     peripheralTimer.registerEventRunnable(*this);
     peripheralTimer.start(10000000); // 10 milliseconds
 }
 
+/*!
+Инициализирует библиотеку WiringPi в нотации GPIO.
+*/
 void PeripheralController::wiringPiInit()
 {
 #if __has_include(<wiringPi.h>)
@@ -59,6 +76,9 @@ void PeripheralController::wiringPiInit()
 #endif
 }
 
+/*!
+Инициализирует программные и аппаратные PWM сигналы указанные в структуре настроек экземпляра класса.
+*/
 void PeripheralController::initPWM()
 {
     // Setup hardware PWM for wheel motors
@@ -70,6 +90,10 @@ void PeripheralController::initPWM()
     pwm->softPWMCreate( settings.pwm.handLeftPin );
 }
 
+/*!
+Собирает байт данных для записи в левый регистр из protobuf буфера.
+\return Байт данных для записи в левый выходной регистр
+*/
 unsigned char PeripheralController::leftOutRegisterToByte()
 {
     unsigned char byte = 0x00;
@@ -107,6 +131,11 @@ unsigned char PeripheralController::leftOutRegisterToByte()
 
     return byte;
 }
+
+/*!
+Собирает байт данных для записи в правый регистр из protobuf буфера.
+\return Байт данных для записи в правый выходной регистр
+*/
 unsigned char PeripheralController::rightOutRegisterToByte()
 {
     unsigned char byte = 0x00;
@@ -145,17 +174,27 @@ unsigned char PeripheralController::rightOutRegisterToByte()
     return byte;
 }
 
+/*!
+Изменяет скважность PWM сигналов управляющих моторами гусениц на данные из protobuf буфера.
+*/
 void PeripheralController::changeWheelsPWM()
 {
     pwm->hardPWMChange( settings.pwm.wheelRightPin, abs(controlsPeri->mutable_wheelmotors()->rightpower()) );
     pwm->hardPWMChange( settings.pwm.wheelLeftPin, abs(controlsPeri->mutable_wheelmotors()->leftpower()) );
 }
+
+/*!
+Изменяет скважность PWM сигналов управляющих моторами манипулятора на данные из protobuf буфера.
+*/
 void PeripheralController::changeHandsPWM()
 {
     pwm->softPWMChange( settings.pwm.handRightPin, abs(controlsPeri->mutable_handmotors()->rightpower()) );
     pwm->softPWMChange( settings.pwm.handLeftPin, abs(controlsPeri->mutable_handmotors()->leftpower()) );
 }
 
+/*!
+Записывает данные в выходные регистры.
+*/
 void PeripheralController::writeRegisterData() // Read data from protobuf & write to HC595
 {
     unsigned char leftRegister = leftOutRegisterToByte();
@@ -169,6 +208,10 @@ void PeripheralController::writeRegisterData() // Read data from protobuf & writ
         registers->refreshOutputData(); // Load data (latch pulse)
     }
 }
+
+/*!
+  Считывает данные из входных регистров.
+*/
 void PeripheralController::readRegisterData() // Read data from HC165 & write to protobuf
 {
     registers->refreshInputData(); // Load data (latch pulse)
@@ -187,6 +230,14 @@ void PeripheralController::readRegisterData() // Read data from HC165 & write to
     }
 }
 
+/*!
+  Получает изменение угла поворота мотора по энкодеру.
+  \param[out] *angle Указатель на переменную хранящую угол для мотора
+  \param[in] addrA Адрес входа A энкодера на входном регистре, в адресе пин указан битом в байте.
+  \param[in] addrB Адрес входа B энкодера на входном регистре, в адресе пин указан битом в байте.
+  \param[in] byte Байт данных считанный из входного регистра
+  \param[in] previousByte Предыдущий байт данных считанный из входного регистра
+*/
 inline void PeripheralController::getChangeEncoderAngle
 (unsigned char addrA, unsigned char addrB, unsigned char const byte,  unsigned char const previousByte, int *const angle)
 {
@@ -200,6 +251,11 @@ inline void PeripheralController::getChangeEncoderAngle
     if(signalA < signalB) (*angle)--;
 }
 
+/*!
+  Преобразует данные всех энкодеров моторов в изменения углов.
+  \param[in] right Байт данных считанный из правого входного регистра
+  \param[in] left Байт данных считанный из левого входного регистра
+*/
 void PeripheralController::parseBytesHC165(unsigned char right, unsigned char left)
 {
     // Wheel left encoder: 5(A) - 0x10 & 6(B) - 0x20 bits in left register
@@ -221,6 +277,9 @@ void PeripheralController::parseBytesHC165(unsigned char right, unsigned char le
     getChangeEncoderAngle(0x80, 0x01, right, prevRightHC165, &handRightOuterAngle);
 }
 
+/*!
+  Записывает углы моторов в protobuf буффер.
+*/
 void PeripheralController::writeEncodersAngles()
 {
     // Write wheel left angle to protobuf
@@ -260,6 +319,9 @@ void PeripheralController::writeEncodersAngles()
     }
 }
 
+/*!
+  Проверяет время работы моторов по значениям из protobuf буффера, по достижению времени менее 10мс отключает конкретный мотор.
+*/
 void PeripheralController::checkMotorsTime()
 {
     int changes = 0;

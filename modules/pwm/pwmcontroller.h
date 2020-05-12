@@ -9,6 +9,11 @@
 #endif
 
 
+/*!
+    \brief Класс управления PWM сигналами
+
+    Данный класс позволяет управлять PWM сигналами робота.
+*/
 class PWMController
 {
     int pwmRange = 255;

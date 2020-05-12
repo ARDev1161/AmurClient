@@ -1,11 +1,20 @@
 #include "pwmcontroller.h"
 
+/*!
+Создаёт экземпляр класса для работы с PWM.
+*/
 PWMController::PWMController()
 {
 
 }
 
 //Software PWM section: time resolution - 100uS
+
+/*!
+Создаёт программный PWM сигнал на выводе Raspberry Pi в нотации GPIO.
+\param[in] pin Вывод на котором создаётся программный PWM сигнал
+\return Возвращает 0 если при создании PWM сигнала не произошло ошибки
+*/
 int PWMController::softPWMCreate(int pin)
 {
     #if __has_include(<wiringPi.h>)
@@ -16,6 +25,11 @@ int PWMController::softPWMCreate(int pin)
     #endif
 }
 
+/*!
+Изменяет скважность на выводе программного PWM.
+\param[in] pin Вывод на котором изменяется скважность программного PWM сигнала
+\param[in] dutyCycle Скважность программного PWM сигнала
+*/
 void PWMController::softPWMChange(int pin, int dutyCycle)
 {
     #if __has_include(<wiringPi.h>)
@@ -25,6 +39,10 @@ void PWMController::softPWMChange(int pin, int dutyCycle)
     #endif
 }
 
+/*!
+Останавливает программный PWM сигнал на выводе Raspberry Pi в нотации GPIO.
+\param[in] pin Вывод на котором останавливается программный PWM сигнал
+*/
 void PWMController::softPWMStop(int pin)
 {
     #if __has_include(<wiringPi.h>)
@@ -36,6 +54,11 @@ void PWMController::softPWMStop(int pin)
 }
 
 //Hardware PWM section
+
+/*!
+Создаёт аппаратный PWM сигнал на выводе Raspberry Pi в нотации GPIO.
+\param[in] pin Вывод на котором создаётся аппаратный PWM сигнал
+*/
 void PWMController::hardPWMCreate(int pin)
 {
     #if __has_include(<wiringPi.h>)
@@ -45,6 +68,11 @@ void PWMController::hardPWMCreate(int pin)
     #endif
 }
 
+/*!
+Изменяет скважность на выводе аппаратного PWM.
+\param[in] pin Вывод на котором изменяется скважность аппаратного PWM сигнала
+\param[in] dutyCycle Скважность аппаратного PWM сигнала
+*/
 void PWMController::hardPWMChange(int pin, int dutyCycle)
 {
     #if __has_include(<wiringPi.h>)
@@ -54,6 +82,10 @@ void PWMController::hardPWMChange(int pin, int dutyCycle)
     #endif
 }
 
+/*!
+Останавливает аппаратный PWM сигнал на выводе Raspberry Pi в нотации GPIO.
+\param[in] pin Вывод на котором останавливается аппаратный PWM сигнал
+*/
 void PWMController::hardPWMStop(int pin)
 {
     #if __has_include(<wiringPi.h>)

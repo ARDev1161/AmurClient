@@ -1,11 +1,18 @@
 #include "tcpserver.h"
 
+/*!
+  Создаёт экземпляр класса сетевого сервера с протоколом TCP.
+  \param[in] port Порт сервера
+*/
 TCPServer::TCPServer(unsigned int port) : stopSock(false) {
     inited = false;
     init(port);
     inited = true;
 }
 
+/*!
+  Создаёт экземпляр класса сетевого сервера с протоколом TCP.
+*/
 TCPServer::TCPServer() {
     listeningPort = 0;
 }
@@ -14,7 +21,11 @@ TCPServer::~TCPServer() {
     stop();
 }
 
-int TCPServer::init(unsigned int port) {
+/*!
+  Инициирует работу сервера.
+  \param[in] port Порт сервера
+*/
+void TCPServer::init(unsigned int port) {
     listeningPort = port;
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     int yes = 1;
@@ -29,14 +40,22 @@ int TCPServer::init(unsigned int port) {
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
     servaddr.sin_port = htons(port);
     started = false;
-    return 0;
 }
 
+/*!
+  Вывод в консоль сообщения об ошибке.
+  \param[in] &msg Ссылка на выводимое сообщение
+*/
 inline void TCPServer::serverError(std::string const& msg)
 {
     std::cerr << msg << errno << "  " << strerror(errno) << std::endl;
 }
 
+/*!
+  Включение у сокета функции KEEPALIVE.
+  \param[in] sock Установленный сокет
+  \return Результат включения KEEPALIVE, -1 если не удалось
+*/
 int TCPServer::enable_keepalive(int sock) {
     int yes = 1;
 
@@ -69,6 +88,10 @@ int TCPServer::enable_keepalive(int sock) {
     return 0;
 }
 
+/*!
+  Принимает запрос на установление соединения.
+  \return Возвращает экземпляр сетевого клиента, связанный с принятым соединением
+*/
 TCPClient TCPServer::accept() {
     if(started) {
         int newsockfd = ::accept(sockfd, (struct sockaddr*) &cliaddr, &clilen);
@@ -81,6 +104,10 @@ TCPClient TCPServer::accept() {
     else return TCPClient();
 }
 
+/*!
+  Запуск сервера.
+  \return Результат запуска сервера, 0 если удалось
+*/
 int TCPServer::start() {
     if(listeningPort == 0) {
          serverError("ERROR No port defined to listen to");
@@ -116,6 +143,10 @@ int TCPServer::runBlocking(std::function<void(TCPServer* sock)> fn) {
     return 0;
 }
 
+/*!
+  Остановка сервера.
+  \return Результат остановки сервера, 0 если удалось
+*/
 int TCPServer::stop() {
     stopSock = true;
     int res = close(sockfd);
@@ -123,5 +154,5 @@ int TCPServer::stop() {
     if(res < 0)
         serverError("Error: ");
 
-    return 0;
+    return res;
 }
