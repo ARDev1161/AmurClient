@@ -20,8 +20,8 @@ class NetworkController
     AmurSensors *sensorsPeri;
     AmurControls *controlsPeri;
 
-    std::string *serializedControls;
-    std::string serializedSensors;
+    std::string serializedControls;
+    std::string *serializedSensors;
 
     TCPClient *client;
 public:

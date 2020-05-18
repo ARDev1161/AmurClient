@@ -11,7 +11,7 @@ NetworkController::NetworkController(AmurControls *controls, AmurSensors *sensor
     serverHost(host), serverPort(port),
     sensorsPeri(sensors), controlsPeri(controls)
 {
-    serializedControls = new std::string();
+    serializedSensors = new std::string();
     client = new TCPClient(serverHost, serverPort);
 }
 
@@ -30,7 +30,7 @@ NetworkController::~NetworkController()
 {
     disconnect();
 
-    delete serializedControls;
+    delete serializedSensors;
     delete client;
 }
 
@@ -81,9 +81,12 @@ bool NetworkController::checkAlive()
 */
 void NetworkController::sendBufferAsString()
 {
-    controlsPeri->SerializeToString(serializedControls);
+    sensorsPeri->SerializeToString(serializedSensors);
 
-    client->write(*serializedControls);
+    if((*serializedSensors)!=""){
+        *serializedSensors += '\0'; // Need for ending message
+        client->write(*serializedSensors);
+    }
 }
 
 /*!
@@ -91,7 +94,7 @@ void NetworkController::sendBufferAsString()
 */
 void NetworkController::recvBufferAsString()
 {
-    sensorsPeri->ParseFromString( client->read() );
+    controlsPeri->ParseFromString( client->read() );
 }
 
 /*!

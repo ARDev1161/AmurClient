@@ -2,35 +2,35 @@ syntax = "proto3";
 
 message AmurControls{
  message CameraServos{
-     int32 xAngle = 1;
-     int32 yAngle = 2;
+     int32 xAngle = 1; // -90 to 90, from left to right
+     int32 yAngle = 2; // -90 to 90, from up to down
  }
 
  message WheelMotors{
-     int32 leftPower = 1; // -255 to 255
-     uint32 leftTime = 2; // 0 to 10000
-     int32 rightPower = 3; // -255 to 255
-     uint32 rightTime = 4; // 0 to 10000
+     int32 leftPower = 1; // -255 to 255, dutycycle
+     uint32 leftTime = 2; // 0 to 10000 in milliseconds
+     int32 rightPower = 3; // -255 to 255, dutycycle
+     uint32 rightTime = 4; // 0 to 10000 in milliseconds
  }
 
  message HandMotors{
-     int32 leftPower = 1; // -255 to 255
-     uint32 leftTime = 2; // 0 to 10000
-     int32 rightPower = 3; // -255 to 255
-     uint32 rightTime = 4; // 0 to 10000
+     int32 leftPower = 1; // -255 to 255, dutycycle
+     uint32 leftTime = 2; // 0 to 10000 in milliseconds
+     int32 rightPower = 3; // -255 to 255, dutycycle
+     uint32 rightTime = 4; // 0 to 10000 in milliseconds
 
-     bool leftRelay = 5;
-     bool rightRelay = 6;
+     bool leftRelay = 5; // Left side relay for hand
+     bool rightRelay = 6; // Right side relay for hand
  }
 
  message Light{
-     int32 ledLeftPower = 1; // 0 to 255
-     int32 ledRightPower = 2; // 0 to 255
+     uint32 ledLeftPower = 1; // 0 to 255, dutycycle
+     uint32 ledRightPower = 2; // 0 to 255, dutycycle
  }
 
  message System{
-     bool haltFlag = 1;
-     bool restartFlag = 2;
+     bool haltFlag = 1; // Flag for shutdown
+     bool restartFlag = 2; // Flag for reboot
      string timeOnAmur = 3;
  }
 
@@ -39,7 +39,6 @@ message AmurControls{
    HandMotors handMotors = 3;
    Light light = 4;
    System system = 5;
-
 }
 
 

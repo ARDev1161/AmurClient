@@ -22,14 +22,14 @@ message AmurSensors{
 
    message WheelEncoders{
         int32 leftAngle = 1;
-        int32 rightAngle = 2;
+	int32 rightAngle = 2;
    }
 
    message HandEncoders{
         int32 leftInternalAngle = 1;
-        int32 rightInternalAngle = 2;
-        int32 leftOuterAngle = 3;
-        int32 rightOuterAngle = 4;
+	int32 rightInternalAngle = 2;
+	int32 leftOuterAngle = 3;
+	int32 rightOuterAngle = 4;
    }
 
    message Temperature{
@@ -40,12 +40,12 @@ message AmurSensors{
 
    message WheelCurrent{
         uint32 leftCurrent = 1;
-        uint32 rightCurrent = 2;
+	uint32 rightCurrent = 2;
    }
 
    message HandCurrent{
         uint32 leftCurrent = 1;
-        uint32 rightCurrent = 2;
+	uint32 rightCurrent = 2;
    }
 
    message Misc{
@@ -62,5 +62,4 @@ message AmurSensors{
    HandEncoders handEncoders = 5;
    Temperature temperature = 6;
    Misc misc = 7;
-
 }

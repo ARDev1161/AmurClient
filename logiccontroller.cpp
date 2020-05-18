@@ -28,7 +28,7 @@ LogicController::~LogicController()
 void LogicController::initTimer()
 {
     logicTimer.registerEventRunnable(*this);
-    logicTimer.start(100000000); // 10 milliseconds
+    logicTimer.start(10000000); // 10 milliseconds
 
     std::this_thread::sleep_for(std::chrono::milliseconds(100));// Wait 0.1 second
 }
@@ -43,22 +43,22 @@ void LogicController::run()
         std::string controlsSerialized;
         controls->SerializeToString(&controlsSerialized);
 
+//        sensors->mutable_temperature()->set_tempcpu(42);
+//        sensors->mutable_temperature()->set_temppressure(20);
+
         if(controlsSerialized != controlsPrev){
             sendBuffer();
             controlsPrev = controlsSerialized;
         }
 
-        sendBuffer();
-
-
-        //recvBuffer();
+        recvBuffer();
 
         peripheryUpdate();
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));// Wait 100 milliseconds
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));// Wait 10 milliseconds
     }
     else{
         connectToServer();
-        std::this_thread::sleep_for(std::chrono::seconds(1));// Wait connecting
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));// Wait connecting
     }
 }
 

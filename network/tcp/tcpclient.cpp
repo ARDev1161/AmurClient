@@ -197,9 +197,6 @@ inline void TCPClient::disconnect() {
 */
 int TCPClient::write(std::string const& dataString) {
 
-    std::string test = "zalupa ne peredavayemaya\n";
-    for (int i=0;i<150;i++)
-        test+="zalupa ne peredavayemaya\n";
     if(!connected)
         return 1;
 
@@ -207,7 +204,7 @@ int TCPClient::write(std::string const& dataString) {
 
     int sentBytes = 0;
 
-    for(size_t i = 0; i < test.length(); i += sentBytes) {
+    for(size_t i = 0; i < dataString.length(); i += sentBytes) {
 
         FD_ZERO(&writefds);
         FD_SET(sockfd, &writefds);
@@ -219,10 +216,11 @@ int TCPClient::write(std::string const& dataString) {
             sentBytes = 0;
         else if(rv > 0 && FD_ISSET(sockfd, &writefds)) {
 
-            sentBytes = ::send(sockfd, test.substr(i, test.length() - i).c_str(), test.length() - i, MSG_NOSIGNAL);
+            sentBytes = ::send(sockfd, (dataString.substr(i, dataString.length() - i)).c_str(), dataString.length() - i, MSG_NOSIGNAL);
 
             if(sentBytes == -1) {
                 clientError("Error sending IDs: ");
+                disconnect();
                 return 1;
             }
         }
