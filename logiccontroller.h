@@ -11,30 +11,36 @@
 //Network headers
 #include "network/networkcontroller.h"
 
+#include "timer/TimerCallback.h"
 
-#include "timer/cppTimer/CppTimerCallback.h"
 
 /*!
     \brief Класс логики управления роботом
 
     Данный класс реализует логику управления роботом.
 */
-class LogicController: public CppTimerCallback::Runnable
+class LogicController: public TimerCallback::Runnable
 {
+
     // Server settings
-    std::string host = "10.11.11.11";
+//    std::string host = "11.11.11.11";
+    std::string host = "127.0.0.1";
     int port = 7777;
 
     AmurSensors *sensors;
     AmurControls *controls;
 
+    std::string sensorsPrev;
+    std::string controlsPrev;
+
     PeripheralController *periphery;
     NetworkController *network;
 
-    CppTimerCallback logicTimer;
+    TimerCallback logicTimer;
 
     void initTimer();
     void run();
+
 public:
     LogicController();
     ~LogicController();

@@ -5,9 +5,7 @@
   \param[in] port Порт сервера
 */
 TCPServer::TCPServer(unsigned int port) : stopSock(false) {
-    inited = false;
-    init(port);
-    inited = true;
+    inited = init(port);
 }
 
 /*!
@@ -25,7 +23,7 @@ TCPServer::~TCPServer() {
   Инициирует работу сервера.
   \param[in] port Порт сервера
 */
-void TCPServer::init(unsigned int port) {
+bool TCPServer::init(unsigned int port, bool keepAlive) {
     listeningPort = port;
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     int yes = 1;
@@ -33,13 +31,24 @@ void TCPServer::init(unsigned int port) {
     if(setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes)) == -1)
         serverError("Error: ");
 
-    enable_keepalive(sockfd);
+    if(keepAlive)
+        enable_keepalive(sockfd);
+    else{
+        struct timeval tv;
+        tv.tv_sec = timeout;
+        tv.tv_usec = 0; //Not init'ing this can cause strange errors
+
+        setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, (char*)&tv, sizeof(struct timeval)); // Set time interval for recieve
+        setsockopt(sockfd, SOL_SOCKET, SO_SNDTIMEO, (char*)&tv, sizeof(struct timeval)); // Set time interval for sending
+    }
 
     bzero(&servaddr, sizeof(servaddr));
     servaddr.sin_family = AF_INET;
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
     servaddr.sin_port = htons(port);
     started = false;
+
+    return true;
 }
 
 /*!

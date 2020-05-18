@@ -10,7 +10,5 @@ int main(int argc, char *argv[])
 
     LogicController amurLogic;
 
-   // amurLogic.connectToServer();
-
     return 0;
 }

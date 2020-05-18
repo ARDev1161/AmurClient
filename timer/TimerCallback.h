@@ -1,7 +1,7 @@
 #ifndef __CPP_TIMER_CALLBACK
 #define __CPP_TIMER_CALLBACK
 #include <stdio.h>
-#include "CppTimer.h"
+#include "Timer.h"
 #include <unistd.h>
 
 
@@ -10,7 +10,7 @@
 
   Timer callback wrapper for CppTimer class.
 */
-class CppTimerCallback : public CppTimer {
+class TimerCallback : public Timer {
 
 public:
     /*!

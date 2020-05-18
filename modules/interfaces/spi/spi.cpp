@@ -14,8 +14,6 @@ SPI::SPI()
 */
 int SPI::init(){
 
-    std::cout << "SPI initializing" << std::endl ;
-
 #if __has_include(<wiringPiSPI.h>)
 
 
@@ -69,7 +67,9 @@ int SPI::init(){
    // clear display again
    buffer[0] = 0x76;
    wiringPiSPIDataRW(CHANNEL, buffer, 1);
-
+#else
+    std::cout << "SPI initializing" << std::endl ;
+    return 0;
 #endif
 
 }

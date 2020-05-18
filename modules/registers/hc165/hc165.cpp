@@ -72,8 +72,6 @@ void HC165::loadRegister()
     digitalWrite( registerPins.loadPin , 0);
 
     enableClock();
-#else
-    std::cout << "HC165 load" << std::endl;
 #endif
 }
 
@@ -92,8 +90,6 @@ unsigned char HC165::readByte()
         byte |= (digitalRead( registerPins.dataPin ) << (7 - i));
         pulse( registerPins.clkPin );
     }
-#else
-    std::cout << "HC165 read - " << byte << std::endl;
 #endif
 
     return(byte);

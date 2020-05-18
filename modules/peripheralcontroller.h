@@ -9,7 +9,7 @@
     #include <wiringPi.h>
 #endif
 
-#include "timer/cppTimer/CppTimerCallback.h"
+#include "timer/TimerCallback.h"
 
 //Protobuf headers
 #include "protobuf/controls.pb.h"
@@ -26,7 +26,7 @@
 
     Данный класс позволяет управлять периферическим оборудование робота.
 */
-class PeripheralController: public CppTimerCallback::Runnable
+class PeripheralController: public TimerCallback::Runnable
 {
     // Fields
 
@@ -35,7 +35,7 @@ class PeripheralController: public CppTimerCallback::Runnable
     RegisterController *registers;
     PWMController *pwm;
 
-    CppTimerCallback peripheralTimer;
+    TimerCallback peripheralTimer;
 
     // Buffers
     AmurSensors *sensorsPeri;
@@ -56,6 +56,13 @@ class PeripheralController: public CppTimerCallback::Runnable
 
     unsigned char prevLeftHC595 = 0x00;
     unsigned char prevRightHC595 = 0x00;
+
+    // Previous state of PWM
+    int prevLeftWheelPWM = 0;
+    int prevRightWheelPWM = 0;
+
+    int prevLeftHandPWM = 0;
+    int prevRightHandPWM = 0;
 
     // Functions
     void initPWM();

@@ -52,8 +52,10 @@ bool NetworkController::connect(std::string host, unsigned int port)
 bool  NetworkController::connect()
 {
     bool res = false;
+
     if((serverPort > 0) && (serverHost !=""))
         res = client->connect(serverHost, serverPort);
+
     return res;
 }
 

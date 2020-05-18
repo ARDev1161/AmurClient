@@ -1,18 +1,9 @@
-#include "CppTimer.h"
-
-/**
- * GNU GENERAL PUBLIC LICENSE
- * Version 3, 29 June 2007
- *
- * (C) 2020, Bernd Porr <mail@bernporr.me.uk>
- * 
- * This is inspired by the timer_create man page.
- **/
+#include "Timer.h"
 
 /*!
    Creates an instance of the timer and connects the signal handler to the timer.
 */
-CppTimer::CppTimer() {
+Timer::Timer() {
 	// We create a static handler catches the signal SIG
     sigAction.sa_flags = SA_SIGINFO;
     sigAction.sa_sigaction = handler;
@@ -35,7 +26,7 @@ CppTimer::CppTimer() {
   Starts the timer. The timer fires first after the specified time in nanoseconds and then at that interval in PERIODIC mode.
   In ONESHOT mode the timer fires once after the specified time in nanoseconds.
 */
-void CppTimer::start(long nanosecs, cppTimerType_t type) {
+void Timer::start(long nanosecs, TimerType type) {
 	switch(type){
 		case(PERIODIC):
 			//starts after specified period of nanoseconds
@@ -59,7 +50,7 @@ void CppTimer::start(long nanosecs, cppTimerType_t type) {
 /*!
   Stops the timer by disarming it. It can be re-started with start().
 */
-void CppTimer::stop() {
+void Timer::stop() {
 	// disarm
 	struct itimerspec itsnew;
 	itsnew.it_value.tv_sec = 0;
@@ -72,7 +63,7 @@ void CppTimer::stop() {
 /*!
   Destructor disarms the timer, deletes it and disconnect the signal handler.
 */
-CppTimer::~CppTimer() {
+Timer::~Timer() {
 	stop();
 	// delete the timer
 	timer_delete(timerid);

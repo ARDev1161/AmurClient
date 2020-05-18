@@ -14,11 +14,12 @@ UART::UART()
 */
 int UART::init()
 {
+
+#if __has_include(<wiringPi.h>)
     int fd ;
     int count ;
     unsigned int nextTime ;
 
-#if __has_include(<wiringPi.h>)
     if ((fd = serialOpen ("/dev/ttyAMA0", 115200)) < 0)
     {
       fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
@@ -51,6 +52,9 @@ int UART::init()
         fflush (stdout) ;
       }
     }
+#else
+    std::cout << "UART initializing" << std::endl ;
+    return 0;
 #endif
 
 }

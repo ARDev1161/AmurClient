@@ -24,11 +24,15 @@ SOURCES += \
     modules/registers/registercontroller.cpp \
     protobuf/controls.pb.cc \
     protobuf/sensors.pb.cc \
-    timer/cppTimer/CppTimer.cpp
+    timer/Timer.cpp
 
 DISTFILES += \
+    CMakeLists.txt \
     Doxyfile \
     Makefile \
+    modules/CMakeLists.txt \
+    modules/registers/CMakeLists.txt \
+    network/CMakeLists.txt \
     protobuf/controls.proto \
     protobuf/rebuild.sh \
     README.md \
@@ -51,5 +55,5 @@ HEADERS += \
     modules/registers/registercontroller.h \
     protobuf/controls.pb.h \
     protobuf/sensors.pb.h \
-    timer/cppTimer/CppTimer.h \
-    timer/cppTimer/CppTimerCallback.h
+    timer/Timer.h \
+    timer/TimerCallback.h

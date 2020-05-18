@@ -9,6 +9,7 @@ TCPClient::TCPClient(std::string host, unsigned int port):
     sockfd(-1),
     connected(false)
 {
+    setTimeval();
     connect(host, port);
 }
 
@@ -19,20 +20,29 @@ TCPClient::TCPClient(std::string host, unsigned int port):
 TCPClient::TCPClient(int sock):
     sockfd(sock)
 {
+    setTimeval();
     connected = true;
 }
 
 /*!
   Создаёт экземпляр класса сетевого клиента с протоколом TCP.
 */
-TCPClient::TCPClient()
+TCPClient::TCPClient():
+    sockfd(-1),
+    connected(false)
 {
-
+    setTimeval();
 }
 
 TCPClient::~TCPClient()
 {
     disconnect();
+}
+
+void TCPClient::setTimeval()
+{
+    tv.tv_sec = timeout;
+    tv.tv_usec = 0;//Not init'ing this can cause strange errors
 }
 
 /*!
@@ -48,12 +58,16 @@ bool TCPClient::checkAlive()
   Инициирует подключение к серверу.
   \param[in] host Адрес сервера
   \param[in] port Порт сервера
+  \param[in] keepAlive Флаг режима KeepAlive по умолчанию false
   \return Результат подключения, true если соединение установлено
 */
-bool TCPClient::connect(std::string host, unsigned int port)
+bool TCPClient::connect(std::string host, unsigned int port, bool nonBlocking, bool keepAlive)
 {
     struct sockaddr_in servAddr;
     struct hostent *server;
+
+    if(connected)
+        disconnect();
 
     std::memset(&servAddr, 0, sizeof(servAddr));
     servAddr.sin_family = AF_INET;
@@ -62,32 +76,33 @@ bool TCPClient::connect(std::string host, unsigned int port)
     memmove((char*) &servAddr.sin_addr.s_addr, (char*) server->h_addr, server->h_length);
     servAddr.sin_port = htons(port);
 
-    if(connected)
-        disconnect();
+    sockfd = socket( servAddr.sin_family , SOCK_STREAM, IPPROTO_TCP);
 
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
-
-//    struct timeval tv;
-//    tv.tv_sec = 5; //5 Secs Timeout
-//    tv.tv_usec = 0; //Not init'ing this can cause strange errors
-//    setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, (char*)&tv, sizeof(struct timeval)); // Set time interval for recieve
-
-    enable_keepalive(sockfd);
-
-    for(size_t i = 0; i < COUNT_CONNECT_TRYING; i++) //try to connect several times
-    {
-        if(::connect(sockfd, (struct sockaddr*) &servAddr, sizeof(servAddr)) < 0)
-            clientError("Error on connecting: ");
-        else {
-            connected = hasError();
-            return connected;
-        }
-
-        std::this_thread::sleep_for(std::chrono::seconds(1));// Wait 1 second
+    if(keepAlive) // If flag keepAlive is set, then enable keepAlive flags for socket
+        enable_keepalive(sockfd);
+    else{
+        setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, (char*)&tv, sizeof(struct timeval)); // Set time interval for recieve
+        setsockopt(sockfd, SOL_SOCKET, SO_SNDTIMEO, (char*)&tv, sizeof(struct timeval)); // Set time interval for sending
     }
 
-    connected = false;
-    return false;
+    if(nonBlocking){
+        int optval = 1;
+        setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(optval)); // Reuse addr if app restarted
+    }
+
+    if(::connect(sockfd, (struct sockaddr*) &servAddr, sizeof(servAddr)) < 0){//рандомно зависает в ожидании syn-ack
+        clientError("Error on connecting to " + host + " : ");
+        connected = false;
+    }
+    else {
+        connected = true;
+        std::cout << "Connected to " << host << ":" << port <<" : Success!!! " << std::endl;
+    }
+
+    if(hasError())
+        disconnect();
+
+    return connected;
 }
 
 /*!
@@ -121,6 +136,24 @@ bool TCPClient::hasError() {
 }
 
 /*!
+  Включение у сокета неблокирующего режима.
+  \param[in] sockfd Дескриптор сокета
+  \return Значение флага дескриптора. В случае ошибки, возвращается -1 и значение errno устанавливается соответствующим образом.
+*/
+int TCPClient::set_nonblock(int sockfd)
+{
+    int flags;
+#if defined(O_NONBLOCK)
+    if(-1 == (flags = fcntl(sockfd, F_GETFL, 0)))
+        flags = 0;
+    return fcntl(sockfd, F_SETFL, flags | O_NONBLOCK);
+#else
+    flags = 1;
+    return ioctl(sockfd, FIONBIO, &flags);
+#endif
+}
+
+/*!
   Включение у сокета функции KEEPALIVE.
   \param[in] sock Установленный сокет
   \return Результат включения KEEPALIVE, -1 если не удалось
@@ -150,7 +183,9 @@ int TCPClient::enable_keepalive(int sock) {
 */
 inline void TCPClient::disconnect() {
     if(connected){
+        shutdown(sockfd, SHUT_RDWR);
         close(sockfd);
+
         connected = false;
     }
 }
@@ -160,22 +195,19 @@ inline void TCPClient::disconnect() {
   \param[in] &mesg Ссылка на отправляемую строку
   \return Результат отправки строки, 0 если строка отправлена
 */
-int TCPClient::write(std::string const& mesg) {
+int TCPClient::write(std::string const& dataString) {
 
+    std::string test = "zalupa ne peredavayemaya\n";
+    for (int i=0;i<150;i++)
+        test+="zalupa ne peredavayemaya\n";
     if(!connected)
         return 1;
 
-    struct timeval tv;
-    tv.tv_sec = 10;
-    tv.tv_usec = 0;
-
     fd_set writefds;
-    FD_ZERO(&writefds);
-    FD_SET(sockfd, &writefds);
 
     int sentBytes = 0;
 
-    for(size_t i = 0; i < mesg.length(); i += sentBytes) {
+    for(size_t i = 0; i < test.length(); i += sentBytes) {
 
         FD_ZERO(&writefds);
         FD_SET(sockfd, &writefds);
@@ -186,7 +218,8 @@ int TCPClient::write(std::string const& mesg) {
         else if(rv == 0)
             sentBytes = 0;
         else if(rv > 0 && FD_ISSET(sockfd, &writefds)) {
-            sentBytes = ::write(sockfd, mesg.substr(i, mesg.length() - i).c_str(), mesg.length() - i);
+
+            sentBytes = ::send(sockfd, test.substr(i, test.length() - i).c_str(), test.length() - i, MSG_NOSIGNAL);
 
             if(sentBytes == -1) {
                 clientError("Error sending IDs: ");
@@ -207,48 +240,37 @@ std::string TCPClient::read() {
     if(!connected)
         return "";
 
-    struct timeval tv;
-    tv.tv_sec = 10;
-    tv.tv_usec = 0;
-
     fd_set readfds;
-    FD_ZERO(&readfds);
-    FD_SET(sockfd, &readfds);
 
     std::string resp = "";
     unsigned int n = 0;
 
-
     do {
         FD_ZERO(&readfds);
         FD_SET(sockfd, &readfds);
-        int rv = select(sockfd + 1, &readfds, NULL, NULL, &tv);
+        int selectResult = select(sockfd + 1, &readfds, NULL, NULL, &tv);
 
-        if(rv <= -1)
+        if(selectResult <= -1)
             clientError("Error: ");
-        else if(rv == 0)
+        else if(selectResult == 0)
             break;
-        /*!
-          Инициирует отключение от сервера.
-        */
-        else if(rv > 0 && FD_ISSET(sockfd, &readfds)) {
+        else if(selectResult > 0 && FD_ISSET(sockfd, &readfds)) {
 
-            int tn = ::read(sockfd, buffer, sizeof(buffer) - 1);//avoid signcompare warning
+            int recvResult = ::recv(sockfd, buffer, sizeof(buffer) - 1, MSG_NOSIGNAL);//avoid signcompare warning
 
-            if(tn > 0) {
-                n = tn;
+            if(recvResult > 0) {
+                n = recvResult;
                 buffer[n] = '\0';
                 std::string tResp(buffer, n);
                 resp += tResp;
             }
-            else if(tn == -1) {
+            else if(recvResult == -1) {
                 if(errno == 11) { //get the good part of the received stuff also if the connection closed during receive -> happens sometimes with short messages
                     std::string tResp(buffer);
 
                     if(tResp.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890") == std::string::npos) //but only allow valid chars
                         resp += tResp;
                 }
-                //    perror(msg);
                 else
                     clientError("Error: ");
 
@@ -259,13 +281,10 @@ std::string TCPClient::read() {
 
         }
         else
-            clientError( "ERROR: rv: " + std::to_string(rv) );
+            clientError( "Error: selectResult -> " + std::to_string(selectResult) );
 
     }
     while(n >= sizeof(buffer) - 1);
-
-    //if(resp != "")
-    //cout << "r: " << resp << endl;
 
     return resp;
 }

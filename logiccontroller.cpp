@@ -28,9 +28,9 @@ LogicController::~LogicController()
 void LogicController::initTimer()
 {
     logicTimer.registerEventRunnable(*this);
-    logicTimer.start(42000000); // 42 milliseconds
+    logicTimer.start(100000000); // 10 milliseconds
 
-    std::this_thread::sleep_for(std::chrono::seconds(1));// Wait 1 second
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));// Wait 0.1 second
 }
 
 /*!
@@ -39,13 +39,26 @@ void LogicController::initTimer()
 void LogicController::run()
 {
     if(network->checkAlive()){
+
+        std::string controlsSerialized;
+        controls->SerializeToString(&controlsSerialized);
+
+        if(controlsSerialized != controlsPrev){
+            sendBuffer();
+            controlsPrev = controlsSerialized;
+        }
+
         sendBuffer();
-        recvBuffer();
+
+
+        //recvBuffer();
 
         peripheryUpdate();
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));// Wait 100 milliseconds
     }
     else{
         connectToServer();
+        std::this_thread::sleep_for(std::chrono::seconds(1));// Wait connecting
     }
 }
 

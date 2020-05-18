@@ -179,8 +179,11 @@ unsigned char PeripheralController::rightOutRegisterToByte()
 */
 void PeripheralController::changeWheelsPWM()
 {
-    pwm->hardPWMChange( settings.pwm.wheelRightPin, abs(controlsPeri->mutable_wheelmotors()->rightpower()) );
-    pwm->hardPWMChange( settings.pwm.wheelLeftPin, abs(controlsPeri->mutable_wheelmotors()->leftpower()) );
+    if(prevRightWheelPWM != abs(controlsPeri->mutable_wheelmotors()->rightpower()))
+        pwm->hardPWMChange( settings.pwm.wheelRightPin, abs(controlsPeri->mutable_wheelmotors()->rightpower()) );
+
+    if(prevLeftWheelPWM != abs(controlsPeri->mutable_wheelmotors()->leftpower()))
+        pwm->hardPWMChange( settings.pwm.wheelLeftPin, abs(controlsPeri->mutable_wheelmotors()->leftpower()) );
 }
 
 /*!
@@ -188,8 +191,11 @@ void PeripheralController::changeWheelsPWM()
 */
 void PeripheralController::changeHandsPWM()
 {
-    pwm->softPWMChange( settings.pwm.handRightPin, abs(controlsPeri->mutable_handmotors()->rightpower()) );
-    pwm->softPWMChange( settings.pwm.handLeftPin, abs(controlsPeri->mutable_handmotors()->leftpower()) );
+    if(prevRightHandPWM != abs(controlsPeri->mutable_handmotors()->rightpower()))
+        pwm->softPWMChange( settings.pwm.handRightPin, abs(controlsPeri->mutable_handmotors()->rightpower()) );
+
+    if(prevLeftHandPWM != abs(controlsPeri->mutable_handmotors()->leftpower()))
+        pwm->softPWMChange( settings.pwm.handLeftPin, abs(controlsPeri->mutable_handmotors()->leftpower()) );
 }
 
 /*!

@@ -1,15 +1,6 @@
 #ifndef __CPP_TIMER_H_
 #define __CPP_TIMER_H_
 
-/**
- * GNU GENERAL PUBLIC LICENSE
- * Version 3, 29 June 2007
- *
- * (C) 2020, Bernd Porr <mail@bernporr.me.uk>
- * 
- * This is inspired by the timer_create man page.
- **/
-
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -21,23 +12,23 @@
 
 
 /// Enumeration of CppTimer types
-typedef enum cppTimerType_t{
+typedef enum TimerType{
     PERIODIC, ///< Periodic timer type
     ONESHOT   ///< Oneshot timer type
-}cppTimerType_t;
+}TimerType;
 
 /*!
   \brief Timer class, wrapper around the POSIX per-process timer.
 
   Timer class which repeatedly fires. It's wrapper around the POSIX per-process timer.
 */
-class CppTimer {
+class Timer {
 
 public:
-	CppTimer();
-    virtual ~CppTimer();
+	Timer();
+    virtual ~Timer();
 
-	virtual void start(long nanosecs, cppTimerType_t type = PERIODIC); 
+    virtual void start(long nanosecs, TimerType type = PERIODIC);
     virtual void stop();
 
 protected:
@@ -54,7 +45,7 @@ private:
     struct itimerspec iTimerSpec;
 		
     static void handler( [[maybe_unused]] int sig, siginfo_t *si, [[maybe_unused]] void *uc ) {
-		(reinterpret_cast<CppTimer *> (si->si_value.sival_ptr))->timerEvent();
+        (reinterpret_cast<Timer *> (si->si_value.sival_ptr))->timerEvent();
 	}
 };
 

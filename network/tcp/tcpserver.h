@@ -29,15 +29,19 @@ class TCPServer
 {
     int enable_keepalive(int sock);
 
+    int timeout = 7; //timeout in seconds
+
     int sockfd;//start server to listen for clients to send them ids
     socklen_t clilen;
     struct sockaddr_in servaddr, cliaddr;
     static const unsigned int buffSize = 1000;
     char mesg[buffSize];
 
-    unsigned int listeningPort;
-    bool started;
+    unsigned int listeningPort = 7777;
+    bool started = false;
+    bool inited = false;
     bool stopSock;
+
 
     inline void serverError(std::string const& msg);
 public:
@@ -47,9 +51,7 @@ public:
 
     TCPClient accept();
 
-    bool inited;
-
-    void init(unsigned int port);//!<Necessary only if not already done by using constructor with port
+    bool init(unsigned int port, bool keepAlive=false);//!<Necessary only if not already done by using constructor with port
     int start();
     int run(std::function<void(TCPServer* sock)> fn);
     int runBlocking(std::function<void(TCPServer* sock)> fn);
