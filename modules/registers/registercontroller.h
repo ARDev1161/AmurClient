@@ -4,7 +4,7 @@
 #include "hc595/hc595.h"
 #include "hc165/hc165.h"
 
-#include "modules/peripheralsettings.h"
+#include "registerssettings.h"
 
 /*!
     \brief Класс контроллера регистров

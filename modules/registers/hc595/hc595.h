@@ -7,7 +7,7 @@
 
 #include <iostream> // for debugging
 
-#include "modules/peripheralsettings.h"
+#include "../../peripheralsettings.h"
 
 /*!
     \brief Класс работы с регистром 74HC595

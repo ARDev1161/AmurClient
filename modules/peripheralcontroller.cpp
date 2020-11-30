@@ -5,7 +5,7 @@
 \param[in] *controls Указатель на protobuf буффер AmurControls
 \param[in] *sensors Указатель на protobuf буффер AmurSensors
 */
-PeripheralController::PeripheralController(AmurControls *controls, AmurSensors *sensors):
+PeripheralController::PeripheralController(AMUR::AmurControls *controls, AMUR::AmurSensors *sensors):
      sensorsPeri(sensors), controlsPeri(controls)
 {
     wiringPiInit();

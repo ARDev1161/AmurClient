@@ -1,45 +1,34 @@
 #ifndef NETWORKCONTROLLER_H
 #define NETWORKCONTROLLER_H
 
-#include "protobuf/controls.pb.h"
-#include "protobuf/sensors.pb.h"
+#include <iostream>
+#include <thread>
+#include <sstream>
 
-#include "tcp/tcpclient.h"
-//#include "tcp/tcpserver.h" //Not used, only client mode
+#include "client.h"
+#include "server.h"
 
-/*!
-    \brief Класс контроллера работы с сетью
+//Protobuf headers
+#include "protobuf/amur.pb.h"
 
-    Данный класс инкапсулирует логику работы с сетью.
-*/
 class NetworkController
 {
-    std::string serverHost = "";
-    unsigned int serverPort = 0;
+    AMUR::AmurSensors *sensors;
+    AMUR::AmurControls *controls;
 
-    AmurSensors *sensorsPeri;
-    AmurControls *controlsPeri;
+    grpc::Status clientStatus;
 
-    std::string serializedControls;
-    std::string *serializedSensors;
+    grpc::ServerBuilder builder;
+    grpcServer service;
 
-    TCPClient *client;
 public:
-    NetworkController(AmurControls *controls, AmurSensors *sensors, std::string serverHost, unsigned int serverPort);
-    NetworkController(AmurControls *controls, AmurSensors *sensors);
-    ~NetworkController();
+    NetworkController(AMUR::AmurControls* const controls, AMUR::AmurSensors* const sensors);
 
-    bool connect(std::string host, unsigned int port);
-    bool connect();
-    void disconnect();
+    int runClient(std::string server_address); // Server address for client
+    int runClient(std::string client_ip, int port); // Server address for client
 
-    bool checkAlive();
-
-    void sendBufferAsString();
-    void recvBufferAsString();    
-
-    void setHost(const std::string &value);
-    void setPort(unsigned int value);
+    int runServer(std::string address_mask); // Address mask & port for server
+    int runServer(std::string server_ip, int port); // Address mask & port for server
 };
 
 #endif // NETWORKCONTROLLER_H

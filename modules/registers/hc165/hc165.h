@@ -7,7 +7,7 @@
     #include <iostream>
 #endif
 
-#include "modules/peripheralsettings.h"
+#include "../../peripheralsettings.h"
 
 
 #define PULSE_WIDTH_USEC   1 // задержка импульса при считывании данных (каждый бит)

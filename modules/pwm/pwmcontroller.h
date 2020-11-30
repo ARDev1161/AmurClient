@@ -1,6 +1,8 @@
 #ifndef PWMCONTROLLER_H
 #define PWMCONTROLLER_H
 
+#include "pwmsettings.h"
+
 #if __has_include(<wiringPi.h>)
     #include <wiringPi.h>
     #include <softPwm.h>

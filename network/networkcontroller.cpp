@@ -1,116 +1,83 @@
 #include "networkcontroller.h"
 
-/*!
-  Создаёт экземпляр класса для работы с сетью.
-  \param[in] *controls Указатель на protobuf буффер AmurControls
-  \param[in] *sensors Указатель на protobuf буффер AmurSensors
-  \param[in] host Адрес сервера
-  \param[in] port Порт сервера
-*/
-NetworkController::NetworkController(AmurControls *controls, AmurSensors *sensors, std::string host, unsigned int port):
-    serverHost(host), serverPort(port),
-    sensorsPeri(sensors), controlsPeri(controls)
+
+NetworkController::NetworkController(AMUR::AmurControls* const controls, AMUR::AmurSensors* const sensors)
 {
-    serializedSensors = new std::string();
-    client = new TCPClient(serverHost, serverPort);
+    this->controls = controls;
+    this->sensors = sensors;
 }
 
-/*!
-  Создаёт экземпляр класса для работы с сетью.
-  \param[in] *controls Указатель на protobuf буффер AmurControls
-  \param[in] *sensors Указатель на protobuf буффер AmurSensors
-*/
-NetworkController::NetworkController(AmurControls *controls, AmurSensors *sensors):
-    sensorsPeri(sensors), controlsPeri(controls)
+int NetworkController::runClient(std::string server_address)
 {
-    client = new TCPClient();
+    // Instantiate the client. It requires a channel, out of which the actual RPCs
+    // are created. This channel models a connection to an endpoint specified by
+    // the argument "--target=" which is the only expected argument.
+    // We indicate that the channel isn't authenticated (use of
+    // InsecureChannelCredentials()).
+
+
+    std::thread thr([&]()
+     {
+        grpcClient maintenance(grpc::CreateChannel(
+            server_address, grpc::InsecureChannelCredentials()), controls, sensors);
+
+        clientStatus = maintenance.DataExchange();
+        std::cout << "State is OK?: " << clientStatus.ok() << std::endl;
+        std::cout << "Controls: " << controls->DebugString() << std::endl;
+
+        clientStatus = maintenance.DataStreamExchange();
+        std::cout << "State is OK?: " << clientStatus.ok() << std::endl;
+        std::cout << "Stream controls: " << controls->DebugString() << std::endl;
+     }
+    );
+    thr.detach();
+
+    return 0;
 }
 
-NetworkController::~NetworkController()
+int NetworkController::runClient(std::string client_ip, int port)
 {
-    disconnect();
-
-    delete serializedSensors;
-    delete client;
+    std::stringstream ss;
+    ss << port;
+    return runClient(client_ip + ":" + ss.str());
 }
 
-/*!
-  Инициирует подключение к серверу.
-  \param[in] host Адрес сервера
-  \param[in] port Порт сервера
-  \return Результат подключения, true если соединение установлено
-*/
-bool NetworkController::connect(std::string host, unsigned int port)
+int NetworkController::runServer(std::string address_mask)
 {
-    return client->connect(host, port);
+    std::thread thr([&]()
+     {
+      grpc::EnableDefaultHealthCheckService(true);
+      grpc::reflection::InitProtoReflectionServerBuilderPlugin();
+
+      // Send protos pointers to server
+      service.setProtosPointers(controls, sensors);
+
+      // Listen on the given address without any authentication mechanism.
+      builder.AddListeningPort(address_mask, grpc::InsecureServerCredentials());
+
+      // Register "service" as the instance through which we'll communicate with
+      // clients. In this case it corresponds to an *synchronous* service.
+      builder.RegisterService(&service);
+
+      // Finally assemble the server.
+      std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
+      std::cout << "Server listening on " << address_mask << std::endl;
+
+      // Wait for the server to shutdown. Note that some other thread must be
+      // responsible for shutting down the server for this call to ever return.
+      server->Wait();
+
+      std::cout << "Server stopped " << std::endl;
+     }
+    );
+    thr.detach();
+
+    return 0;
 }
 
-/*!
-  Инициирует подключение к серверу.
-  \return Результат подключения, true если соединение установлено
-*/
-bool  NetworkController::connect()
+int NetworkController::runServer(std::string server_ip, int port)
 {
-    bool res = false;
-
-    if((serverPort > 0) && (serverHost !=""))
-        res = client->connect(serverHost, serverPort);
-
-    return res;
-}
-
-/*!
-  Инициирует отключение от сервера.
-*/
-void NetworkController::disconnect()
-{
-    client->disconnect();
-}
-
-/*!
-  Проверяет активность подключения к серверу.
-  \return Результат подключения, true если соединение установлено
-*/
-bool NetworkController::checkAlive()
-{
-    return client->checkAlive();
-}
-
-/*!
-  Отправляет сериализованный буфер сенсоров на сервер.
-*/
-void NetworkController::sendBufferAsString()
-{
-    sensorsPeri->SerializeToString(serializedSensors);
-
-    if((*serializedSensors)!=""){
-        *serializedSensors += '\0'; // Need for ending message
-        client->write(*serializedSensors);
-    }
-}
-
-/*!
-  Принимает сериализованный буфер управления с сервера.
-*/
-void NetworkController::recvBufferAsString()
-{
-    controlsPeri->ParseFromString( client->read() );
-}
-
-/*!
-  Устанавливает адрес сервера в переменную класса.
-  \param[in] &value Ссылка на строку с адресом сервера
-*/
-void NetworkController::setHost(const std::string &value)
-{
-    serverHost = value;
-}
-
-/*!
-  Устанавливает порт сервера в переменную класса.
-  \param[in] value Порт сервера для соединения
-*/
-void NetworkController::setPort(unsigned int value)
-{
-    serverPort = value;
+    std::stringstream ss;
+    ss << port;
+    return runServer(server_ip + ":" + ss.str());
 }

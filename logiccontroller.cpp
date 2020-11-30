@@ -5,10 +5,10 @@
 */
 LogicController::LogicController()
 {
-    controls = new AmurControls();
-    sensors = new AmurSensors();
+    controls = new AMUR::AmurControls();
+    sensors = new AMUR::AmurSensors();
     periphery = new PeripheralController(controls, sensors);
-    network = new NetworkController(controls, sensors, host, port);
+    network = new NetworkController(controls, sensors);
 
     initTimer();
 }
@@ -38,28 +38,11 @@ void LogicController::initTimer()
 */
 void LogicController::run()
 {
-    if(network->checkAlive()){
-
-        std::string controlsSerialized;
-        controls->SerializeToString(&controlsSerialized);
-
-//        sensors->mutable_temperature()->set_tempcpu(42);
-//        sensors->mutable_temperature()->set_temppressure(20);
-
-        if(controlsSerialized != controlsPrev){
-            sendBuffer();
-            controlsPrev = controlsSerialized;
-        }
-
-        recvBuffer();
-
-        peripheryUpdate();
+    if( controls->DebugString() == controlsPrev.DebugString() )
         std::this_thread::sleep_for(std::chrono::milliseconds(10));// Wait 10 milliseconds
-    }
-    else{
-        connectToServer();
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));// Wait connecting
-    }
+
+    peripheryUpdate();
+    controlsPrev = *controls;
 }
 
 /*!
@@ -72,7 +55,7 @@ void LogicController::connectToServer(std::string host, unsigned int port)
     this->host = host;
     this->port =port;
 
-    network->connect(host, port);
+    network->runClient(host, port);
 }
 
 /*!
@@ -80,23 +63,7 @@ void LogicController::connectToServer(std::string host, unsigned int port)
 */
 void LogicController::connectToServer()
 {
-    network->connect();
-}
-
-/*!
-  Принимает сериализованный буфер управления с сервера.
-*/
-void LogicController::recvBuffer()
-{
-    network->recvBufferAsString();
-}
-
-/*!
-  Отправляет сериализованный буфер сенсоров на сервер.
-*/
-void LogicController::sendBuffer()
-{
-    network->sendBufferAsString();
+    network->runClient("0.0.0.0", 7777);
 }
 
 /*!

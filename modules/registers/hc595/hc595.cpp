@@ -48,7 +48,7 @@ void HC595::writeByte(unsigned char byte)
         digitalWrite( registerPins.dataPin, ((byte & (0x80 >> i)) > 0));
         pulse( registerPins.clkPin );
     #else
-        std::cout << "HC595 Write byte -  " << byte << std::endl;
+        std::cout << "HC595 Write bit -  " << i << " from " << byte << std::endl;
     #endif
     }
 } 

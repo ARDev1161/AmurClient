@@ -9,11 +9,11 @@
     #include <wiringPi.h>
 #endif
 
-#include "timer/TimerCallback.h"
+//Timer header
+#include "../timer/TimerCallback.h"
 
 //Protobuf headers
-#include "protobuf/controls.pb.h"
-#include "protobuf/sensors.pb.h"
+#include "../network/protobuf/amur.pb.h"
 
 // Controllers headers
 #include "registers/registercontroller.h"
@@ -38,8 +38,8 @@ class PeripheralController: public TimerCallback::Runnable
     TimerCallback peripheralTimer;
 
     // Buffers
-    AmurSensors *sensorsPeri;
-    AmurControls *controlsPeri;
+    AMUR::AmurSensors *sensorsPeri;
+    AMUR::AmurControls *controlsPeri;
 
     // Motor angles
     int wheelLeftAngle;
@@ -91,7 +91,7 @@ class PeripheralController: public TimerCallback::Runnable
 
     void checkMotorsTime();
 public:
-    PeripheralController(AmurControls *controls, AmurSensors *sensors);
+    PeripheralController(AMUR::AmurControls *controls, AMUR::AmurSensors *sensors);
     virtual ~PeripheralController();
 
     void updateData();

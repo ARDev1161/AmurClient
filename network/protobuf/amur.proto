@@ -1,0 +1,121 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "info.sensorika.amur";
+option java_outer_classname = "AmurProto";
+option objc_class_prefix = "AMUR";
+
+package AMUR;
+
+message AmurControls{
+ message CameraServos{
+     int32 xAngle = 1; // -90 to 90, from left to right
+     int32 yAngle = 2; // -90 to 90, from up to down
+ }
+
+ message WheelMotors{
+     int32 leftPower = 1; // -255 to 255, dutycycle
+     uint32 leftTime = 2; // 0 to 10000 in milliseconds
+     int32 rightPower = 3; // -255 to 255, dutycycle
+     uint32 rightTime = 4; // 0 to 10000 in milliseconds
+ }
+
+ message HandMotors{
+     int32 leftPower = 1; // -255 to 255, dutycycle
+     uint32 leftTime = 2; // 0 to 10000 in milliseconds
+     int32 rightPower = 3; // -255 to 255, dutycycle
+     uint32 rightTime = 4; // 0 to 10000 in milliseconds
+
+     bool leftRelay = 5; // Left side relay for hand
+     bool rightRelay = 6; // Right side relay for hand
+ }
+
+ message Light{
+     uint32 ledLeftPower = 1; // 0 to 255, dutycycle
+     uint32 ledRightPower = 2; // 0 to 255, dutycycle
+ }
+
+ message System{
+     bool haltFlag = 1; // Flag for shutdown
+     bool restartFlag = 2; // Flag for reboot
+     string timeOnAmur = 3;
+ }
+
+   CameraServos cameraServos = 1;
+   WheelMotors wheelMotors = 2;
+   HandMotors handMotors = 3;
+   Light light = 4;
+   System system = 5;
+}
+
+message AmurSensors{
+
+   message Accelerometer{
+        float x = 1;
+	float y = 2;
+	float z = 3;
+   }
+
+   message Gyroscope{
+        float x = 1;
+	float y = 2;
+	float z = 3;
+   }
+
+   message Magnitometer{
+        float x = 1;
+	float y = 2;
+	float z = 3;
+   }
+
+   message WheelEncoders{
+        int32 leftAngle = 1;
+	int32 rightAngle = 2;
+   }
+
+   message HandEncoders{
+        int32 leftInternalAngle = 1;
+	int32 rightInternalAngle = 2;
+	int32 leftOuterAngle = 3;
+	int32 rightOuterAngle = 4;
+   }
+
+   message Temperature{
+        int32 tempAccelerometer = 1;
+	int32 tempCPU = 2;
+	int32 tempPressure = 3;
+   }
+
+   message WheelCurrent{
+        uint32 leftCurrent = 1;
+	uint32 rightCurrent = 2;
+   }
+
+   message HandCurrent{
+        uint32 leftCurrent = 1;
+	uint32 rightCurrent = 2;
+   }
+
+   message Misc{
+        int32 gas = 1;
+	int32 batteryVoltage = 2;
+	int32 raspberryVoltage = 3;
+	float pressure = 4;
+   }
+
+   Accelerometer accelerometer = 1;
+   Gyroscope gyroscope = 2;
+   Magnitometer magnitometer = 3;
+   WheelEncoders wheelEncoders = 4;
+   HandEncoders handEncoders = 5;
+   Temperature temperature = 6;
+   Misc misc = 7;
+}
+
+service Maintenance{
+    //Unary exchange
+    rpc DataExchange (AmurSensors) returns (AmurControls);
+
+    //Bidirectional stream
+    rpc DataStreamExchange (stream AmurSensors) returns (stream AmurControls);
+}

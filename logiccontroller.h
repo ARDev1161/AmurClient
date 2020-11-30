@@ -1,10 +1,6 @@
 #ifndef LOGICCONTROLLER_H
 #define LOGICCONTROLLER_H
 
-//Protobuf headers
-#include "protobuf/controls.pb.h"
-#include "protobuf/sensors.pb.h"
-
 //Peripheral controller header
 #include "modules/peripheralcontroller.h"
 
@@ -13,7 +9,6 @@
 
 #include "timer/TimerCallback.h"
 
-
 /*!
     \brief Класс логики управления роботом
 
@@ -21,17 +16,16 @@
 */
 class LogicController: public TimerCallback::Runnable
 {
-
     // Server settings
 //    std::string host = "11.11.11.11";
     std::string host = "127.0.0.1";
     int port = 7777;
 
-    AmurSensors *sensors;
-    AmurControls *controls;
+    AMUR::AmurSensors *sensors;
+    AMUR::AmurControls *controls;
 
+    AMUR::AmurControls controlsPrev;
     std::string sensorsPrev;
-    std::string controlsPrev;
 
     PeripheralController *periphery;
     NetworkController *network;
@@ -47,9 +41,6 @@ public:
 
     void connectToServer(std::string host, unsigned int port);
     void connectToServer();
-
-    void recvBuffer();
-    void sendBuffer();
 
     void peripheryUpdate();
 };
