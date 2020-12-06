@@ -7,7 +7,18 @@
 HC165::HC165(HC165Pins pins):
 registerPins(pins)
 {
-#if __has_include(<wiringPi.h>)
+#if __has_include(<pigpio.h>)
+    gpioSetMode( registerPins.dataPin , PI_INPUT);
+
+    gpioSetMode( registerPins.loadPin , PI_OUTPUT);
+    gpioSetMode( registerPins.clkPin , PI_OUTPUT);
+    gpioSetMode( registerPins.clkInhibitePin , PI_OUTPUT);
+
+    gpioWrite( registerPins.loadPin , 0);
+    gpioWrite( registerPins.clkPin , 0);
+    gpioWrite( registerPins.clkInhibitePin , 0);
+
+#elif __has_include(<wiringPi.h>)
     pinMode( registerPins.dataPin , INPUT);
 
     pinMode( registerPins.loadPin , OUTPUT);
@@ -26,9 +37,14 @@ registerPins(pins)
 */
 inline void HC165::pulse(int pin)
 {
-#if __has_include(<wiringPi.h>)
+#if __has_include(<pigpio.h>)
+    gpioWrite(pin, 0);
+    gpioDelay(PULSE_WIDTH_USEC);
+    gpioWrite(pin, 1);
+
+#elif __has_include(<wiringPi.h>)
     digitalWrite(pin, 0);
-    delayMicroseconds(PULSE_WIDTH_USEC);
+    gpioDelay(PULSE_WIDTH_USEC);
     digitalWrite(pin, 1);
 #else
     std::cout << "HC165 Pulse in" << pin << std::endl;
@@ -40,7 +56,9 @@ inline void HC165::pulse(int pin)
 */
 void HC165::disableClock()
 {
-#if __has_include(<wiringPi.h>)
+#if __has_include(<pigpio.h>)
+
+#elif __has_include(<wiringPi.h>)
     digitalWrite( registerPins.clkInhibitePin , 1);
 #else
     std::cout << "HC165 disable" << std::endl;
@@ -51,9 +69,13 @@ void HC165::disableClock()
 Включает регистр.
 */
 void HC165::enableClock()
-{    
-#if __has_include(<wiringPi.h>)
+{
+#if __has_include(<pigpio.h>)
+    gpioWrite( registerPins.clkInhibitePin , 0);
+
+#elif __has_include(<wiringPi.h>)
     digitalWrite( registerPins.clkInhibitePin , 0);
+
 #else
     std::cout << "HC165 enable" << std::endl;
 #endif
@@ -64,15 +86,16 @@ void HC165::enableClock()
 */
 void HC165::loadRegister()
 {
-    // load
-#if __has_include(<wiringPi.h>)
     disableClock();
-
     pulse( registerPins.loadPin );
+#if __has_include(<pigpio.h>)
+    gpioWrite( registerPins.loadPin , 0);
+
+#elif __has_include(<wiringPi.h>)
     digitalWrite( registerPins.loadPin , 0);
 
-    enableClock();
 #endif
+    enableClock();
 }
 
 /*!
@@ -83,14 +106,18 @@ unsigned char HC165::readByte()
 {
     unsigned char byte = 0;
 
-#if __has_include(<wiringPi.h>)
     // shiftin
     for(int i = 0; i < 8; i++)
     {
+#if __has_include(<pigpio.h>)
+        byte |= (gpioRead( registerPins.dataPin ) << (7 - i));
+
+#elif __has_include(<wiringPi.h>)
         byte |= (digitalRead( registerPins.dataPin ) << (7 - i));
+
+#endif
         pulse( registerPins.clkPin );
     }
-#endif
 
     return(byte);
 }
