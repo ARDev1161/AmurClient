@@ -3,7 +3,9 @@
 
 #include "pwmsettings.h"
 
-#if __has_include(<wiringPi.h>)
+#if __has_include(<pigpio.h>)
+    #include <pigpio.h>
+#elif __has_include(<wiringPi.h>)
     #include <wiringPi.h>
     #include <softPwm.h>
 #else
@@ -19,18 +21,18 @@
 class PWMController
 {
     int pwmRange = 255;
+    int freq = 20; // PWM frequency in kilohertz
 
 public:
     PWMController();
 
-    void hardPWMCreate(int pin);
+    int hardPWMCreate(int pin);
+    int hardPWMChange(int pin, int dutyCycle);
+    int hardPWMStop(int pin);
+
     int softPWMCreate(int pin);
-
-    void hardPWMChange(int pin, int dutyCycle);
-    void softPWMChange(int pin, int dutyCycle);
-
-    void hardPWMStop(int pin);
-    void softPWMStop(int pin);
+    int softPWMChange(int pin, int dutyCycle);
+    int softPWMStop(int pin);
 
 };
 

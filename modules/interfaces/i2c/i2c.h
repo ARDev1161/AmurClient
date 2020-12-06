@@ -4,7 +4,9 @@
 #include <errno.h>
 #include <unistd.h>
 
-#if __has_include(<wiringPiSPI.h>)
+#if __has_include(<pigpio.h>)
+    #include <pigpio.h>
+#elif __has_include(<wiringPiSPI.h>)
     #include <wiringPiSPI.h>
 #else
     #include <iostream>

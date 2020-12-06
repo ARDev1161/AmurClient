@@ -1,14 +1,15 @@
 #ifndef HC165_H
 #define HC165_H
 
-#if __has_include(<wiringPi.h>)
+#if __has_include(<pigpio.h>)
+    #include <pigpio.h>
+#elif __has_include(<wiringPi.h>)
     #include <wiringPi.h>
 #else
-    #include <iostream>
+    #include <iostream> // for debugging
 #endif
 
-#include "../../peripheralsettings.h"
-
+#include "../registerssettings.h"
 
 #define PULSE_WIDTH_USEC   1 // задержка импульса при считывании данных (каждый бит)
 

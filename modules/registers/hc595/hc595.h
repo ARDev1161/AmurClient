@@ -1,13 +1,15 @@
 #ifndef HC595_H
 #define HC595_H
 
-#if __has_include(<wiringPi.h>)
+#if __has_include(<pigpio.h>)
+    #include <pigpio.h>
+#elif __has_include(<wiringPi.h>)
     #include <wiringPi.h>
+#else
+    #include <iostream> // for debugging
 #endif
 
-#include <iostream> // for debugging
-
-#include "../../peripheralsettings.h"
+#include "../registerssettings.h"
 
 /*!
     \brief Класс работы с регистром 74HC595
