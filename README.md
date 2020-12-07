@@ -2,10 +2,18 @@
 This is application for communicate with robot on RPi base with [AmurClient].
 
 ## Requirements:
-  1) WiringPi
-  2) Protobuf
-  3) libconfig
-  4) GStreamer
+  1) PiGPIO
+  2) CMake
+  3) Protobuf & gRPC
+  4) libconfig
+  5) GStreamer
+
+## Compile AmurClient
+  	git clone https://github.com/ARDev1161/AmurClient.git
+		cd AmurClient
+		mkdir bin && cd bin
+		cmake -DCMAKE_BUILD_TYPE=Release ../
+		cmake --build . -- -j4
 
 ## Sensors of Amur:
   1) Camera - OV5647
