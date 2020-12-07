@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 
 project(RegisterController VERSION 0.88 LANGUAGES C CXX)
 
@@ -7,8 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
-include_directories(hc165)
-include_directories(hc595)
+target_include_directories(hc165)
+target_include_directories(hc595)
 
 set(HC165
     hc165/hc165.cpp

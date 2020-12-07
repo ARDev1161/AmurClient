@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.5.1)
+cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 
-project(NetworkController LANGUAGES CXX)
+project(NetworkController VERSION 0.88 LANGUAGES CXX)
 
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 

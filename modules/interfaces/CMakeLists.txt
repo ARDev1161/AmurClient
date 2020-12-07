@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 
 project(InterfacesController VERSION 0.88 LANGUAGES C CXX)
 
@@ -7,9 +7,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
-include_directories(spi)
-include_directories(i2c)
-include_directories(uart)
+target_include_directories(spi)
+target_include_directories(i2c)
+target_include_directories(uart)
 
 set(SPI
     spi/spi.cpp
