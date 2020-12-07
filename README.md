@@ -1,4 +1,4 @@
-# Amur Client for Amur distribution board (ADB-0.42)
+# Client software for Amur distribution board (ADB-0.42)
 This is application for communicate with robot on RPi base with [AmurClient].
 
 ## Requirements:
