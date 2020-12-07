@@ -10,10 +10,10 @@ This is application for communicate with robot on RPi base with [AmurClient].
 
 ## Compile AmurClient
   	git clone https://github.com/ARDev1161/AmurClient.git
-		cd AmurClient
-		mkdir bin && cd bin
-		cmake -DCMAKE_BUILD_TYPE=Release ../
-		cmake --build . -- -j4
+	cd AmurClient
+	mkdir bin && cd bin
+	cmake -DCMAKE_BUILD_TYPE=Release ../
+	cmake --build . -- -j4
 
 ## Sensors of Amur:
   1) Camera - OV5647
