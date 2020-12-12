@@ -7,9 +7,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
-target_include_directories(spi)
-target_include_directories(i2c)
-target_include_directories(uart)
+include_directories(spi)
+include_directories(i2c)
+include_directories(uart)
 
 set(SPI
     spi/spi.cpp
