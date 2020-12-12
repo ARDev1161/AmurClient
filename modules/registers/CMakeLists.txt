@@ -7,8 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
-target_include_directories(hc165)
-target_include_directories(hc595)
+include_directories(hc165)
+include_directories(hc595)
 
 set(HC165
     hc165/hc165.cpp
