@@ -10,6 +10,8 @@ endif()
 
 find_package(Threads REQUIRED)
 
+set(GRPC_FETCHCONTENT ON)
+
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
 if(GRPC_AS_SUBMODULE)
