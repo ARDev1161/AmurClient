@@ -10,7 +10,7 @@ endif()
 
 find_package(Threads REQUIRED)
 
-set(GRPC_FETCHCONTENT ON)
+set(GRPC_FETCHCONTENT OFF)
 
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
