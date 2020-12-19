@@ -12,7 +12,11 @@ This is application for communicate with robot on RPi base with [AmurClient].
   	git clone https://github.com/ARDev1161/AmurClient.git
 	cd AmurClient
 	mkdir bin && cd bin
-	cmake -DCMAKE_BUILD_TYPE=Release ../
+	
+	cmake -DCMAKE_BUILD_TYPE=Release \
+	-DProtobuf_INCLUDE_DIR=~/.local/include \
+	-DProtobuf_LIBRARY=~/.local/lib/libprotobuf.a ../
+	
 	cmake --build . -- -j4
 
 ## Sensors of Amur:
