@@ -15,7 +15,10 @@ This is application for communicate with robot on RPi base with [AmurClient].
 	
 	cmake -DCMAKE_BUILD_TYPE=Release \
 	-DProtobuf_INCLUDE_DIR=~/.local/include \
-	-DProtobuf_LIBRARY=~/.local/lib/libprotobuf.a ../
+	-DProtobuf_LIBRARY=~/.local/lib/libprotobuf.a \
+	-DProtobuf_PROTOC_EXECUTABLE=~/.local/bin/protoc \
+	-DProtobuf_PROTOC_LIBRARY=~/.local/lib/libprotoc.a \
+	../
 	
 	cmake --build . -- -j4
 
