@@ -4,7 +4,7 @@ This is application for communicate with robot on RPi base with [AmurClient].
 ## Requirements:
   1) PiGPIO - for install read: http://abyz.me.uk/rpi/pigpio/download.html
   2) CMake - for install read: https://snapcraft.io/install/cmake/raspbian
-  3) Protobuf & gRPC - for install read: https://grpc.io/docs/languages/cpp/quickstart/
+  3) Protobuf & gRPC - Download via FetchContent (for manual install read: https://grpc.io/docs/languages/cpp/quickstart/)
   4) libconfig
   5) GStreamer
 
@@ -13,12 +13,7 @@ This is application for communicate with robot on RPi base with [AmurClient].
 	cd AmurClient
 	mkdir bin && cd bin
 	
-	cmake -DCMAKE_BUILD_TYPE=Release \
-	-DProtobuf_INCLUDE_DIR=~/.local/include \
-	-DProtobuf_LIBRARY=~/.local/lib/libprotobuf.a \
-	-DProtobuf_PROTOC_EXECUTABLE=~/.local/bin/protoc \
-	-DProtobuf_PROTOC_LIBRARY=~/.local/lib/libprotoc.a \
-	../
+	cmake -DCMAKE_BUILD_TYPE=Release ../
 	
 	cmake --build . -- -j4
 
