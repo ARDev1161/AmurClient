@@ -57,6 +57,7 @@ elseif(GRPC_FETCHCONTENT)
   # similar to a git submodule.
   message(STATUS "Using gRPC via add_subdirectory (FetchContent).")
   include(FetchContent)
+  set(FETCHCONTENT_QUIET FALSE)
   FetchContent_Declare(
     grpc
     GIT_REPOSITORY https://github.com/grpc/grpc.git
@@ -65,6 +66,7 @@ elseif(GRPC_FETCHCONTENT)
     # For the purpose of testing, we override the tag used to the commit
     # that's currently under test.
     GIT_TAG        v1.34.0
+    GIT_PROGRESS TRUE
     )
   FetchContent_MakeAvailable(grpc)
 
