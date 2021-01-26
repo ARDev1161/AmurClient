@@ -2,11 +2,11 @@
 This is application for communicate with robot on RPi base with [AmurClient].
 
 ## Requirements:
-  1) PiGPIO - for install read: http://abyz.me.uk/rpi/pigpio/download.html
-  2) CMake - for install read: https://snapcraft.io/install/cmake/raspbian
-  3) Protobuf & gRPC - Download via FetchContent (for manual install read: https://grpc.io/docs/languages/cpp/quickstart/)
-  4) libconfig
-  5) GStreamer
+  1) CMake - for install read: https://snapcraft.io/install/cmake/raspbian
+  2) Protobuf & gRPC - Download via FetchContent (for manual install read: https://grpc.io/docs/languages/cpp/quickstart/)
+  3) PiGPIO - for install read: http://abyz.me.uk/rpi/pigpio/download.html
+  4) libconfig (not used, will be added in the future)
+  5) GStreamer (not used, will be added in the future)
 
 ## Compile AmurClient
   	git clone https://github.com/ARDev1161/AmurClient.git
