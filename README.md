@@ -13,7 +13,7 @@ This is application for communicate with robot on RPi base with [AmurClient].
 	cd AmurClient
 	mkdir bin && cd bin
 	
-	cmake -DCMAKE_BUILD_TYPE=Release ../
+	cmake -DCMAKE_BUILD_TYPE=Release -DGRPC_FETCHCONTENT=ON ../
 	
 	cmake --build . -- -j4
 
