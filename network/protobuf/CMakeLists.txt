@@ -10,7 +10,7 @@ endif()
 
 find_package(Threads REQUIRED)
 
-set(GRPC_FETCHCONTENT ON)
+set(GRPC_FETCHCONTENT false CACHE BOOL "Use FetchContent for download gRPC, or use system gRPC? yes/NO.")
 
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
