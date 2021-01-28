@@ -91,7 +91,7 @@ int PWMController::hardPWMCreate(int pin)
 int PWMController::hardPWMChange(int pin, int dutyCycle)
 {
     #if __has_include(<pigpio.h>)
-        return gpioHardwarePWM(pin, freq, duty);
+        return gpioHardwarePWM(pin, freq, dutyCycle);
     #elif __has_include(<wiringPi.h>)
         pwmWrite(pin, dutyCycle);
     #else
