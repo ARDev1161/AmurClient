@@ -67,6 +67,7 @@ target_link_libraries(PeripheralController
                       RegisterController
                       PWMController
                       InterfacesController
+		      ${pigpio_LIBRARY}
                       )
 
 #add_executable(PeripheralController main.cpp ${PERIPHERAL})
