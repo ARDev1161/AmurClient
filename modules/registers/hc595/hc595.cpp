@@ -19,19 +19,6 @@ registerPins(pins)
     gpioWrite( registerPins.clkPin, 0);
     gpioWrite( registerPins.nResetPin, 1);
     gpioWrite( registerPins.nEnablePin, 0);
-
-#elif __has_include(<wiringPi.h>)
-    pinMode( registerPins.dataPin, OUTPUT);
-    pinMode( registerPins.latchClkPin, OUTPUT);
-    pinMode( registerPins.clkPin, OUTPUT);
-    pinMode( registerPins.nResetPin, OUTPUT);
-    pinMode( registerPins.nEnablePin, OUTPUT);
-
-    digitalWrite( registerPins.dataPin, 0);
-    digitalWrite( registerPins.latchClkPin, 0);
-    digitalWrite( registerPins.clkPin, 0);
-    digitalWrite( registerPins.nResetPin, 1);
-    digitalWrite( registerPins.nEnablePin, 0);
 #endif
 }
 
@@ -44,11 +31,6 @@ inline void HC595::pulse(int pin)
 #if __has_include(<pigpio.h>)
     gpioWrite(pin, 0);
     gpioWrite(pin, 1);
-
-#elif __has_include(<wiringPi.h>)
-    digitalWrite(pin, 0);
-    digitalWrite(pin, 1);
-
 #else
     std::cout << "HC595 Pulse on " << pin << std::endl;
 #endif
@@ -65,11 +47,6 @@ void HC595::writeByte(unsigned char byte)
     #if __has_include(<pigpio.h>)
         gpioWrite( registerPins.dataPin, ((byte & (0x80 >> i)) > 0));
         pulse( registerPins.clkPin );
-
-    #elif __has_include(<wiringPi.h>)
-        digitalWrite( registerPins.dataPin, ((byte & (0x80 >> i)) > 0));
-        pulse( registerPins.clkPin );
-
     #else
         std::cout << "HC595 Write bit -  " << i << " from " << byte << std::endl;
     #endif
@@ -99,10 +76,6 @@ void HC595::enable()
 {
 #if __has_include(<pigpio.h>)
     gpioWrite( registerPins.nEnablePin , 0);
-
-#elif __has_include(<wiringPi.h>)
-    digitalWrite( registerPins.nEnablePin , 0);
-
 #else
     std::cout << "HC595 enable" << std::endl;
 #endif
@@ -115,9 +88,6 @@ void HC595::disable()
 {
 #if __has_include(<pigpio.h>)
     gpioWrite(  registerPins.nEnablePin , 1);
-
-#elif __has_include(<wiringPi.h>)
-    digitalWrite(  registerPins.nEnablePin , 1);
 #else
     std::cout << "HC595 disable" << std::endl;
 #endif
