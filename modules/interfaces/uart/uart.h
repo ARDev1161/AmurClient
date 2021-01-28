@@ -7,9 +7,8 @@
 #include <chrono>
 #include <thread>
 
-#if __has_include(<wiringPi.h>)
-    #include <wiringPi.h>
-    #include <wiringSerial.h>
+#if __has_include(<pigpio.h>)
+    #include <pigpio.h>
 #else
     #include <iostream>
 #endif
