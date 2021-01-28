@@ -5,9 +5,6 @@
 
 #if __has_include(<pigpio.h>)
     #include <pigpio.h>
-#elif __has_include(<wiringPi.h>)
-    #include <wiringPi.h>
-    #include <softPwm.h>
 #else
     #include <iostream>
 #endif
