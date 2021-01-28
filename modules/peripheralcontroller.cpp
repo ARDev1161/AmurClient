@@ -8,7 +8,7 @@
 PeripheralController::PeripheralController(AMUR::AmurControls *controls, AMUR::AmurSensors *sensors):
      sensorsPeri(sensors), controlsPeri(controls)
 {
-    wiringPiInit();
+    pigpioInit();
 
     registers = new RegisterController(settings.outputRegisters,
                                        settings.inputRegisters);
@@ -63,16 +63,16 @@ void PeripheralController::initTimer()
 /*!
 Инициализирует библиотеку WiringPi в нотации GPIO.
 */
-void PeripheralController::wiringPiInit()
+void PeripheralController::pigpioInit()
 {
-#if __has_include(<wiringPi.h>)
-    if(wiringPiSetupGpio() != 0) //setup GPIO, this uses actual BCM pin numbers
+#if __has_include(<pigpio.h>)
+    if(gpioInitialise() != 0) //setup GPIO, this uses actual BCM pin numbers
     {
-        std::cout << "setup wiringPi failed !" << std::endl;
+        std::cout << "pigpioInit failed !" << std::endl;
         abort();
     }
 #else
-    std::cout << "WiringPi not installed !!!" << std::endl;
+    std::cout << "pigpio not installed !!!" << std::endl;
 #endif
 }
 
