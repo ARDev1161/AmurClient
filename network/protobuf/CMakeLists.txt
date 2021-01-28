@@ -10,6 +10,8 @@ endif()
 
 find_package(Threads REQUIRED)
 
+find_library(atomic-lib atomic)
+
 set(GRPC_FETCHCONTENT false CACHE BOOL "Use FetchContent for download gRPC, or use system gRPC? yes/NO.")
 
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
@@ -151,6 +153,7 @@ set(AMUR_PROTOS
 
 add_library(AMURProtos 
             STATIC 
+            ${atomic-lib}
             ${AMUR_PROTOS}
            )
 
