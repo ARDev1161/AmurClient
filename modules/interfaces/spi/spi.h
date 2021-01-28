@@ -3,8 +3,8 @@
 
 #include <errno.h>
 #include <unistd.h>
-#if __has_include(<wiringPiSPI.h>)
-    #include <wiringPiSPI.h>
+#if __has_include(<pigpio.h>)
+    #include <pigpio.h>
 #else
     #include <iostream>
 #endif
