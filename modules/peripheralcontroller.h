@@ -5,8 +5,8 @@
 #include <cstdlib>
 #include <math.h>
 
-#if __has_include(<wiringPi.h>)
-    #include <wiringPi.h>
+#if __has_include(<pigpio.h>)
+    #include <pigpio.h>
 #endif
 
 //Timer header
@@ -66,7 +66,7 @@ class PeripheralController: public TimerCallback::Runnable
 
     // Functions
     void initPWM();
-    void wiringPiInit();
+    void pigpioInit();
 
     void changeWheelsPWM();
     void changeHandsPWM();
