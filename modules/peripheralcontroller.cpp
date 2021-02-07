@@ -61,7 +61,7 @@ void PeripheralController::initTimer()
 }
 
 /*!
-Инициализирует библиотеку WiringPi в нотации GPIO.
+Инициализирует библиотеку pigpio
 */
 void PeripheralController::pigpioInit()
 {
