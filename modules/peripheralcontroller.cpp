@@ -66,9 +66,9 @@ void PeripheralController::initTimer()
 void PeripheralController::pigpioInit()
 {
 #if __has_include(<pigpio.h>)
-    if(gpioInitialise() != 0) //setup GPIO, this uses actual BCM pin numbers
+    if((int code = gpioInitialise()) < 0) //setup GPIO, this uses actual BCM pin numbers
     {
-        std::cout << "pigpioInit failed !" << std::endl;
+        std::cout << "pigpioInit failed!!! : Error - " << code << std::endl;
         abort();
     }
 #else
