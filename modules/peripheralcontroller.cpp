@@ -73,7 +73,9 @@ void PeripheralController::pigpioInit()
         abort();
     }
     else
-        std::cout << "pigpioInit successed! " << std::endl;
+    {
+        std::cout << "pigpioInit successed! : pigpio version - " << gpioVersion() << std::endl;
+    }
 #else
     std::cout << "pigpio not installed !!!" << std::endl;
 #endif
