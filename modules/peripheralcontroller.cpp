@@ -72,6 +72,8 @@ void PeripheralController::pigpioInit()
         std::cout << "pigpioInit failed!!! : Error - " << code << std::endl;
         abort();
     }
+    else
+        std::cout << "pigpioInit successed! " << std::endl;
 #else
     std::cout << "pigpio not installed !!!" << std::endl;
 #endif
