@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
-find_library(pigpio REQUIRED)
+find_package(pigpio REQUIRED)
     
 # Добавление подпроекта, указывается имя директории
 add_subdirectory(registers)
@@ -43,5 +43,3 @@ target_link_libraries(PeripheralController
                       InterfacesController
 		      ${pigpio}		      
                       )
-
-#add_executable(PeripheralController main.cpp ${PERIPHERAL})
