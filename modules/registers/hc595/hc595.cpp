@@ -8,18 +8,30 @@ HC595::HC595(HC595Pins pins):
 registerPins(pins)
 {
 #if __has_include(<pigpio.h>)
-    gpioSetMode( registerPins.dataPin, PI_OUTPUT);
-    gpioSetMode( registerPins.latchClkPin, PI_OUTPUT);
-    gpioSetMode( registerPins.clkPin, PI_OUTPUT);
-    gpioSetMode( registerPins.nResetPin, PI_OUTPUT);
-    gpioSetMode( registerPins.nEnablePin, PI_OUTPUT);
+    std::cout << "HC595 entity creating..." << std::endl;
+    if(gpioSetMode( registerPins.dataPin, PI_OUTPUT) != 0)
+        std::cout << "gpioSetMode HC595 dataPin ERROR!!!" << std::endl;
+    if(gpioSetMode( registerPins.latchClkPin, PI_OUTPUT) != 0)
+        std::cout << "gpioSetMode HC595 latchClkPin ERROR!!!" << std::endl;
+    if(gpioSetMode( registerPins.clkPin, PI_OUTPUT) != 0)
+        std::cout << "gpioSetMode HC595 clkPin ERROR!!!" << std::endl;
+    if(gpioSetMode( registerPins.nResetPin, PI_OUTPUT) != 0)
+        std::cout << "gpioSetMode HC595 nResetPin ERROR!!!" << std::endl;
+    if(gpioSetMode( registerPins.nEnablePin, PI_OUTPUT) != 0)
+        std::cout << "gpioSetMode HC595 nEnablePin ERROR!!!" << std::endl;
 
-    gpioWrite( registerPins.dataPin, 0);
-    gpioWrite( registerPins.latchClkPin, 0);
-    gpioWrite( registerPins.clkPin, 0);
-    gpioWrite( registerPins.nResetPin, 1);
-    gpioWrite( registerPins.nEnablePin, 0);
+    if(gpioWrite( registerPins.dataPin, 0) != 0)
+        std::cout << "gpioWrite HC595 dataPin ERROR!!!" << std::endl;
+    if(gpioWrite( registerPins.latchClkPin, 0) != 0)
+        std::cout << "gpioWrite HC595 latchClkPin ERROR!!!" << std::endl;
+    if(gpioWrite( registerPins.clkPin, 0) != 0)
+        std::cout << "gpioWrite HC595 clkPin ERROR!!!" << std::endl;
+    if(gpioWrite( registerPins.nResetPin, 1) != 0)
+        std::cout << "gpioWrite HC595 nResetPin ERROR!!!" << std::endl;
+    if(gpioWrite( registerPins.nEnablePin, 0) != 0)
+        std::cout << "gpioWrite HC595 nEnablePin ERROR!!!" << std::endl;
 #endif
+    std::cout << "Created HC595 entity" << std::endl;
 }
 
 /*!
