@@ -19,9 +19,8 @@ int PWMController::softPWMCreate(int pin)
 {
     #if __has_include(<pigpio.h>)
         return gpioPWM(pin, 0); // Number pin in GPIO notation, 0-31
-    #else
-        std::cout << "Soft PWM create on - " << pin << std::endl;
     #endif
+    std::cout << "Soft PWM create on - " << pin << std::endl;
 
     return 0;
 }
@@ -50,10 +49,9 @@ int PWMController::softPWMStop(int pin)
 {
     #if __has_include(<pigpio.h>)
         return gpioPWM(pin, 0); // Number pin in GPIO notation, 0-31
-    #else
-        std::cout << "Soft PWM stop on - " << pin << std::endl;
     #endif
-
+    std::cout << "Soft PWM stop on - " << pin << std::endl;
+    
     return 0;
 }
 
@@ -67,9 +65,8 @@ int PWMController::hardPWMCreate(int pin)
 {
     #if __has_include(<pigpio.h>)
         return gpioHardwarePWM(pin, freq, 0);
-    #else
-        std::cout << "Hard PWM create on - " << pin << std::endl;
     #endif
+    std::cout << "Hard PWM create on - " << pin << std::endl;
 
     return 0;
 }
@@ -98,9 +95,8 @@ int PWMController::hardPWMStop(int pin)
 {
     #if __has_include(<pigpio.h>)
         return gpioHardwarePWM(pin, freq, 0);
-    #else
-        std::cout << "Hard PWM stop on - " << pin << std::endl;
     #endif
-
+    std::cout << "Hard PWM stop on - " << pin << std::endl;
+    
     return 0;
 }
