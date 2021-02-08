@@ -5,7 +5,7 @@
 */
 PWMController::PWMController()
 {
-
+    std::cout << "Created PWMController entity" << std::endl;
 }
 
 //Software PWM section: time resolution - 100uS
