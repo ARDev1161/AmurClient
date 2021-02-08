@@ -9,13 +9,13 @@ registerPins(pins)
 {
 #if __has_include(<pigpio.h>)
     std::cout << "HC165 entity creating..." << std::endl;
-    if(gpioSetMode( registerPins.dataPin , PI_INPUT);
+    if(gpioSetMode( registerPins.dataPin , PI_INPUT) != 0)
         std::cout << "gpioSetMode HC165 dataPin ERROR!!!" << std::endl;
-    if(gpioSetMode( registerPins.loadPin , PI_OUTPUT);
+    if(gpioSetMode( registerPins.loadPin , PI_OUTPUT) != 0)
         std::cout << "gpioSetMode HC165 loadPin ERROR!!!" << std::endl;
-    if(gpioSetMode( registerPins.clkPin , PI_OUTPUT);
+    if(gpioSetMode( registerPins.clkPin , PI_OUTPUT) != 0)
         std::cout << "gpioSetMode HC165 clkPin ERROR!!!" << std::endl;
-    if(gpioSetMode( registerPins.clkInhibitePin , PI_OUTPUT);
+    if(gpioSetMode( registerPins.clkInhibitePin , PI_OUTPUT) != 0)
         std::cout << "gpioSetMode HC165 clkInhibitePin ERROR!!!" << std::endl;
 
     if(gpioWrite( registerPins.loadPin , 0) != 0)
