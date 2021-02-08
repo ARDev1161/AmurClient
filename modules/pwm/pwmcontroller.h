@@ -3,10 +3,10 @@
 
 #include "pwmsettings.h"
 
+#include <iostream>
+
 #if __has_include(<pigpio.h>)
     #include <pigpio.h>
-#else
-    #include <iostream>
 #endif
 
 
