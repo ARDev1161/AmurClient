@@ -68,12 +68,13 @@ if(${pigpio})
     	${pigpio}
 	)
 endif()
+message(STATUS ${pigpio_lib})
 
 target_link_libraries(PeripheralController
                       RegisterController
                       PWMController
                       InterfacesController
-		      ${pigpio_lib}		      
+		      ${pigpio}		      
                       )
 
 #add_executable(PeripheralController main.cpp ${PERIPHERAL})
