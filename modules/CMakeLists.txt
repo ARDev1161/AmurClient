@@ -38,8 +38,6 @@ include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(pigpio 
     DEFAULT_MSG 
     pigpio_INCLUDE_DIR pigpio_LIBRARY pigpiod_if_LIBRARY pigpiod_if2_LIBRARY)
-
-find_library(pigpio REQUIRED)
     
 # Добавление подпроекта, указывается имя директории
 add_subdirectory(registers)
