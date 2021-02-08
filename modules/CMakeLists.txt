@@ -63,12 +63,11 @@ add_library(PeripheralController
             ${PERIPHERAL}
            )
 	   
-if(${pigpio})
-    set(pigpio_lib 
-    	${pigpio}
-	)
-endif()
-message(STATUS ${pigpio_lib})
+# if(${pigpio})
+#    set(pigpio_lib 
+#    	${pigpio}
+#	)
+#endif()
 
 target_link_libraries(PeripheralController
                       RegisterController
