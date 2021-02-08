@@ -62,15 +62,16 @@ add_library(PeripheralController
             STATIC
             ${PERIPHERAL}
            )
+	   
+if(EXISTS ${pigpio})
+    set( pigpio_lib ${pigpio})
+endif
 
 target_link_libraries(PeripheralController
                       RegisterController
                       PWMController
                       InterfacesController
-		      
-		      if(${pigpio})
-                          ${pigpio}
-                      endif
+		      ${pigpio_lib}		      
                       )
 
 #add_executable(PeripheralController main.cpp ${PERIPHERAL})
