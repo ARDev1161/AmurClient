@@ -65,7 +65,7 @@ add_library(PeripheralController
 	   
 if(EXISTS ${pigpio})
     set( pigpio_lib ${pigpio})
-endif
+endif()
 
 target_link_libraries(PeripheralController
                       RegisterController
