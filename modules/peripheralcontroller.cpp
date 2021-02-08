@@ -87,9 +87,7 @@ void PeripheralController::pigpioInit()
 */
 void PeripheralController::initPWM()
 {
-    std::cout << "PWM initializing... " << std:
-
-    return 0;:endl;
+    std::cout << "PWM initializing... " << std::endl;
     // Setup hardware PWM for wheel motors
     pwm->hardPWMCreate( settings.pwm.wheelRightPin );
     pwm->hardPWMCreate( settings.pwm.wheelLeftPin );
