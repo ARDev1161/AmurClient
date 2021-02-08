@@ -68,7 +68,7 @@ target_link_libraries(PeripheralController
                       PWMController
                       InterfacesController
 		      
-		      if(EXISTS ${pigpio})
+		      if(${pigpio})
                           ${pigpio}
                       endif
                       )
