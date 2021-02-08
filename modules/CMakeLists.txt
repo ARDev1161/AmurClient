@@ -60,16 +60,10 @@ add_library(PeripheralController
             STATIC
             ${PERIPHERAL}
            )
-	   
-if(EXISTS pigpio})
-    set(pigpio_lib 
-    	pigpio
-	)
-endif()
 
 target_link_libraries(PeripheralController
                       RegisterController
                       PWMController
                       InterfacesController
-		      ${pigpio_lib}      
+		      pigpio    
                       )
