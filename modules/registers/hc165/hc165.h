@@ -1,10 +1,10 @@
 #ifndef HC165_H
 #define HC165_H
 
+#include <iostream>
+
 #if __has_include(<pigpio.h>)
     #include <pigpio.h>
-#else
-    #include <iostream> // for debugging
 #endif
 
 #include "../registerssettings.h"
