@@ -56,7 +56,7 @@ void PeripheralController::updateData()
 */
 void PeripheralController::initTimer()
 {
-    std::cout << "Timer initializing... " << pin << std::endl;
+    std::cout << "Timer initializing... " << std::endl;
     peripheralTimer.registerEventRunnable(*this);
     peripheralTimer.start(10000000); // 10 milliseconds
 }
@@ -87,7 +87,9 @@ void PeripheralController::pigpioInit()
 */
 void PeripheralController::initPWM()
 {
-    std::cout << "PWM initializing... " << pin << std::endl;
+    std::cout << "PWM initializing... " << std:
+
+    return 0;:endl;
     // Setup hardware PWM for wheel motors
     pwm->hardPWMCreate( settings.pwm.wheelRightPin );
     pwm->hardPWMCreate( settings.pwm.wheelLeftPin );
