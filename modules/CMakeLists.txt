@@ -61,15 +61,15 @@ add_library(PeripheralController
             ${PERIPHERAL}
            )
 	   
-# if(${pigpio})
-#    set(pigpio_lib 
-#    	${pigpio}
-#	)
+# if(EXISTS pigpio})
+    set(pigpio_lib 
+    	pigpio
+	)
 #endif()
 
 target_link_libraries(PeripheralController
                       RegisterController
                       PWMController
                       InterfacesController
-		      pigpio      
+		      ${pigpio_lib}      
                       )
