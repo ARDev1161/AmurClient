@@ -25,7 +25,7 @@ registerPins(pins)
     if(gpioWrite( registerPins.clkInhibitePin , 0) != 0)
         std::cout << "gpioWrite HC165 clkInhibitePin ERROR!!!" << std::endl;
 #endif
-    std::cout << "Created HC595 entity" << std::endl;
+    std::cout << "Created HC165 entity" << std::endl;
 }
 
 /*!
