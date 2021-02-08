@@ -63,8 +63,8 @@ add_library(PeripheralController
             ${PERIPHERAL}
            )
 	   
-if(EXISTS ${pigpio})
-    set( pigpio_lib ${pigpio})
+if(DEFINED ${pigpio})
+    set(pigpio_lib ${pigpio})
 endif()
 
 target_link_libraries(PeripheralController
