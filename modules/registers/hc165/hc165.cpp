@@ -8,16 +8,24 @@ HC165::HC165(HC165Pins pins):
 registerPins(pins)
 {
 #if __has_include(<pigpio.h>)
-    gpioSetMode( registerPins.dataPin , PI_INPUT);
+    std::cout << "HC165 entity creating..." << std::endl;
+    if(gpioSetMode( registerPins.dataPin , PI_INPUT);
+        std::cout << "gpioSetMode HC165 dataPin ERROR!!!" << std::endl;
+    if(gpioSetMode( registerPins.loadPin , PI_OUTPUT);
+        std::cout << "gpioSetMode HC165 loadPin ERROR!!!" << std::endl;
+    if(gpioSetMode( registerPins.clkPin , PI_OUTPUT);
+        std::cout << "gpioSetMode HC165 clkPin ERROR!!!" << std::endl;
+    if(gpioSetMode( registerPins.clkInhibitePin , PI_OUTPUT);
+        std::cout << "gpioSetMode HC165 clkInhibitePin ERROR!!!" << std::endl;
 
-    gpioSetMode( registerPins.loadPin , PI_OUTPUT);
-    gpioSetMode( registerPins.clkPin , PI_OUTPUT);
-    gpioSetMode( registerPins.clkInhibitePin , PI_OUTPUT);
-
-    gpioWrite( registerPins.loadPin , 0);
-    gpioWrite( registerPins.clkPin , 0);
-    gpioWrite( registerPins.clkInhibitePin , 0);
+    if(gpioWrite( registerPins.loadPin , 0) != 0)
+        std::cout << "gpioWrite HC165 loadPin ERROR!!!" << std::endl;
+    if(gpioWrite( registerPins.clkPin , 0) != 0)
+        std::cout << "gpioWrite HC165 clkPin ERROR!!!" << std::endl;
+    if(gpioWrite( registerPins.clkInhibitePin , 0) != 0)
+        std::cout << "gpioWrite HC165 clkInhibitePin ERROR!!!" << std::endl;
 #endif
+    std::cout << "Created HC595 entity" << std::endl;
 }
 
 /*!
