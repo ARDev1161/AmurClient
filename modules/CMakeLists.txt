@@ -71,5 +71,5 @@ target_link_libraries(PeripheralController
                       RegisterController
                       PWMController
                       InterfacesController
-		      ${pigpio}		      
+		      pigpio      
                       )
