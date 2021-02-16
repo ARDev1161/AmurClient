@@ -11,30 +11,45 @@ get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
 #enable_testing()
 
-#dadd_compile_options(
-#    -Werror
+if(NOT IS_SUBPROJECT)
+    find_package(Doxygen)
+    add_subdirectory(doc)
+    
+    if (Doxygen_FOUND)
+        if (NOT MYLIB_DOXYGEN_LANGUAGE)
+            set(MYLIB_DOXYGEN_LANGUAGE Russian)
+        endif()
+        
+        message(STATUS "Doxygen documentation will be generated in ${MYLIB_DOXYGEN_LANGUAGE}")
+        configure_file(Doxyfile.in Doxyfile)
+        add_custom_target(doc COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)    
+    endif ()
+endif()
 
-#    -Wall
-#    -Wextra
-#    -Wpedantic
+add_compile_options(
+    -Werror
 
-#    -Wcast-align
-#    -Wcast-qual
-#    -Wconversion
-#    -Wctor-dtor-privacy
-#    -Wenum-compare
-#    -Wfloat-equal
-#    -Wnon-virtual-dtor
-#    -Wold-style-cast
-#    -Woverloaded-virtual
-#    -Wredundant-decls
-#    -Wsign-conversion
-#    -Wsign-promo
-#)
+    -Wall
+    -Wextra
+    -Wpedantic
 
-#if(NOT CMAKE_CXX_EXTENSIONS)
-#    set(CMAKE_CXX_EXTENSIONS OFF)
-#endif()
+    -Wcast-align
+    -Wcast-qual
+    -Wconversion
+    -Wctor-dtor-privacy
+    -Wenum-compare
+    -Wfloat-equal
+    -Wnon-virtual-dtor
+    -Wold-style-cast
+    -Woverloaded-virtual
+    -Wredundant-decls
+    -Wsign-conversion
+    -Wsign-promo
+)
+
+if(NOT CMAKE_CXX_EXTENSIONS)
+    set(CMAKE_CXX_EXTENSIONS OFF)
+endif()
 
 add_subdirectory(network)
 add_subdirectory(modules)
