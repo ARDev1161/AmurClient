@@ -13,6 +13,9 @@ get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
 if(NOT IS_SUBPROJECT)
     find_package(Doxygen)
+    message(STATUS "Doxygen ${DOXYGEN_FOUND} - version ${DOXYGEN_VERSION} ")
+    message(STATUS "Doxygen dot ${DOXYGEN_DOT_FOUND}")
+    
     add_subdirectory(doc)
     
     if (Doxygen_FOUND)
