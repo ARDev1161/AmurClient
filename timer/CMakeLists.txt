@@ -14,7 +14,13 @@ set(TIMER
     TimerCallback.h
 )
 
-add_library(TimerCallback 
-            SHARED 
+find_library(LIBRT rt)
+
+add_library(TimerCallback
+            SHARED
             ${TIMER}
            )
+
+if(LIBRT)
+    target_link_libraries(TimerCallback ${LIBRT})
+endif()
