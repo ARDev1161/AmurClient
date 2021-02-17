@@ -24,7 +24,7 @@ if(NOT IS_SUBPROJECT)
         endif()
         
         message(STATUS "Doxygen documentation will be generated in ${MYLIB_DOXYGEN_LANGUAGE}")
-        configure_file(Doxyfile.in Doxyfile)
+        
         add_custom_target(doc COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)    
     endif ()
 endif()
