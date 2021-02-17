@@ -66,6 +66,6 @@ target_link_libraries(PeripheralController
                       PWMController
                       InterfacesController
                       )
-if(pigpio)
+if(pigpio_LIBRARY)
      target_link_libraries(PeripheralController pigpio)
 endif()
