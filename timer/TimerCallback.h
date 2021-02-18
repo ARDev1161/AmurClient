@@ -1,9 +1,7 @@
 #ifndef __CPP_TIMER_CALLBACK
 #define __CPP_TIMER_CALLBACK
-#include <stdio.h>
-#include "Timer.h"
-#include <unistd.h>
 
+#include "Timer.h"
 
 /*!
   \brief Timer callback wrapper for CppTimer class.
