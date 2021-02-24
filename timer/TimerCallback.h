@@ -22,6 +22,7 @@ public:
           Overloadable timer event function for executing.
         */
 		virtual void run() = 0;
+                virtual ~Runnable() = default;
 	};
 
     /*!

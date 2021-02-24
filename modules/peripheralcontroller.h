@@ -26,7 +26,7 @@
 
     Данный класс позволяет управлять периферическим оборудование робота.
 */
-class PeripheralController: public TimerCallback::Runnable
+class PeripheralController: private TimerCallback::Runnable
 {
     // Fields
 

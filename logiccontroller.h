@@ -7,33 +7,30 @@
 //Network headers
 #include "network/networkcontroller.h"
 
-#include "timer/TimerCallback.h"
-
 /*!
     \brief Класс логики управления роботом
 
     Данный класс реализует логику управления роботом.
 */
-class LogicController: public TimerCallback::Runnable
+class LogicController
 {
     // Server settings
 //    std::string host = "11.11.11.11";
     std::string host = "127.0.0.1";
-    int port = 7777;
+    unsigned int port = 7777;
 
     AMUR::AmurSensors *sensors;
     AMUR::AmurControls *controls;
 
     AMUR::AmurControls controlsPrev;
-    std::string sensorsPrev;
 
     PeripheralController *periphery;
     NetworkController *network;
 
     TimerCallback logicTimer;
 
-    void initTimer();
-    void run();
+    void worker();
+    bool workerStopped = false;
 
 public:
     LogicController();
@@ -41,8 +38,6 @@ public:
 
     void connectToServer(std::string host, unsigned int port);
     void connectToServer();
-
-    void peripheryUpdate();
 };
 
 #endif // LOGICCONTROLLER_H

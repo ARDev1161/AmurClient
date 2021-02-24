@@ -35,7 +35,7 @@ int NetworkController::runClient(std::string server_address)
     return 0;
 }
 
-int NetworkController::runClient(std::string client_ip, int port)
+int NetworkController::runClient(std::string client_ip, unsigned int port)
 {
     std::stringstream ss;
     ss << port;
@@ -75,7 +75,7 @@ int NetworkController::runServer(std::string address_mask)
     return 0;
 }
 
-int NetworkController::runServer(std::string server_ip, int port)
+int NetworkController::runServer(std::string server_ip, unsigned int port)
 {
     std::stringstream ss;
     ss << port;

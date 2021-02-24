@@ -25,10 +25,10 @@ public:
     NetworkController(AMUR::AmurControls* const controls, AMUR::AmurSensors* const sensors);
 
     int runClient(std::string server_address); // Server address for client
-    int runClient(std::string client_ip, int port); // Server address for client
+    int runClient(std::string client_ip, unsigned int port); // Server address for client
 
     int runServer(std::string address_mask); // Address mask & port for server
-    int runServer(std::string server_ip, int port); // Address mask & port for server
+    int runServer(std::string server_ip, unsigned int port); // Address mask & port for server
 };
 
 #endif // NETWORKCONTROLLER_H

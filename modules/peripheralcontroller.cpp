@@ -20,6 +20,7 @@ PeripheralController::PeripheralController(AMUR::AmurControls *controls, AMUR::A
 
 PeripheralController::~PeripheralController()
 {
+    std::cout << "Close PeripheralController... " << std::endl;
     peripheralTimer.stop();
 
     sensorsPeri = nullptr;
@@ -56,9 +57,9 @@ void PeripheralController::updateData()
 */
 void PeripheralController::initTimer()
 {
-    std::cout << "Timer initializing... " << std::endl;
+    std::cout << "Peripheral timer initializing... " << std::endl;
     peripheralTimer.registerEventRunnable(*this);
-    peripheralTimer.start(10000000); // 10 milliseconds
+    peripheralTimer.start(std::chrono::milliseconds(10)); // 10 milliseconds
 }
 
 /*!
@@ -106,35 +107,35 @@ unsigned char PeripheralController::leftOutRegisterToByte()
     unsigned char byte = 0x00;
 
     // left LED light input
-    byte |= (controlsPeri->mutable_light()->ledleftpower() > 0);
+    byte |= static_cast<unsigned char>( controlsPeri->mutable_light()->ledleftpower() > 0 );
     byte <<=1;
 
     // enable input: wheel left motor
-    byte |= ( abs(controlsPeri->mutable_wheelmotors()->leftpower()) > 0);
+    byte |= static_cast<unsigned char>( abs(controlsPeri->mutable_wheelmotors()->leftpower()) > 0);
     byte <<=1;
 
     // enable input: hand left motor
-    byte |= ( abs(controlsPeri->mutable_handmotors()->leftpower()) > 0);
+    byte |= static_cast<unsigned char>( abs(controlsPeri->mutable_handmotors()->leftpower()) > 0);
     byte <<=1;
 
     // B2 input: wheel left motor
-    byte |= ( controlsPeri->mutable_wheelmotors()->leftpower() < 0);
+    byte |= static_cast<unsigned char>( controlsPeri->mutable_wheelmotors()->leftpower() < 0);
     byte <<=1;
 
     // B1 input: hand left motor
-    byte |= ( controlsPeri->mutable_handmotors()->leftpower() < 0);
+    byte |= static_cast<unsigned char>( controlsPeri->mutable_handmotors()->leftpower() < 0);
     byte <<=1;
 
     // A1 input: hand left motor
-    byte |= ( controlsPeri->mutable_handmotors()->leftpower() > 0);
+    byte |= static_cast<unsigned char>( controlsPeri->mutable_handmotors()->leftpower() > 0);
     byte <<=1;
 
     // A2 input: wheel left motor
-    byte |= ( controlsPeri->mutable_wheelmotors()->leftpower() > 0);
+    byte |= static_cast<unsigned char>( controlsPeri->mutable_wheelmotors()->leftpower() > 0);
     byte <<=1;
 
     // left relay bit
-    byte |= controlsPeri->mutable_handmotors()->leftrelay();
+    byte |= static_cast<unsigned char>( controlsPeri->mutable_handmotors()->leftrelay() );
 
     return byte;
 }
@@ -148,35 +149,35 @@ unsigned char PeripheralController::rightOutRegisterToByte()
     unsigned char byte = 0x00;
 
     // right LED light input
-    byte |= (controlsPeri->mutable_light()->ledrightpower() > 0);
+    byte |= static_cast<unsigned char>( controlsPeri->mutable_light()->ledrightpower() > 0);
     byte <<=1;
 
     // enable hand right motor
-    byte |= ( abs(controlsPeri->mutable_handmotors()->rightpower()) > 0);
+    byte |= static_cast<unsigned char>( abs(controlsPeri->mutable_handmotors()->rightpower()) > 0);
     byte <<=1;
 
     // enable wheel right motor
-    byte |= ( abs(controlsPeri->mutable_wheelmotors()->rightpower()) > 0);
+    byte |= static_cast<unsigned char>( abs(controlsPeri->mutable_wheelmotors()->rightpower()) > 0);
     byte <<=1;
 
     // B2 input: hand right motor
-    byte |= ( controlsPeri->mutable_handmotors()->rightpower() < 0);
+    byte |= static_cast<unsigned char>( controlsPeri->mutable_handmotors()->rightpower() < 0);
     byte <<=1;
 
     // B1 input: wheel right motor
-    byte |= ( controlsPeri->mutable_wheelmotors()->rightpower() < 0);
+    byte |= static_cast<unsigned char>( controlsPeri->mutable_wheelmotors()->rightpower() < 0);
     byte <<=1;
 
     // A1 input: wheel right motor
-    byte |= ( controlsPeri->mutable_wheelmotors()->rightpower() > 0);
+    byte |= static_cast<unsigned char>( controlsPeri->mutable_wheelmotors()->rightpower() > 0);
     byte <<=1;
 
     // A2 input: hand right motor
-    byte |= ( controlsPeri->mutable_handmotors()->rightpower() > 0);
+    byte |= static_cast<unsigned char>( controlsPeri->mutable_handmotors()->rightpower() > 0);
     byte <<=1;
 
     // right relay bit
-    byte |= controlsPeri->mutable_handmotors()->rightrelay();
+    byte |= static_cast<unsigned char>( controlsPeri->mutable_handmotors()->rightrelay() );
 
     return byte;
 }
