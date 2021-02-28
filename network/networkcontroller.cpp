@@ -18,14 +18,14 @@ int NetworkController::runClient(std::string server_address)
 
     std::thread thr([&]()
      {
-        grpcClient maintenance(grpc::CreateChannel(
+        grpcClient client(grpc::CreateChannel(
             server_address, grpc::InsecureChannelCredentials()), controls, sensors);
 
-        clientStatus = maintenance.DataExchange();
+        clientStatus = client.DataExchange();
         std::cout << "State is OK?: " << clientStatus.ok() << std::endl;
         std::cout << "Controls: " << controls->DebugString() << std::endl;
 
-        clientStatus = maintenance.DataStreamExchange();
+        clientStatus = client.DataStreamExchange();
         std::cout << "State is OK?: " << clientStatus.ok() << std::endl;
         std::cout << "Stream controls: " << controls->DebugString() << std::endl;
      }

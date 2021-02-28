@@ -10,6 +10,8 @@ LogicController::LogicController()
     periphery = new PeripheralController(controls, sensors);
     network = new NetworkController(controls, sensors);
 
+    network->runClient("127.0.0.1:7777");
+
     worker();
 }
 

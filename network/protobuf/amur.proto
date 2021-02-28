@@ -112,10 +112,18 @@ message AmurSensors{
    Misc misc = 7;
 }
 
-service Maintenance{
+service ClientOnRobot{
     //Unary exchange
     rpc DataExchange (AmurSensors) returns (AmurControls);
 
     //Bidirectional stream
     rpc DataStreamExchange (stream AmurSensors) returns (stream AmurControls);
+}
+
+service ServerOnRobot{
+    //Unary exchange
+    rpc DataExchange (AmurControls) returns (AmurSensors);
+
+    //Bidirectional stream
+    rpc DataStreamExchange (stream AmurControls) returns (stream AmurSensors);
 }

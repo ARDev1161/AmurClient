@@ -10,7 +10,7 @@
 
 class grpcClient
 {
-    std::unique_ptr<AMUR::Maintenance::Stub> stub_;
+    std::unique_ptr<AMUR::ClientOnRobot::Stub> stub_;
     std::shared_ptr<grpc::Channel> clientChannel;
 
     AMUR::AmurSensors *sensors;

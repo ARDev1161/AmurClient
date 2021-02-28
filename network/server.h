@@ -10,17 +10,17 @@
 #include "protobuf/amur.grpc.pb.h"
 
 // Logic and data behind the server's behavior.
-class grpcServer final : public AMUR::Maintenance::Service
+class grpcServer final : public AMUR::ServerOnRobot::Service
 {
   AMUR::AmurControls *controls;
   AMUR::AmurSensors *sensors;
   std::mutex muServer;
 
   grpc::Status DataExchange([[maybe_unused]] grpc::ServerContext* context,
-                            const AMUR::AmurSensors* request, AMUR::AmurControls* reply) override;
+                            const AMUR::AmurControls* request, AMUR::AmurSensors* reply) override;
 
   grpc::Status DataStreamExchange([[maybe_unused]] grpc::ServerContext* context,
-                                  grpc::ServerReaderWriter<AMUR::AmurControls, AMUR::AmurSensors>* stream) override;
+                                  grpc::ServerReaderWriter<AMUR::AmurSensors, AMUR::AmurControls>* stream) override;
 
 public:
     void setProtosPointers(AMUR::AmurControls *const controls, AMUR::AmurSensors *const sensors);

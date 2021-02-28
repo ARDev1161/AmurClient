@@ -8,9 +8,6 @@
 #include "client.h"
 #include "server.h"
 
-//Protobuf headers
-#include "protobuf/amur.pb.h"
-
 class NetworkController
 {
     AMUR::AmurSensors *sensors;

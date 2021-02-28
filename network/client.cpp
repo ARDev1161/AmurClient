@@ -1,7 +1,7 @@
 #include "client.h"
 
 grpcClient::grpcClient(std::shared_ptr<grpc::Channel> channel, AMUR::AmurControls* controls, AMUR::AmurSensors * const sensors)
-    : stub_(AMUR::Maintenance::NewStub(channel))
+    : stub_(AMUR::ClientOnRobot::NewStub(channel))
 {
     clientChannel = channel;
     this->controls = controls;

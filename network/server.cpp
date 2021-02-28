@@ -6,12 +6,12 @@ void grpcServer::setProtosPointers(AMUR::AmurControls *const controls, AMUR::Amu
     this->sensors = sensors;
 }
 
-grpc::Status grpcServer::DataExchange([[maybe_unused]] grpc::ServerContext* context,
-                          const AMUR::AmurSensors* request, AMUR::AmurControls* reply)
+grpc::Status grpcServer::DataExchange ([[maybe_unused]] grpc::ServerContext* context,
+                          const AMUR::AmurControls* request, AMUR::AmurSensors* reply)
 {
   std::unique_lock<std::mutex> ul(muServer);
 
-  *sensors = *request;
+  *controls = *request;
 
   ul.unlock();
 
@@ -21,20 +21,20 @@ grpc::Status grpcServer::DataExchange([[maybe_unused]] grpc::ServerContext* cont
   std::cout << "Sensors: " << sensors->DebugString() << std::endl;
   //
 
-  *reply = *controls;
+  *reply = *sensors;
 
   return grpc::Status::OK;
 }
 
-grpc::Status grpcServer::DataStreamExchange([[maybe_unused]] grpc::ServerContext* context,
-                                grpc::ServerReaderWriter<AMUR::AmurControls, AMUR::AmurSensors>* stream)
+grpc::Status grpcServer::DataStreamExchange ([[maybe_unused]] grpc::ServerContext* context,
+                                grpc::ServerReaderWriter<AMUR::AmurSensors, AMUR::AmurControls >* stream)
 {
     std::unique_lock<std::mutex> ul(muServer, std::defer_lock);
 
     while(true)
     {
       ul.lock();
-      if(!(stream->Read(sensors)))
+      if(!(stream->Read(controls)))
           return grpc::Status::OK;
       ul.unlock();
 
@@ -45,6 +45,6 @@ grpc::Status grpcServer::DataStreamExchange([[maybe_unused]] grpc::ServerContext
       //
 
       // Write controls
-      stream->Write(*controls);
+      stream->Write(*sensors);
     }
 }
