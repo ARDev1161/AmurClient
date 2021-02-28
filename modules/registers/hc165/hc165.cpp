@@ -38,8 +38,6 @@ inline void HC165::pulse(int pin)
     gpioWrite(pin, 0);
     gpioDelay(PULSE_WIDTH_USEC);
     gpioWrite(pin, 1);
-#else
-    std::cout << "HC165 Pulse in" << pin << std::endl;
 #endif
 }
 
@@ -50,8 +48,6 @@ void HC165::disableClock()
 {
 #if __has_include(<pigpio.h>)
 
-#else
-    std::cout << "HC165 disable" << std::endl;
 #endif
 }
 
@@ -62,8 +58,6 @@ void HC165::enableClock()
 {
 #if __has_include(<pigpio.h>)
     gpioWrite( registerPins.clkInhibitePin , 0);
-#else
-    std::cout << "HC165 enable" << std::endl;
 #endif
 }
 

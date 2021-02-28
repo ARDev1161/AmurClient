@@ -43,8 +43,6 @@ inline void HC595::pulse(int pin)
 #if __has_include(<pigpio.h>)
     gpioWrite(pin, 0);
     gpioWrite(pin, 1);
-#else
-    std::cout << "HC595 Pulse on " << pin << std::endl;
 #endif
 }
 
@@ -59,8 +57,6 @@ void HC595::writeByte(unsigned char byte)
     #if __has_include(<pigpio.h>)
         gpioWrite( registerPins.dataPin, ((byte & (0x80 >> i)) > 0));
         pulse( registerPins.clkPin );
-    #else
-        std::cout << "HC595 Write bit -  " << i << " from " << byte << std::endl;
     #endif
     }
 } 
@@ -88,8 +84,6 @@ void HC595::enable()
 {
 #if __has_include(<pigpio.h>)
     gpioWrite( registerPins.nEnablePin , 0);
-#else
-    std::cout << "HC595 enable" << std::endl;
 #endif
 }
 
@@ -100,7 +94,5 @@ void HC595::disable()
 {
 #if __has_include(<pigpio.h>)
     gpioWrite(  registerPins.nEnablePin , 1);
-#else
-    std::cout << "HC595 disable" << std::endl;
 #endif
 }
