@@ -8,7 +8,6 @@ else()
   add_definitions(-D_WIN32_WINNT=0x600)
 endif()
 
-
 find_package(Threads REQUIRED)
 
 # Try to find libatmoic

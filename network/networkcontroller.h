@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <thread>
-#include <sstream>
 
 #include "client.h"
 #include "server.h"

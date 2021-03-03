@@ -15,15 +15,10 @@ int NetworkController::runClient(std::string server_address)
     // We indicate that the channel isn't authenticated (use of
     // InsecureChannelCredentials()).
 
-
     std::thread thr([&]()
      {
         grpcClient client(grpc::CreateChannel(
             server_address, grpc::InsecureChannelCredentials()), controls, sensors);
-
-        clientStatus = client.DataExchange();
-        std::cout << "State is OK?: " << clientStatus.ok() << std::endl;
-        std::cout << "Controls: " << controls->DebugString() << std::endl;
 
         clientStatus = client.DataStreamExchange();
         std::cout << "State is OK?: " << clientStatus.ok() << std::endl;
@@ -37,9 +32,7 @@ int NetworkController::runClient(std::string server_address)
 
 int NetworkController::runClient(std::string client_ip, unsigned int port)
 {
-    std::stringstream ss;
-    ss << port;
-    return runClient(client_ip + ":" + ss.str());
+    return runClient(client_ip + ":" + std::to_string(port));
 }
 
 int NetworkController::runServer(std::string address_mask)
@@ -77,7 +70,5 @@ int NetworkController::runServer(std::string address_mask)
 
 int NetworkController::runServer(std::string server_ip, unsigned int port)
 {
-    std::stringstream ss;
-    ss << port;
-    return runServer(server_ip + ":" + ss.str());
+    return runServer(server_ip + ":" + std::to_string(port));
 }

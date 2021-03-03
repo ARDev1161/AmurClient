@@ -77,9 +77,8 @@ grpc::Status grpcClient::DataStreamExchange()
 
     grpc::Status status = stream->Finish();
     if (!status.ok()) {
-      std::cout << status.error_code() << ": " << status.error_message()
-                << std::endl;
-      std::cout << "DataStreamExchange rpc failed.";
+      std::cout << "Error " << status.error_code() << " : " << status.error_message() << std::endl;
+      std::cout << "DataStreamExchange rpc failed." << std::endl;
     }
 
     stoppedStream = false;

@@ -15,9 +15,8 @@
 class LogicController
 {
     // Server settings
-//    std::string host = "11.11.11.11";
-    std::string host = "127.0.0.1";
-    unsigned int port = 7777;
+    std::string host = "127.0.0.1";//"192.168.43.218";
+    int port = 7777;
 
     AMUR::AmurSensors *sensors;
     AMUR::AmurControls *controls;
