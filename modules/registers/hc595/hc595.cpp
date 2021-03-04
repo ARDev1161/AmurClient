@@ -31,6 +31,8 @@ registerPins(pins)
     if(gpioWrite( registerPins.nEnablePin, 0) != 0)
         std::cout << "gpioWrite HC595 nEnablePin ERROR!!!" << std::endl;
 #endif
+
+    this->reset();
     std::cout << "Created HC595 entity" << std::endl;
 }
 
@@ -43,6 +45,7 @@ inline void HC595::pulse(int pin)
 #if __has_include(<pigpio.h>)
     gpioWrite(pin, 0);
     gpioWrite(pin, 1);
+    gpioWrite(pin, 0);
 #endif
 }
 
@@ -55,7 +58,7 @@ void HC595::writeByte(unsigned char byte)
     int i; 
     for(i=0;i<8;i++){
     #if __has_include(<pigpio.h>)
-        gpioWrite( registerPins.dataPin, ((byte & (0x80 >> i)) > 0));
+        gpioWrite( registerPins.dataPin, (byte & (0x80 >> i)) );
         pulse( registerPins.clkPin );
     #endif
     }
