@@ -7,7 +7,7 @@ NetworkController::NetworkController(AMUR::AmurControls* const controls, AMUR::A
     this->sensors = sensors;
 }
 
-int NetworkController::runClient(std::string server_address)
+int NetworkController::runClient(std::string &server_address)
 {
     // Instantiate the client. It requires a channel, out of which the actual RPCs
     // are created. This channel models a connection to an endpoint specified by
@@ -30,12 +30,7 @@ int NetworkController::runClient(std::string server_address)
     return 0;
 }
 
-int NetworkController::runClient(std::string client_ip, unsigned int port)
-{
-    return runClient(client_ip + ":" + std::to_string(port));
-}
-
-int NetworkController::runServer(std::string address_mask)
+int NetworkController::runServer(std::string &address_mask)
 {
     std::thread thr([&]()
      {
@@ -66,9 +61,4 @@ int NetworkController::runServer(std::string address_mask)
     thr.detach();
 
     return 0;
-}
-
-int NetworkController::runServer(std::string server_ip, unsigned int port)
-{
-    return runServer(server_ip + ":" + std::to_string(port));
 }

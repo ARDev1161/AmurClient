@@ -10,9 +10,7 @@ LogicController::LogicController()
     periphery = new PeripheralController(controls, sensors);
     network = new NetworkController(controls, sensors);
 
-    network->runClient("176.193.245.203:7777");
-//    network->runClient("127.0.0.1:7777");
-//    network->runClient(host, port);
+    network->runClient(address);
 
     worker();
 }
@@ -50,10 +48,8 @@ void LogicController::worker()
 */
 void LogicController::connectToServer(std::string host, unsigned int port)
 {
-    this->host = host;
-    this->port = port;
-
-    network->runClient(host, port);
+    this->address = host + ":" + std::to_string(port);
+    connectToServer();
 }
 
 /*!
@@ -61,6 +57,6 @@ void LogicController::connectToServer(std::string host, unsigned int port)
 */
 void LogicController::connectToServer()
 {
-    network->runClient("0.0.0.0", 7777);
+    network->runClient(address);
 }
 
