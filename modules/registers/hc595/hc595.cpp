@@ -26,7 +26,7 @@ registerPins(pins)
         std::cout << "gpioWrite HC595 latchClkPin ERROR!!!" << std::endl;
     if(gpioWrite( registerPins.clkPin, 0) != 0)
         std::cout << "gpioWrite HC595 clkPin ERROR!!!" << std::endl;
-    if(gpioWrite( registerPins.nResetPin, 1) != 0)
+    if(gpioWrite( registerPins.nResetPin, 0) != 0)
         std::cout << "gpioWrite HC595 nResetPin ERROR!!!" << std::endl;
     if(gpioWrite( registerPins.nEnablePin, 0) != 0)
         std::cout << "gpioWrite HC595 nEnablePin ERROR!!!" << std::endl;
@@ -45,7 +45,6 @@ inline void HC595::pulse(int pin)
 #if __has_include(<pigpio.h>)
     gpioWrite(pin, 0);
     gpioWrite(pin, 1);
-    gpioWrite(pin, 0);
 #endif
 }
 
@@ -70,6 +69,7 @@ void HC595::writeByte(unsigned char byte)
 void HC595::latchSignal()
 {
     pulse( registerPins.latchClkPin );
+    gpioWrite( registerPins.latchClkPin, 0);
 }
 
 /*!
