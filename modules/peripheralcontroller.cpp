@@ -12,6 +12,8 @@ PeripheralController::PeripheralController(AMUR::AmurControls *controls, AMUR::A
 
     registers = new RegisterController(settings.outputRegisters,
                                        settings.inputRegisters);
+    registers->enableRegisters();
+
     pwm = new PWMController();
     initPWM();
 
@@ -22,6 +24,8 @@ PeripheralController::~PeripheralController()
 {
     std::cout << "Close PeripheralController... " << std::endl;
     peripheralTimer.stop();
+
+    registers->disableRegisters();
 
     sensorsPeri = nullptr;
     controlsPeri = nullptr;
