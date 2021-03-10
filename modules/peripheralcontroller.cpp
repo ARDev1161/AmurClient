@@ -12,7 +12,7 @@ PeripheralController::PeripheralController(AMUR::AmurControls *controls, AMUR::A
 
     registers = new RegisterController(settings.outputRegisters,
                                        settings.inputRegisters);
-    registers->enableRegisters();
+    initRegisters();
 
     pwm = new PWMController();
     initPWM();
@@ -54,6 +54,31 @@ void PeripheralController::updateData()
     // Update PWM values
     changeWheelsPWM();
     changeHandsPWM();
+}
+
+/*!
+Функция инициализации и проверки регистров.
+*/
+void initRegisters()
+{
+    registers->enableRegisters();
+    for(int i=0; i<10; i++)
+    {
+        registers->writeByte('0x01');
+        registers->refreshOutputData();
+        std::this_thread::sleep_for(
+            std::chrono::milliseconds(50) 
+        );
+
+        registers->writeByte('0x80');
+        registers->refreshOutputData();
+        std::this_thread::sleep_for(
+            std::chrono::milliseconds(50) 
+        );
+    }
+    registers->writeByte('0x00');
+    registers->writeByte('0x00');
+    registers->refreshOutputData();
 }
 
 /*!
