@@ -65,8 +65,13 @@ class PeripheralController: private TimerCallback::Runnable
     int prevRightHandPWM = 0;
 
     // Functions
-    void initPWM();
     void pigpioInit();
+    void initPWM();
+    void initRegisters();
+    void initTimer();
+    void run();
+
+    void checkMotorsTime();
 
     void changeWheelsPWM();
     void changeHandsPWM();
@@ -85,11 +90,6 @@ class PeripheralController: private TimerCallback::Runnable
                                       unsigned char const byte,
                                       unsigned char const previousByte,
                                       int *const angle);
-    // Peripheral timer methods
-    void initTimer();
-    void run();
-
-    void checkMotorsTime();
 public:
     PeripheralController(AMUR::AmurControls *controls, AMUR::AmurSensors *sensors);
     virtual ~PeripheralController();
