@@ -57,7 +57,7 @@ void HC595::writeByte(unsigned char byte)
     int i; 
     for(i=0;i<8;i++){
     #if __has_include(<pigpio.h>)
-        gpioWrite( registerPins.dataPin, ( (byte & (0x80 >> i)) > 0 );
+        gpioWrite( registerPins.dataPin, ( (byte & (0x80 >> i)) > 0 ) );
         pulse( registerPins.clkPin );
     #endif
     }
