@@ -64,13 +64,17 @@ void initRegisters()
     registers->enableRegisters();
     for(int i=0; i<10; i++)
     {
-        registers->writeByte('0x01');
+        // Enable left relay and sleep
+        registers->writeByte('0x80');
+        registers->writeByte('0x00');
         registers->refreshOutputData();
         std::this_thread::sleep_for(
             std::chrono::milliseconds(50) 
         );
 
-        registers->writeByte('0x80');
+        // Enable right relay and sleep
+        registers->writeByte('0x00');
+        registers->writeByte('0x01');
         registers->refreshOutputData();
         std::this_thread::sleep_for(
             std::chrono::milliseconds(50) 
