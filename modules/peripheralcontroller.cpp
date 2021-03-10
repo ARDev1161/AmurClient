@@ -59,7 +59,7 @@ void PeripheralController::updateData()
 /*!
 Функция инициализации и проверки регистров.
 */
-void initRegisters()
+void PeripheralController::initRegisters()
 {
     registers->enableRegisters();
     for(int i=0; i<10; i++)
