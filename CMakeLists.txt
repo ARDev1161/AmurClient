@@ -17,7 +17,7 @@ if(NOT IS_SUBPROJECT)
     message(STATUS "Doxygen dot ${DOXYGEN_DOT_FOUND}")
     
 #    add_subdirectory(doc)
-    
+
     if (Doxygen_FOUND)
         if (NOT MYLIB_DOXYGEN_LANGUAGE)
             set(MYLIB_DOXYGEN_LANGUAGE Russian)

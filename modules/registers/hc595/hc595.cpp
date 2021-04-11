@@ -7,6 +7,16 @@
 HC595::HC595(HC595Pins pins):
 registerPins(pins)
 {
+    gpioInit();
+}
+
+HC595::HC595()
+{
+    gpioInit();
+}
+
+void HC595::gpioInit()
+{
 #if __has_include(<pigpio.h>)
     std::cout << "HC595 entity creating..." << std::endl;
     if(gpioSetMode( registerPins.dataPin, PI_OUTPUT) != 0)
@@ -43,8 +53,8 @@ registerPins(pins)
 inline void HC595::pulse(int pin)
 {
 #if __has_include(<pigpio.h>)
-    gpioWrite(pin, 0);
     gpioWrite(pin, 1);
+    gpioWrite(pin, 0);
 #endif
 }
 
@@ -69,7 +79,6 @@ void HC595::writeByte(unsigned char byte)
 void HC595::latchSignal()
 {
     pulse( registerPins.latchClkPin );
-    gpioWrite( registerPins.latchClkPin, 0);
 }
 
 /*!
@@ -78,6 +87,9 @@ void HC595::latchSignal()
 void HC595::reset()
 {
     pulse( registerPins.nResetPin );
+#if __has_include(<pigpio.h>)
+    gpioWrite( registerPins.nResetPin, 1);
+#endif
 }
 
 /*!
