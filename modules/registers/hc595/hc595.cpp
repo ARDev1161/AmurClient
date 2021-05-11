@@ -36,13 +36,11 @@ void HC595::gpioInit()
         std::cout << "gpioWrite HC595 latchClkPin ERROR!!!" << std::endl;
     if(gpioWrite( registerPins.clkPin, 0) != 0)
         std::cout << "gpioWrite HC595 clkPin ERROR!!!" << std::endl;
-    if(gpioWrite( registerPins.nResetPin, 0) != 0)
+    if(gpioWrite( registerPins.nResetPin, 1) != 0)
         std::cout << "gpioWrite HC595 nResetPin ERROR!!!" << std::endl;
     if(gpioWrite( registerPins.nEnablePin, 0) != 0)
         std::cout << "gpioWrite HC595 nEnablePin ERROR!!!" << std::endl;
 #endif
-
-    this->reset();
     std::cout << "Created HC595 entity" << std::endl;
 }
 
@@ -54,7 +52,9 @@ inline void HC595::pulse(int pin)
 {
 #if __has_include(<pigpio.h>)
     gpioWrite(pin, 1);
+    usleep(1);
     gpioWrite(pin, 0);
+    usleep(1);
 #endif
 }
 
@@ -71,7 +71,7 @@ void HC595::writeByte(unsigned char byte)
         pulse( registerPins.clkPin );
     #endif
     }
-} 
+}
 
 /*!
 Выводит записанные данные на выводы регистра.

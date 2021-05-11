@@ -10,6 +10,7 @@ get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 #option(AMURCLIENT_COVERAGE "Включить измерение покрытия кода тестами" OFF)
 
 #enable_testing()
+#find_package(GTest REQUIRED)
 
 if(NOT IS_SUBPROJECT)
     find_package(Doxygen)
@@ -71,6 +72,10 @@ add_subdirectory(network)
 add_subdirectory(modules)
 add_subdirectory(timer)
 
+include_directories(
+#    ${GTEST_INCLUDE_DIRS}
+)
+
 set(LOGIC_CONTROLLER
     logiccontroller.cpp
     logiccontroller.h
@@ -82,4 +87,7 @@ target_link_libraries(AmurClient
                       NetworkController
                       TimerCallback
                       PeripheralController
+                      # ${GTEST_LIBRARIES}
                       )
+
+#add_test(TestAmurClient "./TestAmurClient")

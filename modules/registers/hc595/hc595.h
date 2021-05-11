@@ -2,6 +2,7 @@
 #define HC595_H
 
 #include <iostream>
+#include <unistd.h>
 
 #if __has_include(<pigpio.h>)
     #include <pigpio.h>
