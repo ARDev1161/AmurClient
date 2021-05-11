@@ -9,8 +9,6 @@
 
 #include "../registerssettings.h"
 
-#define PULSE_WIDTH_USEC   1 // задержка импульса при считывании данных (каждый бит)
-
 /*!
     \brief Класс работы с регистром 74HC165
 
@@ -19,11 +17,11 @@
 
 class HC165
 {
-    HC165Pins registerPins;
+    RegisterSettings *settings;
 
     inline void pulse(int pin);
 public:    
-    HC165(HC165Pins pins);
+    HC165(RegisterSettings *settings);
     unsigned char readByte();
     void loadRegister();        
     void disableClock();

@@ -13,11 +13,13 @@
 */
 class RegisterController
 {
+    RegisterSettings *registerSettings;
     HC595 *outputRegister;
     HC165 *inputRegister;
 
 public:
-    RegisterController(HC595Pins outputPins, HC165Pins inputPins);
+    RegisterController(RegisterSettings *settings);
+    RegisterController();
     ~RegisterController();
 
     void writeByte(unsigned char writingByte);

@@ -10,8 +10,7 @@ PeripheralController::PeripheralController(AMUR::AmurControls *controls, AMUR::A
 {
     pigpioInit();
 
-    registers = new RegisterController(settings.outputRegisters,
-                                       settings.inputRegisters);
+    registers = new RegisterController(&peripheralSettings.registers);
     initRegisters();
 
     pwm = new PWMController();
@@ -123,12 +122,12 @@ void PeripheralController::initPWM()
 {
     std::cout << "PWM initializing... " << std::endl;
     // Setup hardware PWM for wheel motors
-    pwm->hardPWMCreate( settings.pwm.wheelRightPin );
-    pwm->hardPWMCreate( settings.pwm.wheelLeftPin );
+    pwm->hardPWMCreate( peripheralSettings.pwm.wheelRightPin );
+    pwm->hardPWMCreate( peripheralSettings.pwm.wheelLeftPin );
 
     // Setup software PWM for hand motors
-    pwm->softPWMCreate( settings.pwm.handRightPin );
-    pwm->softPWMCreate( settings.pwm.handLeftPin );
+    pwm->softPWMCreate( peripheralSettings.pwm.handRightPin );
+    pwm->softPWMCreate( peripheralSettings.pwm.handLeftPin );
 }
 
 /*!
@@ -221,10 +220,10 @@ unsigned char PeripheralController::rightOutRegisterToByte()
 void PeripheralController::changeWheelsPWM()
 {
     if(prevRightWheelPWM != abs(controlsPeri->mutable_wheelmotors()->rightpower()))
-        pwm->hardPWMChange( settings.pwm.wheelRightPin, abs(controlsPeri->mutable_wheelmotors()->rightpower()) );
+        pwm->hardPWMChange( peripheralSettings.pwm.wheelRightPin, abs(controlsPeri->mutable_wheelmotors()->rightpower()) );
 
     if(prevLeftWheelPWM != abs(controlsPeri->mutable_wheelmotors()->leftpower()))
-        pwm->hardPWMChange( settings.pwm.wheelLeftPin, abs(controlsPeri->mutable_wheelmotors()->leftpower()) );
+        pwm->hardPWMChange( peripheralSettings.pwm.wheelLeftPin, abs(controlsPeri->mutable_wheelmotors()->leftpower()) );
 }
 
 /*!
@@ -233,10 +232,10 @@ void PeripheralController::changeWheelsPWM()
 void PeripheralController::changeHandsPWM()
 {
     if(prevRightHandPWM != abs(controlsPeri->mutable_handmotors()->rightpower()))
-        pwm->softPWMChange( settings.pwm.handRightPin, abs(controlsPeri->mutable_handmotors()->rightpower()) );
+        pwm->softPWMChange( peripheralSettings.pwm.handRightPin, abs(controlsPeri->mutable_handmotors()->rightpower()) );
 
     if(prevLeftHandPWM != abs(controlsPeri->mutable_handmotors()->leftpower()))
-        pwm->softPWMChange( settings.pwm.handLeftPin, abs(controlsPeri->mutable_handmotors()->leftpower()) );
+        pwm->softPWMChange( peripheralSettings.pwm.handLeftPin, abs(controlsPeri->mutable_handmotors()->leftpower()) );
 }
 
 /*!

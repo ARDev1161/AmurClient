@@ -21,10 +21,8 @@ struct EncoderSettings{
     Данная структура хранит набор пинов и настроек оборудования периферии.
 */
 struct PeripheralSettings{
-    //HC595 section
-    HC595Pins outputRegisters;
-    //HC165 section
-    HC165Pins inputRegisters;
+    //Registers section
+    RegisterSettings registers;
     //PWM section
     PWMPins pwm;
     //Encoder section

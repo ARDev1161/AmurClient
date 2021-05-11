@@ -18,11 +18,11 @@
 
 class HC595
 {
-    HC595Pins registerPins;
+    RegisterSettings *settings;
     inline void pulse(int pin);
     void gpioInit();
 public:
-    HC595(HC595Pins pins);
+    HC595(RegisterSettings *settings);
     HC595();
 
     void writeByte(unsigned char byte);

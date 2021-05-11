@@ -4,25 +4,25 @@
 Создаёт экземпляр класса для считывания из регистра.
 \param[in] pins Структура описывающая пины Raspberry Pi для подключения регистра в нотации GPIO
 */
-HC165::HC165(HC165Pins pins):
-registerPins(pins)
+HC165::HC165(RegisterSettings *settings):
+settings(settings)
 {
 #if __has_include(<pigpio.h>)
     std::cout << "HC165 entity creating..." << std::endl;
-    if(gpioSetMode( registerPins.dataPin , PI_INPUT) != 0)
+    if(gpioSetMode( settings->hc165Pins.dataPin , PI_INPUT) != 0)
         std::cout << "gpioSetMode HC165 dataPin ERROR!!!" << std::endl;
-    if(gpioSetMode( registerPins.loadPin , PI_OUTPUT) != 0)
+    if(gpioSetMode( settings->hc165Pins.loadPin , PI_OUTPUT) != 0)
         std::cout << "gpioSetMode HC165 loadPin ERROR!!!" << std::endl;
-    if(gpioSetMode( registerPins.clkPin , PI_OUTPUT) != 0)
+    if(gpioSetMode( settings->hc165Pins.clkPin , PI_OUTPUT) != 0)
         std::cout << "gpioSetMode HC165 clkPin ERROR!!!" << std::endl;
-    if(gpioSetMode( registerPins.clkInhibitePin , PI_OUTPUT) != 0)
+    if(gpioSetMode( settings->hc165Pins.clkInhibitePin , PI_OUTPUT) != 0)
         std::cout << "gpioSetMode HC165 clkInhibitePin ERROR!!!" << std::endl;
 
-    if(gpioWrite( registerPins.loadPin , 0) != 0)
+    if(gpioWrite( settings->hc165Pins.loadPin , 0) != 0)
         std::cout << "gpioWrite HC165 loadPin ERROR!!!" << std::endl;
-    if(gpioWrite( registerPins.clkPin , 0) != 0)
+    if(gpioWrite( settings->hc165Pins.clkPin , 0) != 0)
         std::cout << "gpioWrite HC165 clkPin ERROR!!!" << std::endl;
-    if(gpioWrite( registerPins.clkInhibitePin , 0) != 0)
+    if(gpioWrite( settings->hc165Pins.clkInhibitePin , 0) != 0)
         std::cout << "gpioWrite HC165 clkInhibitePin ERROR!!!" << std::endl;
 #endif
     std::cout << "Created HC165 entity" << std::endl;
@@ -36,7 +36,7 @@ inline void HC165::pulse(int pin)
 {
 #if __has_include(<pigpio.h>)
     gpioWrite(pin, 0);
-    gpioDelay(PULSE_WIDTH_USEC);
+    gpioDelay(settings->general.usPulseDelay);
     gpioWrite(pin, 1);
 #endif
 }
@@ -47,7 +47,7 @@ inline void HC165::pulse(int pin)
 void HC165::disableClock()
 {
 #if __has_include(<pigpio.h>)
-
+    gpioWrite( settings->hc165Pins.clkInhibitePin , 1);
 #endif
 }
 
@@ -57,7 +57,7 @@ void HC165::disableClock()
 void HC165::enableClock()
 {
 #if __has_include(<pigpio.h>)
-    gpioWrite( registerPins.clkInhibitePin , 0);
+    gpioWrite( settings->hc165Pins.clkInhibitePin , 0);
 #endif
 }
 
@@ -67,9 +67,9 @@ void HC165::enableClock()
 void HC165::loadRegister()
 {
     disableClock();
-    pulse( registerPins.loadPin );
+    pulse( settings->hc165Pins.loadPin );
 #if __has_include(<pigpio.h>)
-    gpioWrite( registerPins.loadPin , 0);
+    gpioWrite( settings->hc165Pins.loadPin , 0);
 #endif
     enableClock();
 }
@@ -86,10 +86,10 @@ unsigned char HC165::readByte()
     for(int i = 0; i < 8; i++)
     {
 #if __has_include(<pigpio.h>)
-        byte |= (gpioRead( registerPins.dataPin ) << (7 - i));
+        byte |= (gpioRead( settings->hc165Pins.dataPin ) << (7 - i));
 
 #endif
-        pulse( registerPins.clkPin );
+        pulse( settings->hc165Pins.clkPin );
     }
 
     return(byte);

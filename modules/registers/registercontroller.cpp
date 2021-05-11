@@ -3,13 +3,22 @@
 /*!
 Создаёт экземпляр класса для работы с регистрами.
 \param[in] outputPins Структура описывающая пины Raspberry Pi для подключения выходного регистра в нотации GPIO
-\param[in] inputPins Структура описывающая пины Raspberry Pi для подключения входного регистра в нотации GPIO
 */
-RegisterController::RegisterController
-    (HC595Pins outputPins, HC165Pins inputPins)
+RegisterController::RegisterController(RegisterSettings *settings):
+registerSettings(settings)
 {
-    outputRegister = new HC595(outputPins);
-    inputRegister = new HC165(inputPins);
+    outputRegister = new HC595(registerSettings);
+    inputRegister = new HC165(registerSettings);
+}
+
+/*!
+Создаёт экземпляр класса для работы с регистрами c отдельной копией настроек по умолчанию.
+*/
+RegisterController::RegisterController()
+{
+    registerSettings = new RegisterSettings();
+    outputRegister = new HC595(registerSettings);
+    inputRegister = new HC165(registerSettings);
 }
 
 RegisterController::~RegisterController()

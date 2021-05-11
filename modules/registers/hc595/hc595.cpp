@@ -4,14 +4,15 @@
 Создаёт экземпляр класса для записи в регистр.
 \param[in] pins Структура описывающая пины Raspberry Pi для подключения регистра в нотации GPIO
 */
-HC595::HC595(HC595Pins pins):
-registerPins(pins)
+HC595::HC595(RegisterSettings *settings):
+settings(settings)
 {
     gpioInit();
 }
 
 HC595::HC595()
 {
+    settings = new RegisterSettings();
     gpioInit();
 }
 
@@ -19,26 +20,26 @@ void HC595::gpioInit()
 {
 #if __has_include(<pigpio.h>)
     std::cout << "HC595 entity creating..." << std::endl;
-    if(gpioSetMode( registerPins.dataPin, PI_OUTPUT) != 0)
+    if(gpioSetMode( settings->hc595Pins.dataPin, PI_OUTPUT) != 0)
         std::cout << "gpioSetMode HC595 dataPin ERROR!!!" << std::endl;
-    if(gpioSetMode( registerPins.latchClkPin, PI_OUTPUT) != 0)
+    if(gpioSetMode( settings->hc595Pins.latchClkPin, PI_OUTPUT) != 0)
         std::cout << "gpioSetMode HC595 latchClkPin ERROR!!!" << std::endl;
-    if(gpioSetMode( registerPins.clkPin, PI_OUTPUT) != 0)
+    if(gpioSetMode( settings->hc595Pins.clkPin, PI_OUTPUT) != 0)
         std::cout << "gpioSetMode HC595 clkPin ERROR!!!" << std::endl;
-    if(gpioSetMode( registerPins.nResetPin, PI_OUTPUT) != 0)
+    if(gpioSetMode( settings->hc595Pins.nResetPin, PI_OUTPUT) != 0)
         std::cout << "gpioSetMode HC595 nResetPin ERROR!!!" << std::endl;
-    if(gpioSetMode( registerPins.nEnablePin, PI_OUTPUT) != 0)
+    if(gpioSetMode( settings->hc595Pins.nEnablePin, PI_OUTPUT) != 0)
         std::cout << "gpioSetMode HC595 nEnablePin ERROR!!!" << std::endl;
 
-    if(gpioWrite( registerPins.dataPin, 0) != 0)
+    if(gpioWrite( settings->hc595Pins.dataPin, 0) != 0)
         std::cout << "gpioWrite HC595 dataPin ERROR!!!" << std::endl;
-    if(gpioWrite( registerPins.latchClkPin, 0) != 0)
+    if(gpioWrite( settings->hc595Pins.latchClkPin, 0) != 0)
         std::cout << "gpioWrite HC595 latchClkPin ERROR!!!" << std::endl;
-    if(gpioWrite( registerPins.clkPin, 0) != 0)
+    if(gpioWrite( settings->hc595Pins.clkPin, 0) != 0)
         std::cout << "gpioWrite HC595 clkPin ERROR!!!" << std::endl;
-    if(gpioWrite( registerPins.nResetPin, 1) != 0)
+    if(gpioWrite( settings->hc595Pins.nResetPin, 1) != 0)
         std::cout << "gpioWrite HC595 nResetPin ERROR!!!" << std::endl;
-    if(gpioWrite( registerPins.nEnablePin, 0) != 0)
+    if(gpioWrite( settings->hc595Pins.nEnablePin, 0) != 0)
         std::cout << "gpioWrite HC595 nEnablePin ERROR!!!" << std::endl;
 #endif
     std::cout << "Created HC595 entity" << std::endl;
@@ -52,9 +53,9 @@ inline void HC595::pulse(int pin)
 {
 #if __has_include(<pigpio.h>)
     gpioWrite(pin, 1);
-    usleep(1);
+    usleep(settings->general.usPulseDelay);
     gpioWrite(pin, 0);
-    usleep(1);
+    usleep(settings->general.usPulseDelay);
 #endif
 }
 
@@ -67,8 +68,8 @@ void HC595::writeByte(unsigned char byte)
     int i; 
     for(i=0;i<8;i++){
     #if __has_include(<pigpio.h>)
-        gpioWrite( registerPins.dataPin, ( (byte & (0x80 >> i)) > 0 ) );
-        pulse( registerPins.clkPin );
+        gpioWrite( settings->hc595Pins.dataPin, ( (byte & (0x80 >> i)) > 0 ) );
+        pulse( settings->hc595Pins.clkPin );
     #endif
     }
 }
@@ -78,7 +79,7 @@ void HC595::writeByte(unsigned char byte)
 */
 void HC595::latchSignal()
 {
-    pulse( registerPins.latchClkPin );
+    pulse( settings->hc595Pins.latchClkPin );
 }
 
 /*!
@@ -86,9 +87,9 @@ void HC595::latchSignal()
 */
 void HC595::reset()
 {
-    pulse( registerPins.nResetPin );
+    pulse( settings->hc595Pins.nResetPin );
 #if __has_include(<pigpio.h>)
-    gpioWrite( registerPins.nResetPin, 1);
+    gpioWrite( settings->hc595Pins.nResetPin, 1);
 #endif
 }
 
@@ -98,7 +99,7 @@ void HC595::reset()
 void HC595::enable()
 {
 #if __has_include(<pigpio.h>)
-    gpioWrite( registerPins.nEnablePin , 0);
+    gpioWrite( settings->hc595Pins.nEnablePin , 0);
 #endif
 }
 
@@ -108,6 +109,6 @@ void HC595::enable()
 void HC595::disable()
 {
 #if __has_include(<pigpio.h>)
-    gpioWrite(  registerPins.nEnablePin , 1);
+    gpioWrite(  settings->hc595Pins.nEnablePin , 1);
 #endif
 }

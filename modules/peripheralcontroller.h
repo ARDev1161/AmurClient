@@ -30,7 +30,7 @@ class PeripheralController: private TimerCallback::Runnable
 {
     // Fields
 
-    PeripheralSettings settings;
+    PeripheralSettings peripheralSettings;
 
     RegisterController *registers;
     PWMController *pwm;
