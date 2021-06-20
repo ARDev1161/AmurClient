@@ -18,4 +18,4 @@ add_library(PWMController
             ${PWM_CONTROLLER}
            )
 
-#add_executable(PWMController main.cpp ${PWM_CONTROLLER})
+#add_executable(PWMController test_pwm.cpp ${PWM_CONTROLLER})

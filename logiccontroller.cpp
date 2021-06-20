@@ -11,6 +11,15 @@ LogicController::LogicController()
     network = new NetworkController(controls, sensors);
 
     network->runClient(address);
+    controls->mutable_wheelmotors()->set_leftpower(42);
+    controls->mutable_wheelmotors()->set_lefttime(420);
+    controls->mutable_wheelmotors()->set_rightpower(42);
+    controls->mutable_wheelmotors()->set_righttime(420);
+
+    controls->mutable_handmotors()->set_leftpower(42);
+    controls->mutable_handmotors()->set_rightpower(42);
+    controls->mutable_handmotors()->set_lefttime(420);
+    controls->mutable_handmotors()->set_righttime(42);
 
     worker();
 }

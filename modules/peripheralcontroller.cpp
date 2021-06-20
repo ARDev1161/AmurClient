@@ -46,13 +46,13 @@ void PeripheralController::run()
 */
 void PeripheralController::updateData()
 {
-    // Update output registers data & input registers buffers
-    writeRegisterData();
-    readRegisterData();
-
     // Update PWM values
     changeWheelsPWM();
     changeHandsPWM();
+
+    // Update output registers data & input registers buffers
+    writeRegisterData();
+    readRegisterData();
 }
 
 /*!

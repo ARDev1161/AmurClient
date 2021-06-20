@@ -25,8 +25,6 @@ class LogicController
     PeripheralController *periphery;
     NetworkController *network;
 
-    TimerCallback logicTimer;
-
     void worker();
     bool workerStopped = false;
 

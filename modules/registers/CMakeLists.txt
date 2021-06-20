@@ -38,4 +38,5 @@ add_library(RegisterController
             ${REGISTERS}
            )
 
-#add_executable(RegisterController main.cpp ${REGISTERS})
+add_executable(train_hc595 hc595/train_hc595.cpp ${REGISTERS})
+add_executable(train_hc165 hc165/train_hc165.cpp ${REGISTERS})

@@ -169,17 +169,10 @@ set(PROTOS_LIB
     ${CMAKE_CURRENT_SOURCE_DIR}/amur.grpc.pb.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/amur.grpc.pb.h
     )
-    
-set(AMUR_PROTOS
-    amur.pb.h
-    amur.pb.cc
-    amur.grpc.pb.h
-    amur.grpc.pb.cc
-)
 
 add_library(AMURProtos 
             STATIC 
-            ${AMUR_PROTOS}
+            ${PROTOS_LIB}
            )
 
 target_link_libraries(AMURProtos

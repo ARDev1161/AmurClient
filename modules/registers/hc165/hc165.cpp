@@ -18,6 +18,15 @@ settings(settings)
     if(gpioSetMode( settings->hc165Pins.clkInhibitePin , PI_OUTPUT) != 0)
         std::cout << "gpioSetMode HC165 clkInhibitePin ERROR!!!" << std::endl;
 
+    if(gpioSetPullUpDown( settings->hc165Pins.dataPin , PI_PUD_DOWN) != 0)
+        std::cout << "gpioSetPullUpDown HC165 dataPin ERROR!!!" << std::endl;
+    if(gpioSetPullUpDown( settings->hc165Pins.loadPin , PI_PUD_DOWN) != 0)
+        std::cout << "gpioSetPullUpDown HC165 loadPin ERROR!!!" << std::endl;
+    if(gpioSetPullUpDown( settings->hc165Pins.clkPin , PI_PUD_DOWN) != 0)
+        std::cout << "gpioSetPullUpDown HC165 clkPin ERROR!!!" << std::endl;
+    if(gpioSetPullUpDown( settings->hc165Pins.clkInhibitePin , PI_PUD_DOWN) != 0)
+        std::cout << "gpioSetPullUpDown HC165 clkInhibitePin ERROR!!!" << std::endl;
+
     if(gpioWrite( settings->hc165Pins.loadPin , 0) != 0)
         std::cout << "gpioWrite HC165 loadPin ERROR!!!" << std::endl;
     if(gpioWrite( settings->hc165Pins.clkPin , 0) != 0)

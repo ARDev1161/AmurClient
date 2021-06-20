@@ -31,6 +31,17 @@ void HC595::gpioInit()
     if(gpioSetMode( settings->hc595Pins.nEnablePin, PI_OUTPUT) != 0)
         std::cout << "gpioSetMode HC595 nEnablePin ERROR!!!" << std::endl;
 
+    if(gpioSetPullUpDown( settings->hc595Pins.dataPin, PI_PUD_DOWN) != 0)
+        std::cout << "gpioSetPullUpDown HC595 dataPin ERROR!!!" << std::endl;
+    if(gpioSetPullUpDown( settings->hc595Pins.latchClkPin, PI_PUD_DOWN) != 0)
+        std::cout << "gpioSetPullUpDown HC595 latchClkPin ERROR!!!" << std::endl;
+    if(gpioSetPullUpDown( settings->hc595Pins.clkPin, PI_PUD_DOWN) != 0)
+        std::cout << "gpioSetPullUpDown HC595 clkPin ERROR!!!" << std::endl;
+    if(gpioSetPullUpDown( settings->hc595Pins.nResetPin, PI_PUD_DOWN) != 0)
+        std::cout << "gpioSetPullUpDown HC595 nResetPin ERROR!!!" << std::endl;
+    if(gpioSetPullUpDown( settings->hc595Pins.nEnablePin, PI_PUD_DOWN) != 0)
+        std::cout << "gpioSetPullUpDown HC595 nEnablePin ERROR!!!" << std::endl;
+
     if(gpioWrite( settings->hc595Pins.dataPin, 0) != 0)
         std::cout << "gpioWrite HC595 dataPin ERROR!!!" << std::endl;
     if(gpioWrite( settings->hc595Pins.latchClkPin, 0) != 0)
