@@ -1,0 +1,78 @@
+# AmurClient configuration file
+
+version = "0.88";
+
+AmurClient:
+{
+    gstreamer:
+    {
+         size = { width = 640; height = 480; };
+         fps = 15;
+
+         src = "raspivid -o - -t 0 -hf -w 320 -h 240 -fps 15 | gst-launch-1.0 -v fdsrc"
+         coding = " ! h264parse ! rtph264pay pt=96 config-interval=5 ! "
+         sink = "udpsinkk host=10.10.10.11 port=1488";
+    };
+
+    misc:
+    {
+         pi = 3.141592654;
+
+         bigint = 9223372036854775807L;
+         columns = [ "Last Name", "First Name", "MI" ];
+         bitmask = 0x1FC3;
+    };
+
+    LogicController:
+    {
+
+    };
+
+    NetworkController:
+    {
+        address = "176.193.245.203:7777";
+    };
+
+
+    PeripheralController:
+    {
+        EncoderSettings:
+        {
+            encoderSectorsCount = 100;
+            maxMotorSpeed = 100;
+            sampleMultiplier = 3; //default - 3;
+        };
+
+        PWMPins:
+        {
+            wheelRightPin = 12;
+            wheelLeftPin = 13;
+
+            handRightPin = 20;
+            handLeftPin = 21;
+        };
+
+        RegisterSettings:
+        {
+            usPulseDelay = 1;
+
+            HC595Pins:
+            {
+                dataPin = 23;
+                latchClkPin = 25;
+                clkPin = 24;
+                nResetPin = 18;
+                nEnablePin = 16;
+            };
+
+            HC165Pins:
+            {
+                dataPin = 4;
+                clkPin = 17;
+                clkInhibitePin = 22;
+                loadPin = 27;
+            };
+        };
+    };
+
+};
