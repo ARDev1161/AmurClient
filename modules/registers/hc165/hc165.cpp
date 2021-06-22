@@ -10,29 +10,29 @@ settings(settings)
 #if __has_include(<pigpio.h>)
     std::cout << "HC165 entity creating..." << std::endl;
     if(gpioSetMode( settings->hc165Pins.dataPin , PI_INPUT) != 0)
-        std::cout << "gpioSetMode HC165 dataPin ERROR!!!" << std::endl;
+        std::cerr << "gpioSetMode HC165 dataPin ERROR!!!" << std::endl;
     if(gpioSetMode( settings->hc165Pins.loadPin , PI_OUTPUT) != 0)
-        std::cout << "gpioSetMode HC165 loadPin ERROR!!!" << std::endl;
+        std::cerr << "gpioSetMode HC165 loadPin ERROR!!!" << std::endl;
     if(gpioSetMode( settings->hc165Pins.clkPin , PI_OUTPUT) != 0)
-        std::cout << "gpioSetMode HC165 clkPin ERROR!!!" << std::endl;
+        std::cerr << "gpioSetMode HC165 clkPin ERROR!!!" << std::endl;
     if(gpioSetMode( settings->hc165Pins.clkInhibitePin , PI_OUTPUT) != 0)
-        std::cout << "gpioSetMode HC165 clkInhibitePin ERROR!!!" << std::endl;
+        std::cerr << "gpioSetMode HC165 clkInhibitePin ERROR!!!" << std::endl;
 
     if(gpioSetPullUpDown( settings->hc165Pins.dataPin , PI_PUD_DOWN) != 0)
-        std::cout << "gpioSetPullUpDown HC165 dataPin ERROR!!!" << std::endl;
+        std::cerr << "gpioSetPullUpDown HC165 dataPin ERROR!!!" << std::endl;
     if(gpioSetPullUpDown( settings->hc165Pins.loadPin , PI_PUD_DOWN) != 0)
-        std::cout << "gpioSetPullUpDown HC165 loadPin ERROR!!!" << std::endl;
+        std::cerr << "gpioSetPullUpDown HC165 loadPin ERROR!!!" << std::endl;
     if(gpioSetPullUpDown( settings->hc165Pins.clkPin , PI_PUD_DOWN) != 0)
-        std::cout << "gpioSetPullUpDown HC165 clkPin ERROR!!!" << std::endl;
+        std::cerr << "gpioSetPullUpDown HC165 clkPin ERROR!!!" << std::endl;
     if(gpioSetPullUpDown( settings->hc165Pins.clkInhibitePin , PI_PUD_DOWN) != 0)
-        std::cout << "gpioSetPullUpDown HC165 clkInhibitePin ERROR!!!" << std::endl;
+        std::cerr << "gpioSetPullUpDown HC165 clkInhibitePin ERROR!!!" << std::endl;
 
     if(gpioWrite( settings->hc165Pins.loadPin , 0) != 0)
-        std::cout << "gpioWrite HC165 loadPin ERROR!!!" << std::endl;
+        std::cerr << "gpioWrite HC165 loadPin ERROR!!!" << std::endl;
     if(gpioWrite( settings->hc165Pins.clkPin , 0) != 0)
-        std::cout << "gpioWrite HC165 clkPin ERROR!!!" << std::endl;
+        std::cerr << "gpioWrite HC165 clkPin ERROR!!!" << std::endl;
     if(gpioWrite( settings->hc165Pins.clkInhibitePin , 0) != 0)
-        std::cout << "gpioWrite HC165 clkInhibitePin ERROR!!!" << std::endl;
+        std::cerr << "gpioWrite HC165 clkInhibitePin ERROR!!!" << std::endl;
 #endif
     std::cout << "Created HC165 entity" << std::endl;
 }

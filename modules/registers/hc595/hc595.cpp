@@ -21,37 +21,37 @@ void HC595::gpioInit()
 #if __has_include(<pigpio.h>)
     std::cout << "HC595 entity creating..." << std::endl;
     if(gpioSetMode( settings->hc595Pins.dataPin, PI_OUTPUT) != 0)
-        std::cout << "gpioSetMode HC595 dataPin ERROR!!!" << std::endl;
+        std::cerr << "gpioSetMode HC595 dataPin ERROR!!!" << std::endl;
     if(gpioSetMode( settings->hc595Pins.latchClkPin, PI_OUTPUT) != 0)
-        std::cout << "gpioSetMode HC595 latchClkPin ERROR!!!" << std::endl;
+        std::cerr << "gpioSetMode HC595 latchClkPin ERROR!!!" << std::endl;
     if(gpioSetMode( settings->hc595Pins.clkPin, PI_OUTPUT) != 0)
-        std::cout << "gpioSetMode HC595 clkPin ERROR!!!" << std::endl;
+        std::cerr << "gpioSetMode HC595 clkPin ERROR!!!" << std::endl;
     if(gpioSetMode( settings->hc595Pins.nResetPin, PI_OUTPUT) != 0)
-        std::cout << "gpioSetMode HC595 nResetPin ERROR!!!" << std::endl;
+        std::cerr << "gpioSetMode HC595 nResetPin ERROR!!!" << std::endl;
     if(gpioSetMode( settings->hc595Pins.nEnablePin, PI_OUTPUT) != 0)
-        std::cout << "gpioSetMode HC595 nEnablePin ERROR!!!" << std::endl;
+        std::cerr << "gpioSetMode HC595 nEnablePin ERROR!!!" << std::endl;
 
     if(gpioSetPullUpDown( settings->hc595Pins.dataPin, PI_PUD_DOWN) != 0)
-        std::cout << "gpioSetPullUpDown HC595 dataPin ERROR!!!" << std::endl;
+        std::cerr << "gpioSetPullUpDown HC595 dataPin ERROR!!!" << std::endl;
     if(gpioSetPullUpDown( settings->hc595Pins.latchClkPin, PI_PUD_DOWN) != 0)
-        std::cout << "gpioSetPullUpDown HC595 latchClkPin ERROR!!!" << std::endl;
+        std::cerr << "gpioSetPullUpDown HC595 latchClkPin ERROR!!!" << std::endl;
     if(gpioSetPullUpDown( settings->hc595Pins.clkPin, PI_PUD_DOWN) != 0)
-        std::cout << "gpioSetPullUpDown HC595 clkPin ERROR!!!" << std::endl;
+        std::cerr << "gpioSetPullUpDown HC595 clkPin ERROR!!!" << std::endl;
     if(gpioSetPullUpDown( settings->hc595Pins.nResetPin, PI_PUD_DOWN) != 0)
-        std::cout << "gpioSetPullUpDown HC595 nResetPin ERROR!!!" << std::endl;
+        std::cerr << "gpioSetPullUpDown HC595 nResetPin ERROR!!!" << std::endl;
     if(gpioSetPullUpDown( settings->hc595Pins.nEnablePin, PI_PUD_DOWN) != 0)
-        std::cout << "gpioSetPullUpDown HC595 nEnablePin ERROR!!!" << std::endl;
+        std::cerr << "gpioSetPullUpDown HC595 nEnablePin ERROR!!!" << std::endl;
 
     if(gpioWrite( settings->hc595Pins.dataPin, 0) != 0)
-        std::cout << "gpioWrite HC595 dataPin ERROR!!!" << std::endl;
+        std::cerr << "gpioWrite HC595 dataPin ERROR!!!" << std::endl;
     if(gpioWrite( settings->hc595Pins.latchClkPin, 0) != 0)
-        std::cout << "gpioWrite HC595 latchClkPin ERROR!!!" << std::endl;
+        std::cerr << "gpioWrite HC595 latchClkPin ERROR!!!" << std::endl;
     if(gpioWrite( settings->hc595Pins.clkPin, 0) != 0)
-        std::cout << "gpioWrite HC595 clkPin ERROR!!!" << std::endl;
+        std::cerr << "gpioWrite HC595 clkPin ERROR!!!" << std::endl;
     if(gpioWrite( settings->hc595Pins.nResetPin, 1) != 0)
-        std::cout << "gpioWrite HC595 nResetPin ERROR!!!" << std::endl;
+        std::cerr << "gpioWrite HC595 nResetPin ERROR!!!" << std::endl;
     if(gpioWrite( settings->hc595Pins.nEnablePin, 0) != 0)
-        std::cout << "gpioWrite HC595 nEnablePin ERROR!!!" << std::endl;
+        std::cerr << "gpioWrite HC595 nEnablePin ERROR!!!" << std::endl;
 #endif
     std::cout << "Created HC595 entity" << std::endl;
 }

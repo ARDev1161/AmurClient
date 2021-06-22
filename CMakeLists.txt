@@ -68,6 +68,14 @@ if(NOT CMAKE_CXX_EXTENSIONS)
     set(CMAKE_CXX_EXTENSIONS OFF)
 endif()
 
+find_library(libСonfig config++)
+
+# Copy config from source to build
+configure_file(
+        amur.cfg.in
+        amur.cfg
+        )
+
 add_subdirectory(network)
 add_subdirectory(modules)
 add_subdirectory(timer)
@@ -81,7 +89,15 @@ set(LOGIC_CONTROLLER
     logiccontroller.h
    )
 
-add_executable(AmurClient AmurClient.cpp ${LOGIC_CONTROLLER})
+set(CONFIG_PROCESSOR
+    configprocessor.h
+    configprocessor.cpp
+   )
+
+add_executable(AmurClient AmurClient.cpp
+                ${LOGIC_CONTROLLER}
+                ${CONFIG_PROCESSOR}
+              )
 
 target_link_libraries(AmurClient
                       NetworkController
@@ -89,5 +105,9 @@ target_link_libraries(AmurClient
                       PeripheralController
                       # ${GTEST_LIBRARIES}
                       )
+
+if(libСonfig)
+    target_link_libraries(AmurClient config++)
+endif()
 
 #add_test(TestAmurClient "./TestAmurClient")

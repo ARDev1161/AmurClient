@@ -103,7 +103,7 @@ void PeripheralController::pigpioInit()
     int code;
     if((code = gpioInitialise()) < 0) //setup GPIO, this uses actual BCM pin numbers
     {
-        std::cout << "pigpioInit failed!!! : Error - " << code << std::endl;
+        std::cerr << "pigpioInit failed!!! : Error - " << code << std::endl;
         abort();
     }
     else
@@ -111,7 +111,7 @@ void PeripheralController::pigpioInit()
         std::cout << "pigpioInit successed! : pigpio version - " << gpioVersion() << std::endl;
     }
 #else
-    std::cout << "pigpio not installed !!!" << std::endl;
+    std::cerr << "pigpio not installed !!!" << std::endl;
 #endif
 }
 
