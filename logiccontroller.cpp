@@ -5,11 +5,12 @@
 */
 LogicController::LogicController()
 {
-    setOptionsConfig(configName);
-    readConfig(configName);
+    config = new ConfigProcessor();
+    printHeadInfo();
 
     controls = new AMUR::AmurControls();
     sensors = new AMUR::AmurSensors();
+
     periphery = new PeripheralController(controls, sensors);
     network = new NetworkController(controls, sensors);
 
@@ -38,7 +39,19 @@ LogicController::~LogicController()
     delete sensors;
     delete controls;
 
+    delete config;
     delete configName;
+}
+
+/*!
+  Функция печати основной информации о программе
+*/
+void LogicController::printHeadInfo()
+{
+    std::cout << "AmurClient VERSION - " << config->configSearchString("version") << std::endl;
+    std::cout << "IP address: " << config->configSearchString("Amur.Network.address") << std::endl;
+    std::cout << "Pi = " << config->configSearchDouble("Amur.misc.pi") << std::endl;
+    std::cout << "FPS = " << config->configSearchInt("Amur.gstreamer.fps") << std::endl << std::endl;
 }
 
 /*!
@@ -55,107 +68,6 @@ void LogicController::worker()
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(10)); // Wait 10 milliseconds
     }
-}
-
-/*!
-  Инициализация libconfig.
-\param[in] file Имя файла конфигурации.
-*/
-int LogicController::setOptionsConfig(const char *configName)
-{
-    config.setOptions(libconfig::Config::OptionFsync
-                | libconfig::Config::OptionSemicolonSeparators
-                | libconfig::Config::OptionColonAssignmentForGroups
-                | libconfig::Config::OptionOpenBraceOnSeparateLine);
-
-    return (EXIT_SUCCESS);
-}
-
-/*!
-  Чтение параметров конфигурации из config файла.
-\param[in] file Имя файла конфигурации.
-*/
-int LogicController::readConfig(const char *configName)
-{
-    // Read the file. If there is an error, report it and exit.
-    try
-    {
-      std::cout << "Reading config file: " << configName << std::endl;
-      config.readFile(configName);
-    }
-
-    catch(const libconfig::FileIOException &fioex)
-    {
-      std::cerr << "I/O error while reading config file." << std::endl;
-      return(EXIT_FAILURE);
-    }
-
-    catch(const libconfig::ParseException &pex)
-    {
-      std::cerr << "Parse error at " << pex.getFile() << ":" << pex.getLine()
-                << " - " << pex.getError() << std::endl;
-      return(EXIT_FAILURE);
-    }
-
-    return (EXIT_SUCCESS);
-}
-
-/*!
-  Запись параметров конфигурации в config файл.
-\param[in] file Имя файла конфигурации.
-*/
-int LogicController::writeConfig(const char *configName)
-{
-    // Write out the updated configuration.
-      try
-      {
-        config.writeFile(configName);
-        std::cerr << "Configuration successfully written to: " << configName << std::endl;
-
-      }
-      catch(const libconfig::FileIOException &fioex)
-      {
-        std::cerr << "I/O error while writing file: " << configName << std::endl;
-        return(EXIT_FAILURE);
-      }
-    return (EXIT_SUCCESS);
-}
-
-/*!
-  Поиск настройки в конфигурационном файле по имени.
-\param[in] file Имя настройки в конфигурационном файле.
-*/
-int LogicController::configSearch(const char *settingName)
-{
-    // Получить некое название.
-    try
-    {
-      std::string name = config.lookup(settingName);
-      std::cout << "Store name: " << name << std::endl << std::endl;
-    }
-    catch(const libconfig::SettingNotFoundException &nfex)
-    {
-      std::cerr << "No 'name' setting in configuration file." << std::endl;
-    }
-
-//    const libconfig::Setting& root = config.getRoot();
-
-//    if(! root.exists("inventory"))
-//        root.add("inventory", libconfig::Setting::TypeGroup);
-
-//    libconfig::Setting &inventory = root["inventory"];
-
-//    if(! inventory.exists("movies"))
-//        inventory.add("movies", libconfig::Setting::TypeList);
-
-//      libconfig::Setting &movies = inventory["movies"];
-
-//      // Create the new movie entry.
-//      libconfig::Setting &movie = movies.add(libconfig::Setting::TypeGroup);
-
-//      movie.add("media", libconfig::Setting::TypeString) = "DVD";
-
-    return (EXIT_SUCCESS);
 }
 
 /*!
@@ -176,20 +88,3 @@ void LogicController::connectToServer()
 {
     network->runClient(address);
 }
-
-/*!
-  Возвращает имя конфигурационного файла.
-*/
-const char *LogicController::getConfigFilename() const
-{
-    return configName;
-}
-
-/*!
-  Изменяет имя конфигурационного файла.
-*/
-void LogicController::setConfigFilename(const char *newConfigName)
-{
-    configName = newConfigName;
-}
-

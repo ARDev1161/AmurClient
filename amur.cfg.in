@@ -2,7 +2,7 @@
 
 version = "0.88";
 
-AmurClient:
+Amur:
 {
     gstreamer:
     {
@@ -23,20 +23,20 @@ AmurClient:
          bitmask = 0x1FC3;
     };
 
-    LogicController:
+    Logic:
     {
 
     };
 
-    NetworkController:
+    Network:
     {
         address = "176.193.245.203:7777";
     };
 
 
-    PeripheralController:
+    Peripheral:
     {
-        EncoderSettings:
+        Encoder:
         {
             encoderSectorsCount = 100;
             maxMotorSpeed = 100;
@@ -52,7 +52,7 @@ AmurClient:
             handLeftPin = 21;
         };
 
-        RegisterSettings:
+        Registers:
         {
             usPulseDelay = 1;
 
