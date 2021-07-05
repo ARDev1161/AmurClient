@@ -1,0 +1,19 @@
+meta:
+  description: AmurClient
+  vendor: Sensorika
+  maintainer: ARDev1161
+files:
+  "/usr/bin/AmurClient":
+    file: AmurClient
+    mode: "0755"
+    user: "root"
+  "/etc/AmurClient/config":
+    file: etc/config
+    mode: "0644"
+    user: "amur"
+    keep: true
+units:
+  - etc/systemd/system/AmurClient.service
+scripts:
+  "post-install": scripts/post-inst
+user: amur
