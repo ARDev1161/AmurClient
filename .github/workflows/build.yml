@@ -51,3 +51,11 @@ jobs:
         doxyfile-path: 'docs/'
         additional-packages: font-fira-code
         enable-latex: true
+
+    - uses: kentik/pkg@v1
+      with:
+        name: AmurClient
+        version: 0.0.1
+        arch: aarch64
+        format: deb
+        package: deb.yaml
