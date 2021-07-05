@@ -2,9 +2,9 @@ name: AmurClient build
 
 on:
   push:
-    branches: [ $default-branch ]
+    branches: [ master ]
   pull_request:
-    branches: [ $default-branch ]
+    branches: [ master ]
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
@@ -40,6 +40,6 @@ jobs:
       uses: mattnotmitt/doxygen-action@v1.3.1
       with:
         working-directory: 'submodule/'
-        doxyfile-path: 'docs/Doxygen'
+        doxyfile-path: 'docs/'
         additional-packages: font-fira-code
         enable-latex: true
