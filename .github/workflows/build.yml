@@ -27,7 +27,7 @@ jobs:
       run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
       
     - name: Install Protoc
-      uses: arduino/setup-protoc@v1
+      uses: arduino/setup-protoc@v1.1.2
 
     - name: Setup gRPC
       uses: eWaterCycle/setup-grpc@v4
@@ -52,7 +52,7 @@ jobs:
         additional-packages: font-fira-code
         enable-latex: true
 
-    - uses: kentik/pkg@v1
+    - uses: kentik/pkg@v1.0.0-rc7
       with:
         name: AmurClient
         version: 0.0.1
