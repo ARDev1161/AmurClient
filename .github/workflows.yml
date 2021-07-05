@@ -36,3 +36,12 @@ jobs:
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest -C ${{env.BUILD_TYPE}}
       
+    - name: Doxygen Action
+      uses: mattnotmitt/doxygen-action@v1.3.1
+
+      with:
+        working-directory: 'submodule/'
+        doxyfile-path: 'docs/Doxygen'
+        additional-packages: font-fira-code
+     
+      enable-latex: true
