@@ -1,4 +1,4 @@
-name: CMake
+name: AmurClient build
 
 on:
   push:
@@ -38,10 +38,8 @@ jobs:
       
     - name: Doxygen Action
       uses: mattnotmitt/doxygen-action@v1.3.1
-
       with:
         working-directory: 'submodule/'
         doxyfile-path: 'docs/Doxygen'
         additional-packages: font-fira-code
-     
-      enable-latex: true
+        enable-latex: true
