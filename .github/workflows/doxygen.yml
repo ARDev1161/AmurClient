@@ -16,9 +16,6 @@ jobs:
     # Build the HTML documentation
     - name: Doxygen Action
       uses: mattnotmitt/doxygen-action@v1.3.1
-      with:
-          doxyfile-path: ./Doxyfile
-          working-directory: .
     
     # Deploy the HTML documentation to GitHub Pages
     - name: GH Pages Deployment
@@ -26,10 +23,10 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./doc/html/
-        enable_jekyll: false
-        allow_empty_commit: false
-        force_orphan: true
-        publish_branch: gh-pages
+        #enable_jekyll: false
+        #allow_empty_commit: false
+        #force_orphan: true
+        #publish_branch: gh-pages
     
        #destination_dir: docs
        # cname: amurclient.online
