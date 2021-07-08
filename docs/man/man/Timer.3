@@ -1,0 +1,61 @@
+.TH "Timer" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Timer \- \fBTimer\fP class, wrapper around the POSIX per-process timer\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Timer\&.h>\fP
+.PP
+Inherited by \fBTimerCallback\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTimer\fP ()"
+.br
+.ti -1c
+.RI "virtual \fB~Timer\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBstart\fP (std::chrono::milliseconds delay, bool asynchronous=true)"
+.br
+.ti -1c
+.RI "virtual void \fBstop\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBtimerEvent\fP ()=0"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBTimer\fP class, wrapper around the POSIX per-process timer\&. 
+
+\fBTimer\fP class which repeatedly fires\&. It's wrapper around the POSIX per-process timer\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Timer::Timer ()"
+Creates an instance of the timer and connects the signal handler to the timer\&. 
+.SS "Timer::~Timer ()\fC [virtual]\fP"
+Destructor disarms the timer, deletes it and disconnect the signal handler\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void Timer::start (std::chrono::milliseconds delay, bool asynchronous = \fCtrue\fP)\fC [virtual]\fP"
+Starts the timer\&. The timer fires first after the specified time in nanoseconds and then at that interval in PERIODIC mode\&. In ONESHOT mode the timer fires once after the specified time in nanoseconds\&. 
+.SS "void Timer::stop ()\fC [virtual]\fP"
+Stops the timer by disarming it\&. It can be re-started with \fBstart()\fP\&. 
+.SS "virtual void Timer::timerEvent ()\fC [protected]\fP, \fC [pure virtual]\fP"
+Abstract function which needs to be implemented by the children\&. This is called every time the timer fires\&. 
+.PP
+Implemented in \fBTimerCallback\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

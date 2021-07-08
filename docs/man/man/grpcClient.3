@@ -1,0 +1,78 @@
+.TH "grpcClient" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+grpcClient
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <client\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBgrpcClient\fP (std::shared_ptr< grpc::Channel > channel, AMUR::AmurControls *\fBcontrols\fP, AMUR::AmurSensors *const \fBsensors\fP)"
+.br
+.ti -1c
+.RI "grpc::Status \fBDataExchange\fP ()"
+.br
+.ti -1c
+.RI "grpc::Status \fBDataStreamExchange\fP ()"
+.br
+.ti -1c
+.RI "void \fBstopStream\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::unique_ptr< AMUR::ClientOnRobot::Stub > \fBstub_\fP"
+.br
+.ti -1c
+.RI "std::shared_ptr< grpc::Channel > \fBclientChannel\fP"
+.br
+.ti -1c
+.RI "AMUR::AmurSensors * \fBsensors\fP"
+.br
+.ti -1c
+.RI "AMUR::AmurControls * \fBcontrols\fP"
+.br
+.ti -1c
+.RI "bool \fBstoppedStream\fP = true"
+.br
+.ti -1c
+.RI "std::mutex \fBmuClient\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "grpcClient::grpcClient (std::shared_ptr< grpc::Channel > channel, AMUR::AmurControls * controls, AMUR::AmurSensors *const sensors)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "grpc::Status grpcClient::DataExchange ()"
+
+.SS "grpc::Status grpcClient::DataStreamExchange ()"
+
+.SS "void grpcClient::stopStream ()"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "std::shared_ptr<grpc::Channel> grpcClient::clientChannel\fC [private]\fP"
+
+.SS "AMUR::AmurControls* grpcClient::controls\fC [private]\fP"
+
+.SS "std::mutex grpcClient::muClient\fC [private]\fP"
+
+.SS "AMUR::AmurSensors* grpcClient::sensors\fC [private]\fP"
+
+.SS "bool grpcClient::stoppedStream = true\fC [private]\fP"
+
+.SS "std::unique_ptr<AMUR::ClientOnRobot::Stub> grpcClient::stub_\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

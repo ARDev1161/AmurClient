@@ -1,0 +1,65 @@
+.TH "TimerCallback" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TimerCallback \- \fBTimer\fP callback wrapper for CppTimer class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <TimerCallback\&.h>\fP
+.PP
+Inherits \fBTimer\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBRunnable\fP"
+.br
+.RI "\fBRunnable\fP class for overloading run function\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBregisterEventRunnable\fP (\fBRunnable\fP &h)"
+.br
+.ti -1c
+.RI "void \fBunregisterEventRunnable\fP ()"
+.br
+.ti -1c
+.RI "void \fBtimerEvent\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBRunnable\fP * \fBcppTimerEventRunnable\fP = NULL"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBTimer\fP callback wrapper for CppTimer class\&. 
+
+\fBTimer\fP callback wrapper for CppTimer class\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void TimerCallback::registerEventRunnable (\fBRunnable\fP & h)\fC [inline]\fP"
+Registrate \fBRunnable\fP class in instance\&. 
+.SS "void TimerCallback::timerEvent ()\fC [inline]\fP, \fC [virtual]\fP"
+\fBTimer\fP event, execute function run\&. 
+.PP
+Implements \fBTimer\fP\&.
+.SS "void TimerCallback::unregisterEventRunnable ()\fC [inline]\fP"
+Unregistrate \fBRunnable\fP class in instance\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBRunnable\fP* TimerCallback::cppTimerEventRunnable = NULL\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

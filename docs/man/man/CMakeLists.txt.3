@@ -1,0 +1,27 @@
+.TH "timer/CMakeLists.txt" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+timer/CMakeLists.txt
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBcmake_minimum_required\fP (VERSION 3\&.8 FATAL_ERROR) project(\fBTimerCallback\fP VERSION 0\&.88 LANGUAGES C CXX) \fBset\fP(CMAKE_CXX_STANDARD 11) \fBset\fP(CMAKE_CXX_STANDARD_REQUIRED ON) get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY) \fBset\fP(TIMER Timer\&.cpp Timer\&.h TimerCallback\&.h) find_library(LIBRT rt) add_library(\fBTimerCallback\fP SHARED $"
+.br
+.ti -1c
+.RI "\fBif\fP (LIBRT) target_link_libraries(\fBTimerCallback\fP $"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "cmake_minimum_required (VERSION 3\&.8 FATAL_ERROR)"
+
+.SS "if (LIBRT)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

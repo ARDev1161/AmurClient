@@ -1,0 +1,6 @@
+<map id="LogicController::connectToServer" name="LogicController::connectToServer">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,167,47"/>
+<area shape="rect" id="node2" href="$classLogicController.html#ad02314f4890c68a236516131e598718d" title=" " alt="" coords="215,5,376,47"/>
+<area shape="rect" id="node3" href="$classNetworkController.html#a0a23911025a48814505b4f9abcacd839" title=" " alt="" coords="424,5,556,47"/>
+<area shape="rect" id="node4" href="$classgrpcClient.html#a7a569dfe1c1968b7ee3f40c351c19f51" title=" " alt="" coords="604,13,815,39"/>
+</map>

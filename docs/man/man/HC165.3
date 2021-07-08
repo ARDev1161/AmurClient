@@ -1,0 +1,94 @@
+.TH "HC165" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HC165 \- Класс работы с регистром 74\fBHC165\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <hc165\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBHC165\fP (\fBRegisterSettings\fP *\fBsettings\fP)"
+.br
+.ti -1c
+.RI "unsigned char \fBreadByte\fP ()"
+.br
+.ti -1c
+.RI "void \fBloadRegister\fP ()"
+.br
+.ti -1c
+.RI "void \fBdisableClock\fP ()"
+.br
+.ti -1c
+.RI "void \fBenableClock\fP ()"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBpulse\fP (int pin)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBRegisterSettings\fP * \fBsettings\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Класс работы с регистром 74\fBHC165\fP\&. 
+
+Данный класс позволяет считывать данные из регистра в байт данных, выключать и включать его\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "HC165::HC165 (\fBRegisterSettings\fP * settings)"
+Создаёт экземпляр класса для считывания из регистра\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpins\fP Структура описывающая пины Raspberry Pi для подключения регистра в нотации GPIO 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void HC165::disableClock ()"
+Выключает регистр\&. 
+.SS "void HC165::enableClock ()"
+Включает регистр\&. 
+.SS "void HC165::loadRegister ()"
+Записывает данные на выводах регистра в память регистра\&. 
+.SS "void HC165::pulse (int pin)\fC [inline]\fP, \fC [private]\fP"
+Подаёт импульс на указанный пин управления регистра\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpin\fP Пин GPIO для управления регистром 
+.RE
+.PP
+
+.SS "unsigned char HC165::readByte ()"
+Считывает байт данных из регистра\&. 
+.PP
+\fBReturns\fP
+.RS 4
+byte Байт считанных данных 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBRegisterSettings\fP* HC165::settings\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

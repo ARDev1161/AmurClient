@@ -1,0 +1,115 @@
+.TH "RegisterController" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RegisterController \- Класс контроллера регистров  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <registercontroller\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRegisterController\fP (\fBRegisterSettings\fP *settings)"
+.br
+.ti -1c
+.RI "\fBRegisterController\fP ()"
+.br
+.ti -1c
+.RI "\fB~RegisterController\fP ()"
+.br
+.ti -1c
+.RI "void \fBwriteByte\fP (unsigned char writingByte)"
+.br
+.ti -1c
+.RI "unsigned char \fBreadByte\fP ()"
+.br
+.ti -1c
+.RI "void \fBrefreshInputData\fP ()"
+.br
+.ti -1c
+.RI "void \fBrefreshOutputData\fP ()"
+.br
+.ti -1c
+.RI "void \fBenableRegisters\fP ()"
+.br
+.ti -1c
+.RI "void \fBdisableRegisters\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBRegisterSettings\fP * \fBregisterSettings\fP"
+.br
+.ti -1c
+.RI "\fBHC595\fP * \fBoutputRegister\fP"
+.br
+.ti -1c
+.RI "\fBHC165\fP * \fBinputRegister\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Класс контроллера регистров 
+
+Данный класс инкапсулирует управление входными и выходными регистрами\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "RegisterController::RegisterController (\fBRegisterSettings\fP * settings)"
+Создаёт экземпляр класса для работы с регистрами\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIoutputPins\fP Структура описывающая пины Raspberry Pi для подключения выходного регистра в нотации GPIO 
+.RE
+.PP
+
+.SS "RegisterController::RegisterController ()"
+Создаёт экземпляр класса для работы с регистрами c отдельной копией настроек по умолчанию\&. 
+.SS "RegisterController::~RegisterController ()"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void RegisterController::disableRegisters ()"
+Отправляет сигнал выключения регистрам\&. 
+.SS "void RegisterController::enableRegisters ()"
+Отправляет сигнал включения регистрам\&. 
+.SS "unsigned char RegisterController::readByte ()"
+Считывает байт данных из входного регистра\&. 
+.PP
+\fBReturns\fP
+.RS 4
+byte Байт считанных данных 
+.RE
+.PP
+
+.SS "void RegisterController::refreshInputData ()"
+Отправляет сигнал регистрам для считывания данных с пинов во внутреннюю память регистров\&. 
+.SS "void RegisterController::refreshOutputData ()"
+Отправляет сигнал регистрам для вывода данных на выходные пины\&. 
+.SS "void RegisterController::writeByte (unsigned char writingByte)"
+Записывает байт данных в выходной регистр\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIwritingByte\fP Количество байтов, которые необходимо скопировать 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBHC165\fP* RegisterController::inputRegister\fC [private]\fP"
+
+.SS "\fBHC595\fP* RegisterController::outputRegister\fC [private]\fP"
+
+.SS "\fBRegisterSettings\fP* RegisterController::registerSettings\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

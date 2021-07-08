@@ -1,0 +1,4 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classTimer.html" title="Timer class, wrapper around the POSIX per&#45;process timer." alt="" coords="5,5,60,32"/>
+<area shape="rect" id="node2" href="$classTimerCallback.html" title="Timer callback wrapper for CppTimer class." alt="" coords="108,5,213,32"/>
+</map>

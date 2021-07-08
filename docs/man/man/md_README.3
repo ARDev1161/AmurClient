@@ -1,0 +1,150 @@
+.TH "md_README" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md_README \- Client software for Amur distribution board (ADB-0\&.42) 
+This is application for communicate with robot on RPi base with \fCAmurClient\fP\&.
+.SH "Requirements:"
+.PP
+1) CMake - for install read: https://snapcraft.io/install/cmake/raspbian 2) Protobuf & gRPC - for install read: https://grpc.io/docs/languages/cpp/quickstart/ need install in system(/usr/local) 3) PiGPIO - for install read: http://abyz.me.uk/rpi/pigpio/download.html 4) libconfig (not used, will be added in the future) 5) GStreamer (not used, will be added in the future)
+.SH "Compile AmurClient"
+.PP
+git clone https://github.com/ARDev1161/AmurClient.git cd AmurClient mkdir bin && cd bin
+.PP
+cmake -DCMAKE_BUILD_TYPE=Release -DGRPC_FETCHCONTENT=OFF \&.\&./
+.PP
+cmake --build \&. -- -j4
+.SH "Sensors of Amur:"
+.PP
+1) Camera - OV5647 2) Inertial sensor - MPU-9250 3) Encoders wheel: left, right - HOA0901 4) Encoders hand internal: left, right - HOA0901 5) Encoders hand outter: left, right - HOA0901 6) ADC module - ADS1115(address - 0x48) 7) RTC module - DS3231(address - 0x68) with AT24C32(address - 0x57) 8) Barometer - BMP-280 9) Battery voltage
+.SH "Controls of Amur:"
+.PP
+1) ServoX, ServoY - MG90S 2) Motor wheel: left, right 3) Motor hand internal: left, right 4) Motor hand outter: left, right
+.SH "GPIO using:"
+.PP
+.IP "\(bu" 2
+GPIO4 - Data from 74\fBHC165\fP
+.IP "\(bu" 2
+GPIO17 - Clk 74\fBHC165\fP
+.IP "\(bu" 2
+GPIO18 - Not master reset 74\fBHC595\fP
+.IP "\(bu" 2
+GPIO27 - SH/Not(LD) 74\fBHC165\fP
+.IP "\(bu" 2
+GPIO22 - Clk inh 74\fBHC165\fP
+.IP "\(bu" 2
+GPIO23 - Data to 74\fBHC595\fP
+.IP "\(bu" 2
+GPIO24 - SHcp 74\fBHC595\fP
+.IP "\(bu" 2
+GPIO25 - STcp 74\fBHC595\fP
+.IP "\(bu" 2
+GPIO5 - freePin 3
+.IP "\(bu" 2
+GPIO6 - freePin 4
+.IP "\(bu" 2
+GPIO12 - PWM1 right
+.IP "\(bu" 2
+GPIO13 - PWM1 left
+.IP "\(bu" 2
+GPIO19 - freePin 1
+.IP "\(bu" 2
+GPIO16 - Not OE 74\fBHC595\fP
+.IP "\(bu" 2
+GPIO26 - freePin 2
+.IP "\(bu" 2
+GPIO20 - PWM2 right
+.IP "\(bu" 2
+GPIO21 - PWM2 left
+.PP
+.SS "GPIO freePins header(from left to right):"
+Use for LoRa(SX1278) 1) GPIO19 - Rx enable 2) GPIO26 - Tx enable 3) GPIO5 - DI0 4) GPIO6 - Reset
+.SS "SPI0 header(from up to down):"
+Use for LoRa(SX1278) 1) CE1 2) CE0 3) SCLK 4) MISO 5) MOSI
+.SS "I2C1 header(from left to right):"
+Use for ADS1115 1) Vpd 2) SCL 3) SDA 4) GND
+.SS "UART0 header(from left to right):"
+1) Vpd 2) Tx 3) Rx 4) GND
+.SS "Voltage jumper(for peripheral devices - Vpd):"
+1) Left - 3\&.3V 2) Right - 5V
+.SS "74HC595 using:"
+bites trancieve in register from last to first: from 16 to 1
+.PP
+(First byte - right)
+.IP "\(bu" 2
+1bit - right relay
+.IP "\(bu" 2
+2bit - clk2 right motor shield (Hand right motor - A2 input)
+.IP "\(bu" 2
+3bit - clk1 right motor shield (Wheel right motor - A1 input)
+.IP "\(bu" 2
+4bit - cnt1 right motor shield (Wheel right motor - B1 input)
+.IP "\(bu" 2
+5bit - cnt2 right motor shield (Hand right motor - B2 input)
+.IP "\(bu" 2
+6bit - en1 right motor shield (Wheel right motor)
+.IP "\(bu" 2
+7bit - en2 right motor shield (Hand right motor)
+.IP "\(bu" 2
+8bit - right LED light
+.PP
+.PP
+(Second byte - left)
+.IP "\(bu" 2
+9bit - left relay
+.IP "\(bu" 2
+10bit - clk2 left motor shield (Wheel left motor - A2 input)
+.IP "\(bu" 2
+11bit - clk1 left motor shield (Hand left motor - A1 input)
+.IP "\(bu" 2
+12bit - cnt1 left motor shield (Hand left motor - B1 input)
+.IP "\(bu" 2
+13bit - cnt2 left motor shield (Wheel left motor - B2 input)
+.IP "\(bu" 2
+14bit - en1 left motor shield (Hand left motor)
+.IP "\(bu" 2
+15bit - en2 left motor shield (Wheel left motor)
+.IP "\(bu" 2
+16bit - left LED light
+.PP
+.SS "74HC165 using:"
+bites recieve by register from first to last: from 1 to 16
+.PP
+(First byte - right)
+.IP "\(bu" 2
+1bit - LR2B encoder (Hand outer right encoder - B signal)
+.IP "\(bu" 2
+2bit - LR1B encoder (Hand internal right encoder - B signal)
+.IP "\(bu" 2
+3bit - LL2B encoder (Hand outer left encoder - B signal)
+.IP "\(bu" 2
+4bit - LL1B encoder (Hand internal left encoder - B signal)
+.IP "\(bu" 2
+5bit - LL1A encoder (Hand internal left encoder - A signal)
+.IP "\(bu" 2
+6bit - LL2A encoder (Hand outer left encoder - A signal)
+.IP "\(bu" 2
+7bit - LR1A encoder (Hand internal right encoder - A signal)
+.IP "\(bu" 2
+8bit - LR2A encoder (Hand outer right encoder - A signal)
+.PP
+.PP
+(Second byte - left)
+.IP "\(bu" 2
+9bit - freeInPin
+.IP "\(bu" 2
+10bit - freeInPin
+.IP "\(bu" 2
+11bit - freeInPin
+.IP "\(bu" 2
+12bit - freeInPin
+.IP "\(bu" 2
+13bit - R1A encoder (Wheel left encoder - A signal)
+.IP "\(bu" 2
+14bit - R1B encoder (Wheel left encoder - B signal)
+.IP "\(bu" 2
+15bit - R2B encoder (Wheel right encoder - B signal)
+.IP "\(bu" 2
+16bit - R2A encoder (Wheel right encoder - A signal) 
+.PP
+

@@ -1,0 +1,126 @@
+.TH "ConfigProcessor" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ConfigProcessor
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <configprocessor\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBConfigProcessor\fP (const char *\fBconfigName\fP)"
+.br
+.ti -1c
+.RI "\fBConfigProcessor\fP ()"
+.br
+.ti -1c
+.RI "int \fBsetOptionsConfig\fP ()"
+.br
+.ti -1c
+.RI "int \fBreadConfig\fP (const char *\fBconfigName\fP)"
+.br
+.ti -1c
+.RI "int \fBwriteConfig\fP (const char *\fBconfigName\fP)"
+.br
+.ti -1c
+.RI "std::string \fBconfigSearchString\fP (const char *settingName)"
+.br
+.ti -1c
+.RI "int \fBconfigSearchInt\fP (const char *settingName)"
+.br
+.ti -1c
+.RI "double \fBconfigSearchDouble\fP (const char *settingName)"
+.br
+.ti -1c
+.RI "void \fBgetRoot\fP ()"
+.br
+.ti -1c
+.RI "const char * \fBgetConfigFilename\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetConfigFilename\fP (const char *newConfigName)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "const char * \fBconfigName\fP"
+.br
+.ti -1c
+.RI "libconfig::Config \fBconfig\fP"
+.br
+.ti -1c
+.RI "libconfig::Setting & \fBroot\fP = config\&.getRoot()"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ConfigProcessor::ConfigProcessor (const char * configName)"
+
+.SS "ConfigProcessor::ConfigProcessor ()"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "double ConfigProcessor::configSearchDouble (const char * settingName)"
+
+.SS "int ConfigProcessor::configSearchInt (const char * settingName)"
+
+.SS "std::string ConfigProcessor::configSearchString (const char * settingName)"
+Поиск настройки в конфигурационном файле по имени\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfile\fP Имя настройки в конфигурационном файле\&. 
+.RE
+.PP
+
+.SS "const char * ConfigProcessor::getConfigFilename () const"
+Возвращает имя конфигурационного файла\&. 
+.SS "void ConfigProcessor::getRoot ()"
+
+.SS "int ConfigProcessor::readConfig (const char * configName)"
+Чтение параметров конфигурации из config файла\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfile\fP Имя файла конфигурации\&. 
+.RE
+.PP
+
+.SS "void ConfigProcessor::setConfigFilename (const char * newConfigName)"
+Изменяет имя конфигурационного файла\&. 
+.SS "int ConfigProcessor::setOptionsConfig ()"
+Инициализация libconfig\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfile\fP Имя файла конфигурации\&. 
+.RE
+.PP
+
+.SS "int ConfigProcessor::writeConfig (const char * configName)"
+Запись параметров конфигурации в config файл\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfile\fP Имя файла конфигурации\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "libconfig::Config ConfigProcessor::config\fC [private]\fP"
+
+.SS "const char* ConfigProcessor::configName\fC [private]\fP"
+
+.SS "libconfig::Setting& ConfigProcessor::root = config\&.getRoot()\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

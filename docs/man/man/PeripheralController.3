@@ -1,0 +1,279 @@
+.TH "PeripheralController" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PeripheralController \- Класс управления периферией робота  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <peripheralcontroller\&.h>\fP
+.PP
+Inherits \fBTimerCallback::Runnable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPeripheralController\fP (AMUR::AmurControls *controls, AMUR::AmurSensors *sensors)"
+.br
+.ti -1c
+.RI "virtual \fB~PeripheralController\fP ()"
+.br
+.ti -1c
+.RI "void \fBupdateData\fP ()"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBpigpioInit\fP ()"
+.br
+.ti -1c
+.RI "void \fBinitPWM\fP ()"
+.br
+.ti -1c
+.RI "void \fBinitRegisters\fP ()"
+.br
+.ti -1c
+.RI "void \fBinitTimer\fP ()"
+.br
+.ti -1c
+.RI "void \fBrun\fP ()"
+.br
+.ti -1c
+.RI "void \fBcheckMotorsTime\fP ()"
+.br
+.ti -1c
+.RI "void \fBchangeWheelsPWM\fP ()"
+.br
+.ti -1c
+.RI "void \fBchangeHandsPWM\fP ()"
+.br
+.ti -1c
+.RI "void \fBwriteRegisterData\fP ()"
+.br
+.ti -1c
+.RI "void \fBreadRegisterData\fP ()"
+.br
+.ti -1c
+.RI "unsigned char \fBleftOutRegisterToByte\fP ()"
+.br
+.ti -1c
+.RI "unsigned char \fBrightOutRegisterToByte\fP ()"
+.br
+.ti -1c
+.RI "void \fBparseBytesHC165\fP (unsigned char right, unsigned char left)"
+.br
+.ti -1c
+.RI "void \fBwriteEncodersAngles\fP ()"
+.br
+.ti -1c
+.RI "void \fBgetChangeEncoderAngle\fP (unsigned char addrA, unsigned char addrB, unsigned char const byte, unsigned char const previousByte, int *const angle)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBPeripheralSettings\fP \fBperipheralSettings\fP"
+.br
+.ti -1c
+.RI "\fBRegisterController\fP * \fBregisters\fP"
+.br
+.ti -1c
+.RI "\fBPWMController\fP * \fBpwm\fP"
+.br
+.ti -1c
+.RI "\fBTimerCallback\fP \fBperipheralTimer\fP"
+.br
+.ti -1c
+.RI "AMUR::AmurSensors * \fBsensorsPeri\fP"
+.br
+.ti -1c
+.RI "AMUR::AmurControls * \fBcontrolsPeri\fP"
+.br
+.ti -1c
+.RI "int \fBwheelLeftAngle\fP"
+.br
+.ti -1c
+.RI "int \fBwheelRightAngle\fP"
+.br
+.ti -1c
+.RI "int \fBhandLeftInternalAngle\fP"
+.br
+.ti -1c
+.RI "int \fBhandRightInternalAngle\fP"
+.br
+.ti -1c
+.RI "int \fBhandLeftOuterAngle\fP"
+.br
+.ti -1c
+.RI "int \fBhandRightOuterAngle\fP"
+.br
+.ti -1c
+.RI "unsigned char \fBprevLeftHC165\fP = 0x00"
+.br
+.ti -1c
+.RI "unsigned char \fBprevRightHC165\fP = 0x00"
+.br
+.ti -1c
+.RI "unsigned char \fBprevLeftHC595\fP = 0x00"
+.br
+.ti -1c
+.RI "unsigned char \fBprevRightHC595\fP = 0x00"
+.br
+.ti -1c
+.RI "int \fBprevLeftWheelPWM\fP = 0"
+.br
+.ti -1c
+.RI "int \fBprevRightWheelPWM\fP = 0"
+.br
+.ti -1c
+.RI "int \fBprevLeftHandPWM\fP = 0"
+.br
+.ti -1c
+.RI "int \fBprevRightHandPWM\fP = 0"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Класс управления периферией робота 
+
+Данный класс позволяет управлять периферическим оборудование робота\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "PeripheralController::PeripheralController (AMUR::AmurControls * controls, AMUR::AmurSensors * sensors)"
+Создаёт экземпляр класса для работы с периферическим оборудованием\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fI*controls\fP Указатель на protobuf буффер AmurControls 
+.br
+\fI*sensors\fP Указатель на protobuf буффер AmurSensors 
+.RE
+.PP
+
+.SS "PeripheralController::~PeripheralController ()\fC [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void PeripheralController::changeHandsPWM ()\fC [private]\fP"
+Изменяет скважность PWM сигналов управляющих моторами манипулятора на данные из protobuf буфера\&. 
+.SS "void PeripheralController::changeWheelsPWM ()\fC [private]\fP"
+Изменяет скважность PWM сигналов управляющих моторами гусениц на данные из protobuf буфера\&. 
+.SS "void PeripheralController::checkMotorsTime ()\fC [private]\fP"
+Проверяет время работы моторов по значениям из protobuf буффера, по достижению времени менее 10мс отключает конкретный мотор\&. 
+.SS "void PeripheralController::getChangeEncoderAngle (unsigned char addrA, unsigned char addrB, unsigned char const byte, unsigned char const previousByte, int *const angle)\fC [inline]\fP, \fC [private]\fP"
+Получает изменение угла поворота мотора по энкодеру\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fI*angle\fP Указатель на переменную хранящую угол для мотора 
+.br
+\fIaddrA\fP Адрес входа A энкодера на входном регистре, в адресе пин указан битом в байте\&. 
+.br
+\fIaddrB\fP Адрес входа B энкодера на входном регистре, в адресе пин указан битом в байте\&. 
+.br
+\fIbyte\fP Байт данных считанный из входного регистра 
+.br
+\fIpreviousByte\fP Предыдущий байт данных считанный из входного регистра 
+.RE
+.PP
+
+.SS "void PeripheralController::initPWM ()\fC [private]\fP"
+Инициализирует программные и аппаратные PWM сигналы указанные в структуре настроек экземпляра класса\&. 
+.SS "void PeripheralController::initRegisters ()\fC [private]\fP"
+Функция инициализации и проверки регистров\&. 
+.SS "void PeripheralController::initTimer ()\fC [private]\fP"
+Функция настройки и запуска таймера\&. 
+.SS "unsigned char PeripheralController::leftOutRegisterToByte ()\fC [private]\fP"
+Собирает байт данных для записи в левый регистр из protobuf буфера\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Байт данных для записи в левый выходной регистр 
+.RE
+.PP
+
+.SS "void PeripheralController::parseBytesHC165 (unsigned char right, unsigned char left)\fC [private]\fP"
+Преобразует данные всех энкодеров моторов в изменения углов\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIright\fP Байт данных считанный из правого входного регистра 
+.br
+\fIleft\fP Байт данных считанный из левого входного регистра 
+.RE
+.PP
+
+.SS "void PeripheralController::pigpioInit ()\fC [private]\fP"
+Инициализирует библиотеку pigpio 
+.SS "void PeripheralController::readRegisterData ()\fC [private]\fP"
+Считывает данные из входных регистров\&. 
+.SS "unsigned char PeripheralController::rightOutRegisterToByte ()\fC [private]\fP"
+Собирает байт данных для записи в правый регистр из protobuf буфера\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Байт данных для записи в правый выходной регистр 
+.RE
+.PP
+
+.SS "void PeripheralController::run ()\fC [private]\fP, \fC [virtual]\fP"
+Функция таймера, вызывает проверку времени работы моторов\&. 
+.PP
+Implements \fBTimerCallback::Runnable\fP\&.
+.SS "void PeripheralController::updateData ()"
+Функция для обновления данных регистров и сигналов PWM\&. 
+.SS "void PeripheralController::writeEncodersAngles ()\fC [private]\fP"
+Записывает углы моторов в protobuf буффер\&. 
+.SS "void PeripheralController::writeRegisterData ()\fC [private]\fP"
+Записывает данные в выходные регистры\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "AMUR::AmurControls* PeripheralController::controlsPeri\fC [private]\fP"
+
+.SS "int PeripheralController::handLeftInternalAngle\fC [private]\fP"
+
+.SS "int PeripheralController::handLeftOuterAngle\fC [private]\fP"
+
+.SS "int PeripheralController::handRightInternalAngle\fC [private]\fP"
+
+.SS "int PeripheralController::handRightOuterAngle\fC [private]\fP"
+
+.SS "\fBPeripheralSettings\fP PeripheralController::peripheralSettings\fC [private]\fP"
+
+.SS "\fBTimerCallback\fP PeripheralController::peripheralTimer\fC [private]\fP"
+
+.SS "int PeripheralController::prevLeftHandPWM = 0\fC [private]\fP"
+
+.SS "unsigned char PeripheralController::prevLeftHC165 = 0x00\fC [private]\fP"
+
+.SS "unsigned char PeripheralController::prevLeftHC595 = 0x00\fC [private]\fP"
+
+.SS "int PeripheralController::prevLeftWheelPWM = 0\fC [private]\fP"
+
+.SS "int PeripheralController::prevRightHandPWM = 0\fC [private]\fP"
+
+.SS "unsigned char PeripheralController::prevRightHC165 = 0x00\fC [private]\fP"
+
+.SS "unsigned char PeripheralController::prevRightHC595 = 0x00\fC [private]\fP"
+
+.SS "int PeripheralController::prevRightWheelPWM = 0\fC [private]\fP"
+
+.SS "\fBPWMController\fP* PeripheralController::pwm\fC [private]\fP"
+
+.SS "\fBRegisterController\fP* PeripheralController::registers\fC [private]\fP"
+
+.SS "AMUR::AmurSensors* PeripheralController::sensorsPeri\fC [private]\fP"
+
+.SS "int PeripheralController::wheelLeftAngle\fC [private]\fP"
+
+.SS "int PeripheralController::wheelRightAngle\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

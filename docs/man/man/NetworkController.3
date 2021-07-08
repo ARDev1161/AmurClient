@@ -1,0 +1,68 @@
+.TH "NetworkController" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NetworkController
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <networkcontroller\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNetworkController\fP (AMUR::AmurControls *const \fBcontrols\fP, AMUR::AmurSensors *const \fBsensors\fP)"
+.br
+.ti -1c
+.RI "int \fBrunClient\fP (std::string &server_address)"
+.br
+.ti -1c
+.RI "int \fBrunServer\fP (std::string &address_mask)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "AMUR::AmurSensors * \fBsensors\fP"
+.br
+.ti -1c
+.RI "AMUR::AmurControls * \fBcontrols\fP"
+.br
+.ti -1c
+.RI "grpc::Status \fBclientStatus\fP"
+.br
+.ti -1c
+.RI "grpc::ServerBuilder \fBbuilder\fP"
+.br
+.ti -1c
+.RI "\fBgrpcServer\fP \fBservice\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NetworkController::NetworkController (AMUR::AmurControls *const controls, AMUR::AmurSensors *const sensors)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "int NetworkController::runClient (std::string & server_address)"
+
+.SS "int NetworkController::runServer (std::string & address_mask)"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "grpc::ServerBuilder NetworkController::builder\fC [private]\fP"
+
+.SS "grpc::Status NetworkController::clientStatus\fC [private]\fP"
+
+.SS "AMUR::AmurControls* NetworkController::controls\fC [private]\fP"
+
+.SS "AMUR::AmurSensors* NetworkController::sensors\fC [private]\fP"
+
+.SS "\fBgrpcServer\fP NetworkController::service\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

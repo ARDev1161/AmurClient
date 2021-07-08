@@ -1,0 +1,8 @@
+<map id="PeripheralSettings" name="PeripheralSettings">
+<area shape="rect" id="node1" title="Структура для хранения пинов и настроек оборудования периферии" alt="" coords="325,388,453,465"/>
+<area shape="rect" id="node2" href="$structRegisterSettings.html" title="Структура для хранения параметров регистров" alt="" coords="235,226,353,303"/>
+<area shape="rect" id="node3" href="$structRegisterSettings_1_1General.html" title="Общие настройки регистров." alt="" coords="5,35,175,112"/>
+<area shape="rect" id="node4" href="$structRegisterSettings_1_1HC165Pins.html" title="Структура для хранения пинов входного регистра" alt="" coords="199,13,389,134"/>
+<area shape="rect" id="node5" href="$structRegisterSettings_1_1HC595Pins.html" title="Структура для хранения пинов выходного регистра" alt="" coords="413,5,604,141"/>
+<area shape="rect" id="node6" href="$structPWMPins.html" title="Структура для хранения пинов PWM." alt="" coords="377,204,493,325"/>
+</map>

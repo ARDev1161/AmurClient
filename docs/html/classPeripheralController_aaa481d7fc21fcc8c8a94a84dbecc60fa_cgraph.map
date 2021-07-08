@@ -1,0 +1,20 @@
+<map id="PeripheralController::PeripheralController" name="PeripheralController::PeripheralController">
+<area shape="rect" id="node1" title=" " alt="" coords="5,222,147,263"/>
+<area shape="rect" id="node2" href="$classPeripheralController.html#a4282d785eae38857f583c37ff2bb2191" title=" " alt="" coords="195,49,329,90"/>
+<area shape="rect" id="node5" href="$classPeripheralController.html#a870fe83b9f385ee4429b11675fd06dcc" title=" " alt="" coords="195,205,329,246"/>
+<area shape="rect" id="node14" href="$classPeripheralController.html#aa4a58a57ba620fd92bedc264015c7cde" title=" " alt="" coords="195,287,329,329"/>
+<area shape="rect" id="node18" href="$classPeripheralController.html#a0d5f087612527f0e682c0f349dd0ba8e" title=" " alt="" coords="195,353,329,394"/>
+<area shape="rect" id="node3" href="$classPWMController.html#abe799c145af6da4e728b73180c1dea7a" title=" " alt="" coords="377,5,588,32"/>
+<area shape="rect" id="node4" href="$classPWMController.html#a9144413b1b00cc51dd7f5dce9b389ffb" title=" " alt="" coords="379,56,586,83"/>
+<area shape="rect" id="node6" href="$classRegisterController.html#a01b35ad5a2ac0b37c6ddd2ca8f5f9f74" title=" " alt="" coords="420,107,545,149"/>
+<area shape="rect" id="node9" href="$classRegisterController.html#a993c64595811a1293454f02c1ac453cc" title=" " alt="" coords="415,173,550,214"/>
+<area shape="rect" id="node12" href="$classRegisterController.html#aae49df122c629aa9fd50fbc0e5b8d244" title=" " alt="" coords="420,238,545,279"/>
+<area shape="rect" id="node7" href="$classHC595.html#a7f481bc9c481208707de4e3a78d41159" title=" " alt="" coords="652,72,759,99"/>
+<area shape="rect" id="node8" href="$classHC165.html#a5b3bc03d7666bcc4e219228e1479fc6b" title=" " alt="" coords="636,123,775,149"/>
+<area shape="rect" id="node10" href="$classHC595.html#ad323219eed1092f11ec80006ab845935" title=" " alt="" coords="639,184,771,211"/>
+<area shape="rect" id="node11" href="$classHC595.html#a621bdd795a0e38a3359da1a6e49557f6" title=" " alt="" coords="823,213,921,240"/>
+<area shape="rect" id="node13" href="$classHC595.html#a63c42adab55a32f20af566d2053f6841" title=" " alt="" coords="644,241,767,268"/>
+<area shape="rect" id="node15" href="$classTimerCallback.html#adaaafb66d1590d6c6c86b09c76eaf98f" title=" " alt="" coords="389,303,576,345"/>
+<area shape="rect" id="node16" href="$classTimer.html#a3bcd51aefbeb3c1ba6c04fd85d901c27" title=" " alt="" coords="439,369,526,396"/>
+<area shape="rect" id="node17" href="$classTimer.html#a116ad1e71f65837f56a3a5ce8742bede" title=" " alt="" coords="644,369,767,396"/>
+</map>

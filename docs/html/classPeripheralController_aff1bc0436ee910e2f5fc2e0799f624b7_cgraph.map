@@ -1,0 +1,13 @@
+<map id="PeripheralController::readRegisterData" name="PeripheralController::readRegisterData">
+<area shape="rect" id="node1" title=" " alt="" coords="5,104,140,145"/>
+<area shape="rect" id="node2" href="$classPeripheralController.html#aff5d54a759ab8c428894fabc591330dc" title=" " alt="" coords="196,5,331,47"/>
+<area shape="rect" id="node4" href="$classRegisterController.html#a032a7042c44aa81a22d000af04622abb" title=" " alt="" coords="201,71,326,112"/>
+<area shape="rect" id="node7" href="$classRegisterController.html#a2c6a55f8180a6c202e86caa6f48fdb3b" title=" " alt="" coords="201,136,326,177"/>
+<area shape="rect" id="node11" href="$classPeripheralController.html#abebb42d848f082ff326cb7c3696d37eb" title=" " alt="" coords="188,201,339,243"/>
+<area shape="rect" id="node3" href="$classPeripheralController.html#ae5243fe6fd0f546bf53de1c80860bee4" title=" " alt="" coords="387,5,557,47"/>
+<area shape="rect" id="node5" href="$classHC165.html#abd8ac488340ad70f14389057985dc21c" title=" " alt="" coords="413,79,531,106"/>
+<area shape="rect" id="node6" href="$classHC165.html#a5b6252dcfeeafcdca486e77b086fd8b7" title=" " alt="" coords="627,81,726,107"/>
+<area shape="rect" id="node8" href="$classHC165.html#a6de9011b7ff472fa562e41ca5f3de936" title=" " alt="" coords="402,137,542,163"/>
+<area shape="rect" id="node9" href="$classHC165.html#a5f0c507ffc6832c6717da8146e6674c2" title=" " alt="" coords="605,135,748,162"/>
+<area shape="rect" id="node10" href="$classHC165.html#a5b3bc03d7666bcc4e219228e1479fc6b" title=" " alt="" coords="607,186,746,213"/>
+</map>

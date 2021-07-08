@@ -1,0 +1,122 @@
+.TH "LogicController" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LogicController \- Класс логики управления роботом  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <logiccontroller\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLogicController\fP ()"
+.br
+.ti -1c
+.RI "\fB~LogicController\fP ()"
+.br
+.ti -1c
+.RI "void \fBconnectToServer\fP (std::string host, unsigned int port)"
+.br
+.ti -1c
+.RI "void \fBconnectToServer\fP ()"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBprintHeadInfo\fP ()"
+.br
+.ti -1c
+.RI "void \fBworker\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "const char * \fBconfigName\fP = 'amur\&.cfg'"
+.br
+.ti -1c
+.RI "\fBConfigProcessor\fP * \fBconfig\fP"
+.br
+.ti -1c
+.RI "\fBPeripheralController\fP * \fBperiphery\fP"
+.br
+.ti -1c
+.RI "\fBNetworkController\fP * \fBnetwork\fP"
+.br
+.ti -1c
+.RI "std::string \fBaddress\fP = '176\&.193\&.245\&.203:7777'"
+.br
+.ti -1c
+.RI "AMUR::AmurSensors * \fBsensors\fP"
+.br
+.ti -1c
+.RI "AMUR::AmurControls * \fBcontrols\fP"
+.br
+.ti -1c
+.RI "AMUR::AmurControls \fBcontrolsPrev\fP"
+.br
+.ti -1c
+.RI "bool \fBworkerStopped\fP = false"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Класс логики управления роботом 
+
+Данный класс реализует логику управления роботом\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "LogicController::LogicController ()"
+Создаёт экземпляр класса логики управления роботом\&. 
+.SS "LogicController::~LogicController ()"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void LogicController::connectToServer ()"
+Инициирует подключение к серверу с адресом и портом по умолчанию\&. 
+.SS "void LogicController::connectToServer (std::string host, unsigned int port)"
+Инициирует подключение к серверу\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIhost\fP Адрес сервера 
+.br
+\fIport\fP Порт сервера 
+.RE
+.PP
+
+.SS "void LogicController::printHeadInfo ()\fC [private]\fP"
+Функция печати основной информации о программе 
+.SS "void LogicController::worker ()\fC [private]\fP"
+Главный цикл 
+.SH "Member Data Documentation"
+.PP 
+.SS "std::string LogicController::address = '176\&.193\&.245\&.203:7777'\fC [private]\fP"
+
+.SS "\fBConfigProcessor\fP* LogicController::config\fC [private]\fP"
+
+.SS "const char* LogicController::configName = 'amur\&.cfg'\fC [private]\fP"
+
+.SS "AMUR::AmurControls* LogicController::controls\fC [private]\fP"
+
+.SS "AMUR::AmurControls LogicController::controlsPrev\fC [private]\fP"
+
+.SS "\fBNetworkController\fP* LogicController::network\fC [private]\fP"
+
+.SS "\fBPeripheralController\fP* LogicController::periphery\fC [private]\fP"
+
+.SS "AMUR::AmurSensors* LogicController::sensors\fC [private]\fP"
+
+.SS "bool LogicController::workerStopped = false\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

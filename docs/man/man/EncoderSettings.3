@@ -1,0 +1,41 @@
+.TH "EncoderSettings" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EncoderSettings \- Структура для хранения настроек энкодеров  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <peripheralsettings\&.h>\fP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBencoderSectorsCount\fP = 100"
+.br
+.ti -1c
+.RI "const int \fBmaxMotorSpeed\fP = 100"
+.br
+.ti -1c
+.RI "const int \fBsampleRate\fP = ( \fBencoderSectorsCount\fP * \fBmaxMotorSpeed\fP ) * 3"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Структура для хранения настроек энкодеров 
+
+Данная структура хранит набор настроек для работы с энкодерами\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "const int EncoderSettings::encoderSectorsCount = 100"
+
+.SS "const int EncoderSettings::maxMotorSpeed = 100"
+
+.SS "const int EncoderSettings::sampleRate = ( \fBencoderSectorsCount\fP * \fBmaxMotorSpeed\fP ) * 3"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

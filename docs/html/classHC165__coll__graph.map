@@ -1,0 +1,7 @@
+<map id="HC165" name="HC165">
+<area shape="rect" id="node1" title="Класс работы с регистром 74HC165." alt="" coords="237,344,351,495"/>
+<area shape="rect" id="node2" href="$structRegisterSettings.html" title="Структура для хранения параметров регистров" alt="" coords="235,204,353,281"/>
+<area shape="rect" id="node3" href="$structRegisterSettings_1_1General.html" title="Общие настройки регистров." alt="" coords="5,35,175,112"/>
+<area shape="rect" id="node4" href="$structRegisterSettings_1_1HC165Pins.html" title="Структура для хранения пинов входного регистра" alt="" coords="199,13,389,134"/>
+<area shape="rect" id="node5" href="$structRegisterSettings_1_1HC595Pins.html" title="Структура для хранения пинов выходного регистра" alt="" coords="413,5,604,141"/>
+</map>

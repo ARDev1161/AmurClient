@@ -1,0 +1,57 @@
+.TH "RegisterSettings" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RegisterSettings \- Структура для хранения параметров регистров  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <registerssettings\&.h>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBGeneral\fP"
+.br
+.RI "Общие настройки регистров\&. "
+.ti -1c
+.RI "struct \fBHC165Pins\fP"
+.br
+.RI "Структура для хранения пинов входного регистра "
+.ti -1c
+.RI "struct \fBHC595Pins\fP"
+.br
+.RI "Структура для хранения пинов выходного регистра "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBRegisterSettings::General\fP \fBgeneral\fP"
+.br
+.ti -1c
+.RI "struct \fBRegisterSettings::HC595Pins\fP \fBhc595Pins\fP"
+.br
+.ti -1c
+.RI "struct \fBRegisterSettings::HC165Pins\fP \fBhc165Pins\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Структура для хранения параметров регистров 
+
+Данная структура хранит набор пинов для управления регистрами в нотации GPIO и дополнительные настройки\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "struct \fBRegisterSettings::General\fP RegisterSettings::general"
+
+.SS "struct \fBRegisterSettings::HC165Pins\fP RegisterSettings::hc165Pins"
+
+.SS "struct \fBRegisterSettings::HC595Pins\fP RegisterSettings::hc595Pins"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

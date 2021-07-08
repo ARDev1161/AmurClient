@@ -1,0 +1,109 @@
+.TH "HC595" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HC595 \- Класс работы с регистром 74\fBHC595\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <hc595\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBHC595\fP (\fBRegisterSettings\fP *\fBsettings\fP)"
+.br
+.ti -1c
+.RI "\fBHC595\fP ()"
+.br
+.ti -1c
+.RI "void \fBwriteByte\fP (unsigned char byte)"
+.br
+.ti -1c
+.RI "void \fBlatchSignal\fP ()"
+.br
+.ti -1c
+.RI "void \fBenable\fP ()"
+.br
+.ti -1c
+.RI "void \fBdisable\fP ()"
+.br
+.ti -1c
+.RI "void \fBreset\fP ()"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBpulse\fP (int pin)"
+.br
+.ti -1c
+.RI "void \fBgpioInit\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBRegisterSettings\fP * \fBsettings\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Класс работы с регистром 74\fBHC595\fP\&. 
+
+Данный класс позволяет записывать данные в регистр из байта входящих данных, выключать и включать его\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "HC595::HC595 (\fBRegisterSettings\fP * settings)"
+Создаёт экземпляр класса для записи в регистр\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpins\fP Структура описывающая пины Raspberry Pi для подключения регистра в нотации GPIO 
+.RE
+.PP
+
+.SS "HC595::HC595 ()"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void HC595::disable ()"
+Выключает регистр\&. 
+.SS "void HC595::enable ()"
+Включает регистр\&. 
+.SS "void HC595::gpioInit ()\fC [private]\fP"
+
+.SS "void HC595::latchSignal ()"
+Выводит записанные данные на выводы регистра\&. 
+.SS "void HC595::pulse (int pin)\fC [inline]\fP, \fC [private]\fP"
+Подаёт импульс на указанный пин управления регистра\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpin\fP Пин GPIO для управления регистром 
+.RE
+.PP
+
+.SS "void HC595::reset ()"
+Сбрасывает данные внутри регистра\&. 
+.SS "void HC595::writeByte (unsigned char byte)"
+Записывает байт данных в регистр\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIbyte\fP Байт записываемых данных 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBRegisterSettings\fP* HC595::settings\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

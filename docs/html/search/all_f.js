@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['samplerate_151',['sampleRate',['../structEncoderSettings.html#ad949b919e9de3b9c89fa115be7533db1',1,'EncoderSettings']]],
+  ['sensors_152',['sensors',['../classLogicController.html#a15b87f75caa668eec858163b279479c6',1,'LogicController::sensors()'],['../classgrpcClient.html#a3a7bbd6ad088f69dded69c60d6d7ac28',1,'grpcClient::sensors()'],['../classNetworkController.html#a25fe34c706f86efb85fd7cd3e7cabcca',1,'NetworkController::sensors()'],['../classgrpcServer.html#ad47392a833a201d6f3e52fa71d9d88c4',1,'grpcServer::sensors()']]],
+  ['sensorsperi_153',['sensorsPeri',['../classPeripheralController.html#aef599a602d0c28b3115f97b0a44477d8',1,'PeripheralController']]],
+  ['server_2ecpp_154',['server.cpp',['../server_8cpp.html',1,'']]],
+  ['server_2eh_155',['server.h',['../server_8h.html',1,'']]],
+  ['service_156',['service',['../classNetworkController.html#a2182e367e953a8634b64e69817e8a37b',1,'NetworkController']]],
+  ['set_157',['set',['../modules_2CMakeLists_8txt.html#a5a588091bf02501f53eee6b6c477bcd1',1,'CMakeLists.txt']]],
+  ['setconfigfilename_158',['setConfigFilename',['../classConfigProcessor.html#a62884420d070398ce6473578d16346e7',1,'ConfigProcessor']]],
+  ['setoptionsconfig_159',['setOptionsConfig',['../classConfigProcessor.html#a6b12e4fd79e5b8679f61e98de92889df',1,'ConfigProcessor']]],
+  ['setprotospointers_160',['setProtosPointers',['../classgrpcServer.html#a4405721eaa6197b2a37c0ec825f77cab',1,'grpcServer']]],
+  ['settings_161',['settings',['../classHC165.html#a31914ae5a61b5e1d86ce43c5fb293661',1,'HC165::settings()'],['../classHC595.html#abc901ef7e211ab185a4b18dff890b0bf',1,'HC595::settings()']]],
+  ['softpwmchange_162',['softPWMChange',['../classPWMController.html#a89edfe2eb7d4a7843603095ddbaa2041',1,'PWMController']]],
+  ['softpwmcreate_163',['softPWMCreate',['../classPWMController.html#a9144413b1b00cc51dd7f5dce9b389ffb',1,'PWMController']]],
+  ['softpwmstop_164',['softPWMStop',['../classPWMController.html#ab8f0a5fce26ff4c086c87d56568f45ab',1,'PWMController']]],
+  ['spi_165',['SPI',['../classSPI.html',1,'SPI'],['../classSPI.html#a2ba081c29fbdecc704c6bf00b24d5205',1,'SPI::SPI()']]],
+  ['spi_2ecpp_166',['spi.cpp',['../spi_8cpp.html',1,'']]],
+  ['spi_2eh_167',['spi.h',['../spi_8h.html',1,'']]],
+  ['start_168',['start',['../classTimer.html#a3bcd51aefbeb3c1ba6c04fd85d901c27',1,'Timer']]],
+  ['stop_169',['stop',['../classTimer.html#a63f0eb44b27402196590a03781515dba',1,'Timer']]],
+  ['stoppedstream_170',['stoppedStream',['../classgrpcClient.html#a9ae335b34c0043d59d3c04881c1ababc',1,'grpcClient']]],
+  ['stopstream_171',['stopStream',['../classgrpcClient.html#a791265a5d7a0615281f250d1f0c8877a',1,'grpcClient']]],
+  ['stub_5f_172',['stub_',['../classgrpcClient.html#a7bfcf7b7b5263c562cf39c2c9da12288',1,'grpcClient']]]
+];

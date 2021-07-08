@@ -1,0 +1,9 @@
+<map id="RegisterController" name="RegisterController">
+<area shape="rect" id="node1" title="Класс контроллера регистров" alt="" coords="219,601,369,796"/>
+<area shape="rect" id="node2" href="$classHC165.html" title="Класс работы с регистром 74HC165." alt="" coords="237,366,351,517"/>
+<area shape="rect" id="node3" href="$structRegisterSettings.html" title="Структура для хранения параметров регистров" alt="" coords="235,204,353,281"/>
+<area shape="rect" id="node7" href="$classHC595.html" title="Класс работы с регистром 74HC595." alt="" coords="376,344,481,539"/>
+<area shape="rect" id="node4" href="$structRegisterSettings_1_1General.html" title="Общие настройки регистров." alt="" coords="5,35,175,112"/>
+<area shape="rect" id="node5" href="$structRegisterSettings_1_1HC165Pins.html" title="Структура для хранения пинов входного регистра" alt="" coords="199,13,389,134"/>
+<area shape="rect" id="node6" href="$structRegisterSettings_1_1HC595Pins.html" title="Структура для хранения пинов выходного регистра" alt="" coords="413,5,604,141"/>
+</map>

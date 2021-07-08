@@ -1,0 +1,130 @@
+.TH "PWMController" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PWMController \- Класс управления PWM сигналами  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <pwmcontroller\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPWMController\fP ()"
+.br
+.ti -1c
+.RI "int \fBhardPWMCreate\fP (int pin)"
+.br
+.ti -1c
+.RI "int \fBhardPWMChange\fP (int pin, int dutyCycle)"
+.br
+.ti -1c
+.RI "int \fBhardPWMStop\fP (int pin)"
+.br
+.ti -1c
+.RI "int \fBsoftPWMCreate\fP (int pin)"
+.br
+.ti -1c
+.RI "int \fBsoftPWMChange\fP (int pin, int dutyCycle)"
+.br
+.ti -1c
+.RI "int \fBsoftPWMStop\fP (int pin)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBpwmRange\fP = 255"
+.br
+.ti -1c
+.RI "int \fBfreq\fP = 20"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Класс управления PWM сигналами 
+
+Данный класс позволяет управлять PWM сигналами робота\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "PWMController::PWMController ()"
+Создаёт экземпляр класса для работы с PWM\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "int PWMController::hardPWMChange (int pin, int dutyCycle)"
+Изменяет скважность на выводе аппаратного PWM\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpin\fP Вывод на котором изменяется скважность аппаратного PWM сигнала 
+.br
+\fIdutyCycle\fP Скважность аппаратного PWM сигнала 
+.RE
+.PP
+
+.SS "int PWMController::hardPWMCreate (int pin)"
+Создаёт аппаратный PWM сигнал на выводе Raspberry Pi в нотации GPIO\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpin\fP Вывод на котором создаётся аппаратный PWM сигнал 
+.RE
+.PP
+
+.SS "int PWMController::hardPWMStop (int pin)"
+Останавливает аппаратный PWM сигнал на выводе Raspberry Pi в нотации GPIO\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpin\fP Вывод на котором останавливается аппаратный PWM сигнал 
+.RE
+.PP
+
+.SS "int PWMController::softPWMChange (int pin, int dutyCycle)"
+Изменяет скважность на выводе программного PWM\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpin\fP Вывод на котором изменяется скважность программного PWM сигнала 
+.br
+\fIdutyCycle\fP Скважность программного PWM сигнала 
+.RE
+.PP
+
+.SS "int PWMController::softPWMCreate (int pin)"
+Создаёт программный PWM сигнал на выводе Raspberry Pi в нотации GPIO\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpin\fP Вывод на котором создаётся программный PWM сигнал 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Возвращает 0 если при создании PWM сигнала не произошло ошибки 
+.RE
+.PP
+
+.SS "int PWMController::softPWMStop (int pin)"
+Останавливает программный PWM сигнал на выводе Raspberry Pi в нотации GPIO\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpin\fP Вывод на котором останавливается программный PWM сигнал 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "int PWMController::freq = 20\fC [private]\fP"
+
+.SS "int PWMController::pwmRange = 255\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

@@ -1,0 +1,10 @@
+<map id="PeripheralController::writeRegisterData" name="PeripheralController::writeRegisterData">
+<area shape="rect" id="node1" title=" " alt="" coords="5,104,140,145"/>
+<area shape="rect" id="node2" href="$classPeripheralController.html#aaf5a62024bda3d465991e9972b5976db" title=" " alt="" coords="191,5,347,47"/>
+<area shape="rect" id="node3" href="$classRegisterController.html#a993c64595811a1293454f02c1ac453cc" title=" " alt="" coords="202,71,337,112"/>
+<area shape="rect" id="node6" href="$classPeripheralController.html#a1b178f94078fde5f8840edb30ab1d89e" title=" " alt="" coords="188,136,351,177"/>
+<area shape="rect" id="node7" href="$classRegisterController.html#aae49df122c629aa9fd50fbc0e5b8d244" title=" " alt="" coords="207,201,332,243"/>
+<area shape="rect" id="node4" href="$classHC595.html#ad323219eed1092f11ec80006ab845935" title=" " alt="" coords="399,98,531,125"/>
+<area shape="rect" id="node5" href="$classHC595.html#a621bdd795a0e38a3359da1a6e49557f6" title=" " alt="" coords="579,143,677,170"/>
+<area shape="rect" id="node8" href="$classHC595.html#a63c42adab55a32f20af566d2053f6841" title=" " alt="" coords="403,169,526,195"/>
+</map>

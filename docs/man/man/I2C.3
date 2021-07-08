@@ -1,0 +1,68 @@
+.TH "I2C" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+I2C \- Класс работы с интерфейсом \fBI2C\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <i2c\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBI2C\fP ()"
+.br
+.ti -1c
+.RI "void \fBinit\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBfd\fP"
+.br
+.ti -1c
+.RI "int \fBresult\fP"
+.br
+.ti -1c
+.RI "unsigned char \fBbuffer\fP [100]"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const int \fBCHANNEL\fP = 1"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Класс работы с интерфейсом \fBI2C\fP\&. 
+
+Данный класс инкапсулирует взаимодействие с интерфейсом \fBI2C\fP\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "I2C::I2C ()"
+Создаёт экземпляр класса для работы с интерфейсом \fBI2C\fP\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void I2C::init ()"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "unsigned char I2C::buffer[100]\fC [private]\fP"
+
+.SS "const int I2C::CHANNEL = 1\fC [static]\fP, \fC [private]\fP"
+
+.SS "int I2C::fd\fC [private]\fP"
+
+.SS "int I2C::result\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

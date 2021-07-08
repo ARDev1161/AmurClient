@@ -1,0 +1,4 @@
+<map id="Timer" name="Timer">
+<area shape="rect" id="node1" title="Timer class, wrapper around the POSIX per&#45;process timer." alt="" coords="47,5,149,141"/>
+<area shape="rect" id="node2" href="$classTimerCallback.html" title="Timer callback wrapper for CppTimer class." alt="" coords="5,189,191,296"/>
+</map>
