@@ -23,9 +23,10 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./docs
+        destination_dir: docs
+        force_orphan: true
+        allow_empty_commit: false
         #enable_jekyll: false
-        #allow_empty_commit: false
-        #force_orphan: true
         #publish_branch: gh-pages
     
        #destination_dir: docs
