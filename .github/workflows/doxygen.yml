@@ -24,10 +24,10 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./docs
         destination_dir: docs
-        force_orphan: true
         allow_empty_commit: false
+        cname: amurclient.online
+        #force_orphan: true
         #enable_jekyll: false
         #publish_branch: gh-pages
     
        #destination_dir: docs
-       # cname: amurclient.online
