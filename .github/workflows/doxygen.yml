@@ -10,10 +10,13 @@ env:
   BUILD_TYPE: Release
 
 jobs:
-  build:
+  build-documentation:
     runs-on: ubuntu-latest
 
     steps:      
+    - uses: actions/checkout@v2
+    
+    # Build the HTML documentation
     - name: Doxygen Action
       uses: mattnotmitt/doxygen-action@v1.3.1
       with:
