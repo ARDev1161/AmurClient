@@ -26,8 +26,8 @@ jobs:
         destination_dir: docs
         allow_empty_commit: false
         cname: amurclient.online
+        enable_jekyll: true
         #force_orphan: true
-        #enable_jekyll: false
         #publish_branch: gh-pages
     
        #destination_dir: docs
