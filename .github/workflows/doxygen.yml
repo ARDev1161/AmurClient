@@ -1,0 +1,33 @@
+name: Doxygen
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Extract tag name
+      id: tag
+      uses: actions/github-script@0.2.0
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          return context.payload.ref.replace(/\/refs\/tags\//, '');
+      
+    - name: Doxygen Action
+      uses: mattnotmitt/doxygen-action@v1.3.1
+      with:
+        working-directory: 'submodule/'
+        doxyfile-path: 'docs/'
+        additional-packages: font-fira-code
+        enable-latex: true
