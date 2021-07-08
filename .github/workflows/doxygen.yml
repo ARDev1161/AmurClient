@@ -28,4 +28,4 @@ jobs:
         publish_branch: gh-pages
         destination_dir: docs
         force_orphan: true
-        cname: amurclient.online
+       # cname: amurclient.online
