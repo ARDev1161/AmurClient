@@ -28,6 +28,9 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
           return context.payload.ref.replace(/\/refs\/tags\//, '');
+          
+    #- name: Run script
+    #  run: PATH/script.sh      
       
     - name: Install Protoc
       uses: arduino/setup-protoc@v1.1.2
