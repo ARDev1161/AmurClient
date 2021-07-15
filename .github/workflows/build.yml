@@ -29,17 +29,8 @@ jobs:
         script: |
           return context.payload.ref.replace(/\/refs\/tags\//, '');
 
-    #- name: Run script
-    #  run: PATH/script.sh
-
-    #- name: Install Protoc
-      #uses: arduino/setup-protoc@v1.1.2
-
     - name: Setup ProtoBuf & gRPC
       run: scripts/grpc.sh
-      #uses: eWaterCycle/setup-grpc@v4
-      #with:
-        #grpc-version: 1.38.1
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
