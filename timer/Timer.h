@@ -11,7 +11,6 @@
   Timer class which repeatedly fires. It's wrapper around the POSIX per-process timer.
 */
 class Timer {
-
 public:
 	Timer();
     virtual ~Timer();
@@ -27,8 +26,6 @@ protected:
 	virtual void timerEvent() = 0;
 
 private:
-
 };
-
 
 #endif
