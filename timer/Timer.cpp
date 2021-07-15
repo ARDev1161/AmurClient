@@ -34,5 +34,4 @@ void Timer::start(std::chrono::milliseconds delay, bool asynchronous) {
   Stops the timer by disarming it. It can be re-started with start().
 */
 void Timer::stop() {
-
 }
