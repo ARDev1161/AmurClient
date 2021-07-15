@@ -247,7 +247,6 @@ void PeripheralController::writeRegisterData() // Read data from protobuf & writ
     unsigned char rightRegister = rightOutRegisterToByte();
 
     if((prevLeftHC595 != leftRegister)||(prevRightHC595 != rightRegister)){
-
         registers->writeByte(leftRegister); // Write left byte to HC595
         registers->writeByte(rightRegister); // Write right byte to HC595
 
