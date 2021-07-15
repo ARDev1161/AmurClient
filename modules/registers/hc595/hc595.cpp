@@ -20,6 +20,13 @@ void HC595::gpioInit()
 {
 #if __has_include(<pigpio.h>)
     std::cout << "HC595 entity creating..." << std::endl;
+    
+    for(int pin: settings->hc595Pins)
+    {
+        if(gpioSetMode( pin, PI_OUTPUT) != 0)
+            std::cerr << "gpioSetMode HC595 pin = " << pin << "\t ERROR!!!" << std::endl;
+    }
+    
     if(gpioSetMode( settings->hc595Pins.dataPin, PI_OUTPUT) != 0)
         std::cerr << "gpioSetMode HC595 dataPin ERROR!!!" << std::endl;
     if(gpioSetMode( settings->hc595Pins.latchClkPin, PI_OUTPUT) != 0)
