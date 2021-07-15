@@ -9,7 +9,6 @@
   Timer callback wrapper for CppTimer class.
 */
 class TimerCallback : public Timer {
-
 public:
     /*!
       \brief Runnable class for overloading run function.
@@ -50,7 +49,6 @@ public:
 
 private:
 	Runnable* cppTimerEventRunnable = NULL;
-
 };
 
 
