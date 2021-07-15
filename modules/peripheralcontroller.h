@@ -95,7 +95,6 @@ public:
     virtual ~PeripheralController();
 
     void updateData();
-
 };
 
 #endif // PERIPHERALCONTROLLER_H
