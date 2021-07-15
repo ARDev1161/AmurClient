@@ -5,7 +5,6 @@
 */
 UART::UART()
 {
-
 }
 
 /*!
@@ -20,5 +19,4 @@ int UART::init()
     std::cout << "UART initializing" << std::endl ;
     return 0;
 #endif
-
 }
