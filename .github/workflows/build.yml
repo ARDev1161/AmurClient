@@ -20,7 +20,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
+
     - name: Extract tag name
       id: tag
       uses: actions/github-script@0.2.0
@@ -28,17 +28,18 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
           return context.payload.ref.replace(/\/refs\/tags\//, '');
-          
-    #- name: Run script
-    #  run: PATH/script.sh      
-      
-    - name: Install Protoc
-      uses: arduino/setup-protoc@v1.1.2
 
-    - name: Setup gRPC
-      uses: eWaterCycle/setup-grpc@v4
-      with:
-        grpc-version: 1.38.1
+    #- name: Run script
+    #  run: PATH/script.sh
+
+    #- name: Install Protoc
+      #uses: arduino/setup-protoc@v1.1.2
+
+    - name: Setup ProtoBuf & gRPC
+      run: scripts/grpc.sh
+      #uses: eWaterCycle/setup-grpc@v4
+      #with:
+        #grpc-version: 1.38.1
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
@@ -51,10 +52,10 @@ jobs:
 
     - name: Test
       working-directory: ${{github.workspace}}/build
-      # Execute tests defined by the CMake configuration.  
+      # Execute tests defined by the CMake configuration.
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest -C ${{env.BUILD_TYPE}}
-        
+
     - name: Debian packaging
       uses: kentik/pkg@v1.0.0-rc7
       with:
