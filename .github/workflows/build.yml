@@ -30,7 +30,7 @@ jobs:
           return context.payload.ref.replace(/\/refs\/tags\//, '');
 
     - name: Setup ProtoBuf & gRPC
-      run: ls -al #sudo ./.github/workflows/scripts/grpc.sh
+      run: cd .github && ls -al #sudo ./.github/workflows/scripts/grpc.sh
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
