@@ -4,8 +4,6 @@
    Creates an instance of the timer and connects the signal handler to the timer.
 */
 Timer::Timer() {
-
-
 }
 
 /*!
