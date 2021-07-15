@@ -40,6 +40,5 @@ struct RegisterSettings{
       const int clkInhibitePin = 22;     //165 inhibite clock input
       const int loadPin = 27;            //165 load register input( SH/Not(LD) )
   } hc165Pins;
-
 };
 #endif // REGISTERSSETTINGS_H
