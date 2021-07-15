@@ -25,7 +25,6 @@ class grpcClient
     grpc::Status DataExchange();
     grpc::Status DataStreamExchange();
     void stopStream();
-
 };
 
 #endif // GCLIENT_H
