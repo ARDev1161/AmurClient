@@ -30,7 +30,6 @@ public:
     int softPWMCreate(int pin);
     int softPWMChange(int pin, int dutyCycle);
     int softPWMStop(int pin);
-
 };
 
 #endif // PWMCONTROLLER_H
