@@ -11,7 +11,6 @@ grpcClient::grpcClient(std::shared_ptr<grpc::Channel> channel, AMUR::AmurControl
 // Assembles the client's payload, sends it and presents the response back from the server.
 grpc::Status grpcClient::DataExchange()
 {
-
     // Container for the data we expect from the server.
     AMUR::AmurControls reply;
 
