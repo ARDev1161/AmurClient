@@ -29,17 +29,15 @@ jobs:
         script: |
           return context.payload.ref.replace(/\/refs\/tags\//, '');
 
+    - name: Make all workflow scripts executable
+      run: chmod -R a+x .github/workflows/scripts
+
     - name: Setup ProtoBuf & gRPC
-      run: chmod -R a+x .github/workflows/scripts && sudo ./.github/workflows/scripts/grpc.sh
+      run: sudo ./.github/workflows/scripts/grpc-global-install.sh
 
-    - name: Configure CMake
-      # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
-      # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
-      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
-
-    - name: Build
+    - name: Build AmurClient
       # Build your program with the given configuration
-      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+      run: sudo ./.github/workflows/scripts/AmurClient-build.sh
 
     - name: Test
       working-directory: ${{github.workspace}}/build
