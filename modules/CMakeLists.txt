@@ -43,12 +43,15 @@ find_package_handle_standard_args(pigpio
 add_subdirectory(registers)
 add_subdirectory(pwm)
 add_subdirectory(interfaces)
-add_subdirectory(../timer)
 
 set(PERI_CONTROLLER
     peripheralcontroller.cpp
     peripheralcontroller.h
     peripheralsettings.h
+    
+    ../timer/TimerCallback.h
+    ../timer/Timer.h
+    ../timer/Timer.cpp
     )
 
 set(PERIPHERAL
