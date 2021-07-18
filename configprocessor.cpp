@@ -21,10 +21,10 @@ ConfigProcessor::ConfigProcessor()
 */
 int ConfigProcessor::setOptionsConfig()
 {
-    config.setOptions(libconfig::Config::OptionFsync
-                | libconfig::Config::OptionSemicolonSeparators
-                | libconfig::Config::OptionColonAssignmentForGroups
-                | libconfig::Config::OptionOpenBraceOnSeparateLine);
+//    config.setOptions(libconfig::Config::OptionFsync
+//                | libconfig::Config::OptionSemicolonSeparators
+//                | libconfig::Config::OptionColonAssignmentForGroups
+//                | libconfig::Config::OptionOpenBraceOnSeparateLine);
 
     return (EXIT_SUCCESS);
 }
