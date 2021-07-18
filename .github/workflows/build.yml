@@ -32,18 +32,15 @@ jobs:
     - name: Make all workflow scripts executable
       run: chmod -R a+x .github/workflows/scripts
       
-    - name: Changing directory
-      run: cd .github/workflows/scripts
-
     - name: Setup libconfig
-      run: sudo ./libconfig-install.sh
+      run: sudo ./.github/workflows/scripts/libconfig-install.sh
 
     - name: Setup ProtoBuf & gRPC
-      run: sudo ./grpc-global-install.sh
+      run: sudo ./.github/workflows/scripts/grpc-global-install.sh
 
     - name: Build AmurClient
       # Build your program with the given configuration
-      run: sudo ./AmurClient-build.sh
+      run: sudo ./.github/workflows/scripts/AmurClient-build.sh
 
     - name: Test
       working-directory: ${{github.workspace}}/build
