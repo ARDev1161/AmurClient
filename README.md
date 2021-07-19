@@ -1,7 +1,9 @@
 <p align="center">
   <img alt="AmurClient Logo" src="https://raw.githubusercontent.com/ARDev1161/AmurClient/gh-pages/logo.png" height="140" />
-  <h3 align="center">AmurClient</h3>
-  <p align="center">AmurClient is a simple client software for robots AMUR on Raspberry Pi.</p>
+
+# Client software for Amur distribution board (ADB-0.42)
+This is application for communicate with robot on RPi base with [AmurClient].	
+	
   <p align="center">
     <a href="https://github.com/ARDev1161/AmurClient/releases/latest"><img alt="Release" src="https://img.shields.io/github/release/goreleaser/nfpm.svg?style=for-the-badge"></a>
     <a href="/LICENSE.md"><img alt="Software License" src="https://img.shields.io/badge/license-Apache%202.0-green.svg?style=for-the-badge"></a>
@@ -12,8 +14,7 @@
   </p>
 </p>
 
-# Client software for Amur distribution board (ADB-0.42)
-This is application for communicate with robot on RPi base with [AmurClient].
+
 
 ## Requirements:
   1) CMake - for install read: https://snapcraft.io/install/cmake/raspbian
