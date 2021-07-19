@@ -51,8 +51,8 @@ jobs:
     - name: Debian packaging
       uses: kentik/pkg@v1.0.0-rc7
       with:
-        name: AmurClient-x86_64
+        name: AmurClient
         version: ${{ steps.tag.outputs.result }}
         arch: x86_64 #aarch64
         format: deb
-        package: ./.github/workflows/package/deb.yaml
+        package: ./.github/workflows/package.yaml
