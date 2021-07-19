@@ -5,7 +5,7 @@
 This is application for communicate with robot on RPi base with [AmurClient].	
 	
   <p align="center">
-    <a href="https://github.com/ARDev1161/AmurClient/releases/latest"><img alt="Release" src="https://img.shields.io/github/release/goreleaser/nfpm.svg?style=for-the-badge"></a>
+   <!--  <a href="https://github.com/ARDev1161/AmurClient/releases/latest"><img alt="Release" src="https://img.shields.io/github/release/ARDev1161/AmurClient.svg?style=for-the-badge"></a>-->
     <a href="/LICENSE.md"><img alt="Software License" src="https://img.shields.io/badge/license-Apache%202.0-green.svg?style=for-the-badge"></a>
    <!-- <a href="https://github.com/ARDev1161/AmurClient/actions?workflow=build"><img alt="GitHub Actions" src="https://img.shields.io/github/workflow/status/ARDev1161/AmurClient/build?style=for-the-badge"></a> -->
     <a href="https://amurclient.online/docs/html/md_README.html"><img alt="Documentation" src="https://img.shields.io/badge/doc's-Doxygen-blue.svg?style=for-the-badge"></a>
