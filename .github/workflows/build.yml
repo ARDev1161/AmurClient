@@ -55,4 +55,4 @@ jobs:
         version: ${{ steps.tag.outputs.result }}
         arch: x86_64 #aarch64
         format: deb
-        package: ./.github/workflows/package.yaml
+        package: ./.github/workflows/package/deb.yaml
