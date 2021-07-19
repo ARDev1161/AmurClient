@@ -1,3 +1,17 @@
+<p align="center">
+  <img alt="AmurClient Logo" src="https://raw.githubusercontent.com/ARDev1161/AmurClient/gh-pages/logo.png" height="140" />
+  <h3 align="center">AmurClient</h3>
+  <p align="center">AmurClient is a simple client software for robots AMUR on Raspberry Pi.</p>
+  <p align="center">
+    <a href="https://github.com/ARDev1161/AmurClient/releases/latest"><img alt="Release" src="https://img.shields.io/github/release/goreleaser/nfpm.svg?style=for-the-badge"></a>
+    <a href="/LICENSE.md"><img alt="Software License" src="https://img.shields.io/badge/license-Apache%202.0-green.svg?style=for-the-badge"></a>
+    <a href="https://github.com/ARDev1161/AmurClient/actions?workflow=build"><img alt="GitHub Actions" src="https://img.shields.io/github/workflow/status/ARDev1161/AmurClient/build?style=for-the-badge"></a>
+    <a href="https://codecov.io/gh/goreleaser/nfpm"><img alt="Codecov branch" src="https://img.shields.io/codecov/c/github/goreleaser/nfpm/master.svg?style=for-the-badge"></a>
+    <a href="http://godoc.org/github.com/ARDev1161/AmurClient"><img alt="Go Doc" src="https://img.shields.io/badge/doc's-Doxygen-blue.svg?style=for-the-badge"></a>
+    <a href="https://github.com/ARDev1161"><img alt="Powered By: ARDev1161" src="https://img.shields.io/badge/powered%20by-ARDev1161-green.svg?style=for-the-badge"></a>
+  </p>
+</p>
+
 # Client software for Amur distribution board (ADB-0.42)
 This is application for communicate with robot on RPi base with [AmurClient].
 
