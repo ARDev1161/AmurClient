@@ -2,7 +2,7 @@
   <img alt="AmurClient Logo" src="https://raw.githubusercontent.com/ARDev1161/AmurClient/gh-pages/logo.png" height="140" />
 
 # Client software for Amur distribution board (ADB-0.42)
-This is application for communicate with robot on RPi base with [AmurClient].	
+This is application for communicate with robot on RPi base with Amur distribution board.	
 	
   <p align="center">
     <a href="https://github.com/ARDev1161/AmurClient/releases/latest"><img alt="Release" src="https://img.shields.io/github/v/tag/ARDev1161/AmurClient.svg?style=for-the-badge"></a>
