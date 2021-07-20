@@ -20,7 +20,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
+    
+    - name: Cache AmurClient
+      uses: actions/cache@v2
+      with:
+        path: /home/runner/work/AmurClient
+        key: ${{ runner.os }}-AmurClient
+        
     - name: Extract tag name
       id: tag
       uses: actions/github-script@0.2.0
