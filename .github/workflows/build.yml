@@ -20,12 +20,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
-    - name: Cache AmurClient
-      uses: actions/cache@v2
-      with:
-        path: /home/runner/work/AmurClient
-        key: ${{ runner.os }}-AmurClient
         
     - name: Extract tag name
       id: tag
@@ -47,6 +41,12 @@ jobs:
     - name: Build AmurClient
       # Build your program with the given configuration
       run: sudo ./.github/workflows/scripts/AmurClient-build.sh
+    
+    - name: Cache AmurClient
+      uses: actions/cache@v2
+      with:
+        path: /home/runner/work/AmurClient
+        key: ${{ runner.os }}-AmurClient
 
     #- name: Test
       #working-directory: ${{github.workspace}}/build
