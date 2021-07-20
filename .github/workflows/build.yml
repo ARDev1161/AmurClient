@@ -55,26 +55,10 @@ jobs:
       #run: ctest -C ${{env.BUILD_TYPE}}
 
     - name: Debian packaging
-      #uses: kentik/pkg@v1.0.0-rc7
-      #with:
-        #name: AmurClient
-        #version: ${{ steps.tag.outputs.result }}
-        #arch: x86_64 #aarch64
-        #format: deb
-        #package: ./.github/workflows/package/deb.yaml
-      run: |
-          mkdir -p .debpkg/usr/bin
-          mkdir -p .debpkg/usr/lib/AmurClient
-          echo -e "echo AmurClient" > .debpkg/usr/bin/AmurClient
-          chmod +x .debpkg/usr/bin/AmurClient
-          echo -e "a=1" > .debpkg/usr/lib/AmurClient/amur.cfg
-          
-    - uses: jiro4989/build-deb-action@v2
+      uses: kentik/pkg@v1.0.0-rc7
       with:
-        package: AmurClient
-        package_root: .debpkg
-        maintainer: ARDev1161
-        version: ${{ github.ref }} # refs/tags/v*.*.*
-        arch: 'amd64'
-        depends: 'libc6 (>= 2.2.1), git'
-        desc: 'AmurClient package.'
+        name: AmurClient
+        version: ${{ steps.tag.outputs.result }}
+        arch: x86_64 #aarch64
+        format: deb
+        package: ./.github/workflows/package/deb.yaml
