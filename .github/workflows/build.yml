@@ -56,8 +56,14 @@ jobs:
         #arch: x86_64 #aarch64
         #format: deb
         #package: ./.github/workflows/package/deb.yaml
-        
-      uses: jiro4989/build-deb-action@v2
+      run: |
+          mkdir -p .debpkg/usr/bin
+          mkdir -p .debpkg/usr/lib/AmurClient
+          echo -e "echo AmurClient" > .debpkg/usr/bin/AmurClient
+          chmod +x .debpkg/usr/bin/AmurClient
+          echo -e "a=1" > .debpkg/usr/lib/AmurClient/amur.cfg
+          
+    - uses: jiro4989/build-deb-action@v2
       with:
         package: AmurClient
         package_root: .debpkg
