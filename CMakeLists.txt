@@ -68,7 +68,7 @@ if(NOT CMAKE_CXX_EXTENSIONS)
     set(CMAKE_CXX_EXTENSIONS OFF)
 endif()
 
-find_library(libСonfig config++)
+find_library(libСonfig_LIB config++)
 
 # Copy config from source to build
 configure_file(
@@ -106,7 +106,7 @@ target_link_libraries(AmurClient
                       # ${GTEST_LIBRARIES}
                       )
 
-if(libСonfig)
+if(libСonfig_LIB)
     target_link_libraries(AmurClient config++)
 endif()
 
