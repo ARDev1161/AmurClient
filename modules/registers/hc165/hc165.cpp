@@ -20,12 +20,6 @@ settings(settings)
 
     if(gpioSetPullUpDown( settings->hc165Pins.dataPin , PI_PUD_DOWN) != 0)
         std::cerr << "gpioSetPullUpDown HC165 dataPin ERROR!!!" << std::endl;
-    if(gpioSetPullUpDown( settings->hc165Pins.loadPin , PI_PUD_DOWN) != 0)
-        std::cerr << "gpioSetPullUpDown HC165 loadPin ERROR!!!" << std::endl;
-    if(gpioSetPullUpDown( settings->hc165Pins.clkPin , PI_PUD_DOWN) != 0)
-        std::cerr << "gpioSetPullUpDown HC165 clkPin ERROR!!!" << std::endl;
-    if(gpioSetPullUpDown( settings->hc165Pins.clkInhibitePin , PI_PUD_DOWN) != 0)
-        std::cerr << "gpioSetPullUpDown HC165 clkInhibitePin ERROR!!!" << std::endl;
 
     if(gpioWrite( settings->hc165Pins.loadPin , 0) != 0)
         std::cerr << "gpioWrite HC165 loadPin ERROR!!!" << std::endl;
@@ -77,9 +71,6 @@ void HC165::loadRegister()
 {
     disableClock();
     pulse( settings->hc165Pins.loadPin );
-#if __has_include(<pigpio.h>)
-    gpioWrite( settings->hc165Pins.loadPin , 0);
-#endif
     enableClock();
 }
 
