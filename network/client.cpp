@@ -52,17 +52,6 @@ grpc::Status grpcClient::DataStreamExchange()
 
     while(!stoppedStream && (clientChannel->GetState(true) == 2) )
     {
-        // Test code
-
-        std::this_thread::sleep_for( std::chrono::milliseconds(420) );
-        sensors->mutable_temperature()->set_tempcpu(i) ;
-        std::cout << "State: " << clientChannel->GetState(true) << std::endl;
-        std::cout << "Sensors: " << controls->DebugString() << std::endl;
-
-
-        if(i<=32000)i++;
-        //
-
         // Write sensors
         stream->Write(*sensors);
 
