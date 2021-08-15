@@ -8,24 +8,10 @@ LogicController::LogicController()
     config = new ConfigProcessor();
     printHeadInfo();
 
-    controls = new AMUR::AmurControls();
-    sensors = new AMUR::AmurSensors();
-
-    periphery = new PeripheralController(controls, sensors);
-    network = new NetworkController(controls, sensors);
+    periphery = new PeripheralController(&controls, &sensors);
+    network = new NetworkController(&controls, &sensors);
 
     network->runClient(address);
-
-    controls->mutable_wheelmotors()->set_leftpower(42);
-    controls->mutable_wheelmotors()->set_lefttime(420);
-    controls->mutable_wheelmotors()->set_rightpower(42);
-    controls->mutable_wheelmotors()->set_righttime(420);
-
-    controls->mutable_handmotors()->set_leftpower(42);
-    controls->mutable_handmotors()->set_rightpower(42);
-    controls->mutable_handmotors()->set_lefttime(420);
-    controls->mutable_handmotors()->set_righttime(42);
-
     worker();
 }
 
@@ -35,9 +21,6 @@ LogicController::~LogicController()
 
     delete periphery;
     delete network;
-
-    delete sensors;
-    delete controls;
 
     delete config;
     delete configName;
@@ -61,10 +44,15 @@ void LogicController::worker()
 {
     while(!workerStopped)
     {
-        if( controls->DebugString() != controlsPrev.DebugString() )
+//        std::string s2 = controlsPrev.DebugString();
+//        std::string s1 = controls.DebugString();
+
+//        std::string s4 = controlsPrev.SerializeAsString();
+//        std::string s3 = controls.SerializeAsString();
+//        if( s1 != s2 )
         {
             periphery->updateData();
-            controlsPrev = *controls;
+            controlsPrev = controls;
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(10)); // Wait 10 milliseconds
     }

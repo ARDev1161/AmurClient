@@ -48,28 +48,21 @@ grpc::Status grpcClient::DataStreamExchange()
     std::shared_ptr<grpc::ClientReaderWriter<AMUR::AmurSensors, AMUR::AmurControls> > stream(
         stub_->DataStreamExchange(&context));
 
-    int i = 0;
-
     while(!stoppedStream && (clientChannel->GetState(true) == 2) )
     {
-        // Test code
-
-        std::this_thread::sleep_for( std::chrono::milliseconds(420) );
-        sensors->mutable_temperature()->set_tempcpu(i) ;
-        std::cout << "State: " << clientChannel->GetState(true) << std::endl;
-        std::cout << "Sensors: " << controls->DebugString() << std::endl;
-
-
-        if(i<=32000)i++;
-        //
-
-        // Write sensors
+        // Send sensors to server
         stream->Write(*sensors);
 
         std::unique_lock<std::mutex> lock(muClient);
 
         // Read controls & write to protos
         stream->Read(controls);
+
+        if(controls->handmotors().rightrelay() == true)
+            std::cout << "Right relay" << std::endl;
+
+        if(controls->handmotors().leftrelay() == true)
+            std::cout << "Left relay" << std::endl;
     }
 
     stream->WritesDone();

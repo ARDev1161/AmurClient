@@ -61,24 +61,6 @@ void PeripheralController::updateData()
 void PeripheralController::initRegisters()
 {
     registers->enableRegisters();
-    for(int i=0; i<10; i++)
-    {
-        // Enable left relay and sleep
-        registers->writeByte(0x80);
-        registers->writeByte(0x00);
-        registers->refreshOutputData();
-        std::this_thread::sleep_for(
-            std::chrono::milliseconds(50) 
-        );
-
-        // Enable right relay and sleep
-        registers->writeByte(0x00);
-        registers->writeByte(0x01);
-        registers->refreshOutputData();
-        std::this_thread::sleep_for(
-            std::chrono::milliseconds(50) 
-        );
-    }
     registers->writeByte(0x00);
     registers->writeByte(0x00);
     registers->refreshOutputData();
@@ -89,7 +71,6 @@ void PeripheralController::initRegisters()
 */
 void PeripheralController::initTimer()
 {
-    std::cout << "Peripheral timer initializing... " << std::endl;
     peripheralTimer.registerEventRunnable(*this);
     peripheralTimer.start(std::chrono::milliseconds(10)); // 10 milliseconds
 }
@@ -120,7 +101,6 @@ void PeripheralController::pigpioInit()
 */
 void PeripheralController::initPWM()
 {
-    std::cout << "PWM initializing... " << std::endl;
     // Setup hardware PWM for wheel motors
     pwm->hardPWMCreate( peripheralSettings.pwm.wheelRightPin );
     pwm->hardPWMCreate( peripheralSettings.pwm.wheelLeftPin );
@@ -139,35 +119,35 @@ unsigned char PeripheralController::leftOutRegisterToByte()
     unsigned char byte = 0x00;
 
     // left LED light input
-    byte |= static_cast<unsigned char>( controlsPeri->mutable_light()->ledleftpower() > 0 );
+    byte |= static_cast<unsigned char>( controlsPeri->light().ledleftpower() > 0 );
     byte <<=1;
 
     // enable input: wheel left motor
-    byte |= static_cast<unsigned char>( abs(controlsPeri->mutable_wheelmotors()->leftpower()) > 0);
+    byte |= static_cast<unsigned char>( abs(controlsPeri->wheelmotors().leftpower()) > 0);
     byte <<=1;
 
     // enable input: hand left motor
-    byte |= static_cast<unsigned char>( abs(controlsPeri->mutable_handmotors()->leftpower()) > 0);
+    byte |= static_cast<unsigned char>( abs(controlsPeri->handmotors().leftpower()) > 0);
     byte <<=1;
 
     // B2 input: wheel left motor
-    byte |= static_cast<unsigned char>( controlsPeri->mutable_wheelmotors()->leftpower() < 0);
+    byte |= static_cast<unsigned char>( controlsPeri->wheelmotors().leftpower() < 0);
     byte <<=1;
 
     // B1 input: hand left motor
-    byte |= static_cast<unsigned char>( controlsPeri->mutable_handmotors()->leftpower() < 0);
+    byte |= static_cast<unsigned char>( controlsPeri->handmotors().leftpower() < 0);
     byte <<=1;
 
     // A1 input: hand left motor
-    byte |= static_cast<unsigned char>( controlsPeri->mutable_handmotors()->leftpower() > 0);
+    byte |= static_cast<unsigned char>( controlsPeri->handmotors().leftpower() > 0);
     byte <<=1;
 
     // A2 input: wheel left motor
-    byte |= static_cast<unsigned char>( controlsPeri->mutable_wheelmotors()->leftpower() > 0);
+    byte |= static_cast<unsigned char>( controlsPeri->wheelmotors().leftpower() > 0);
     byte <<=1;
 
     // left relay bit
-    byte |= static_cast<unsigned char>( controlsPeri->mutable_handmotors()->leftrelay() );
+    byte |= static_cast<unsigned char>( controlsPeri->handmotors().leftrelay() );
 
     return byte;
 }
@@ -181,35 +161,35 @@ unsigned char PeripheralController::rightOutRegisterToByte()
     unsigned char byte = 0x00;
 
     // right LED light input
-    byte |= static_cast<unsigned char>( controlsPeri->mutable_light()->ledrightpower() > 0);
+    byte |= static_cast<unsigned char>( controlsPeri->light().ledrightpower() > 0);
     byte <<=1;
 
     // enable hand right motor
-    byte |= static_cast<unsigned char>( abs(controlsPeri->mutable_handmotors()->rightpower()) > 0);
+    byte |= static_cast<unsigned char>( abs(controlsPeri->handmotors().rightpower()) > 0);
     byte <<=1;
 
     // enable wheel right motor
-    byte |= static_cast<unsigned char>( abs(controlsPeri->mutable_wheelmotors()->rightpower()) > 0);
+    byte |= static_cast<unsigned char>( abs(controlsPeri->wheelmotors().rightpower()) > 0);
     byte <<=1;
 
     // B2 input: hand right motor
-    byte |= static_cast<unsigned char>( controlsPeri->mutable_handmotors()->rightpower() < 0);
+    byte |= static_cast<unsigned char>( controlsPeri->handmotors().rightpower() < 0);
     byte <<=1;
 
     // B1 input: wheel right motor
-    byte |= static_cast<unsigned char>( controlsPeri->mutable_wheelmotors()->rightpower() < 0);
+    byte |= static_cast<unsigned char>( controlsPeri->wheelmotors().rightpower() < 0);
     byte <<=1;
 
     // A1 input: wheel right motor
-    byte |= static_cast<unsigned char>( controlsPeri->mutable_wheelmotors()->rightpower() > 0);
+    byte |= static_cast<unsigned char>( controlsPeri->wheelmotors().rightpower() > 0);
     byte <<=1;
 
     // A2 input: hand right motor
-    byte |= static_cast<unsigned char>( controlsPeri->mutable_handmotors()->rightpower() > 0);
+    byte |= static_cast<unsigned char>( controlsPeri->handmotors().rightpower() > 0);
     byte <<=1;
 
     // right relay bit
-    byte |= static_cast<unsigned char>( controlsPeri->mutable_handmotors()->rightrelay() );
+    byte |= static_cast<unsigned char>( controlsPeri->handmotors().rightrelay() );
 
     return byte;
 }
@@ -219,11 +199,11 @@ unsigned char PeripheralController::rightOutRegisterToByte()
 */
 void PeripheralController::changeWheelsPWM()
 {
-    if(prevRightWheelPWM != abs(controlsPeri->mutable_wheelmotors()->rightpower()))
-        pwm->hardPWMChange( peripheralSettings.pwm.wheelRightPin, abs(controlsPeri->mutable_wheelmotors()->rightpower()) );
+    if(prevRightWheelPWM != abs(controlsPeri->wheelmotors().rightpower()))
+        pwm->hardPWMChange( peripheralSettings.pwm.wheelRightPin, abs(controlsPeri->wheelmotors().rightpower()) );
 
-    if(prevLeftWheelPWM != abs(controlsPeri->mutable_wheelmotors()->leftpower()))
-        pwm->hardPWMChange( peripheralSettings.pwm.wheelLeftPin, abs(controlsPeri->mutable_wheelmotors()->leftpower()) );
+    if(prevLeftWheelPWM != abs(controlsPeri->wheelmotors().leftpower()))
+        pwm->hardPWMChange( peripheralSettings.pwm.wheelLeftPin, abs(controlsPeri->wheelmotors().leftpower()) );
 }
 
 /*!
@@ -231,11 +211,11 @@ void PeripheralController::changeWheelsPWM()
 */
 void PeripheralController::changeHandsPWM()
 {
-    if(prevRightHandPWM != abs(controlsPeri->mutable_handmotors()->rightpower()))
-        pwm->softPWMChange( peripheralSettings.pwm.handRightPin, abs(controlsPeri->mutable_handmotors()->rightpower()) );
+    if(prevRightHandPWM != abs(controlsPeri->handmotors().rightpower()))
+        pwm->softPWMChange( peripheralSettings.pwm.handRightPin, abs(controlsPeri->handmotors().rightpower()) );
 
-    if(prevLeftHandPWM != abs(controlsPeri->mutable_handmotors()->leftpower()))
-        pwm->softPWMChange( peripheralSettings.pwm.handLeftPin, abs(controlsPeri->mutable_handmotors()->leftpower()) );
+    if(prevLeftHandPWM != abs(controlsPeri->handmotors().leftpower()))
+        pwm->softPWMChange( peripheralSettings.pwm.handLeftPin, abs(controlsPeri->handmotors().leftpower()) );
 }
 
 /*!
@@ -371,10 +351,10 @@ void PeripheralController::checkMotorsTime()
 {
     int changes = 0;
 
-    if(controlsPeri->mutable_wheelmotors()->lefttime() >= 10)
-        controlsPeri->mutable_wheelmotors()->set_lefttime( controlsPeri->mutable_wheelmotors()->lefttime() - 10);
+    if(controlsPeri->wheelmotors().lefttime() >= 10)
+        controlsPeri->mutable_wheelmotors()->set_lefttime( controlsPeri->wheelmotors().lefttime() - 10);
     else {
-        if(controlsPeri->mutable_wheelmotors()->lefttime() > 0)
+        if(controlsPeri->wheelmotors().lefttime() > 0)
         {
             controlsPeri->mutable_wheelmotors()->set_leftpower(0);
             controlsPeri->mutable_wheelmotors()->set_lefttime(0);
@@ -383,10 +363,10 @@ void PeripheralController::checkMotorsTime()
         }
     }
 
-    if(controlsPeri->mutable_wheelmotors()->righttime() >= 10)
-        controlsPeri->mutable_wheelmotors()->set_righttime( controlsPeri->mutable_wheelmotors()->righttime() - 10);
+    if(controlsPeri->wheelmotors().righttime() >= 10)
+        controlsPeri->mutable_wheelmotors()->set_righttime( controlsPeri->wheelmotors().righttime() - 10);
     else  {
-        if(controlsPeri->mutable_wheelmotors()->righttime() > 0)
+        if(controlsPeri->wheelmotors().righttime() > 0)
         {
             controlsPeri->mutable_wheelmotors()->set_rightpower(0);
             controlsPeri->mutable_wheelmotors()->set_righttime(0);
@@ -396,10 +376,10 @@ void PeripheralController::checkMotorsTime()
     }
 
 
-    if(controlsPeri->mutable_handmotors()->lefttime() >= 10)
-        controlsPeri->mutable_handmotors()->set_lefttime( controlsPeri->mutable_handmotors()->lefttime() - 10);
+    if(controlsPeri->handmotors().lefttime() >= 10)
+        controlsPeri->mutable_handmotors()->set_lefttime( controlsPeri->handmotors().lefttime() - 10);
     else  {
-        if(controlsPeri->mutable_handmotors()->lefttime() > 0)
+        if(controlsPeri->handmotors().lefttime() > 0)
         {
             controlsPeri->mutable_handmotors()->set_leftpower(0);
             controlsPeri->mutable_handmotors()->set_lefttime(0);
@@ -408,10 +388,10 @@ void PeripheralController::checkMotorsTime()
         }
     }
 
-    if(controlsPeri->mutable_handmotors()->righttime() >= 10)
-        controlsPeri->mutable_handmotors()->set_righttime( controlsPeri->mutable_handmotors()->righttime() - 10);
+    if(controlsPeri->handmotors().righttime() >= 10)
+        controlsPeri->mutable_handmotors()->set_righttime( controlsPeri->handmotors().righttime() - 10);
     else {
-        if(controlsPeri->mutable_handmotors()->righttime() > 0)
+        if(controlsPeri->handmotors().righttime() > 0)
         {
             controlsPeri->mutable_handmotors()->set_rightpower(0);
             controlsPeri->mutable_handmotors()->set_righttime(0);

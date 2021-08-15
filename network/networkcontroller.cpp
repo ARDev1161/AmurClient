@@ -22,7 +22,6 @@ int NetworkController::runClient(std::string &server_address)
 
         clientStatus = client.DataStreamExchange();
         std::cout << "State is OK?: " << clientStatus.ok() << std::endl;
-        std::cout << "Stream controls: " << controls->DebugString() << std::endl;
      }
     );
     thr.detach();
