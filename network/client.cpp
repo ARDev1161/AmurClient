@@ -50,19 +50,13 @@ grpc::Status grpcClient::DataStreamExchange()
 
     while(!stoppedStream && (clientChannel->GetState(true) == 2) )
     {
-        // Send sensors to server
+        // Write sensors
         stream->Write(*sensors);
 
         std::unique_lock<std::mutex> lock(muClient);
 
         // Read controls & write to protos
         stream->Read(controls);
-
-        if(controls->handmotors().rightrelay() == true)
-            std::cout << "Right relay" << std::endl;
-
-        if(controls->handmotors().leftrelay() == true)
-            std::cout << "Left relay" << std::endl;
     }
 
     stream->WritesDone();
