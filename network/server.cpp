@@ -10,19 +10,10 @@ grpc::Status grpcServer::DataExchange ([[maybe_unused]] grpc::ServerContext* con
                           const AMUR::AmurControls* request, AMUR::AmurSensors* reply)
 {
   std::unique_lock<std::mutex> ul(muServer);
-
   *controls = *request;
-
   ul.unlock();
 
-  // Test code
-  controls->mutable_wheelmotors()->set_leftpower( sensors->temperature().tempcpu() );
-
-  std::cout << "Sensors: " << sensors->DebugString() << std::endl;
-  //
-
   *reply = *sensors;
-
   return grpc::Status::OK;
 }
 
