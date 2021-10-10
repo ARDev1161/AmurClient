@@ -18,6 +18,7 @@ PWMController::PWMController()
 int PWMController::softPWMCreate(int pin)
 {
     #if __has_include(<pigpio.h>)
+        gpioSetMode(pin, PI_OUTPUT);
         return gpioPWM(pin, 0); // Number pin in GPIO notation, 0-31
     #endif
     std::cout << "Soft PWM create on - " << pin << std::endl;
@@ -64,6 +65,7 @@ int PWMController::softPWMStop(int pin)
 int PWMController::hardPWMCreate(int pin)
 {
     #if __has_include(<pigpio.h>)
+        gpioSetMode(pin, PI_OUTPUT);
         return gpioHardwarePWM(pin, freqHardware, 0);
     #endif
     std::cout << "Hard PWM create on - " << pin << std::endl;
