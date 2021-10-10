@@ -33,7 +33,7 @@ int PWMController::softPWMCreate(int pin)
 int PWMController::softPWMChange(int pin, int dutyCycle)
 {
     #if __has_include(<pigpio.h>)
-        return gpioPWM(pin, dutyCycle); // Number pin in GPIO notation, 0-31
+        return gpioPWM(pin, translateDuty(dutyCycle, 255) ); // Number pin in GPIO notation, 0-31
     #else
         std::cout << "Soft PWM change on - " << pin << "\t with duty - " << dutyCycle << std::endl;
     #endif
@@ -64,7 +64,7 @@ int PWMController::softPWMStop(int pin)
 int PWMController::hardPWMCreate(int pin)
 {
     #if __has_include(<pigpio.h>)
-        return gpioHardwarePWM(pin, freq, 0);
+        return gpioHardwarePWM(pin, freqHardware, 0);
     #endif
     std::cout << "Hard PWM create on - " << pin << std::endl;
 
@@ -79,7 +79,7 @@ int PWMController::hardPWMCreate(int pin)
 int PWMController::hardPWMChange(int pin, int dutyCycle)
 {
     #if __has_include(<pigpio.h>)
-        return gpioHardwarePWM(pin, freq, dutyCycle);
+        return gpioHardwarePWM(pin, freqHardware, translateDuty(dutyCycle, 1000000) );
     #else
         std::cout << "Hard PWM change on - " << pin << "\t to duty - " << dutyCycle << std::endl;
     #endif
@@ -94,9 +94,27 @@ int PWMController::hardPWMChange(int pin, int dutyCycle)
 int PWMController::hardPWMStop(int pin)
 {
     #if __has_include(<pigpio.h>)
-        return gpioHardwarePWM(pin, freq, 0);
+        return gpioHardwarePWM(pin, freqHardware, 0);
     #endif
     std::cout << "Hard PWM stop on - " << pin << std::endl;
     
     return 0;
+}
+
+int PWMController::getPwmRange() const
+{
+    return pwmRange;
+}
+void PWMController::setPwmRange(int newPwmRange)
+{
+    pwmRange = newPwmRange;
+}
+
+int PWMController::getFreqHardware() const
+{
+    return freqHardware;
+}
+void PWMController::setFreqHardware(int newFreqHardware)
+{
+    freqHardware = newFreqHardware;
 }
