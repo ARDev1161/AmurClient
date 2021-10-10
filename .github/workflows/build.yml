@@ -29,6 +29,9 @@ jobs:
         script: |
           return context.payload.ref.replace(/\/refs\/tags\//, '');
 
+    - name: cppcheck-action
+      uses: deep5050/cppcheck-action@v3.0
+    
     - name: Make all workflow scripts executable
       run: chmod -R a+x .github/workflows/scripts
       
