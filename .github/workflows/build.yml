@@ -34,7 +34,7 @@ jobs:
 
     - name: Make all workflow scripts executable
       run: chmod -R a+x .github/workflows/scripts
-  
+
     - name: Setup libconfig
       run: sudo ./.github/workflows/scripts/libconfig-install.sh
 
