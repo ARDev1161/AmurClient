@@ -18,10 +18,13 @@
 class PWMController
 {
     unsigned int pwmRange = 255; //Max input value, min value is 0
-    static unsigned int freqHardware = 200; // PWM frequency in hertz
+    unsigned int freqHardware = 200; // PWM frequency in hertz
 
-    inline unsigned int translateDuty(unsigned int duty, unsigned int gpioRange = freqHardware){
+    inline unsigned int translateDuty(unsigned int duty, unsigned int gpioRange){
         return ((duty / pwmRange) * (gpioRange / freqHardware)); // 375000000 - for BCM2711. For non BCM2711 use 250M
+    }
+    inline unsigned int translateDuty(unsigned int duty){
+        return (duty / pwmRange); // 375000000 - for BCM2711. For non BCM2711 use 250M
     }
     
 public:
