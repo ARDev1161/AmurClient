@@ -81,7 +81,7 @@ int PWMController::hardPWMCreate(int pin)
 int PWMController::hardPWMChange(int pin, int dutyCycle)
 {
     #if __has_include(<pigpio.h>)
-        return gpioHardwarePWM(pin, freqHardware, translateDuty(dutyCycle, 1000000) );
+        return gpioHardwarePWM(pin, freqHardware, translateDuty(dutyCycle) );
     #else
         std::cout << "Hard PWM change on - " << pin << "\t to duty - " << dutyCycle << std::endl;
     #endif
