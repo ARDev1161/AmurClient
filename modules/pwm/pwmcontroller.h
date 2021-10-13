@@ -17,12 +17,13 @@
 */
 class PWMController
 {
-    int pwmRange = 255; //Max input value, min value is 0
-    int freqHardware = 20000; // PWM frequency in hertz
+    unsigned int pwmRange = 255; //Max input value, min value is 0
+    unsigned int freqHardware = 200; // PWM frequency in hertz
 
-    inline int translateDuty(int duty, int newMax){
-        return ((duty * newMax) / pwmRange);
+    inline unsigned int translateDuty(unsigned int duty, unsigned int newMax){
+        return ((duty / pwmRange) * (375000000 / freqHardware)); // For non BCM2711 use 250M
     }
+    
 public:
     PWMController();
 
