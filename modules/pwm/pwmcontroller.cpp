@@ -15,7 +15,7 @@ PWMController::PWMController()
 \param[in] pin Вывод на котором создаётся программный PWM сигнал
 \return Возвращает 0 если при создании PWM сигнала не произошло ошибки
 */
-int PWMController::softPWMCreate(int pin)
+int PWMController::softPWMCreate(unsigned int pin)
 {
     #if __has_include(<pigpio.h>)
         gpioSetMode(pin, PI_OUTPUT);
@@ -31,7 +31,7 @@ int PWMController::softPWMCreate(int pin)
 \param[in] pin Вывод на котором изменяется скважность программного PWM сигнала
 \param[in] dutyCycle Скважность программного PWM сигнала
 */
-int PWMController::softPWMChange(int pin, int dutyCycle)
+int PWMController::softPWMChange(unsigned int pin, unsigned int dutyCycle)
 {
     #if __has_include(<pigpio.h>)
         return gpioPWM(pin, translateDuty(dutyCycle, 255) ); // Number pin in GPIO notation, 0-31
@@ -46,7 +46,7 @@ int PWMController::softPWMChange(int pin, int dutyCycle)
 Останавливает программный PWM сигнал на выводе Raspberry Pi в нотации GPIO.
 \param[in] pin Вывод на котором останавливается программный PWM сигнал
 */
-int PWMController::softPWMStop(int pin)
+int PWMController::softPWMStop(unsigned int pin)
 {
     #if __has_include(<pigpio.h>)
         return gpioPWM(pin, 0); // Number pin in GPIO notation, 0-31
@@ -62,7 +62,7 @@ int PWMController::softPWMStop(int pin)
 Создаёт аппаратный PWM сигнал на выводе Raspberry Pi в нотации GPIO.
 \param[in] pin Вывод на котором создаётся аппаратный PWM сигнал
 */
-int PWMController::hardPWMCreate(int pin)
+int PWMController::hardPWMCreate(unsigned int pin)
 {
     #if __has_include(<pigpio.h>)
         gpioSetMode(pin, PI_OUTPUT);
@@ -78,7 +78,7 @@ int PWMController::hardPWMCreate(int pin)
 \param[in] pin Вывод на котором изменяется скважность аппаратного PWM сигнала
 \param[in] dutyCycle Скважность аппаратного PWM сигнала
 */
-int PWMController::hardPWMChange(int pin, int dutyCycle)
+int PWMController::hardPWMChange(unsigned int pin, unsigned int dutyCycle)
 {
     #if __has_include(<pigpio.h>)
         return gpioHardwarePWM(pin, freqHardware, translateDuty(dutyCycle) );
@@ -93,7 +93,7 @@ int PWMController::hardPWMChange(int pin, int dutyCycle)
 Останавливает аппаратный PWM сигнал на выводе Raspberry Pi в нотации GPIO.
 \param[in] pin Вывод на котором останавливается аппаратный PWM сигнал
 */
-int PWMController::hardPWMStop(int pin)
+int PWMController::hardPWMStop(unsigned int pin)
 {
     #if __has_include(<pigpio.h>)
         return gpioHardwarePWM(pin, freqHardware, 0);
@@ -107,7 +107,7 @@ int PWMController::getPwmRange() const
 {
     return pwmRange;
 }
-void PWMController::setPwmRange(int newPwmRange)
+void PWMController::setPwmRange(unsigned int newPwmRange)
 {
     pwmRange = newPwmRange;
 }
@@ -116,7 +116,7 @@ int PWMController::getFreqHardware() const
 {
     return freqHardware;
 }
-void PWMController::setFreqHardware(int newFreqHardware)
+void PWMController::setFreqHardware(unsigned int newFreqHardware)
 {
     freqHardware = newFreqHardware;
 }
