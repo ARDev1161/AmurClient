@@ -58,11 +58,11 @@ class PeripheralController: private TimerCallback::Runnable
     unsigned char prevRightHC595 = 0x00;
 
     // Previous state of PWM
-    int prevLeftWheelPWM = 0;
-    int prevRightWheelPWM = 0;
+    unsigned int prevLeftWheelPWM = 0;
+    unsigned int prevRightWheelPWM = 0;
 
-    int prevLeftHandPWM = 0;
-    int prevRightHandPWM = 0;
+    unsigned int prevLeftHandPWM = 0;
+    unsigned int prevRightHandPWM = 0;
 
     // Functions
     void pigpioInit();
