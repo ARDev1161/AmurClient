@@ -199,8 +199,8 @@ unsigned char PeripheralController::rightOutRegisterToByte()
 */
 void PeripheralController::changeWheelsPWM()
 {
-    unsigned int rPower = abs(controlsPeri->wheelmotors().rightpower();
-    unsigned int lPower = abs(controlsPeri->wheelmotors().leftpower();
+    unsigned int rPower = abs(controlsPeri->wheelmotors().rightpower());
+    unsigned int lPower = abs(controlsPeri->wheelmotors().leftpower());
                               
     if(prevRightWheelPWM != rPower)
     {
@@ -220,11 +220,20 @@ void PeripheralController::changeWheelsPWM()
 */
 void PeripheralController::changeHandsPWM()
 {
-    if(prevRightHandPWM != abs(controlsPeri->handmotors().rightpower()))
-        pwm->softPWMChange( peripheralSettings.pwm.handRightPin, abs(controlsPeri->handmotors().rightpower()) );
+    unsigned int rPower = abs(controlsPeri->handmotors().rightpower());
+    unsigned int lPower = abs(controlsPeri->handmotors().leftpower());
+                              
+    if(prevRightHandPWM != rPower)
+    {
+        pwm->softPWMChange( peripheralSettings.pwm.handRightPin, rPower );
+        prevRightHandPWM = rPower;
+    }
 
-    if(prevLeftHandPWM != abs(controlsPeri->handmotors().leftpower()))
-        pwm->softPWMChange( peripheralSettings.pwm.handLeftPin, abs(controlsPeri->handmotors().leftpower()) );
+    if(prevLeftHandPWM != lPower)
+    {
+        pwm->softPWMChange( peripheralSettings.pwm.handLeftPin, lPower );
+        prevLeftHandPWM = lPower;
+    }
 }
 
 /*!
