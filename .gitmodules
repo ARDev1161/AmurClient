@@ -1,0 +1,3 @@
+[submodule "modules/rplidar_sdk"]
+	path = modules/rplidar_sdk
+	url = https://github.com/ARDev1161/rplidar_sdk.git
