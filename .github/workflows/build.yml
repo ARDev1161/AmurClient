@@ -20,7 +20,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-        
+
     - name: Extract tag name
       id: tag
       uses: actions/github-script@0.2.0
@@ -29,9 +29,12 @@ jobs:
         script: |
           return context.payload.ref.replace(/\/refs\/tags\//, '');
 
+    - name: Run cppcheck-action
+      uses: deep5050/cppcheck-action@v3.0
+
     - name: Make all workflow scripts executable
       run: chmod -R a+x .github/workflows/scripts
-      
+
     - name: Setup libconfig
       run: sudo ./.github/workflows/scripts/libconfig-install.sh
 
@@ -41,7 +44,7 @@ jobs:
     - name: Build AmurClient
       # Build your program with the given configuration
       run: sudo ./.github/workflows/scripts/AmurClient-build.sh
-    
+
     - name: Cache AmurClient
       uses: actions/cache@v2
       with:
@@ -63,10 +66,10 @@ jobs:
         format: deb
         package: ./.github/workflows/package/deb.yaml
 
-    - name: notification 
-      if: cancelled() == false 
-      uses: xinthink/action-telegram@v1.1 
-      with: 
-        botToken: ${{ secrets.BotToken }} 
-        chatId: ${{ secrets.ChatID }} 
+    - name: notification
+      if: cancelled() == false
+      uses: xinthink/action-telegram@v1.1
+      with:
+        botToken: ${{ secrets.BotToken }}
+        chatId: ${{ secrets.ChatID }}
         jobStatus: ${{ job.status }}

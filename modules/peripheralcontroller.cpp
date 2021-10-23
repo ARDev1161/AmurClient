@@ -201,11 +201,20 @@ unsigned char PeripheralController::rightOutRegisterToByte()
 */
 void PeripheralController::changeWheelsPWM()
 {
-    if(prevRightWheelPWM != abs(controlsPeri->wheelmotors().rightpower()))
-        pwm->hardPWMChange( peripheralSettings.pwmSettings.wheelRightPin, abs(controlsPeri->wheelmotors().rightpower()) );
+    unsigned int rPower = abs(controlsPeri->wheelmotors().rightpower());
+    unsigned int lPower = abs(controlsPeri->wheelmotors().leftpower());
+                              
+    if(prevRightWheelPWM != rPower)
+    {
+        pwm->hardPWMChange( peripheralSettings.pwmSettings.wheelRightPin, rPower );
+        prevRightWheelPWM = rPower;
+    }
 
-    if(prevLeftWheelPWM != abs(controlsPeri->wheelmotors().leftpower()))
-        pwm->hardPWMChange( peripheralSettings.pwmSettings.wheelLeftPin, abs(controlsPeri->wheelmotors().leftpower()) );
+    if(prevLeftWheelPWM != lPower)
+    {
+        pwm->hardPWMChange( peripheralSettings.pwmSettings.wheelLeftPin, lPower );
+        prevLeftWheelPWM = lPower;
+    }
 }
 
 /*!
@@ -213,11 +222,20 @@ void PeripheralController::changeWheelsPWM()
 */
 void PeripheralController::changeHandsPWM()
 {
-    if(prevRightHandPWM != abs(controlsPeri->handmotors().rightpower()))
-        pwm->softPWMChange( peripheralSettings.pwmSettings.handRightPin, abs(controlsPeri->handmotors().rightpower()) );
+    unsigned int rPower = abs(controlsPeri->handmotors().rightpower());
+    unsigned int lPower = abs(controlsPeri->handmotors().leftpower());
+                              
+    if(prevRightHandPWM != rPower)
+    {
+        pwm->softPWMChange( peripheralSettings.pwmSettings.handRightPin, rPower );
+        prevRightHandPWM = rPower;
+    }
 
-    if(prevLeftHandPWM != abs(controlsPeri->handmotors().leftpower()))
-        pwm->softPWMChange( peripheralSettings.pwmSettings.handLeftPin, abs(controlsPeri->handmotors().leftpower()) );
+    if(prevLeftHandPWM != lPower)
+    {
+        pwm->softPWMChange( peripheralSettings.pwmSettings.handLeftPin, lPower );
+        prevLeftHandPWM = lPower;
+    }
 }
 
 /*!

@@ -17,8 +17,18 @@
 */
 class PWMController
 {
-    int pwmRange = 255; //Max input value, min value is 0
-    int freqHardware = 20000; // PWM frequency in hertz
+
+    unsigned int pwmRange = 255; //Input range
+    unsigned int freqHardware = 375; // PWM frequency in hertz
+
+    inline unsigned int translateDuty(unsigned int duty, unsigned int gpioRange){
+        unsigned int newRange = gpioRange / freqHardware;
+        return ((duty * newRange) / pwmRange); // 375000000 - for BCM2711. For non BCM2711 use 250M
+    }
+
+    inline unsigned int translateDuty(unsigned int duty){
+        return ((duty * 255) / pwmRange);
+    }
 
     inline int translateDuty(int duty, int newMax){
         return ((duty * newMax) / pwmRange);
@@ -26,19 +36,20 @@ class PWMController
 public:
     PWMController();
 
-    int hardPWMCreate(int pin);
-    int hardPWMChange(int pin, int dutyCycle);
-    int hardPWMStop(int pin);
+    int hardPWMCreate(unsigned int pin);
+    int hardPWMChange(unsigned int pin, unsigned int dutyCycle);
+    int hardPWMStop(unsigned int pin);
 
-    int softPWMCreate(int pin);
-    int softPWMChange(int pin, int dutyCycle);
-    int softPWMStop(int pin);
+    int softPWMCreate(unsigned int pin);
+    int softPWMChange(unsigned int pin, unsigned int dutyCycle);
+    int softPWMStop(unsigned int pin);
 
     int getPwmRange() const;
-    void setPwmRange(int newPwmRange);
+    void setPwmRange(unsigned int newPwmRange);
+
 
     int getFreqHardware() const;
-    void setFreqHardware(int newFreqHardware);
+    void setFreqHardware(unsigned int newFreqHardware);
 };
 
 #endif // PWMCONTROLLER_H
