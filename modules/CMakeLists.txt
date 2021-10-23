@@ -48,7 +48,13 @@ set(PERI_CONTROLLER
     peripheralcontroller.cpp
     peripheralcontroller.h
     peripheralsettings.h
+
+    motorcontroller.cpp
+    motorcontroller.h
     
+    encoder.h
+    encoder.cpp
+
     ../timer/TimerCallback.h
     ../timer/Timer.h
     ../timer/Timer.cpp

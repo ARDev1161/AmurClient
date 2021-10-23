@@ -1,4 +1,4 @@
-#include "peripheralcontroller.h"
+﻿#include "peripheralcontroller.h"
 
 /*!
 Создаёт экземпляр класса для работы с периферическим оборудованием.
@@ -10,11 +10,13 @@ PeripheralController::PeripheralController(AMUR::AmurControls *controls, AMUR::A
 {
     pigpioInit();
 
-    registers = new RegisterController(&peripheralSettings.registers);
+    registers = new RegisterController(&peripheralSettings.registerSettings);
     initRegisters();
 
     pwm = new PWMController();
     initPWM();
+
+    motors = new MotorController(&peripheralSettings.motorSettings, &peripheralSettings.encoderSettings);
 
     initTimer();
 }
@@ -102,12 +104,12 @@ void PeripheralController::pigpioInit()
 void PeripheralController::initPWM()
 {
     // Setup hardware PWM for wheel motors
-    pwm->hardPWMCreate( peripheralSettings.pwm.wheelRightPin );
-    pwm->hardPWMCreate( peripheralSettings.pwm.wheelLeftPin );
+    pwm->hardPWMCreate( peripheralSettings.pwmSettings.wheelRightPin );
+    pwm->hardPWMCreate( peripheralSettings.pwmSettings.wheelLeftPin );
 
     // Setup software PWM for hand motors
-    pwm->softPWMCreate( peripheralSettings.pwm.handRightPin );
-    pwm->softPWMCreate( peripheralSettings.pwm.handLeftPin );
+    pwm->softPWMCreate( peripheralSettings.pwmSettings.handRightPin );
+    pwm->softPWMCreate( peripheralSettings.pwmSettings.handLeftPin );
 }
 
 /*!
@@ -200,10 +202,10 @@ unsigned char PeripheralController::rightOutRegisterToByte()
 void PeripheralController::changeWheelsPWM()
 {
     if(prevRightWheelPWM != abs(controlsPeri->wheelmotors().rightpower()))
-        pwm->hardPWMChange( peripheralSettings.pwm.wheelRightPin, abs(controlsPeri->wheelmotors().rightpower()) );
+        pwm->hardPWMChange( peripheralSettings.pwmSettings.wheelRightPin, abs(controlsPeri->wheelmotors().rightpower()) );
 
     if(prevLeftWheelPWM != abs(controlsPeri->wheelmotors().leftpower()))
-        pwm->hardPWMChange( peripheralSettings.pwm.wheelLeftPin, abs(controlsPeri->wheelmotors().leftpower()) );
+        pwm->hardPWMChange( peripheralSettings.pwmSettings.wheelLeftPin, abs(controlsPeri->wheelmotors().leftpower()) );
 }
 
 /*!
@@ -212,10 +214,10 @@ void PeripheralController::changeWheelsPWM()
 void PeripheralController::changeHandsPWM()
 {
     if(prevRightHandPWM != abs(controlsPeri->handmotors().rightpower()))
-        pwm->softPWMChange( peripheralSettings.pwm.handRightPin, abs(controlsPeri->handmotors().rightpower()) );
+        pwm->softPWMChange( peripheralSettings.pwmSettings.handRightPin, abs(controlsPeri->handmotors().rightpower()) );
 
     if(prevLeftHandPWM != abs(controlsPeri->handmotors().leftpower()))
-        pwm->softPWMChange( peripheralSettings.pwm.handLeftPin, abs(controlsPeri->handmotors().leftpower()) );
+        pwm->softPWMChange( peripheralSettings.pwmSettings.handLeftPin, abs(controlsPeri->handmotors().leftpower()) );
 }
 
 /*!
@@ -235,7 +237,7 @@ void PeripheralController::writeRegisterData() // Read data from protobuf & writ
 }
 
 /*!
-  Считывает данные из входных регистров.
+  Считывает байты данных из входных регистров.
 */
 void PeripheralController::readRegisterData() // Read data from HC165 & write to protobuf
 {
@@ -263,17 +265,29 @@ void PeripheralController::readRegisterData() // Read data from HC165 & write to
   \param[in] byte Байт данных считанный из входного регистра
   \param[in] previousByte Предыдущий байт данных считанный из входного регистра
 */
-inline void PeripheralController::getChangeEncoderAngle
-(unsigned char addrA, unsigned char addrB, unsigned char const byte,  unsigned char const previousByte, int *const angle)
+inline void PeripheralController::refreshEncoderData
+(Encoder *encoder, unsigned char addrA, unsigned char addrB, unsigned char const byte,  unsigned char const previousByte)
 {
-    int signalA = 0;
-    int signalB = 0;
-
     // encoder: addrA & addrB bits in left register
-    if ((byte & addrA) > (previousByte & addrA)) signalA++; //A signal in register
-    if ((byte & addrB) > (previousByte & addrB)) signalB++; //B signal in register
-    if(signalA > signalB) (*angle)++;
-    if(signalA < signalB) (*angle)--;
+    unsigned char signalA = (byte & addrA);
+    if (signalA != (previousByte & addrA))
+    {
+        if(signalA > 0)
+            encoder->setSignalA(true); //A signal in register
+        else
+            encoder->setSignalA(false);
+    }
+
+    unsigned char signalB = (byte & addrB);
+    if (signalB != (previousByte & addrB))
+    {
+        if(signalB > 0)
+            encoder->setSignalB(true); //B signal in register
+        else
+            encoder->setSignalB(false);
+    }
+
+    encoder->update();
 }
 
 /*!
@@ -284,22 +298,22 @@ inline void PeripheralController::getChangeEncoderAngle
 void PeripheralController::parseBytesHC165(unsigned char right, unsigned char left)
 {
     // Wheel left encoder: 5(A) - 0x10 & 6(B) - 0x20 bits in left register
-    getChangeEncoderAngle(0x10, 0x20, left, prevLeftHC165, &wheelLeftAngle);
+    refreshEncoderData(motors->getWheelLeft()->getEncoder(), 0x10, 0x20, left, prevLeftHC165);
 
     // Wheel right encoder: 8(A) - 0x80 & 7(B) - 0x40 bits in left register
-    getChangeEncoderAngle(0x80, 0x40, left, prevLeftHC165, &wheelRightAngle);
+    refreshEncoderData(motors->getWheelRight()->getEncoder(), 0x80, 0x40, left, prevLeftHC165);
 
     // Hand internal left encoder: 5(A) - 0x10 & 4(B) - 0x08 bits in right register
-    getChangeEncoderAngle(0x10, 0x08, right, prevRightHC165, &handLeftInternalAngle);
+    refreshEncoderData(motors->getHandInternalLeft()->getEncoder(), 0x10, 0x08, right, prevRightHC165);
 
     // Hand internal right encoder: 7(A) - 0x40 & 2(B) - 0x02 bits in right register
-    getChangeEncoderAngle(0x40, 0x02, right, prevRightHC165, &handRightInternalAngle);
+    refreshEncoderData(motors->getHandInternalRight()->getEncoder(), 0x40, 0x02, right, prevRightHC165);
 
     // Hand outer left encoder: 6(A) - 0x20 & 3(B) - 0x04 bits in right register
-    getChangeEncoderAngle(0x20, 0x04, right, prevRightHC165, &handLeftOuterAngle);
+    refreshEncoderData(motors->getHandOuterLeft()->getEncoder(), 0x20, 0x04, right, prevRightHC165);
 
     // Hand outer right encoder: 8(A) - 0x80 & 1(B) - 0x01 bits in right register
-    getChangeEncoderAngle(0x80, 0x01, right, prevRightHC165, &handRightOuterAngle);
+    refreshEncoderData(motors->getHandOuterRight()->getEncoder(), 0x80, 0x01, right, prevRightHC165);
 }
 
 /*!
@@ -307,41 +321,41 @@ void PeripheralController::parseBytesHC165(unsigned char right, unsigned char le
 */
 void PeripheralController::writeEncodersAngles()
 {
-    // Write wheel left angle to protobuf
-    if(wheelLeftAngle != 0){
-        sensorsPeri->mutable_wheelencoders()->set_leftangle(wheelLeftAngle);
-        wheelLeftAngle = 0;
-    }
+//    // Write wheel left angle to protobuf
+//    if(encLWheel->getAngle() != 0){
+//        sensorsPeri->mutable_wheelencoders()->set_leftangle(encLWheel->getAngle());
+//        wheelLeftAngle = 0;
+//    }
 
-    // Write wheel right angle to protobuf
-    if(wheelRightAngle != 0){
-        sensorsPeri->mutable_wheelencoders()->set_rightangle(wheelRightAngle);
-        wheelRightAngle = 0;
-    }
+//    // Write wheel right angle to protobuf
+//    if(wheelRightAngle != 0){
+//        sensorsPeri->mutable_wheelencoders()->set_rightangle(wheelRightAngle);
+//        wheelRightAngle = 0;
+//    }
 
-    // Write hand internal left angle to protobuf
-    if(handLeftInternalAngle != 0){
-        sensorsPeri->mutable_handencoders()->set_leftinternalangle(handLeftInternalAngle);
-        handLeftInternalAngle = 0;
-    }
+//    // Write hand internal left angle to protobuf
+//    if(handLeftInternalAngle != 0){
+//        sensorsPeri->mutable_handencoders()->set_leftinternalangle(handLeftInternalAngle);
+//        handLeftInternalAngle = 0;
+//    }
 
-    // Write hand internal right angle to protobuf
-    if(handRightInternalAngle != 0){
-        sensorsPeri->mutable_handencoders()->set_rightinternalangle(handRightInternalAngle);
-        handRightInternalAngle = 0;
-    }
+//    // Write hand internal right angle to protobuf
+//    if(handRightInternalAngle != 0){
+//        sensorsPeri->mutable_handencoders()->set_rightinternalangle(handRightInternalAngle);
+//        handRightInternalAngle = 0;
+//    }
 
-    // Write hand internal left angle to protobuf
-    if(handLeftOuterAngle != 0){
-        sensorsPeri->mutable_handencoders()->set_leftouterangle(handLeftInternalAngle);
-        handLeftOuterAngle = 0;
-    }
+//    // Write hand internal left angle to protobuf
+//    if(handLeftOuterAngle != 0){
+//        sensorsPeri->mutable_handencoders()->set_leftouterangle(handLeftInternalAngle);
+//        handLeftOuterAngle = 0;
+//    }
 
-    // Write hand internal right angle to protobuf
-    if(handRightOuterAngle != 0){
-        sensorsPeri->mutable_handencoders()->set_leftouterangle(handRightInternalAngle);
-        handRightOuterAngle = 0;
-    }
+//    // Write hand internal right angle to protobuf
+//    if(handRightOuterAngle != 0){
+//        sensorsPeri->mutable_handencoders()->set_leftouterangle(handRightInternalAngle);
+//        handRightOuterAngle = 0;
+//    }
 }
 
 /*!

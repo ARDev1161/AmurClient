@@ -20,6 +20,7 @@
 #include "pwm/pwmcontroller.h"
 
 #include "peripheralsettings.h"
+#include "motorcontroller.h"
 
 /*!
     \brief Класс управления периферией робота
@@ -29,26 +30,17 @@
 class PeripheralController: private TimerCallback::Runnable
 {
     // Fields
-
     PeripheralSettings peripheralSettings;
 
     RegisterController *registers;
     PWMController *pwm;
+    MotorController *motors;
 
     TimerCallback peripheralTimer;
 
     // Buffers
     AMUR::AmurSensors *sensorsPeri;
     AMUR::AmurControls *controlsPeri;
-
-    // Motor angles
-    int wheelLeftAngle;
-    int wheelRightAngle;
-
-    int handLeftInternalAngle;
-    int handRightInternalAngle;
-    int handLeftOuterAngle;
-    int handRightOuterAngle;
 
     // Previous state of registers
     unsigned char prevLeftHC165 = 0x00;
@@ -85,11 +77,11 @@ class PeripheralController: private TimerCallback::Runnable
     void parseBytesHC165(unsigned char right, unsigned char left); // Parsing input bytes to encoders angles
 
     void writeEncodersAngles(); // Write encoders angles to protobuf
-    inline void getChangeEncoderAngle(unsigned char addrA,
+    inline void refreshEncoderData(Encoder *encoder,
+                                      unsigned char addrA,
                                       unsigned char addrB,
                                       unsigned char const byte,
-                                      unsigned char const previousByte,
-                                      int *const angle);
+                                      unsigned char const previousByte);
 public:
     PeripheralController(AMUR::AmurControls *controls, AMUR::AmurSensors *sensors);
     virtual ~PeripheralController();

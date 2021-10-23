@@ -11,9 +11,20 @@
 */
 struct EncoderSettings{
     const int encoderSectorsCount = 100; // Count sectors on encoders disk
-    const int maxMotorSpeed = 100;  // Motor speed: rpm
-    const int sampleRate = ( encoderSectorsCount * maxMotorSpeed ) * 3; // Encoder sampling rate
+    const int maxSpeed = 100;  // Ma speed: rpm
+    const unsigned int sampleRate = ( encoderSectorsCount * maxSpeed ) * 3; // Encoder sampling rate
 };
+
+/*!
+    \brief Структура для хранения настроек энкодеров
+
+    Данная структура хранит набор настроек для работы с моторами.
+*/
+struct MotorSettings{
+    const int maxMotorSpeed = 100;  // Motor speed: rpm
+    const int maxCurrent = 100;  // Max current from motor driver, in Ampere.
+};
+
 
 /*!
     \brief Структура для хранения пинов и настроек оборудования периферии
@@ -21,10 +32,14 @@ struct EncoderSettings{
     Данная структура хранит набор пинов и настроек оборудования периферии.
 */
 struct PeripheralSettings{
+    //Encoder section
+    EncoderSettings encoderSettings;
+    //Motor section
+    MotorSettings motorSettings;
     //Registers section
-    RegisterSettings registers;
+    RegisterSettings registerSettings;
     //PWM section
-    PWMPins pwm;
+    PWMPins pwmSettings;
     //Encoder section
     // EncoderSettings encoders;
 };

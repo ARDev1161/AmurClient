@@ -1,4 +1,6 @@
 // Amur logic controller with ADB-0.42 board
+
+#include <iostream>
 #include "logiccontroller.h"
 
 char const* build_date() // Return date of compilation this application
