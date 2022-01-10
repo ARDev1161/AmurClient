@@ -1,3 +1,6 @@
 [submodule "modules/rplidar_sdk"]
 	path = modules/rplidar_sdk
 	url = https://github.com/ARDev1161/rplidar_sdk.git
+[submodule "modules/interfaces/i2c/ADS1X15"]
+	path = modules/interfaces/i2c/ADS1X15
+	url = https://github.com/ARDev1161/Adafruit_ADS1X15_RPi.git
