@@ -4,4 +4,4 @@
 
 [submodule "modules/interfaces/i2c/Amur_ADS1X15"]
 	path = modules/interfaces/i2c/Amur_ADS1X15
-	url = https://github.com/ARDev1161/Amur_ADS1X15.git
+	url = https://github.com/ARDev1161/Amur_ADS1X15
