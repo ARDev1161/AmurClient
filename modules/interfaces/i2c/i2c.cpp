@@ -7,9 +7,6 @@ I2C::I2C()
 {
 }
 
-void I2C::init(){
-}
-
 void I2C::parse_I2C(int SCL, int SDA)
 {
    static int in_data=0, byte=0, bit=0;

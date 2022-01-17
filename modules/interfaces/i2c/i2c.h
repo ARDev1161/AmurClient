@@ -27,6 +27,8 @@
 */
 class I2C
 {
+    typedef unsigned char byte_t;
+
     int SCL, SDA, xSCL;
     int r;
 
@@ -40,8 +42,28 @@ class I2C
     void parse_I2C(int SCL, int SDA);
 public:
     I2C();
-    void init();
+
+    int open(); // returns a handle for the device at the address on the I2C bus.
+    int close(unsigned handle);
     int scanBus(int gSCL, int gSDA);
+
+    int read(byte_t handle, byte_t value);
+    int write(byte_t handle, byte_t value);
+    int writeBit(byte_t handle, bool value);
+
+    int readRegByte(byte_t handle, byte_t value); // Read 8 bits from device register
+    int writeRegByte(byte_t handle, byte_t value); // Write 8 bits to device register
+
+    int readRegWord(byte_t handle, int value); // Read 16 bits from device register
+    int writeRegWord(byte_t handle, int value); // Write 16 bits to device register
+    int exchangeRegWord(byte_t handle, int value); // Write 16 bits to device register & get 16 bit as answer
+
+    int readRegBlock(unsigned handle, unsigned i2cReg, char *buf); // Read block of data up to 32 bytes from device register
+    int writeRegBlock(unsigned handle, unsigned i2cReg, char *buf, unsigned count); // Write block of data up to 32 bytes to device register
+    int exchangeRegBlock(unsigned handle, unsigned i2cReg, char *buf, unsigned count); // Write block of data up to 32 bytes to device register & write answer to *buf
+
+    int readRegI2CBlock(unsigned handle, unsigned i2cReg, char *buf, unsigned count); // Read I2C block of data up to 32 bytes from device register
+    int writeRegI2CBlock(unsigned handle, unsigned i2cReg, char *buf, unsigned count); // Write I2C block of data up to 32 bytes to device register
 };
 
 #endif // I2C_H

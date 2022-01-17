@@ -19,9 +19,6 @@ set(SPI
 set(I2C
     i2c/i2c.cpp
     i2c/i2c.h
-
-    i2c/adc/ads1115.h
-    i2c/adc/ads1115.cpp
 )
 
 set(UART
@@ -39,5 +36,3 @@ add_library(InterfacesController
             STATIC 
             ${INTERFACES}
            )
-
-#add_executable(RegisterController main.cpp ${INTERFACES})
