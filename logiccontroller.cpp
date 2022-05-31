@@ -5,8 +5,9 @@
 */
 LogicController::LogicController()
 {
-    config = new ConfigProcessor();
-    printHeadInfo();
+    config = new ConfigProcessor(); // Load config file
+    fillFieldsByConfig(); // Fill fields by config file
+    printHeadInfo(); // Print info about current AmurClient configuration
 
     periphery = new PeripheralController(&controls, &sensors);
     network = new NetworkController(&controls, &sensors);
@@ -27,15 +28,27 @@ LogicController::~LogicController()
 }
 
 /*!
+  Функция проверяющая и заполняющая значения полей из конфиг файла
+*/
+void LogicController::fillFieldsByConfig()
+{
+    std::string ip = config->configSearchString("Amur.Network.address");
+    if(ip != ""){
+        this->address = ip;
+    }
+}
+
+/*!
   Функция печати основной информации о программе
 */
 void LogicController::printHeadInfo()
 {
     std::cout << "AmurClient VERSION - " << config->configSearchString("version") << std::endl;
-    std::cout << "IP address: " << config->configSearchString("Amur.Network.address") << std::endl;
+    std::cout << "IP address: " << address << std::endl;
     std::cout << "Pi = " << config->configSearchDouble("Amur.misc.pi") << std::endl;
     std::cout << "FPS = " << config->configSearchInt("Amur.gstreamer.fps") << std::endl << std::endl;
 }
+
 
 /*!
   Главный цикл

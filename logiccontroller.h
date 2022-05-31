@@ -22,13 +22,14 @@ class LogicController
     NetworkController *network;
 
     // Server settings
-    std::string address = "192.168.0.101:7777";
+    std::string address = "127.0.0.1:7777";
 
     AMUR::AmurSensors sensors;
     AMUR::AmurControls controls;
     AMUR::AmurControls controlsPrev;
 
     void printHeadInfo();
+    void fillFieldsByConfig();
 
     void worker();
     bool workerStopped = false;

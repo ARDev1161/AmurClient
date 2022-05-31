@@ -1,7 +1,8 @@
 #include "client.h"
 
-grpcClient::grpcClient(std::shared_ptr<grpc::Channel> channel, AMUR::AmurControls* controls, AMUR::AmurSensors * const sensors)
-    : stub_(AMUR::ClientOnRobot::NewStub(channel))
+grpcClient::grpcClient(std::shared_ptr<grpc::Channel> channel, AMUR::AmurControls* controls, AMUR::AmurSensors * const sensors, bool tryConnectIfFailed)
+    : stub_(AMUR::ClientOnRobot::NewStub(channel)),
+      retryConnect(tryConnectIfFailed)
 {
     clientChannel = channel;
     this->controls = controls;
@@ -11,23 +12,33 @@ grpcClient::grpcClient(std::shared_ptr<grpc::Channel> channel, AMUR::AmurControl
 // Assembles the client's payload, sends it and presents the response back from the server.
 grpc::Status grpcClient::DataExchange()
 {
-    // Container for the data we expect from the server.
-    AMUR::AmurControls reply;
+    grpc::Status status;
+    bool retry = true; // Flag that defined need connectiong retry or no
 
-    // Context for the client. It could be used to convey extra information to
-    // the server and/or tweak certain RPC behaviors.
-    grpc::ClientContext context;
+    while(retry){
+        // Container for the data we expect from the server.
+        AMUR::AmurControls reply;
 
-    // The actual RPC.
-    grpc::Status status = stub_->DataExchange(&context, *sensors, &reply);
+        // Context for the client. It could be used to convey extra information to
+        // the server and/or tweak certain RPC behaviors.
+        grpc::ClientContext context;
 
-    std::unique_lock<std::mutex> ul(muClient);
+        // The actual RPC.
+        status = stub_->DataExchange(&context, *sensors, &reply);
 
-    // Act upon its status.
-    if (status.ok())
-      *controls = reply;
-    else
-      std::cout << "DataExchange rpc failed!" << std::endl;
+        std::unique_lock<std::mutex> ul(muClient);
+
+        // Act upon its status.
+        if (status.ok()){
+          *controls = reply;
+          retry = false;
+        }
+        else{
+          std::cout << "DataExchange rpc failed!" << std::endl;
+          std::this_thread::sleep_for(std::chrono::milliseconds( retryDelayMilliseconds ));
+        }
+
+    }
 
     return status;
 }
@@ -39,32 +50,40 @@ void grpcClient::stopStream()
 
 grpc::Status grpcClient::DataStreamExchange()
 {
+    grpc::Status status;
+    bool retry = true;
     stoppedStream = false;
 
-    // Context for the client. It could be used to convey extra information to
-    // the server and/or tweak certain RPC behaviors.
-    grpc::ClientContext context;
+    while(retry){
+        // Context for the client. It could be used to convey extra information to
+        // the server and/or tweak certain RPC behaviors.
+        grpc::ClientContext context;
 
-    std::shared_ptr<grpc::ClientReaderWriter<AMUR::AmurSensors, AMUR::AmurControls> > stream(
-        stub_->DataStreamExchange(&context));
+        std::shared_ptr<grpc::ClientReaderWriter<AMUR::AmurSensors, AMUR::AmurControls> > stream(
+            stub_->DataStreamExchange(&context));
 
-    while(!stoppedStream && (clientChannel->GetState(true) == 2) )
-    {
-        // Write sensors
-        stream->Write(*sensors);
+        while(!stoppedStream && (clientChannel->GetState(true) == 2) )
+        {
+            // Write sensors
+            stream->Write(*sensors);
 
-        std::unique_lock<std::mutex> lock(muClient);
+            std::unique_lock<std::mutex> lock(muClient);
 
-        // Read controls & write to protos
-        stream->Read(controls);
-    }
+            // Read controls & write to protos
+            stream->Read(controls);
+        }
 
-    stream->WritesDone();
+        stream->WritesDone();
 
-    grpc::Status status = stream->Finish();
-    if (!status.ok()) {
-      std::cout << "Error " << status.error_code() << " : " << status.error_message() << std::endl;
-      std::cout << "DataStreamExchange rpc failed." << std::endl;
+        status = stream->Finish();
+        if (status.ok())
+            retry = false;
+        else {
+            std::cout << "Error " << status.error_code() << " : " << status.error_message() << std::endl;
+            std::cout << "DataStreamExchange rpc failed." << std::endl;
+            std::this_thread::sleep_for(std::chrono::milliseconds( retryDelayMilliseconds ));
+        }
+
     }
 
     stoppedStream = false;

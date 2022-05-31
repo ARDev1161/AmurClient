@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <thread>
+#include <chrono>
 
 #include <grpcpp/grpcpp.h>
 
@@ -17,11 +18,13 @@ class grpcClient
     AMUR::AmurControls *controls;
 
     bool stoppedStream = true;
+    bool retryConnect;
+    int retryDelayMilliseconds = 1000;
 
     std::mutex muClient;
 
  public:
-    grpcClient(std::shared_ptr<grpc::Channel> channel, AMUR::AmurControls* controls, AMUR::AmurSensors* const sensors);
+    grpcClient(std::shared_ptr<grpc::Channel> channel, AMUR::AmurControls* controls, AMUR::AmurSensors* const sensors, bool tryConnectIfFailed = true);
     grpc::Status DataExchange();
     grpc::Status DataStreamExchange();
     void stopStream();

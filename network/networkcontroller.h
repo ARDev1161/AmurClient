@@ -20,7 +20,7 @@ class NetworkController
 public:
     NetworkController(AMUR::AmurControls* const controls, AMUR::AmurSensors* const sensors);
 
-    int runClient(std::string &server_address); // Server address & port for client
+    int runClient(std::string &server_address, bool tryConnectIfFailed = true); // Server address & port for client
     int runServer(std::string &address_mask); // Address mask & port for server
 };
 

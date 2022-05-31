@@ -7,7 +7,7 @@ NetworkController::NetworkController(AMUR::AmurControls* const controls, AMUR::A
     this->sensors = sensors;
 }
 
-int NetworkController::runClient(std::string &server_address)
+int NetworkController::runClient(std::string &server_address, bool tryConnectIfFailed)
 {
     // Instantiate the client. It requires a channel, out of which the actual RPCs
     // are created. This channel models a connection to an endpoint specified by
