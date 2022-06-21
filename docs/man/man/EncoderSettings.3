@@ -1,4 +1,4 @@
-.TH "EncoderSettings" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.TH "EncoderSettings" 3 "Tue Jun 21 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -16,10 +16,10 @@ EncoderSettings \- Структура для хранения настроек �
 .RI "const int \fBencoderSectorsCount\fP = 100"
 .br
 .ti -1c
-.RI "const int \fBmaxMotorSpeed\fP = 100"
+.RI "const int \fBmaxSpeed\fP = 100"
 .br
 .ti -1c
-.RI "const int \fBsampleRate\fP = ( \fBencoderSectorsCount\fP * \fBmaxMotorSpeed\fP ) * 3"
+.RI "const unsigned int \fBsampleRate\fP = ( \fBencoderSectorsCount\fP * \fBmaxSpeed\fP ) * 3"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -31,9 +31,9 @@ EncoderSettings \- Структура для хранения настроек �
 .PP 
 .SS "const int EncoderSettings::encoderSectorsCount = 100"
 
-.SS "const int EncoderSettings::maxMotorSpeed = 100"
+.SS "const int EncoderSettings::maxSpeed = 100"
 
-.SS "const int EncoderSettings::sampleRate = ( \fBencoderSectorsCount\fP * \fBmaxMotorSpeed\fP ) * 3"
+.SS "const unsigned int EncoderSettings::sampleRate = ( \fBencoderSectorsCount\fP * \fBmaxSpeed\fP ) * 3"
 
 
 .SH "Author"

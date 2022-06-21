@@ -92,10 +92,10 @@ $(document).ready(function(){initNavTree('modules_2CMakeLists_8txt.html',''); in
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aca820f58f342b632aadd9e0f87085563"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="modules_2CMakeLists_8txt.html#aca820f58f342b632aadd9e0f87085563">cmake_minimum_required</a> (VERSION 3.8 FATAL_ERROR) project(<a class="el" href="classPeripheralController.html">PeripheralController</a> VERSION 0.88 LANGUAGES CXX) <a class="el" href="modules_2CMakeLists_8txt.html#a5a588091bf02501f53eee6b6c477bcd1">set</a>(CMAKE_CXX_STANDARD 11) <a class="el" href="modules_2CMakeLists_8txt.html#a5a588091bf02501f53eee6b6c477bcd1">set</a>(CMAKE_CXX_STANDARD_REQUIRED ON) get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY) find_path(pigpio_INCLUDE_DIR NAMES pigpio.h pigpiod_if.h pigpiod_if2.h HINTS/usr/local/include) find_library(pigpio_LIBRARY NAMES libpigpio.so HINTS/usr/local/lib) find_library(pigpiod_if_LIBRARY NAMES libpigpiod_if.so HINTS/usr/local/lib) find_library(pigpiod_if2_LIBRARY NAMES libpigpiod_if2.so HINTS/usr/local/lib) <a class="el" href="modules_2CMakeLists_8txt.html#a5a588091bf02501f53eee6b6c477bcd1">set</a>(pigpio_INCLUDE_DIRS $</td></tr>
+<tr class="memitem:aca820f58f342b632aadd9e0f87085563"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="modules_2CMakeLists_8txt.html#aca820f58f342b632aadd9e0f87085563">cmake_minimum_required</a> (VERSION 3.8 FATAL_ERROR) project(<a class="el" href="classPeripheralController.html">PeripheralController</a> VERSION 0.88 LANGUAGES CXX) <a class="el" href="modules_2CMakeLists_8txt.html#a25c38142f5be0af433f108958b99c52e">set</a>(CMAKE_CXX_STANDARD 11) <a class="el" href="modules_2CMakeLists_8txt.html#a25c38142f5be0af433f108958b99c52e">set</a>(CMAKE_CXX_STANDARD_REQUIRED ON) get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY) find_path(pigpio_INCLUDE_DIR NAMES pigpio.h pigpiod_if.h pigpiod_if2.h HINTS/usr/local/include) find_library(pigpio_LIBRARY NAMES libpigpio.so HINTS/usr/local/lib) find_library(pigpiod_if_LIBRARY NAMES libpigpiod_if.so HINTS/usr/local/lib) find_library(pigpiod_if2_LIBRARY NAMES libpigpiod_if2.so HINTS/usr/local/lib) <a class="el" href="modules_2CMakeLists_8txt.html#a25c38142f5be0af433f108958b99c52e">set</a>(pigpio_INCLUDE_DIRS $</td></tr>
 <tr class="separator:aca820f58f342b632aadd9e0f87085563"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a588091bf02501f53eee6b6c477bcd1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="modules_2CMakeLists_8txt.html#a5a588091bf02501f53eee6b6c477bcd1">set</a> (pigpio_INCLUDES ${pigpio_INCLUDE_DIR}) include(FindPackageHandleStandardArgs) find_package_handle_standard_args(pigpio DEFAULT_MSG pigpio_INCLUDE_DIR pigpio_LIBRARY pigpiod_if_LIBRARY pigpiod_if2_LIBRARY) add_subdirectory(registers) add_subdirectory(pwm) add_subdirectory(interfaces) set(PERI_CONTROLLER peripheralcontroller.cpp peripheralcontroller.h peripheralsettings.h ../timer/TimerCallback.h) set(PERIPHERAL $</td></tr>
-<tr class="separator:a5a588091bf02501f53eee6b6c477bcd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25c38142f5be0af433f108958b99c52e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="modules_2CMakeLists_8txt.html#a25c38142f5be0af433f108958b99c52e">set</a> (pigpio_INCLUDES ${pigpio_INCLUDE_DIR}) include(FindPackageHandleStandardArgs) find_package_handle_standard_args(pigpio DEFAULT_MSG pigpio_INCLUDE_DIR pigpio_LIBRARY pigpiod_if_LIBRARY pigpiod_if2_LIBRARY) add_subdirectory(registers) add_subdirectory(pwm) add_subdirectory(interfaces) set(PERI_CONTROLLER peripheralcontroller.cpp peripheralcontroller.h peripheralsettings.h motorcontroller.cpp motorcontroller.h encoder.h encoder.cpp ../timer/TimerCallback.h ../timer/Timer.h ../timer/Timer.cpp) set(PERIPHERAL $</td></tr>
+<tr class="separator:a25c38142f5be0af433f108958b99c52e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="aca820f58f342b632aadd9e0f87085563"></a>
@@ -116,8 +116,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a5a588091bf02501f53eee6b6c477bcd1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a588091bf02501f53eee6b6c477bcd1">&#9670;&nbsp;</a></span>set()</h2>
+<a id="a25c38142f5be0af433f108958b99c52e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25c38142f5be0af433f108958b99c52e">&#9670;&nbsp;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">

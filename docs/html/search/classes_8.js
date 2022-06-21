@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['registercontroller_218',['RegisterController',['../classRegisterController.html',1,'']]],
-  ['registersettings_219',['RegisterSettings',['../structRegisterSettings.html',1,'']]],
-  ['runnable_220',['Runnable',['../classTimerCallback_1_1Runnable.html',1,'TimerCallback']]]
+  ['peripheralcontroller_415',['PeripheralController',['../classPeripheralController.html',1,'']]],
+  ['peripheralsettings_416',['PeripheralSettings',['../structPeripheralSettings.html',1,'']]],
+  ['pilot_417',['Pilot',['../classPilot.html',1,'']]],
+  ['pwmcontroller_418',['PWMController',['../classPWMController.html',1,'']]],
+  ['pwmpins_419',['PWMPins',['../structPWMPins.html',1,'']]]
 ];

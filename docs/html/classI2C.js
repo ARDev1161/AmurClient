@@ -1,9 +1,30 @@
 var classI2C =
 [
+    [ "byte_t", "classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08", null ],
     [ "I2C", "classI2C.html#a7a9a84fccdacb3346ff97d6f3e158850", null ],
-    [ "init", "classI2C.html#ab0f331dcdab94270fc93fd12baac7a7d", null ],
+    [ "close", "classI2C.html#a471f8ec5df552b48a69d2ce0bf093da1", null ],
+    [ "exchangeRegBlock", "classI2C.html#aa87d4d45303d691c67e6a2cafe6fa6be", null ],
+    [ "exchangeRegWord", "classI2C.html#a77a3e481b2faf82da0faf38538e092d9", null ],
+    [ "open", "classI2C.html#a5c932f65915ba95e9a2c091314fa877f", null ],
+    [ "parse_I2C", "classI2C.html#abc596a02466871ac997a97910d96dc9e", null ],
+    [ "read", "classI2C.html#a451175b96d69aabf22f446776dd8871f", null ],
+    [ "readRegBlock", "classI2C.html#afc8d2f855962c8a800b240d161449eb0", null ],
+    [ "readRegByte", "classI2C.html#acec9f8d4a510e8b4294d1298673660fb", null ],
+    [ "readRegI2CBlock", "classI2C.html#ac7f80cd8be7090c042aa5c40a488845b", null ],
+    [ "readRegWord", "classI2C.html#aa8db40d4e59ca479daf2c1f96f1aeb4e", null ],
+    [ "scanBus", "classI2C.html#ac39cf1a4686eba87190b90ad90e6b153", null ],
+    [ "write", "classI2C.html#ae7964e51146174b5bc787ba0e50cf264", null ],
+    [ "writeBit", "classI2C.html#a2da30f99b9cccc72c24a91eeee3e7038", null ],
+    [ "writeRegBlock", "classI2C.html#ab2106c47f92c701a382f056fe58817fd", null ],
+    [ "writeRegByte", "classI2C.html#ad0dca3f07ff8a5bb86e681ce9639950c", null ],
+    [ "writeRegI2CBlock", "classI2C.html#a42aff55abb91b65739652ca13b1f644b", null ],
+    [ "writeRegWord", "classI2C.html#adf6e8f0760d6281750f3bc097433c0aa", null ],
     [ "buffer", "classI2C.html#a59dc2f4dce0b7dba01af28753a31beb7", null ],
     [ "CHANNEL", "classI2C.html#a445a5d9043fdd31053f672913a617271", null ],
     [ "fd", "classI2C.html#a63cf4fb190446f9b391f2ea28ef3f2dd", null ],
-    [ "result", "classI2C.html#a65de3ff70b3edeacc3505e0e37cc9926", null ]
+    [ "r", "classI2C.html#a7f597ce8c0991dc0777e9af11378b583", null ],
+    [ "result", "classI2C.html#a65de3ff70b3edeacc3505e0e37cc9926", null ],
+    [ "SCL", "classI2C.html#abe1505568799b0749aab83263f3b5977", null ],
+    [ "SDA", "classI2C.html#a04211c571fa4bcc29540a1aba16f1323", null ],
+    [ "xSCL", "classI2C.html#a95ba1017d5a4eee772e25cf909557673", null ]
 ];

@@ -1,4 +1,4 @@
-.TH "grpcClient" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.TH "grpcClient" 3 "Tue Jun 21 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,7 +12,7 @@ grpcClient
 
 .in +1c
 .ti -1c
-.RI "\fBgrpcClient\fP (std::shared_ptr< grpc::Channel > channel, AMUR::AmurControls *\fBcontrols\fP, AMUR::AmurSensors *const \fBsensors\fP)"
+.RI "\fBgrpcClient\fP (std::shared_ptr< grpc::Channel > channel, AMUR::AmurControls *\fBcontrols\fP, AMUR::AmurSensors *const \fBsensors\fP, bool tryConnectIfFailed=true)"
 .br
 .ti -1c
 .RI "grpc::Status \fBDataExchange\fP ()"
@@ -43,12 +43,18 @@ grpcClient
 .RI "bool \fBstoppedStream\fP = true"
 .br
 .ti -1c
+.RI "bool \fBretryConnect\fP"
+.br
+.ti -1c
+.RI "int \fBretryDelayMilliseconds\fP = 1000"
+.br
+.ti -1c
 .RI "std::mutex \fBmuClient\fP"
 .br
 .in -1c
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "grpcClient::grpcClient (std::shared_ptr< grpc::Channel > channel, AMUR::AmurControls * controls, AMUR::AmurSensors *const sensors)"
+.SS "grpcClient::grpcClient (std::shared_ptr< grpc::Channel > channel, AMUR::AmurControls * controls, AMUR::AmurSensors *const sensors, bool tryConnectIfFailed = \fCtrue\fP)"
 
 .SH "Member Function Documentation"
 .PP 
@@ -65,6 +71,10 @@ grpcClient
 .SS "AMUR::AmurControls* grpcClient::controls\fC [private]\fP"
 
 .SS "std::mutex grpcClient::muClient\fC [private]\fP"
+
+.SS "bool grpcClient::retryConnect\fC [private]\fP"
+
+.SS "int grpcClient::retryDelayMilliseconds = 1000\fC [private]\fP"
 
 .SS "AMUR::AmurSensors* grpcClient::sensors\fC [private]\fP"
 

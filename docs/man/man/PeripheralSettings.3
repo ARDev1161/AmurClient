@@ -1,4 +1,4 @@
-.TH "PeripheralSettings" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.TH "PeripheralSettings" 3 "Tue Jun 21 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -13,10 +13,16 @@ PeripheralSettings \- Структура для хранения пинов и �
 
 .in +1c
 .ti -1c
-.RI "\fBRegisterSettings\fP \fBregisters\fP"
+.RI "\fBEncoderSettings\fP \fBencoderSettings\fP"
 .br
 .ti -1c
-.RI "\fBPWMPins\fP \fBpwm\fP"
+.RI "\fBMotorSettings\fP \fBmotorSettings\fP"
+.br
+.ti -1c
+.RI "\fBRegisterSettings\fP \fBregisterSettings\fP"
+.br
+.ti -1c
+.RI "\fBPWMPins\fP \fBpwmSettings\fP"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -26,9 +32,13 @@ PeripheralSettings \- Структура для хранения пинов и �
 Данная структура хранит набор пинов и настроек оборудования периферии\&. 
 .SH "Member Data Documentation"
 .PP 
-.SS "\fBPWMPins\fP PeripheralSettings::pwm"
+.SS "\fBEncoderSettings\fP PeripheralSettings::encoderSettings"
 
-.SS "\fBRegisterSettings\fP PeripheralSettings::registers"
+.SS "\fBMotorSettings\fP PeripheralSettings::motorSettings"
+
+.SS "\fBPWMPins\fP PeripheralSettings::pwmSettings"
+
+.SS "\fBRegisterSettings\fP PeripheralSettings::registerSettings"
 
 
 .SH "Author"

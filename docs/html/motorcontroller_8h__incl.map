@@ -1,0 +1,8 @@
+<map id="modules/motorcontroller.h" name="modules/motorcontroller.h">
+<area shape="rect" id="node1" title=" " alt="" coords="65,5,235,32"/>
+<area shape="rect" id="node2" href="$encoder_8h.html" title=" " alt="" coords="72,80,151,107"/>
+<area shape="rect" id="node4" href="$peripheralsettings_8h.html" title=" " alt="" coords="121,155,256,181"/>
+<area shape="rect" id="node3" title=" " alt="" coords="35,155,97,181"/>
+<area shape="rect" id="node5" href="$registerssettings_8h.html" title=" " alt="" coords="5,229,188,256"/>
+<area shape="rect" id="node6" href="$pwmsettings_8h.html" title=" " alt="" coords="213,229,351,256"/>
+</map>

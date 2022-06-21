@@ -1,0 +1,128 @@
+.TH "Encoder" 3 "Tue Jun 21 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Encoder
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <encoder\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEncoder\fP (\fBEncoderSettings\fP *\fBsettings\fP)"
+.br
+.ti -1c
+.RI "\fB~Encoder\fP ()"
+.br
+.ti -1c
+.RI "int \fBupdate\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetEncoderAngle\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetEncoderAngle\fP (int newAngle)"
+.br
+.ti -1c
+.RI "int \fBgetRPM\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetSignalA\fP (bool newSignalA)"
+.br
+.ti -1c
+.RI "void \fBsetSignalB\fP (bool newSignalB)"
+.br
+.ti -1c
+.RI "unsigned int \fBgetSampleRate\fP () const"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "const \fBEncoderSettings\fP * \fBsettings\fP"
+.br
+.ti -1c
+.RI "std::chrono::high_resolution_clock::time_point \fBlastUpdateTime\fP"
+.br
+.ti -1c
+.RI "std::chrono::duration< double > \fBtimeSpan\fP"
+.br
+.ti -1c
+.RI "double \fBelapsedTime\fP = 0"
+.br
+.ti -1c
+.RI "bool \fBsignalA\fP"
+.br
+.ti -1c
+.RI "bool \fBsignalB\fP"
+.br
+.ti -1c
+.RI "bool \fBsignalAPrev\fP"
+.br
+.ti -1c
+.RI "bool \fBsignalBPrev\fP"
+.br
+.ti -1c
+.RI "int \fBangle\fP"
+.br
+.ti -1c
+.RI "int \fBangleStep\fP"
+.br
+.ti -1c
+.RI "int \fBangleSpeed\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Encoder::Encoder (\fBEncoderSettings\fP * settings)"
+
+.SS "Encoder::~Encoder ()"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "int Encoder::getEncoderAngle () const"
+
+.SS "int Encoder::getRPM () const"
+
+.SS "unsigned int Encoder::getSampleRate () const"
+
+.SS "void Encoder::setEncoderAngle (int newAngle)"
+
+.SS "void Encoder::setSignalA (bool newSignalA)"
+
+.SS "void Encoder::setSignalB (bool newSignalB)"
+
+.SS "int Encoder::update ()"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "int Encoder::angle\fC [private]\fP"
+
+.SS "int Encoder::angleSpeed\fC [private]\fP"
+
+.SS "int Encoder::angleStep\fC [private]\fP"
+
+.SS "double Encoder::elapsedTime = 0\fC [private]\fP"
+
+.SS "std::chrono::high_resolution_clock::time_point Encoder::lastUpdateTime\fC [private]\fP"
+
+.SS "const \fBEncoderSettings\fP* Encoder::settings\fC [private]\fP"
+
+.SS "bool Encoder::signalA\fC [private]\fP"
+
+.SS "bool Encoder::signalAPrev\fC [private]\fP"
+
+.SS "bool Encoder::signalB\fC [private]\fP"
+
+.SS "bool Encoder::signalBPrev\fC [private]\fP"
+
+.SS "std::chrono::duration<double> Encoder::timeSpan\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

@@ -108,8 +108,8 @@ Collaboration diagram for NetworkController:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a43ec8cbc168e2aad5c2728594c579a85"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetworkController.html#a43ec8cbc168e2aad5c2728594c579a85">NetworkController</a> (AMUR::AmurControls *const <a class="el" href="classNetworkController.html#a4f6c59f3f555f0b6db17d51a42d221f9">controls</a>, AMUR::AmurSensors *const <a class="el" href="classNetworkController.html#a25fe34c706f86efb85fd7cd3e7cabcca">sensors</a>)</td></tr>
 <tr class="separator:a43ec8cbc168e2aad5c2728594c579a85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a23911025a48814505b4f9abcacd839"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetworkController.html#a0a23911025a48814505b4f9abcacd839">runClient</a> (std::string &amp;server_address)</td></tr>
-<tr class="separator:a0a23911025a48814505b4f9abcacd839"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fb7019ae7f9692b1f96385608b11ab6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetworkController.html#a4fb7019ae7f9692b1f96385608b11ab6">runClient</a> (std::string &amp;server_address, bool tryConnectIfFailed=true)</td></tr>
+<tr class="separator:a4fb7019ae7f9692b1f96385608b11ab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65637245c5c3a4f3e07a1507232340cf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetworkController.html#a65637245c5c3a4f3e07a1507232340cf">runServer</a> (std::string &amp;address_mask)</td></tr>
 <tr class="separator:a65637245c5c3a4f3e07a1507232340cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -156,8 +156,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a0a23911025a48814505b4f9abcacd839"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a23911025a48814505b4f9abcacd839">&#9670;&nbsp;</a></span>runClient()</h2>
+<a id="a4fb7019ae7f9692b1f96385608b11ab6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fb7019ae7f9692b1f96385608b11ab6">&#9670;&nbsp;</a></span>runClient()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -166,16 +166,26 @@ Private Attributes</h2></td></tr>
           <td class="memname">int NetworkController::runClient </td>
           <td>(</td>
           <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>server_address</em></td><td>)</td>
+          <td class="paramname"><em>server_address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>tryConnectIfFailed</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classNetworkController_a0a23911025a48814505b4f9abcacd839_cgraph.png" border="0" usemap="#aclassNetworkController_a0a23911025a48814505b4f9abcacd839_cgraph" alt=""/></div>
-<map name="aclassNetworkController_a0a23911025a48814505b4f9abcacd839_cgraph" id="aclassNetworkController_a0a23911025a48814505b4f9abcacd839_cgraph">
+<div class="center"><img src="classNetworkController_a4fb7019ae7f9692b1f96385608b11ab6_cgraph.png" border="0" usemap="#aclassNetworkController_a4fb7019ae7f9692b1f96385608b11ab6_cgraph" alt=""/></div>
+<map name="aclassNetworkController_a4fb7019ae7f9692b1f96385608b11ab6_cgraph" id="aclassNetworkController_a4fb7019ae7f9692b1f96385608b11ab6_cgraph">
 <area shape="rect" title=" " alt="" coords="5,5,137,47"/>
 <area shape="rect" href="classgrpcClient.html#a7a569dfe1c1968b7ee3f40c351c19f51" title=" " alt="" coords="185,13,396,39"/>
 </map>
@@ -183,8 +193,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classNetworkController_a0a23911025a48814505b4f9abcacd839_icgraph.png" border="0" usemap="#aclassNetworkController_a0a23911025a48814505b4f9abcacd839_icgraph" alt=""/></div>
-<map name="aclassNetworkController_a0a23911025a48814505b4f9abcacd839_icgraph" id="aclassNetworkController_a0a23911025a48814505b4f9abcacd839_icgraph">
+<div class="center"><img src="classNetworkController_a4fb7019ae7f9692b1f96385608b11ab6_icgraph.png" border="0" usemap="#aclassNetworkController_a4fb7019ae7f9692b1f96385608b11ab6_icgraph" alt=""/></div>
+<map name="aclassNetworkController_a4fb7019ae7f9692b1f96385608b11ab6_icgraph" id="aclassNetworkController_a4fb7019ae7f9692b1f96385608b11ab6_icgraph">
 <area shape="rect" title=" " alt="" coords="465,35,597,76"/>
 <area shape="rect" href="classLogicController.html#ad02314f4890c68a236516131e598718d" title=" " alt="" coords="235,5,397,47"/>
 <area shape="rect" href="classLogicController.html#adebf682fbc49020f4d382211084726d4" title=" " alt="" coords="215,71,417,98"/>

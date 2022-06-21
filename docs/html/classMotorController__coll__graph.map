@@ -1,0 +1,7 @@
+<map id="MotorController" name="MotorController">
+<area shape="rect" id="node1" title=" " alt="" coords="82,821,245,1001"/>
+<area shape="rect" id="node2" href="$classMotor.html" title=" " alt="" coords="110,564,217,685"/>
+<area shape="rect" id="node3" href="$classEncoder.html" title=" " alt="" coords="15,175,154,501"/>
+<area shape="rect" id="node4" href="$structEncoderSettings.html" title="Структура для хранения настроек энкодеров" alt="" coords="5,5,164,112"/>
+<area shape="rect" id="node5" href="$structMotorSettings.html" title="Структура для хранения настроек энкодеров" alt="" coords="179,292,305,384"/>
+</map>

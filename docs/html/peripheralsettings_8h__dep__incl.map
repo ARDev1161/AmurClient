@@ -1,8 +1,12 @@
 <map id="modules/peripheralsettings.h" name="modules/peripheralsettings.h">
-<area shape="rect" id="node1" title=" " alt="" coords="130,5,317,32"/>
-<area shape="rect" id="node2" href="$peripheralcontroller_8h.html" title=" " alt="" coords="126,80,321,107"/>
-<area shape="rect" id="node3" href="$logiccontroller_8h.html" title=" " alt="" coords="75,155,187,181"/>
-<area shape="rect" id="node6" href="$peripheralcontroller_8cpp.html" title=" " alt="" coords="211,155,419,181"/>
-<area shape="rect" id="node4" href="$AmurClient_8cpp.html" title=" " alt="" coords="5,229,116,256"/>
-<area shape="rect" id="node5" href="$logiccontroller_8cpp.html" title=" " alt="" coords="140,229,267,256"/>
+<area shape="rect" id="node1" title=" " alt="" coords="203,5,390,32"/>
+<area shape="rect" id="node2" href="$encoder_8h.html" title=" " alt="" coords="129,80,259,107"/>
+<area shape="rect" id="node4" href="$motorcontroller_8h.html" title=" " alt="" coords="175,155,346,181"/>
+<area shape="rect" id="node6" href="$peripheralcontroller_8h.html" title=" " alt="" coords="286,229,481,256"/>
+<area shape="rect" id="node3" href="$encoder_8cpp.html" title=" " alt="" coords="5,155,151,181"/>
+<area shape="rect" id="node5" href="$motorcontroller_8cpp.html" title=" " alt="" coords="76,229,261,256"/>
+<area shape="rect" id="node7" href="$logiccontroller_8h.html" title=" " alt="" coords="235,304,347,331"/>
+<area shape="rect" id="node10" href="$peripheralcontroller_8cpp.html" title=" " alt="" coords="371,304,579,331"/>
+<area shape="rect" id="node8" href="$AmurClient_8cpp.html" title=" " alt="" coords="165,379,276,405"/>
+<area shape="rect" id="node9" href="$logiccontroller_8cpp.html" title=" " alt="" coords="300,379,427,405"/>
 </map>

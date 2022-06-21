@@ -1,0 +1,63 @@
+.TH "Motor" 3 "Tue Jun 21 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Motor
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <motorcontroller\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMotor\fP (\fBMotorSettings\fP *motor, \fBEncoderSettings\fP *\fBencoder\fP)"
+.br
+.ti -1c
+.RI "\fB~Motor\fP ()"
+.br
+.ti -1c
+.RI "\fBEncoder\fP * \fBgetEncoder\fP () const"
+.br
+.ti -1c
+.RI "float \fBgetCurrent\fP () const"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBMotorSettings\fP * \fBsettings\fP"
+.br
+.ti -1c
+.RI "\fBEncoder\fP * \fBencoder\fP"
+.br
+.ti -1c
+.RI "float \fBcurrent\fP = 0"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Motor::Motor (\fBMotorSettings\fP * motor, \fBEncoderSettings\fP * encoder)"
+
+.SS "Motor::~Motor ()"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "float Motor::getCurrent () const"
+
+.SS "\fBEncoder\fP * Motor::getEncoder () const"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "float Motor::current = 0\fC [private]\fP"
+
+.SS "\fBEncoder\fP* Motor::encoder\fC [private]\fP"
+
+.SS "\fBMotorSettings\fP* Motor::settings\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

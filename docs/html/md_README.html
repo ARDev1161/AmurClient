@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>AmurClient: Client software for Amur distribution board (ADB-0.42)</title>
+<title>AmurClient: README</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,26 +84,35 @@ $(document).ready(function(){initNavTree('md_README.html',''); initResizable(); 
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Client software for Amur distribution board (ADB-0.42) </div>  </div>
+<div class="title">README </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This is application for communicate with robot on RPi base with <a href="https://github.com/ARDev1161/AmurClient">AmurClient</a>.</p>
-<h1><a class="anchor" id="autotoc_md1"></a>
-Requirements:</h1>
-<p>1) CMake - for install read: <a href="https://snapcraft.io/install/cmake/raspbian">https://snapcraft.io/install/cmake/raspbian</a> 2) Protobuf &amp; gRPC - for install read: <a href="https://grpc.io/docs/languages/cpp/quickstart/">https://grpc.io/docs/languages/cpp/quickstart/</a> need install in system(/usr/local) 3) PiGPIO - for install read: <a href="http://abyz.me.uk/rpi/pigpio/download.html">http://abyz.me.uk/rpi/pigpio/download.html</a> 4) libconfig (not used, will be added in the future) 5) GStreamer (not used, will be added in the future)</p>
-<h1><a class="anchor" id="autotoc_md2"></a>
-Compile AmurClient</h1>
-<p>git clone <a href="https://github.com/ARDev1161/AmurClient.git">https://github.com/ARDev1161/AmurClient.git</a> cd AmurClient mkdir bin &amp;&amp; cd bin</p>
+<div class="textblock"><p align="center"></p>
+<p><img src="https://raw.githubusercontent.com/ARDev1161/AmurClient/gh-pages/_includes/logo.png" alt="AmurClient Logo" height="100" class="inline"/></p>
+<h1><a class="anchor" id="autotoc_md0"></a>
+Client software for Amur distribution board (ADB-0.42)</h1>
+<p>This is application for communicate with robot on RPi base with Amur distribution board. <br  />
+</p>
+<p><a href="https://github.com/ARDev1161/AmurClient/releases/latest"><img src="https://img.shields.io/github/v/tag/ARDev1161/AmurClient.svg?style=for-the-badge" alt="Release" style="pointer-events: none;" class="inline"/></a> <a href="/LICENSE.md"><img src="https://img.shields.io/badge/license-Apache%202.0-green.svg?style=for-the-badge" alt="Software License" style="pointer-events: none;" class="inline"/></a></p>
+<p><a href="https://amurclient.online/docs/html/md_README.html"><img src="https://img.shields.io/badge/doc&#39;s-Doxygen-blue.svg?style=for-the-badge" alt="Documentation" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/ARDev1161"><img src="https://img.shields.io/badge/powered%20by-ARDev1161-green.svg?style=for-the-badge" alt="Powered By: ARDev1161" style="pointer-events: none;" class="inline"/></a> </p>
+<h2><a class="anchor" id="autotoc_md1"></a>
+Requirements:</h2>
+<p>1) CMake - for install read: <a href="https://snapcraft.io/install/cmake/raspbian">https://snapcraft.io/install/cmake/raspbian</a> 2) Protobuf &amp; gRPC - for install read: <a href="https://grpc.io/docs/languages/cpp/quickstart/">https://grpc.io/docs/languages/cpp/quickstart/</a> need install in system(/usr/local) 3) PiGPIO - for install read: <a href="http://abyz.me.uk/rpi/pigpio/download.html">http://abyz.me.uk/rpi/pigpio/download.html</a> 4) libconfig - for install:</p>
+<p>sudo apt-get install libconfig++-dev -y</p>
+<p>5) GStreamer (not used, will be added in the future)</p>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Compile AmurClient</h2>
+<p>git clone <a href="https://github.com/ARDev1161/AmurClient.git">https://github.com/ARDev1161/AmurClient.git</a> &ndash;recurse-submodules cd AmurClient mkdir bin &amp;&amp; cd bin</p>
 <p>cmake -DCMAKE_BUILD_TYPE=Release -DGRPC_FETCHCONTENT=OFF ../</p>
 <p>cmake &ndash;build . &ndash; -j4</p>
-<h1><a class="anchor" id="autotoc_md3"></a>
-Sensors of Amur:</h1>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Sensors of Amur:</h2>
 <p>1) Camera - OV5647 2) Inertial sensor - MPU-9250 3) Encoders wheel: left, right - HOA0901 4) Encoders hand internal: left, right - HOA0901 5) Encoders hand outter: left, right - HOA0901 6) ADC module - ADS1115(address - 0x48) 7) RTC module - DS3231(address - 0x68) with AT24C32(address - 0x57) 8) Barometer - BMP-280 9) Battery voltage</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
-Controls of Amur:</h1>
-<p>1) ServoX, ServoY - MG90S 2) Motor wheel: left, right 3) Motor hand internal: left, right 4) Motor hand outter: left, right</p>
-<h1><a class="anchor" id="autotoc_md5"></a>
-GPIO using:</h1>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Controls of Amur:</h2>
+<p>1) ServoX, ServoY - MG90S 2) <a class="el" href="classMotor.html">Motor</a> wheel: left, right 3) <a class="el" href="classMotor.html">Motor</a> hand internal: left, right 4) <a class="el" href="classMotor.html">Motor</a> hand outter: left, right</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+GPIO using:</h2>
 <ul>
 <li>GPIO4 - Data from 74<a class="el" href="classHC165.html" title="Класс работы с регистром 74HC165.">HC165</a></li>
 <li>GPIO17 - Clk 74<a class="el" href="classHC165.html" title="Класс работы с регистром 74HC165.">HC165</a></li>
@@ -123,23 +132,23 @@ GPIO using:</h1>
 <li>GPIO20 - PWM2 right</li>
 <li>GPIO21 - PWM2 left</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md6"></a>
-GPIO freePins header(from left to right):</h2>
+<h3><a class="anchor" id="autotoc_md6"></a>
+GPIO freePins header(from left to right):</h3>
 <p>Use for LoRa(SX1278) 1) GPIO19 - Rx enable 2) GPIO26 - Tx enable 3) GPIO5 - DI0 4) GPIO6 - Reset</p>
-<h2><a class="anchor" id="autotoc_md7"></a>
-SPI0 header(from up to down):</h2>
+<h3><a class="anchor" id="autotoc_md7"></a>
+SPI0 header(from up to down):</h3>
 <p>Use for LoRa(SX1278) 1) CE1 2) CE0 3) SCLK 4) MISO 5) MOSI</p>
-<h2><a class="anchor" id="autotoc_md8"></a>
-I2C1 header(from left to right):</h2>
+<h3><a class="anchor" id="autotoc_md8"></a>
+I2C1 header(from left to right):</h3>
 <p>Use for ADS1115 1) Vpd 2) SCL 3) SDA 4) GND</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
-UART0 header(from left to right):</h2>
+<h3><a class="anchor" id="autotoc_md9"></a>
+UART0 header(from left to right):</h3>
 <p>1) Vpd 2) Tx 3) Rx 4) GND</p>
-<h2><a class="anchor" id="autotoc_md10"></a>
-Voltage jumper(for peripheral devices - Vpd):</h2>
+<h3><a class="anchor" id="autotoc_md10"></a>
+Voltage jumper(for peripheral devices - Vpd):</h3>
 <p>1) Left - 3.3V 2) Right - 5V</p>
-<h2><a class="anchor" id="autotoc_md11"></a>
-74HC595 using:</h2>
+<h3><a class="anchor" id="autotoc_md11"></a>
+74HC595 using:</h3>
 <p>bites trancieve in register from last to first: from 16 to 1</p>
 <p>(First byte - right)</p><ul>
 <li>1bit - right relay</li>
@@ -161,8 +170,8 @@ Voltage jumper(for peripheral devices - Vpd):</h2>
 <li>15bit - en2 left motor shield (Wheel left motor)</li>
 <li>16bit - left LED light</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md12"></a>
-74HC165 using:</h2>
+<h3><a class="anchor" id="autotoc_md12"></a>
+74HC165 using:</h3>
 <p>bites recieve by register from first to last: from 1 to 16</p>
 <p>(First byte - right)</p><ul>
 <li>1bit - LR2B encoder (Hand outer right encoder - B signal)</li>

@@ -85,6 +85,7 @@ $(document).ready(function(){initNavTree('classPWMController.html',''); initResi
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classPWMController-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -101,7 +102,7 @@ Collaboration diagram for PWMController:</div>
 <div class="dyncontent">
 <div class="center"><img src="classPWMController__coll__graph.png" border="0" usemap="#aPWMController_coll__map" alt="Collaboration graph"/></div>
 <map name="aPWMController_coll__map" id="aPWMController_coll__map">
-<area shape="rect" title="Класс управления PWM сигналами" alt="" coords="5,5,148,185"/>
+<area shape="rect" title="Класс управления PWM сигналами" alt="" coords="5,5,148,288"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -109,25 +110,42 @@ Collaboration diagram for PWMController:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:afd077fde38a5693184a19cccafa340b7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#afd077fde38a5693184a19cccafa340b7">PWMController</a> ()</td></tr>
 <tr class="separator:afd077fde38a5693184a19cccafa340b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe799c145af6da4e728b73180c1dea7a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#abe799c145af6da4e728b73180c1dea7a">hardPWMCreate</a> (int pin)</td></tr>
-<tr class="separator:abe799c145af6da4e728b73180c1dea7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedb9f50339ba23271b1d4db2524691ed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#aedb9f50339ba23271b1d4db2524691ed">hardPWMChange</a> (int pin, int dutyCycle)</td></tr>
-<tr class="separator:aedb9f50339ba23271b1d4db2524691ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a159e2f872c0ea8384ac1d09c8351eca1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#a159e2f872c0ea8384ac1d09c8351eca1">hardPWMStop</a> (int pin)</td></tr>
-<tr class="separator:a159e2f872c0ea8384ac1d09c8351eca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9144413b1b00cc51dd7f5dce9b389ffb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#a9144413b1b00cc51dd7f5dce9b389ffb">softPWMCreate</a> (int pin)</td></tr>
-<tr class="separator:a9144413b1b00cc51dd7f5dce9b389ffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89edfe2eb7d4a7843603095ddbaa2041"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#a89edfe2eb7d4a7843603095ddbaa2041">softPWMChange</a> (int pin, int dutyCycle)</td></tr>
-<tr class="separator:a89edfe2eb7d4a7843603095ddbaa2041"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8f0a5fce26ff4c086c87d56568f45ab"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#ab8f0a5fce26ff4c086c87d56568f45ab">softPWMStop</a> (int pin)</td></tr>
-<tr class="separator:ab8f0a5fce26ff4c086c87d56568f45ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dcd3681814e3de6c49bf3c55aabb36f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#a3dcd3681814e3de6c49bf3c55aabb36f">hardPWMCreate</a> (unsigned int pin)</td></tr>
+<tr class="separator:a3dcd3681814e3de6c49bf3c55aabb36f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f1bbc9358f73456973f2f390bd7c162"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#a8f1bbc9358f73456973f2f390bd7c162">hardPWMChange</a> (unsigned int pin, unsigned int dutyCycle)</td></tr>
+<tr class="separator:a8f1bbc9358f73456973f2f390bd7c162"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17e9615dccdd983648da96b9190ffcc1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#a17e9615dccdd983648da96b9190ffcc1">hardPWMStop</a> (unsigned int pin)</td></tr>
+<tr class="separator:a17e9615dccdd983648da96b9190ffcc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fef5d7f59932a4e03934dba3052720c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#a0fef5d7f59932a4e03934dba3052720c">softPWMCreate</a> (unsigned int pin)</td></tr>
+<tr class="separator:a0fef5d7f59932a4e03934dba3052720c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d42da1b47de6e0d65f2d329b21e3758"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#a8d42da1b47de6e0d65f2d329b21e3758">softPWMChange</a> (unsigned int pin, unsigned int dutyCycle)</td></tr>
+<tr class="separator:a8d42da1b47de6e0d65f2d329b21e3758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af92bc1a04ec6e551db7801768ade6a57"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#af92bc1a04ec6e551db7801768ade6a57">softPWMStop</a> (unsigned int pin)</td></tr>
+<tr class="separator:af92bc1a04ec6e551db7801768ade6a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff637e1e25e809c1109c4177b43374d8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#aff637e1e25e809c1109c4177b43374d8">getPwmRange</a> () const</td></tr>
+<tr class="separator:aff637e1e25e809c1109c4177b43374d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a063c3754f36caa1c8f5a487d8069d976"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#a063c3754f36caa1c8f5a487d8069d976">setPwmRange</a> (unsigned int newPwmRange)</td></tr>
+<tr class="separator:a063c3754f36caa1c8f5a487d8069d976"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a901a6260a296a97b7f5b72f3e5215b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#a3a901a6260a296a97b7f5b72f3e5215b">getFreqHardware</a> () const</td></tr>
+<tr class="separator:a3a901a6260a296a97b7f5b72f3e5215b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7b3aa37a03e67a3487ace0443f63fca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#ae7b3aa37a03e67a3487ace0443f63fca">setFreqHardware</a> (unsigned int newFreqHardware)</td></tr>
+<tr class="separator:ae7b3aa37a03e67a3487ace0443f63fca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:acf94d4dd0c4f6d4a487b0c38712b7598"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#acf94d4dd0c4f6d4a487b0c38712b7598">translateDuty</a> (unsigned int duty, unsigned int gpioRange)</td></tr>
+<tr class="separator:acf94d4dd0c4f6d4a487b0c38712b7598"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0a5963a1836b3d71fb7fd4abf4447e3"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#ac0a5963a1836b3d71fb7fd4abf4447e3">translateDuty</a> (unsigned int duty)</td></tr>
+<tr class="separator:ac0a5963a1836b3d71fb7fd4abf4447e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecc43a59cd748871c68f52635097a137"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#aecc43a59cd748871c68f52635097a137">translateDuty</a> (int duty, int newMax)</td></tr>
+<tr class="separator:aecc43a59cd748871c68f52635097a137"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a772fff97280dc787d838689767249c1f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#a772fff97280dc787d838689767249c1f">pwmRange</a> = 255</td></tr>
-<tr class="separator:a772fff97280dc787d838689767249c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac212220fc587a5073c2c22cbf3095369"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#ac212220fc587a5073c2c22cbf3095369">freq</a> = 20</td></tr>
-<tr class="separator:ac212220fc587a5073c2c22cbf3095369"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2080d6f8661d69d50bf6c23aec38290a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#a2080d6f8661d69d50bf6c23aec38290a">pwmRange</a> = 255</td></tr>
+<tr class="separator:a2080d6f8661d69d50bf6c23aec38290a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a255298abd8562933f5b1044b46173d11"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPWMController.html#a255298abd8562933f5b1044b46173d11">freqHardware</a> = 375</td></tr>
+<tr class="separator:a255298abd8562933f5b1044b46173d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Класс управления PWM сигналами </p>
@@ -152,8 +170,42 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aedb9f50339ba23271b1d4db2524691ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aedb9f50339ba23271b1d4db2524691ed">&#9670;&nbsp;</a></span>hardPWMChange()</h2>
+<a id="a3a901a6260a296a97b7f5b72f3e5215b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a901a6260a296a97b7f5b72f3e5215b">&#9670;&nbsp;</a></span>getFreqHardware()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PWMController::getFreqHardware </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aff637e1e25e809c1109c4177b43374d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff637e1e25e809c1109c4177b43374d8">&#9670;&nbsp;</a></span>getPwmRange()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PWMController::getPwmRange </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8f1bbc9358f73456973f2f390bd7c162"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f1bbc9358f73456973f2f390bd7c162">&#9670;&nbsp;</a></span>hardPWMChange()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -161,13 +213,13 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">int PWMController::hardPWMChange </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>pin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>dutyCycle</em>&#160;</td>
         </tr>
         <tr>
@@ -185,10 +237,19 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPWMController_a8f1bbc9358f73456973f2f390bd7c162_cgraph.png" border="0" usemap="#aclassPWMController_a8f1bbc9358f73456973f2f390bd7c162_cgraph" alt=""/></div>
+<map name="aclassPWMController_a8f1bbc9358f73456973f2f390bd7c162_cgraph" id="aclassPWMController_a8f1bbc9358f73456973f2f390bd7c162_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,221,32"/>
+<area shape="rect" href="classPWMController.html#acf94d4dd0c4f6d4a487b0c38712b7598" title=" " alt="" coords="269,5,460,32"/>
+</map>
+</div>
+<div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classPWMController_aedb9f50339ba23271b1d4db2524691ed_icgraph.png" border="0" usemap="#aclassPWMController_aedb9f50339ba23271b1d4db2524691ed_icgraph" alt=""/></div>
-<map name="aclassPWMController_aedb9f50339ba23271b1d4db2524691ed_icgraph" id="aclassPWMController_aedb9f50339ba23271b1d4db2524691ed_icgraph">
+<div class="center"><img src="classPWMController_a8f1bbc9358f73456973f2f390bd7c162_icgraph.png" border="0" usemap="#aclassPWMController_a8f1bbc9358f73456973f2f390bd7c162_icgraph" alt=""/></div>
+<map name="aclassPWMController_a8f1bbc9358f73456973f2f390bd7c162_icgraph" id="aclassPWMController_a8f1bbc9358f73456973f2f390bd7c162_icgraph">
 <area shape="rect" title=" " alt="" coords="835,42,1051,69"/>
 <area shape="rect" href="classPeripheralController.html#a2b09e9718c6c6b2641eb8fd0c1e05872" title=" " alt="" coords="641,35,787,76"/>
 <area shape="rect" href="classPeripheralController.html#af9aea905ecb0d39ff392531ea03a698a" title=" " alt="" coords="459,35,593,76"/>
@@ -201,8 +262,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="abe799c145af6da4e728b73180c1dea7a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe799c145af6da4e728b73180c1dea7a">&#9670;&nbsp;</a></span>hardPWMCreate()</h2>
+<a id="a3dcd3681814e3de6c49bf3c55aabb36f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dcd3681814e3de6c49bf3c55aabb36f">&#9670;&nbsp;</a></span>hardPWMCreate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -210,7 +271,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">int PWMController::hardPWMCreate </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>pin</em></td><td>)</td>
           <td></td>
         </tr>
@@ -225,8 +286,8 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classPWMController_abe799c145af6da4e728b73180c1dea7a_icgraph.png" border="0" usemap="#aclassPWMController_abe799c145af6da4e728b73180c1dea7a_icgraph" alt=""/></div>
-<map name="aclassPWMController_abe799c145af6da4e728b73180c1dea7a_icgraph" id="aclassPWMController_abe799c145af6da4e728b73180c1dea7a_icgraph">
+<div class="center"><img src="classPWMController_a3dcd3681814e3de6c49bf3c55aabb36f_icgraph.png" border="0" usemap="#aclassPWMController_a3dcd3681814e3de6c49bf3c55aabb36f_icgraph" alt=""/></div>
+<map name="aclassPWMController_a3dcd3681814e3de6c49bf3c55aabb36f_icgraph" id="aclassPWMController_a3dcd3681814e3de6c49bf3c55aabb36f_icgraph">
 <area shape="rect" title=" " alt="" coords="377,13,588,39"/>
 <area shape="rect" href="classPeripheralController.html#a4282d785eae38857f583c37ff2bb2191" title=" " alt="" coords="195,5,329,47"/>
 <area shape="rect" href="classPeripheralController.html#aaa481d7fc21fcc8c8a94a84dbecc60fa" title=" " alt="" coords="5,5,147,47"/>
@@ -235,8 +296,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a159e2f872c0ea8384ac1d09c8351eca1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a159e2f872c0ea8384ac1d09c8351eca1">&#9670;&nbsp;</a></span>hardPWMStop()</h2>
+<a id="a17e9615dccdd983648da96b9190ffcc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17e9615dccdd983648da96b9190ffcc1">&#9670;&nbsp;</a></span>hardPWMStop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -244,7 +305,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">int PWMController::hardPWMStop </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>pin</em></td><td>)</td>
           <td></td>
         </tr>
@@ -259,8 +320,44 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a89edfe2eb7d4a7843603095ddbaa2041"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a89edfe2eb7d4a7843603095ddbaa2041">&#9670;&nbsp;</a></span>softPWMChange()</h2>
+<a id="ae7b3aa37a03e67a3487ace0443f63fca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7b3aa37a03e67a3487ace0443f63fca">&#9670;&nbsp;</a></span>setFreqHardware()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PWMController::setFreqHardware </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>newFreqHardware</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a063c3754f36caa1c8f5a487d8069d976"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a063c3754f36caa1c8f5a487d8069d976">&#9670;&nbsp;</a></span>setPwmRange()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PWMController::setPwmRange </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>newPwmRange</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8d42da1b47de6e0d65f2d329b21e3758"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d42da1b47de6e0d65f2d329b21e3758">&#9670;&nbsp;</a></span>softPWMChange()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -268,13 +365,13 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">int PWMController::softPWMChange </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>pin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>dutyCycle</em>&#160;</td>
         </tr>
         <tr>
@@ -292,10 +389,19 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPWMController_a8d42da1b47de6e0d65f2d329b21e3758_cgraph.png" border="0" usemap="#aclassPWMController_a8d42da1b47de6e0d65f2d329b21e3758_cgraph" alt=""/></div>
+<map name="aclassPWMController_a8d42da1b47de6e0d65f2d329b21e3758_cgraph" id="aclassPWMController_a8d42da1b47de6e0d65f2d329b21e3758_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,219,32"/>
+<area shape="rect" href="classPWMController.html#acf94d4dd0c4f6d4a487b0c38712b7598" title=" " alt="" coords="267,5,457,32"/>
+</map>
+</div>
+<div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classPWMController_a89edfe2eb7d4a7843603095ddbaa2041_icgraph.png" border="0" usemap="#aclassPWMController_a89edfe2eb7d4a7843603095ddbaa2041_icgraph" alt=""/></div>
-<map name="aclassPWMController_a89edfe2eb7d4a7843603095ddbaa2041_icgraph" id="aclassPWMController_a89edfe2eb7d4a7843603095ddbaa2041_icgraph">
+<div class="center"><img src="classPWMController_a8d42da1b47de6e0d65f2d329b21e3758_icgraph.png" border="0" usemap="#aclassPWMController_a8d42da1b47de6e0d65f2d329b21e3758_icgraph" alt=""/></div>
+<map name="aclassPWMController_a8d42da1b47de6e0d65f2d329b21e3758_icgraph" id="aclassPWMController_a8d42da1b47de6e0d65f2d329b21e3758_icgraph">
 <area shape="rect" title=" " alt="" coords="829,42,1043,69"/>
 <area shape="rect" href="classPeripheralController.html#af5dac1876a799cb918e1482271a8635a" title=" " alt="" coords="641,35,781,76"/>
 <area shape="rect" href="classPeripheralController.html#af9aea905ecb0d39ff392531ea03a698a" title=" " alt="" coords="459,35,593,76"/>
@@ -308,8 +414,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a9144413b1b00cc51dd7f5dce9b389ffb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9144413b1b00cc51dd7f5dce9b389ffb">&#9670;&nbsp;</a></span>softPWMCreate()</h2>
+<a id="a0fef5d7f59932a4e03934dba3052720c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fef5d7f59932a4e03934dba3052720c">&#9670;&nbsp;</a></span>softPWMCreate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -317,7 +423,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">int PWMController::softPWMCreate </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>pin</em></td><td>)</td>
           <td></td>
         </tr>
@@ -333,8 +439,8 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classPWMController_a9144413b1b00cc51dd7f5dce9b389ffb_icgraph.png" border="0" usemap="#aclassPWMController_a9144413b1b00cc51dd7f5dce9b389ffb_icgraph" alt=""/></div>
-<map name="aclassPWMController_a9144413b1b00cc51dd7f5dce9b389ffb_icgraph" id="aclassPWMController_a9144413b1b00cc51dd7f5dce9b389ffb_icgraph">
+<div class="center"><img src="classPWMController_a0fef5d7f59932a4e03934dba3052720c_icgraph.png" border="0" usemap="#aclassPWMController_a0fef5d7f59932a4e03934dba3052720c_icgraph" alt=""/></div>
+<map name="aclassPWMController_a0fef5d7f59932a4e03934dba3052720c_icgraph" id="aclassPWMController_a0fef5d7f59932a4e03934dba3052720c_icgraph">
 <area shape="rect" title=" " alt="" coords="377,13,584,39"/>
 <area shape="rect" href="classPeripheralController.html#a4282d785eae38857f583c37ff2bb2191" title=" " alt="" coords="195,5,329,47"/>
 <area shape="rect" href="classPeripheralController.html#aaa481d7fc21fcc8c8a94a84dbecc60fa" title=" " alt="" coords="5,5,147,47"/>
@@ -343,8 +449,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ab8f0a5fce26ff4c086c87d56568f45ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8f0a5fce26ff4c086c87d56568f45ab">&#9670;&nbsp;</a></span>softPWMStop()</h2>
+<a id="af92bc1a04ec6e551db7801768ade6a57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af92bc1a04ec6e551db7801768ade6a57">&#9670;&nbsp;</a></span>softPWMStop()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -352,7 +458,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">int PWMController::softPWMStop </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>pin</em></td><td>)</td>
           <td></td>
         </tr>
@@ -367,9 +473,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="ac212220fc587a5073c2c22cbf3095369"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac212220fc587a5073c2c22cbf3095369">&#9670;&nbsp;</a></span>freq</h2>
+<a id="aecc43a59cd748871c68f52635097a137"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecc43a59cd748871c68f52635097a137">&#9670;&nbsp;</a></span>translateDuty() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -378,7 +483,123 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int PWMController::freq = 20</td>
+          <td class="memname">int PWMController::translateDuty </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>duty</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>newMax</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac0a5963a1836b3d71fb7fd4abf4447e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0a5963a1836b3d71fb7fd4abf4447e3">&#9670;&nbsp;</a></span>translateDuty() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int PWMController::translateDuty </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>duty</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf94d4dd0c4f6d4a487b0c38712b7598"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf94d4dd0c4f6d4a487b0c38712b7598">&#9670;&nbsp;</a></span>translateDuty() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int PWMController::translateDuty </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>duty</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>gpioRange</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPWMController_acf94d4dd0c4f6d4a487b0c38712b7598_icgraph.png" border="0" usemap="#aclassPWMController_acf94d4dd0c4f6d4a487b0c38712b7598_icgraph" alt=""/></div>
+<map name="aclassPWMController_acf94d4dd0c4f6d4a487b0c38712b7598_icgraph" id="aclassPWMController_acf94d4dd0c4f6d4a487b0c38712b7598_icgraph">
+<area shape="rect" title=" " alt="" coords="1099,46,1289,73"/>
+<area shape="rect" href="classPWMController.html#a8f1bbc9358f73456973f2f390bd7c162" title=" " alt="" coords="835,17,1051,43"/>
+<area shape="rect" href="classPWMController.html#a8d42da1b47de6e0d65f2d329b21e3758" title=" " alt="" coords="836,71,1049,98"/>
+<area shape="rect" href="classPeripheralController.html#a2b09e9718c6c6b2641eb8fd0c1e05872" title=" " alt="" coords="641,5,787,47"/>
+<area shape="rect" href="classPeripheralController.html#af9aea905ecb0d39ff392531ea03a698a" title=" " alt="" coords="459,39,593,80"/>
+<area shape="rect" href="classPeripheralController.html#a2201ca5e4db0cc5c9f1752fa53e84ae9" title=" " alt="" coords="266,9,401,51"/>
+<area shape="rect" href="classLogicController.html#a49666b935f10b9aefeee99077a952c57" title=" " alt="" coords="256,75,411,102"/>
+<area shape="rect" href="classPeripheralController.html#a71116d770eed041b2b30a084d82a6f5b" title=" " alt="" coords="27,17,186,43"/>
+<area shape="rect" href="classLogicController.html#adebf682fbc49020f4d382211084726d4" title=" " alt="" coords="5,75,208,102"/>
+<area shape="rect" href="classPeripheralController.html#af5dac1876a799cb918e1482271a8635a" title=" " alt="" coords="644,71,784,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a255298abd8562933f5b1044b46173d11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a255298abd8562933f5b1044b46173d11">&#9670;&nbsp;</a></span>freqHardware</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int PWMController::freqHardware = 375</td>
         </tr>
       </table>
   </td>
@@ -390,8 +611,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a772fff97280dc787d838689767249c1f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a772fff97280dc787d838689767249c1f">&#9670;&nbsp;</a></span>pwmRange</h2>
+<a id="a2080d6f8661d69d50bf6c23aec38290a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2080d6f8661d69d50bf6c23aec38290a">&#9670;&nbsp;</a></span>pwmRange</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -400,7 +621,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int PWMController::pwmRange = 255</td>
+          <td class="memname">unsigned int PWMController::pwmRange = 255</td>
         </tr>
       </table>
   </td>

@@ -1,16 +1,21 @@
 <map id="PeripheralController" name="PeripheralController">
-<area shape="rect" id="node1" title="Класс управления периферией робота" alt="" coords="329,903,508,1376"/>
-<area shape="rect" id="node2" href="$classTimerCallback_1_1Runnable.html" title="Runnable class for overloading run function." alt="" coords="5,439,171,531"/>
-<area shape="rect" id="node12" href="$classTimerCallback.html" title="Timer callback wrapper for CppTimer class." alt="" coords="185,689,370,796"/>
-<area shape="rect" id="node3" href="$classRegisterController.html" title="Класс контроллера регистров" alt="" coords="555,645,706,840"/>
-<area shape="rect" id="node4" href="$classHC165.html" title="Класс работы с регистром 74HC165." alt="" coords="653,410,768,561"/>
-<area shape="rect" id="node5" href="$structRegisterSettings.html" title="Структура для хранения параметров регистров" alt="" coords="527,226,646,303"/>
-<area shape="rect" id="node9" href="$classHC595.html" title="Класс работы с регистром 74HC595." alt="" coords="793,388,898,583"/>
-<area shape="rect" id="node10" href="$structPeripheralSettings.html" title="Структура для хранения пинов и настроек оборудования периферии" alt="" coords="355,447,483,524"/>
-<area shape="rect" id="node6" href="$structRegisterSettings_1_1General.html" title="Общие настройки регистров." alt="" coords="298,35,467,112"/>
-<area shape="rect" id="node7" href="$structRegisterSettings_1_1HC165Pins.html" title="Структура для хранения пинов входного регистра" alt="" coords="491,13,682,134"/>
-<area shape="rect" id="node8" href="$structRegisterSettings_1_1HC595Pins.html" title="Структура для хранения пинов выходного регистра" alt="" coords="706,5,897,141"/>
-<area shape="rect" id="node11" href="$structPWMPins.html" title="Структура для хранения пинов PWM." alt="" coords="321,204,437,325"/>
-<area shape="rect" id="node13" href="$classTimer.html" title="Timer class, wrapper around the POSIX per&#45;process timer." alt="" coords="227,417,330,553"/>
-<area shape="rect" id="node14" href="$classPWMController.html" title="Класс управления PWM сигналами" alt="" coords="730,653,873,833"/>
+<area shape="rect" id="node1" title="Класс управления периферией робота" alt="" coords="457,1269,629,1728"/>
+<area shape="rect" id="node2" href="$classTimerCallback_1_1Runnable.html" title="Runnable class for overloading run function." alt="" coords="5,645,171,737"/>
+<area shape="rect" id="node17" href="$classTimerCallback.html" title="Timer callback wrapper for CppTimer class." alt="" coords="157,1012,342,1119"/>
+<area shape="rect" id="node3" href="$classRegisterController.html" title="Класс контроллера регистров" alt="" coords="737,968,887,1163"/>
+<area shape="rect" id="node4" href="$classHC165.html" title="Класс работы с регистром 74HC165." alt="" coords="1047,615,1161,766"/>
+<area shape="rect" id="node5" href="$structRegisterSettings.html" title="Структура для хранения параметров регистров" alt="" coords="845,329,963,406"/>
+<area shape="rect" id="node9" href="$classHC595.html" title="Класс работы с регистром 74HC595." alt="" coords="765,593,870,788"/>
+<area shape="rect" id="node10" href="$structPeripheralSettings.html" title="Структура для хранения пинов и настроек оборудования периферии" alt="" coords="513,652,641,729"/>
+<area shape="rect" id="node6" href="$structRegisterSettings_1_1General.html" title="Общие настройки регистров." alt="" coords="819,35,989,112"/>
+<area shape="rect" id="node7" href="$structRegisterSettings_1_1HC165Pins.html" title="Структура для хранения пинов входного регистра" alt="" coords="1013,13,1203,134"/>
+<area shape="rect" id="node8" href="$structRegisterSettings_1_1HC595Pins.html" title="Структура для хранения пинов выходного регистра" alt="" coords="605,5,795,141"/>
+<area shape="rect" id="node11" href="$structMotorSettings.html" title="Структура для хранения настроек энкодеров" alt="" coords="373,321,499,413"/>
+<area shape="rect" id="node15" href="$classMotor.html" title=" " alt="" coords="355,630,461,751"/>
+<area shape="rect" id="node12" href="$structPWMPins.html" title="Структура для хранения пинов PWM." alt="" coords="685,307,801,428"/>
+<area shape="rect" id="node13" href="$structEncoderSettings.html" title="Структура для хранения настроек энкодеров" alt="" coords="323,20,482,127"/>
+<area shape="rect" id="node16" href="$classEncoder.html" title=" " alt="" coords="207,204,345,531"/>
+<area shape="rect" id="node14" href="$classMotorController.html" title=" " alt="" coords="367,975,529,1155"/>
+<area shape="rect" id="node18" href="$classTimer.html" title="Timer class, wrapper around the POSIX per&#45;process timer." alt="" coords="227,623,330,759"/>
+<area shape="rect" id="node19" href="$classPWMController.html" title="Класс управления PWM сигналами" alt="" coords="911,924,1054,1207"/>
 </map>

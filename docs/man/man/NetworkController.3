@@ -1,4 +1,4 @@
-.TH "NetworkController" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.TH "NetworkController" 3 "Tue Jun 21 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -15,7 +15,7 @@ NetworkController
 .RI "\fBNetworkController\fP (AMUR::AmurControls *const \fBcontrols\fP, AMUR::AmurSensors *const \fBsensors\fP)"
 .br
 .ti -1c
-.RI "int \fBrunClient\fP (std::string &server_address)"
+.RI "int \fBrunClient\fP (std::string &server_address, bool tryConnectIfFailed=true)"
 .br
 .ti -1c
 .RI "int \fBrunServer\fP (std::string &address_mask)"
@@ -46,7 +46,7 @@ NetworkController
 
 .SH "Member Function Documentation"
 .PP 
-.SS "int NetworkController::runClient (std::string & server_address)"
+.SS "int NetworkController::runClient (std::string & server_address, bool tryConnectIfFailed = \fCtrue\fP)"
 
 .SS "int NetworkController::runServer (std::string & address_mask)"
 

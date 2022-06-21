@@ -1,7 +1,7 @@
 var classNetworkController =
 [
     [ "NetworkController", "classNetworkController.html#a43ec8cbc168e2aad5c2728594c579a85", null ],
-    [ "runClient", "classNetworkController.html#a0a23911025a48814505b4f9abcacd839", null ],
+    [ "runClient", "classNetworkController.html#a4fb7019ae7f9692b1f96385608b11ab6", null ],
     [ "runServer", "classNetworkController.html#a65637245c5c3a4f3e07a1507232340cf", null ],
     [ "builder", "classNetworkController.html#a030fa2be52a5be3d9fbeaa2344003726", null ],
     [ "clientStatus", "classNetworkController.html#a359fa99529c7cae60f37c9fab7c66080", null ],

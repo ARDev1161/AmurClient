@@ -100,48 +100,82 @@ Collaboration diagram for PeripheralSettings:</div>
 <div class="dyncontent">
 <div class="center"><img src="structPeripheralSettings__coll__graph.png" border="0" usemap="#aPeripheralSettings_coll__map" alt="Collaboration graph"/></div>
 <map name="aPeripheralSettings_coll__map" id="aPeripheralSettings_coll__map">
-<area shape="rect" title="Структура для хранения пинов и настроек оборудования периферии" alt="" coords="325,388,453,465"/>
+<area shape="rect" title="Структура для хранения пинов и настроек оборудования периферии" alt="" coords="449,388,577,465"/>
 <area shape="rect" href="structRegisterSettings.html" title="Структура для хранения параметров регистров" alt="" coords="235,226,353,303"/>
 <area shape="rect" href="structRegisterSettings_1_1General.html" title="Общие настройки регистров." alt="" coords="5,35,175,112"/>
 <area shape="rect" href="structRegisterSettings_1_1HC165Pins.html" title="Структура для хранения пинов входного регистра" alt="" coords="199,13,389,134"/>
 <area shape="rect" href="structRegisterSettings_1_1HC595Pins.html" title="Структура для хранения пинов выходного регистра" alt="" coords="413,5,604,141"/>
-<area shape="rect" href="structPWMPins.html" title="Структура для хранения пинов PWM." alt="" coords="377,204,493,325"/>
+<area shape="rect" href="structMotorSettings.html" title="Структура для хранения настроек энкодеров" alt="" coords="377,219,504,311"/>
+<area shape="rect" href="structPWMPins.html" title="Структура для хранения пинов PWM." alt="" coords="528,204,644,325"/>
+<area shape="rect" href="structEncoderSettings.html" title="Структура для хранения настроек энкодеров" alt="" coords="668,211,827,318"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ad0e32994fc766551fe140099dbd22097"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structRegisterSettings.html">RegisterSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPeripheralSettings.html#ad0e32994fc766551fe140099dbd22097">registers</a></td></tr>
-<tr class="separator:ad0e32994fc766551fe140099dbd22097"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae680b31924284de01d875a63de22201e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPWMPins.html">PWMPins</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPeripheralSettings.html#ae680b31924284de01d875a63de22201e">pwm</a></td></tr>
-<tr class="separator:ae680b31924284de01d875a63de22201e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a326ba5c3b61ef396e4e5c1edf7671860"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structEncoderSettings.html">EncoderSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPeripheralSettings.html#a326ba5c3b61ef396e4e5c1edf7671860">encoderSettings</a></td></tr>
+<tr class="separator:a326ba5c3b61ef396e4e5c1edf7671860"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a749b14c55321c1d4cf470d4af5c9e5a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMotorSettings.html">MotorSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPeripheralSettings.html#a749b14c55321c1d4cf470d4af5c9e5a2">motorSettings</a></td></tr>
+<tr class="separator:a749b14c55321c1d4cf470d4af5c9e5a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f09cab4b41352c56e2a3ab277ba8f01"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structRegisterSettings.html">RegisterSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPeripheralSettings.html#a1f09cab4b41352c56e2a3ab277ba8f01">registerSettings</a></td></tr>
+<tr class="separator:a1f09cab4b41352c56e2a3ab277ba8f01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8de9175a86f1ddf8688fa9418b9a15cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPWMPins.html">PWMPins</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPeripheralSettings.html#a8de9175a86f1ddf8688fa9418b9a15cf">pwmSettings</a></td></tr>
+<tr class="separator:a8de9175a86f1ddf8688fa9418b9a15cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Структура для хранения пинов и настроек оборудования периферии </p>
 <p>Данная структура хранит набор пинов и настроек оборудования периферии. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="ae680b31924284de01d875a63de22201e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae680b31924284de01d875a63de22201e">&#9670;&nbsp;</a></span>pwm</h2>
+<a id="a326ba5c3b61ef396e4e5c1edf7671860"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a326ba5c3b61ef396e4e5c1edf7671860">&#9670;&nbsp;</a></span>encoderSettings</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structPWMPins.html">PWMPins</a> PeripheralSettings::pwm</td>
+          <td class="memname"><a class="el" href="structEncoderSettings.html">EncoderSettings</a> PeripheralSettings::encoderSettings</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="ad0e32994fc766551fe140099dbd22097"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0e32994fc766551fe140099dbd22097">&#9670;&nbsp;</a></span>registers</h2>
+<a id="a749b14c55321c1d4cf470d4af5c9e5a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a749b14c55321c1d4cf470d4af5c9e5a2">&#9670;&nbsp;</a></span>motorSettings</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structRegisterSettings.html">RegisterSettings</a> PeripheralSettings::registers</td>
+          <td class="memname"><a class="el" href="structMotorSettings.html">MotorSettings</a> PeripheralSettings::motorSettings</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8de9175a86f1ddf8688fa9418b9a15cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8de9175a86f1ddf8688fa9418b9a15cf">&#9670;&nbsp;</a></span>pwmSettings</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPWMPins.html">PWMPins</a> PeripheralSettings::pwmSettings</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1f09cab4b41352c56e2a3ab277ba8f01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f09cab4b41352c56e2a3ab277ba8f01">&#9670;&nbsp;</a></span>registerSettings</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structRegisterSettings.html">RegisterSettings</a> PeripheralSettings::registerSettings</td>
         </tr>
       </table>
 </div><div class="memdoc">

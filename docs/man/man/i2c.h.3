@@ -1,4 +1,4 @@
-.TH "modules/interfaces/i2c/i2c.h" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.TH "modules/interfaces/i2c/i2c.h" 3 "Tue Jun 21 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -21,6 +21,47 @@ modules/interfaces/i2c/i2c.h
 .br
 .RI "Класс работы с интерфейсом \fBI2C\fP\&. "
 .in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBRS\fP   (sizeof(gpioReport_t))"
+.br
+.ti -1c
+.RI "#define \fBSCL_FALLING\fP   0"
+.br
+.ti -1c
+.RI "#define \fBSCL_RISING\fP   1"
+.br
+.ti -1c
+.RI "#define \fBSCL_STEADY\fP   2"
+.br
+.ti -1c
+.RI "#define \fBSDA_FALLING\fP   0"
+.br
+.ti -1c
+.RI "#define \fBSDA_RISING\fP   4"
+.br
+.ti -1c
+.RI "#define \fBSDA_STEADY\fP   8"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define RS   (sizeof(gpioReport_t))"
+
+.SS "#define SCL_FALLING   0"
+
+.SS "#define SCL_RISING   1"
+
+.SS "#define SCL_STEADY   2"
+
+.SS "#define SDA_FALLING   0"
+
+.SS "#define SDA_RISING   4"
+
+.SS "#define SDA_STEADY   8"
+
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for AmurClient from the source code\&.

@@ -85,6 +85,8 @@ $(document).ready(function(){initNavTree('classI2C.html',''); initResizable(); }
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="classI2C-members.html">List of all members</a>  </div>
@@ -102,7 +104,7 @@ Collaboration diagram for I2C:</div>
 <div class="dyncontent">
 <div class="center"><img src="classI2C__coll__graph.png" border="0" usemap="#aI2C_coll__map" alt="Collaboration graph"/></div>
 <map name="aI2C_coll__map" id="aI2C_coll__map">
-<area shape="rect" title="Класс работы с интерфейсом I2C." alt="" coords="5,5,99,141"/>
+<area shape="rect" title="Класс работы с интерфейсом I2C." alt="" coords="5,5,124,347"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -110,11 +112,59 @@ Collaboration diagram for I2C:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7a9a84fccdacb3346ff97d6f3e158850"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#a7a9a84fccdacb3346ff97d6f3e158850">I2C</a> ()</td></tr>
 <tr class="separator:a7a9a84fccdacb3346ff97d6f3e158850"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0f331dcdab94270fc93fd12baac7a7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#ab0f331dcdab94270fc93fd12baac7a7d">init</a> ()</td></tr>
-<tr class="separator:ab0f331dcdab94270fc93fd12baac7a7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c932f65915ba95e9a2c091314fa877f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#a5c932f65915ba95e9a2c091314fa877f">open</a> ()</td></tr>
+<tr class="separator:a5c932f65915ba95e9a2c091314fa877f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a471f8ec5df552b48a69d2ce0bf093da1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#a471f8ec5df552b48a69d2ce0bf093da1">close</a> (unsigned handle)</td></tr>
+<tr class="separator:a471f8ec5df552b48a69d2ce0bf093da1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac39cf1a4686eba87190b90ad90e6b153"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#ac39cf1a4686eba87190b90ad90e6b153">scanBus</a> (int gSCL, int gSDA)</td></tr>
+<tr class="separator:ac39cf1a4686eba87190b90ad90e6b153"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a451175b96d69aabf22f446776dd8871f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#a451175b96d69aabf22f446776dd8871f">read</a> (<a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a> handle, <a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a> value)</td></tr>
+<tr class="separator:a451175b96d69aabf22f446776dd8871f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7964e51146174b5bc787ba0e50cf264"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#ae7964e51146174b5bc787ba0e50cf264">write</a> (<a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a> handle, <a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a> value)</td></tr>
+<tr class="separator:ae7964e51146174b5bc787ba0e50cf264"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2da30f99b9cccc72c24a91eeee3e7038"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#a2da30f99b9cccc72c24a91eeee3e7038">writeBit</a> (<a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a> handle, bool value)</td></tr>
+<tr class="separator:a2da30f99b9cccc72c24a91eeee3e7038"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acec9f8d4a510e8b4294d1298673660fb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#acec9f8d4a510e8b4294d1298673660fb">readRegByte</a> (<a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a> handle, <a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a> value)</td></tr>
+<tr class="separator:acec9f8d4a510e8b4294d1298673660fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0dca3f07ff8a5bb86e681ce9639950c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#ad0dca3f07ff8a5bb86e681ce9639950c">writeRegByte</a> (<a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a> handle, <a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a> value)</td></tr>
+<tr class="separator:ad0dca3f07ff8a5bb86e681ce9639950c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8db40d4e59ca479daf2c1f96f1aeb4e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#aa8db40d4e59ca479daf2c1f96f1aeb4e">readRegWord</a> (<a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a> handle, int value)</td></tr>
+<tr class="separator:aa8db40d4e59ca479daf2c1f96f1aeb4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf6e8f0760d6281750f3bc097433c0aa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#adf6e8f0760d6281750f3bc097433c0aa">writeRegWord</a> (<a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a> handle, int value)</td></tr>
+<tr class="separator:adf6e8f0760d6281750f3bc097433c0aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77a3e481b2faf82da0faf38538e092d9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#a77a3e481b2faf82da0faf38538e092d9">exchangeRegWord</a> (<a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a> handle, int value)</td></tr>
+<tr class="separator:a77a3e481b2faf82da0faf38538e092d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc8d2f855962c8a800b240d161449eb0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#afc8d2f855962c8a800b240d161449eb0">readRegBlock</a> (unsigned handle, unsigned i2cReg, char *buf)</td></tr>
+<tr class="separator:afc8d2f855962c8a800b240d161449eb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2106c47f92c701a382f056fe58817fd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#ab2106c47f92c701a382f056fe58817fd">writeRegBlock</a> (unsigned handle, unsigned i2cReg, char *buf, unsigned count)</td></tr>
+<tr class="separator:ab2106c47f92c701a382f056fe58817fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa87d4d45303d691c67e6a2cafe6fa6be"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#aa87d4d45303d691c67e6a2cafe6fa6be">exchangeRegBlock</a> (unsigned handle, unsigned i2cReg, char *buf, unsigned count)</td></tr>
+<tr class="separator:aa87d4d45303d691c67e6a2cafe6fa6be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7f80cd8be7090c042aa5c40a488845b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#ac7f80cd8be7090c042aa5c40a488845b">readRegI2CBlock</a> (unsigned handle, unsigned i2cReg, char *buf, unsigned count)</td></tr>
+<tr class="separator:ac7f80cd8be7090c042aa5c40a488845b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42aff55abb91b65739652ca13b1f644b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#a42aff55abb91b65739652ca13b1f644b">writeRegI2CBlock</a> (unsigned handle, unsigned i2cReg, char *buf, unsigned count)</td></tr>
+<tr class="separator:a42aff55abb91b65739652ca13b1f644b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:a6ce1f533a4279bf3b3ea9e773e8aef08"><td class="memItemLeft" align="right" valign="top">typedef unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a></td></tr>
+<tr class="separator:a6ce1f533a4279bf3b3ea9e773e8aef08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:abc596a02466871ac997a97910d96dc9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#abc596a02466871ac997a97910d96dc9e">parse_I2C</a> (int <a class="el" href="classI2C.html#abe1505568799b0749aab83263f3b5977">SCL</a>, int <a class="el" href="classI2C.html#a04211c571fa4bcc29540a1aba16f1323">SDA</a>)</td></tr>
+<tr class="separator:abc596a02466871ac997a97910d96dc9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:abe1505568799b0749aab83263f3b5977"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#abe1505568799b0749aab83263f3b5977">SCL</a></td></tr>
+<tr class="separator:abe1505568799b0749aab83263f3b5977"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04211c571fa4bcc29540a1aba16f1323"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#a04211c571fa4bcc29540a1aba16f1323">SDA</a></td></tr>
+<tr class="separator:a04211c571fa4bcc29540a1aba16f1323"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95ba1017d5a4eee772e25cf909557673"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#a95ba1017d5a4eee772e25cf909557673">xSCL</a></td></tr>
+<tr class="separator:a95ba1017d5a4eee772e25cf909557673"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f597ce8c0991dc0777e9af11378b583"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#a7f597ce8c0991dc0777e9af11378b583">r</a></td></tr>
+<tr class="separator:a7f597ce8c0991dc0777e9af11378b583"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63cf4fb190446f9b391f2ea28ef3f2dd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#a63cf4fb190446f9b391f2ea28ef3f2dd">fd</a></td></tr>
 <tr class="separator:a63cf4fb190446f9b391f2ea28ef3f2dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65de3ff70b3edeacc3505e0e37cc9926"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classI2C.html#a65de3ff70b3edeacc3505e0e37cc9926">result</a></td></tr>
@@ -130,7 +180,30 @@ Static Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Класс работы с интерфейсом <a class="el" href="classI2C.html" title="Класс работы с интерфейсом I2C.">I2C</a>. </p>
 <p>Данный класс инкапсулирует взаимодействие с интерфейсом <a class="el" href="classI2C.html" title="Класс работы с интерфейсом I2C.">I2C</a>. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a6ce1f533a4279bf3b3ea9e773e8aef08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ce1f533a4279bf3b3ea9e773e8aef08">&#9670;&nbsp;</a></span>byte_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned char <a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">I2C::byte_t</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7a9a84fccdacb3346ff97d6f3e158850"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7a9a84fccdacb3346ff97d6f3e158850">&#9670;&nbsp;</a></span>I2C()</h2>
 
@@ -150,17 +223,545 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab0f331dcdab94270fc93fd12baac7a7d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab0f331dcdab94270fc93fd12baac7a7d">&#9670;&nbsp;</a></span>init()</h2>
+<a id="a471f8ec5df552b48a69d2ce0bf093da1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a471f8ec5df552b48a69d2ce0bf093da1">&#9670;&nbsp;</a></span>close()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void I2C::init </td>
+          <td class="memname">int I2C::close </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa87d4d45303d691c67e6a2cafe6fa6be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa87d4d45303d691c67e6a2cafe6fa6be">&#9670;&nbsp;</a></span>exchangeRegBlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::exchangeRegBlock </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>i2cReg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a77a3e481b2faf82da0faf38538e092d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77a3e481b2faf82da0faf38538e092d9">&#9670;&nbsp;</a></span>exchangeRegWord()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::exchangeRegWord </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5c932f65915ba95e9a2c091314fa877f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c932f65915ba95e9a2c091314fa877f">&#9670;&nbsp;</a></span>open()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::open </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abc596a02466871ac997a97910d96dc9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc596a02466871ac997a97910d96dc9e">&#9670;&nbsp;</a></span>parse_I2C()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void I2C::parse_I2C </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>SCL</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>SDA</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classI2C_abc596a02466871ac997a97910d96dc9e_icgraph.png" border="0" usemap="#aclassI2C_abc596a02466871ac997a97910d96dc9e_icgraph" alt=""/></div>
+<map name="aclassI2C_abc596a02466871ac997a97910d96dc9e_icgraph" id="aclassI2C_abc596a02466871ac997a97910d96dc9e_icgraph">
+<area shape="rect" title=" " alt="" coords="152,5,259,32"/>
+<area shape="rect" href="classI2C.html#ac39cf1a4686eba87190b90ad90e6b153" title=" " alt="" coords="5,5,104,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a451175b96d69aabf22f446776dd8871f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a451175b96d69aabf22f446776dd8871f">&#9670;&nbsp;</a></span>read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::read </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classI2C_a451175b96d69aabf22f446776dd8871f_icgraph.png" border="0" usemap="#aclassI2C_a451175b96d69aabf22f446776dd8871f_icgraph" alt=""/></div>
+<map name="aclassI2C_a451175b96d69aabf22f446776dd8871f_icgraph" id="aclassI2C_a451175b96d69aabf22f446776dd8871f_icgraph">
+<area shape="rect" title=" " alt="" coords="152,5,225,32"/>
+<area shape="rect" href="classI2C.html#ac39cf1a4686eba87190b90ad90e6b153" title=" " alt="" coords="5,5,104,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afc8d2f855962c8a800b240d161449eb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc8d2f855962c8a800b240d161449eb0">&#9670;&nbsp;</a></span>readRegBlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::readRegBlock </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>i2cReg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acec9f8d4a510e8b4294d1298673660fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acec9f8d4a510e8b4294d1298673660fb">&#9670;&nbsp;</a></span>readRegByte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::readRegByte </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac7f80cd8be7090c042aa5c40a488845b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7f80cd8be7090c042aa5c40a488845b">&#9670;&nbsp;</a></span>readRegI2CBlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::readRegI2CBlock </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>i2cReg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa8db40d4e59ca479daf2c1f96f1aeb4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8db40d4e59ca479daf2c1f96f1aeb4e">&#9670;&nbsp;</a></span>readRegWord()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::readRegWord </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac39cf1a4686eba87190b90ad90e6b153"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac39cf1a4686eba87190b90ad90e6b153">&#9670;&nbsp;</a></span>scanBus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::scanBus </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gSCL</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>gSDA</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classI2C_ac39cf1a4686eba87190b90ad90e6b153_cgraph.png" border="0" usemap="#aclassI2C_ac39cf1a4686eba87190b90ad90e6b153_cgraph" alt=""/></div>
+<map name="aclassI2C_ac39cf1a4686eba87190b90ad90e6b153_cgraph" id="aclassI2C_ac39cf1a4686eba87190b90ad90e6b153_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,104,57"/>
+<area shape="rect" href="classI2C.html#abc596a02466871ac997a97910d96dc9e" title=" " alt="" coords="152,5,259,32"/>
+<area shape="rect" href="classI2C.html#a451175b96d69aabf22f446776dd8871f" title=" " alt="" coords="169,56,242,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae7964e51146174b5bc787ba0e50cf264"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7964e51146174b5bc787ba0e50cf264">&#9670;&nbsp;</a></span>write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::write </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2da30f99b9cccc72c24a91eeee3e7038"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2da30f99b9cccc72c24a91eeee3e7038">&#9670;&nbsp;</a></span>writeBit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::writeBit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab2106c47f92c701a382f056fe58817fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2106c47f92c701a382f056fe58817fd">&#9670;&nbsp;</a></span>writeRegBlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::writeRegBlock </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>i2cReg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad0dca3f07ff8a5bb86e681ce9639950c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0dca3f07ff8a5bb86e681ce9639950c">&#9670;&nbsp;</a></span>writeRegByte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::writeRegByte </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a42aff55abb91b65739652ca13b1f644b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42aff55abb91b65739652ca13b1f644b">&#9670;&nbsp;</a></span>writeRegI2CBlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::writeRegI2CBlock </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>i2cReg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adf6e8f0760d6281750f3bc097433c0aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf6e8f0760d6281750f3bc097433c0aa">&#9670;&nbsp;</a></span>writeRegWord()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::writeRegWord </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classI2C.html#a6ce1f533a4279bf3b3ea9e773e8aef08">byte_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -234,6 +835,28 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a7f597ce8c0991dc0777e9af11378b583"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f597ce8c0991dc0777e9af11378b583">&#9670;&nbsp;</a></span>r</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::r</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a65de3ff70b3edeacc3505e0e37cc9926"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a65de3ff70b3edeacc3505e0e37cc9926">&#9670;&nbsp;</a></span>result</h2>
 
@@ -245,6 +868,72 @@ Static Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">int I2C::result</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abe1505568799b0749aab83263f3b5977"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe1505568799b0749aab83263f3b5977">&#9670;&nbsp;</a></span>SCL</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::SCL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a04211c571fa4bcc29540a1aba16f1323"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04211c571fa4bcc29540a1aba16f1323">&#9670;&nbsp;</a></span>SDA</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::SDA</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a95ba1017d5a4eee772e25cf909557673"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95ba1017d5a4eee772e25cf909557673">&#9670;&nbsp;</a></span>xSCL</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int I2C::xSCL</td>
         </tr>
       </table>
   </td>

@@ -1,0 +1,536 @@
+.TH "Pilot" 3 "Tue Jun 21 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Pilot
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <pilot\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPilot\fP ()"
+.br
+.ti -1c
+.RI "\fB~Pilot\fP ()"
+.br
+.ti -1c
+.RI "bool \fBPilotStatus\fP ()"
+.br
+.ti -1c
+.RI "bool \fBOpen\fP (ref clsPosition aPosition, ref clsLocalPath aLocalPath) void Close()"
+.br
+.ti -1c
+.RI "void \fBCheckStatus\fP ()"
+.br
+.ti -1c
+.RI "void \fBStopMoving\fP (int Reason=1)"
+.br
+.ti -1c
+.RI "void \fBStopAndWait\fP (int Reason=1)"
+.br
+.ti -1c
+.RI "int \fBPrepareToMove\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetForward\fP (bool Val)"
+.br
+.ti -1c
+.RI "bool \fBIsForward\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdateLocalPath\fP (double aX, double aY, double aA)"
+.br
+.ti -1c
+.RI "void \fBMove\fP (double aX, double aY, double aA, double aVel, double aOmg, double aTS)"
+.br
+.ti -1c
+.RI "void \fBSetControlVels\fP (double \fBcntrVel\fP, double \fBcntrOmg\fP, ref double cntrVelL, ref double cntrVelR)"
+.br
+.ti -1c
+.RI "void \fBReactionTest\fP (double odoTimeStamp, double currTimeStamp)"
+.br
+.ti -1c
+.RI "void \fBSetPathParams\fP (double ak1, double ak2, double akVel, double akOmg, double akTurn)"
+.br
+.ti -1c
+.RI "void \fBResetPathChart\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetBumpers\fP (string aDir, bool aVal)"
+.br
+.ti -1c
+.RI "void \fBWriteReactionTestHeader\fP ()"
+.br
+.ti -1c
+.RI "void \fBWriteLogHeader\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetObstDist\fP (string aDir, int aVal)"
+.br
+.ti -1c
+.RI "void \fBSetManual\fP (bool aVal)"
+.br
+.ti -1c
+.RI "void \fBExecManual\fP (string aDirection, bool varTrue)"
+.br
+.ti -1c
+.RI "void \fBShowDirection\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBvarPredictPose\fP"
+.br
+.ti -1c
+.RI "double \fBvarDelTime\fP"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBMotorControl_Error\fP (string aDesc)"
+.br
+.ti -1c
+.RI "void \fBMotorControl_Status\fP (bool aStatus)"
+.br
+.ti -1c
+.RI "void \fBSimulator_Status\fP ()"
+.br
+.ti -1c
+.RI "bool \fBBumpersOff\fP ()"
+.br
+.ti -1c
+.RI "void \fBGetParamsFromIniFile\fP ()"
+.br
+.ti -1c
+.RI "void \fBSaveParamsToIniFile\fP ()"
+.br
+.ti -1c
+.RI "void \fBWriteLogData\fP (double aX, double aY, double aA, double aVel, double aOmg, double tX, double tY, double tA, double tVel, double tOmg, ref double cVel, double cOmg, double aTS, double calcTime)"
+.br
+.ti -1c
+.RI "void \fBWriteReactionTestData\fP (double aX, double aY, double aA, double aVel, double aOmg, double cVel, double cOmg, double cVelL, double cVelR, double mVelL, double mVelR, double odoTS, double currTS)"
+.br
+.ti -1c
+.RI "void \fBPrintEndMoving\fP (int Reason)"
+.br
+.ti -1c
+.RI "void \fBPrintHeader\fP (string aHead)"
+.br
+.ti -1c
+.RI "void \fBPrintFooter\fP (string aFoot)"
+.br
+.ti -1c
+.RI "void \fBWrite1Line\fP ()"
+.br
+.ti -1c
+.RI "void \fBWrite2Line\fP ()"
+.br
+.ti -1c
+.RI "void \fBWriteLog\fP (string aMes)"
+.br
+.ti -1c
+.RI "void \fBWriteEventLog\fP (string aMes)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "const double \fBcReactionTest\fP = 0"
+.br
+.ti -1c
+.RI "const int \fBcReactionTestRotate\fP = 0"
+.br
+.ti -1c
+.RI "const double \fBcReactionTestTime\fP = 1000"
+.br
+.ti -1c
+.RI "const int \fBcTickerRate\fP = 500"
+.br
+.ti -1c
+.RI "const bool \fBcBlackBoxToBeOn\fP = false"
+.br
+.ti -1c
+.RI "const bool \fBcShowPathChart\fP = false"
+.br
+.ti -1c
+.RI "const int \fBcMaxGateCount\fP = 50"
+.br
+.ti -1c
+.RI "std::string \fBvarIniFile\fP"
+.br
+.ti -1c
+.RI "int \fBvarDebug\fP"
+.br
+.ti -1c
+.RI "std::string \fBvarLogFile\fP"
+.br
+.ti -1c
+.RI "std::string \fBvarLogDir\fP"
+.br
+.ti -1c
+.RI "std::string \fBvarLog\fP"
+.br
+.ti -1c
+.RI "bool \fBisBlackBoxToBeOn\fP"
+.br
+.ti -1c
+.RI "bool \fBisBlackBoxOn\fP"
+.br
+.ti -1c
+.RI "int \fBvarPathID\fP"
+.br
+.ti -1c
+.RI "bool \fBshowPathChart\fP"
+.br
+.ti -1c
+.RI "int \fBvarMotrID\fP"
+.br
+.ti -1c
+.RI "bool \fBvarManual\fP"
+.br
+.ti -1c
+.RI "bool \fBvarBlocked\fP"
+.br
+.ti -1c
+.RI "bool \fBbFL\fP"
+.br
+.ti -1c
+.RI "bool \fBbFR\fP"
+.br
+.ti -1c
+.RI "bool \fBbFSL\fP"
+.br
+.ti -1c
+.RI "bool \fBbFSR\fP"
+.br
+.ti -1c
+.RI "bool \fBbBL\fP"
+.br
+.ti -1c
+.RI "bool \fBbBR\fP"
+.br
+.ti -1c
+.RI "bool \fBbBSL\fP"
+.br
+.ti -1c
+.RI "bool \fBbBSR\fP"
+.br
+.ti -1c
+.RI "int \fBdistBSL\fP"
+.br
+.ti -1c
+.RI "int \fBdistBSR\fP"
+.br
+.ti -1c
+.RI "bool \fBisOn\fP"
+.br
+.ti -1c
+.RI "double \fBvarReactionTest\fP"
+.br
+.ti -1c
+.RI "int \fBvarReactionTestRotate\fP"
+.br
+.ti -1c
+.RI "double \fBvarReactionTestTime\fP"
+.br
+.ti -1c
+.RI "int \fBvarCount\fP"
+.br
+.ti -1c
+.RI "clsGate[] \fBvarGates\fP"
+.br
+.ti -1c
+.RI "double \fBrbtX\fP"
+.br
+.ti -1c
+.RI "double \fBrbtY\fP"
+.br
+.ti -1c
+.RI "double \fBrbtA\fP"
+.br
+.ti -1c
+.RI "double \fBrbtVel\fP"
+.br
+.ti -1c
+.RI "double \fBrbtOmg\fP"
+.br
+.ti -1c
+.RI "double \fBtrgX\fP"
+.br
+.ti -1c
+.RI "double \fBtrgY\fP"
+.br
+.ti -1c
+.RI "double \fBtrgA\fP"
+.br
+.ti -1c
+.RI "double \fBtrgVel\fP"
+.br
+.ti -1c
+.RI "double \fBtrgOmg\fP"
+.br
+.ti -1c
+.RI "double \fBcntrVel\fP"
+.br
+.ti -1c
+.RI "double \fBcntrOmg\fP"
+.br
+.ti -1c
+.RI "bool \fBvarForward\fP"
+.br
+.ti -1c
+.RI "int \fBvarMoving\fP"
+.br
+.ti -1c
+.RI "int \fBvarTurnMode\fP"
+.br
+.ti -1c
+.RI "bool \fBprevForward\fP"
+.br
+.ti -1c
+.RI "int \fBprevMoving\fP"
+.br
+.ti -1c
+.RI "int \fBprevTurnMode\fP"
+.br
+.ti -1c
+.RI "double \fBprevTimeStamp\fP"
+.br
+.ti -1c
+.RI "LocalPath \fBlocalPath\fP"
+.br
+.ti -1c
+.RI "Position \fBposition\fP"
+.br
+.ti -1c
+.RI "TargetPath \fBtargetPath\fP"
+.br
+.ti -1c
+.RI "MotorControl \fBmotorControl\fP"
+.br
+.ti -1c
+.RI "PilotBlackBox \fBblackBox\fP"
+.br
+.ti -1c
+.RI "frmPathChart \fBpathChart\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Pilot::Pilot ()"
+
+.SS "Pilot::~Pilot ()"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "bool Pilot::BumpersOff ()\fC [private]\fP"
+
+.SS "void Pilot::CheckStatus ()"
+
+.SS "void Pilot::ExecManual (string aDirection, bool varTrue)"
+
+.SS "void Pilot::GetParamsFromIniFile ()\fC [private]\fP"
+
+.SS "bool Pilot::IsForward ()"
+
+.SS "void Pilot::MotorControl_Error (string aDesc)\fC [private]\fP"
+
+.SS "void Pilot::MotorControl_Status (bool aStatus)\fC [private]\fP"
+
+.SS "void Pilot::Move (double aX, double aY, double aA, double aVel, double aOmg, double aTS)"
+
+.SS "bool Pilot::Open (ref clsPosition aPosition, ref clsLocalPath aLocalPath)"
+
+.SS "bool Pilot::PilotStatus ()"
+
+.SS "int Pilot::PrepareToMove ()"
+
+.SS "void Pilot::PrintEndMoving (int Reason)\fC [private]\fP"
+
+.SS "void Pilot::PrintFooter (string aFoot)\fC [private]\fP"
+
+.SS "void Pilot::PrintHeader (string aHead)\fC [private]\fP"
+
+.SS "void Pilot::ReactionTest (double odoTimeStamp, double currTimeStamp)"
+
+.SS "void Pilot::ResetPathChart ()"
+
+.SS "void Pilot::SaveParamsToIniFile ()\fC [private]\fP"
+
+.SS "void Pilot::SetBumpers (string aDir, bool aVal)"
+
+.SS "void Pilot::SetControlVels (double cntrVel, double cntrOmg, ref double cntrVelL, ref double cntrVelR)"
+
+.SS "void Pilot::SetForward (bool Val)"
+
+.SS "void Pilot::SetManual (bool aVal)"
+
+.SS "void Pilot::SetObstDist (string aDir, int aVal)"
+
+.SS "void Pilot::SetPathParams (double ak1, double ak2, double akVel, double akOmg, double akTurn)"
+
+.SS "void Pilot::ShowDirection ()"
+
+.SS "void Pilot::Simulator_Status ()\fC [private]\fP"
+
+.SS "void Pilot::StopAndWait (int Reason = \fC1\fP)"
+
+.SS "void Pilot::StopMoving (int Reason = \fC1\fP)"
+
+.SS "void Pilot::UpdateLocalPath (double aX, double aY, double aA)"
+
+.SS "void Pilot::Write1Line ()\fC [private]\fP"
+
+.SS "void Pilot::Write2Line ()\fC [private]\fP"
+
+.SS "void Pilot::WriteEventLog (string aMes)\fC [private]\fP"
+
+.SS "void Pilot::WriteLog (string aMes)\fC [private]\fP"
+
+.SS "void Pilot::WriteLogData (double aX, double aY, double aA, double aVel, double aOmg, double tX, double tY, double tA, double tVel, double tOmg, ref double cVel, double cOmg, double aTS, double calcTime)\fC [private]\fP"
+
+.SS "void Pilot::WriteLogHeader ()"
+
+.SS "void Pilot::WriteReactionTestData (double aX, double aY, double aA, double aVel, double aOmg, double cVel, double cOmg, double cVelL, double cVelR, double mVelL, double mVelR, double odoTS, double currTS)\fC [private]\fP"
+
+.SS "void Pilot::WriteReactionTestHeader ()"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "bool Pilot::bBL\fC [private]\fP"
+
+.SS "bool Pilot::bBR\fC [private]\fP"
+
+.SS "bool Pilot::bBSL\fC [private]\fP"
+
+.SS "bool Pilot::bBSR\fC [private]\fP"
+
+.SS "bool Pilot::bFL\fC [private]\fP"
+
+.SS "bool Pilot::bFR\fC [private]\fP"
+
+.SS "bool Pilot::bFSL\fC [private]\fP"
+
+.SS "bool Pilot::bFSR\fC [private]\fP"
+
+.SS "PilotBlackBox Pilot::blackBox\fC [private]\fP"
+
+.SS "const bool Pilot::cBlackBoxToBeOn = false\fC [private]\fP"
+
+.SS "const int Pilot::cMaxGateCount = 50\fC [private]\fP"
+
+.SS "double Pilot::cntrOmg\fC [private]\fP"
+
+.SS "double Pilot::cntrVel\fC [private]\fP"
+
+.SS "const double Pilot::cReactionTest = 0\fC [private]\fP"
+
+.SS "const int Pilot::cReactionTestRotate = 0\fC [private]\fP"
+
+.SS "const double Pilot::cReactionTestTime = 1000\fC [private]\fP"
+
+.SS "const bool Pilot::cShowPathChart = false\fC [private]\fP"
+
+.SS "const int Pilot::cTickerRate = 500\fC [private]\fP"
+
+.SS "int Pilot::distBSL\fC [private]\fP"
+
+.SS "int Pilot::distBSR\fC [private]\fP"
+
+.SS "bool Pilot::isBlackBoxOn\fC [private]\fP"
+
+.SS "bool Pilot::isBlackBoxToBeOn\fC [private]\fP"
+
+.SS "bool Pilot::isOn\fC [private]\fP"
+
+.SS "LocalPath Pilot::localPath\fC [private]\fP"
+
+.SS "MotorControl Pilot::motorControl\fC [private]\fP"
+
+.SS "frmPathChart Pilot::pathChart\fC [private]\fP"
+
+.SS "Position Pilot::position\fC [private]\fP"
+
+.SS "bool Pilot::prevForward\fC [private]\fP"
+
+.SS "int Pilot::prevMoving\fC [private]\fP"
+
+.SS "double Pilot::prevTimeStamp\fC [private]\fP"
+
+.SS "int Pilot::prevTurnMode\fC [private]\fP"
+
+.SS "double Pilot::rbtA\fC [private]\fP"
+
+.SS "double Pilot::rbtOmg\fC [private]\fP"
+
+.SS "double Pilot::rbtVel\fC [private]\fP"
+
+.SS "double Pilot::rbtX\fC [private]\fP"
+
+.SS "double Pilot::rbtY\fC [private]\fP"
+
+.SS "bool Pilot::showPathChart\fC [private]\fP"
+
+.SS "TargetPath Pilot::targetPath\fC [private]\fP"
+
+.SS "double Pilot::trgA\fC [private]\fP"
+
+.SS "double Pilot::trgOmg\fC [private]\fP"
+
+.SS "double Pilot::trgVel\fC [private]\fP"
+
+.SS "double Pilot::trgX\fC [private]\fP"
+
+.SS "double Pilot::trgY\fC [private]\fP"
+
+.SS "bool Pilot::varBlocked\fC [private]\fP"
+
+.SS "int Pilot::varCount\fC [private]\fP"
+
+.SS "int Pilot::varDebug\fC [private]\fP"
+
+.SS "double Pilot::varDelTime"
+
+.SS "bool Pilot::varForward\fC [private]\fP"
+
+.SS "clsGate [] Pilot::varGates\fC [private]\fP"
+
+.SS "std::string Pilot::varIniFile\fC [private]\fP"
+
+.SS "std::string Pilot::varLog\fC [private]\fP"
+
+.SS "std::string Pilot::varLogDir\fC [private]\fP"
+
+.SS "std::string Pilot::varLogFile\fC [private]\fP"
+
+.SS "bool Pilot::varManual\fC [private]\fP"
+
+.SS "int Pilot::varMotrID\fC [private]\fP"
+
+.SS "int Pilot::varMoving\fC [private]\fP"
+
+.SS "int Pilot::varPathID\fC [private]\fP"
+
+.SS "bool Pilot::varPredictPose"
+
+.SS "double Pilot::varReactionTest\fC [private]\fP"
+
+.SS "int Pilot::varReactionTestRotate\fC [private]\fP"
+
+.SS "double Pilot::varReactionTestTime\fC [private]\fP"
+
+.SS "int Pilot::varTurnMode\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

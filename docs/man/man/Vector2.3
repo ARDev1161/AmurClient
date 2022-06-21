@@ -1,0 +1,92 @@
+.TH "Vector2" 3 "Tue Jun 21 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Vector2
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <vector2\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVector2\fP (int _vX, int _vY)"
+.br
+.ti -1c
+.RI "int \fBgetX\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetY\fP ()"
+.br
+.ti -1c
+.RI "float \fBgetMod\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBVector2\fP \fBv2sum\fP (\fBVector2\fP v1, \fBVector2\fP v2)"
+.br
+.ti -1c
+.RI "static \fBVector2\fP \fBv2sub\fP (\fBVector2\fP v1, \fBVector2\fP v2)"
+.br
+.ti -1c
+.RI "static int \fBv2scalar\fP (\fBVector2\fP v1, \fBVector2\fP v2)"
+.br
+.ti -1c
+.RI "static float \fBv2cos\fP (\fBVector2\fP v1, \fBVector2\fP v2)"
+.br
+.ti -1c
+.RI "static \fBVector2\fP \fBv2rotation\fP (\fBVector2\fP v1, int teta)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBvX\fP"
+.br
+.ti -1c
+.RI "int \fBvY\fP"
+.br
+.ti -1c
+.RI "float \fBmod\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Vector2::Vector2 (int _vX, int _vY)\fC [inline]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "float Vector2::getMod ()\fC [inline]\fP"
+
+.SS "int Vector2::getX ()\fC [inline]\fP"
+
+.SS "int Vector2::getY ()\fC [inline]\fP"
+
+.SS "static float Vector2::v2cos (\fBVector2\fP v1, \fBVector2\fP v2)\fC [inline]\fP, \fC [static]\fP"
+
+.SS "static \fBVector2\fP Vector2::v2rotation (\fBVector2\fP v1, int teta)\fC [inline]\fP, \fC [static]\fP"
+
+.SS "static int Vector2::v2scalar (\fBVector2\fP v1, \fBVector2\fP v2)\fC [inline]\fP, \fC [static]\fP"
+
+.SS "static \fBVector2\fP Vector2::v2sub (\fBVector2\fP v1, \fBVector2\fP v2)\fC [inline]\fP, \fC [static]\fP"
+
+.SS "static \fBVector2\fP Vector2::v2sum (\fBVector2\fP v1, \fBVector2\fP v2)\fC [inline]\fP, \fC [static]\fP"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "float Vector2::mod\fC [private]\fP"
+
+.SS "int Vector2::vX\fC [private]\fP"
+
+.SS "int Vector2::vY\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

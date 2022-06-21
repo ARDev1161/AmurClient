@@ -1,4 +1,5 @@
 <map id="PeripheralController::changeWheelsPWM" name="PeripheralController::changeWheelsPWM">
 <area shape="rect" id="node1" title=" " alt="" coords="5,5,151,47"/>
-<area shape="rect" id="node2" href="$classPWMController.html#aedb9f50339ba23271b1d4db2524691ed" title=" " alt="" coords="199,13,415,39"/>
+<area shape="rect" id="node2" href="$classPWMController.html#a8f1bbc9358f73456973f2f390bd7c162" title=" " alt="" coords="199,13,415,39"/>
+<area shape="rect" id="node3" href="$classPWMController.html#acf94d4dd0c4f6d4a487b0c38712b7598" title=" " alt="" coords="463,13,653,39"/>
 </map>

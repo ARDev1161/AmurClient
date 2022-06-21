@@ -1,4 +1,4 @@
-.TH "PWMController" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.TH "PWMController" 3 "Tue Jun 21 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -16,32 +16,57 @@ PWMController \- Класс управления PWM сигналами
 .RI "\fBPWMController\fP ()"
 .br
 .ti -1c
-.RI "int \fBhardPWMCreate\fP (int pin)"
+.RI "int \fBhardPWMCreate\fP (unsigned int pin)"
 .br
 .ti -1c
-.RI "int \fBhardPWMChange\fP (int pin, int dutyCycle)"
+.RI "int \fBhardPWMChange\fP (unsigned int pin, unsigned int dutyCycle)"
 .br
 .ti -1c
-.RI "int \fBhardPWMStop\fP (int pin)"
+.RI "int \fBhardPWMStop\fP (unsigned int pin)"
 .br
 .ti -1c
-.RI "int \fBsoftPWMCreate\fP (int pin)"
+.RI "int \fBsoftPWMCreate\fP (unsigned int pin)"
 .br
 .ti -1c
-.RI "int \fBsoftPWMChange\fP (int pin, int dutyCycle)"
+.RI "int \fBsoftPWMChange\fP (unsigned int pin, unsigned int dutyCycle)"
 .br
 .ti -1c
-.RI "int \fBsoftPWMStop\fP (int pin)"
+.RI "int \fBsoftPWMStop\fP (unsigned int pin)"
+.br
+.ti -1c
+.RI "int \fBgetPwmRange\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetPwmRange\fP (unsigned int newPwmRange)"
+.br
+.ti -1c
+.RI "int \fBgetFreqHardware\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetFreqHardware\fP (unsigned int newFreqHardware)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "unsigned int \fBtranslateDuty\fP (unsigned int duty, unsigned int gpioRange)"
+.br
+.ti -1c
+.RI "unsigned int \fBtranslateDuty\fP (unsigned int duty)"
+.br
+.ti -1c
+.RI "int \fBtranslateDuty\fP (int duty, int newMax)"
 .br
 .in -1c
 .SS "Private Attributes"
 
 .in +1c
 .ti -1c
-.RI "int \fBpwmRange\fP = 255"
+.RI "unsigned int \fBpwmRange\fP = 255"
 .br
 .ti -1c
-.RI "int \fBfreq\fP = 20"
+.RI "unsigned int \fBfreqHardware\fP = 375"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -55,7 +80,11 @@ PWMController \- Класс управления PWM сигналами
 Создаёт экземпляр класса для работы с PWM\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "int PWMController::hardPWMChange (int pin, int dutyCycle)"
+.SS "int PWMController::getFreqHardware () const"
+
+.SS "int PWMController::getPwmRange () const"
+
+.SS "int PWMController::hardPWMChange (unsigned int pin, unsigned int dutyCycle)"
 Изменяет скважность на выводе аппаратного PWM\&. 
 .PP
 \fBParameters\fP
@@ -66,7 +95,7 @@ PWMController \- Класс управления PWM сигналами
 .RE
 .PP
 
-.SS "int PWMController::hardPWMCreate (int pin)"
+.SS "int PWMController::hardPWMCreate (unsigned int pin)"
 Создаёт аппаратный PWM сигнал на выводе Raspberry Pi в нотации GPIO\&. 
 .PP
 \fBParameters\fP
@@ -75,7 +104,7 @@ PWMController \- Класс управления PWM сигналами
 .RE
 .PP
 
-.SS "int PWMController::hardPWMStop (int pin)"
+.SS "int PWMController::hardPWMStop (unsigned int pin)"
 Останавливает аппаратный PWM сигнал на выводе Raspberry Pi в нотации GPIO\&. 
 .PP
 \fBParameters\fP
@@ -84,7 +113,11 @@ PWMController \- Класс управления PWM сигналами
 .RE
 .PP
 
-.SS "int PWMController::softPWMChange (int pin, int dutyCycle)"
+.SS "void PWMController::setFreqHardware (unsigned int newFreqHardware)"
+
+.SS "void PWMController::setPwmRange (unsigned int newPwmRange)"
+
+.SS "int PWMController::softPWMChange (unsigned int pin, unsigned int dutyCycle)"
 Изменяет скважность на выводе программного PWM\&. 
 .PP
 \fBParameters\fP
@@ -95,7 +128,7 @@ PWMController \- Класс управления PWM сигналами
 .RE
 .PP
 
-.SS "int PWMController::softPWMCreate (int pin)"
+.SS "int PWMController::softPWMCreate (unsigned int pin)"
 Создаёт программный PWM сигнал на выводе Raspberry Pi в нотации GPIO\&. 
 .PP
 \fBParameters\fP
@@ -109,7 +142,7 @@ PWMController \- Класс управления PWM сигналами
 .RE
 .PP
 
-.SS "int PWMController::softPWMStop (int pin)"
+.SS "int PWMController::softPWMStop (unsigned int pin)"
 Останавливает программный PWM сигнал на выводе Raspberry Pi в нотации GPIO\&. 
 .PP
 \fBParameters\fP
@@ -118,11 +151,17 @@ PWMController \- Класс управления PWM сигналами
 .RE
 .PP
 
+.SS "int PWMController::translateDuty (int duty, int newMax)\fC [inline]\fP, \fC [private]\fP"
+
+.SS "unsigned int PWMController::translateDuty (unsigned int duty)\fC [inline]\fP, \fC [private]\fP"
+
+.SS "unsigned int PWMController::translateDuty (unsigned int duty, unsigned int gpioRange)\fC [inline]\fP, \fC [private]\fP"
+
 .SH "Member Data Documentation"
 .PP 
-.SS "int PWMController::freq = 20\fC [private]\fP"
+.SS "unsigned int PWMController::freqHardware = 375\fC [private]\fP"
 
-.SS "int PWMController::pwmRange = 255\fC [private]\fP"
+.SS "unsigned int PWMController::pwmRange = 255\fC [private]\fP"
 
 
 .SH "Author"

@@ -1,4 +1,4 @@
-.TH "PeripheralController" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.TH "PeripheralController" 3 "Tue Jun 21 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -70,7 +70,7 @@ Inherits \fBTimerCallback::Runnable\fP\&.
 .RI "void \fBwriteEncodersAngles\fP ()"
 .br
 .ti -1c
-.RI "void \fBgetChangeEncoderAngle\fP (unsigned char addrA, unsigned char addrB, unsigned char const byte, unsigned char const previousByte, int *const angle)"
+.RI "void \fBrefreshEncoderData\fP (\fBEncoder\fP *encoder, unsigned char addrA, unsigned char addrB, unsigned char const byte, unsigned char const previousByte)"
 .br
 .in -1c
 .SS "Private Attributes"
@@ -86,6 +86,9 @@ Inherits \fBTimerCallback::Runnable\fP\&.
 .RI "\fBPWMController\fP * \fBpwm\fP"
 .br
 .ti -1c
+.RI "\fBMotorController\fP * \fBmotors\fP"
+.br
+.ti -1c
 .RI "\fBTimerCallback\fP \fBperipheralTimer\fP"
 .br
 .ti -1c
@@ -93,24 +96,6 @@ Inherits \fBTimerCallback::Runnable\fP\&.
 .br
 .ti -1c
 .RI "AMUR::AmurControls * \fBcontrolsPeri\fP"
-.br
-.ti -1c
-.RI "int \fBwheelLeftAngle\fP"
-.br
-.ti -1c
-.RI "int \fBwheelRightAngle\fP"
-.br
-.ti -1c
-.RI "int \fBhandLeftInternalAngle\fP"
-.br
-.ti -1c
-.RI "int \fBhandRightInternalAngle\fP"
-.br
-.ti -1c
-.RI "int \fBhandLeftOuterAngle\fP"
-.br
-.ti -1c
-.RI "int \fBhandRightOuterAngle\fP"
 .br
 .ti -1c
 .RI "unsigned char \fBprevLeftHC165\fP = 0x00"
@@ -125,16 +110,16 @@ Inherits \fBTimerCallback::Runnable\fP\&.
 .RI "unsigned char \fBprevRightHC595\fP = 0x00"
 .br
 .ti -1c
-.RI "int \fBprevLeftWheelPWM\fP = 0"
+.RI "unsigned int \fBprevLeftWheelPWM\fP = 0"
 .br
 .ti -1c
-.RI "int \fBprevRightWheelPWM\fP = 0"
+.RI "unsigned int \fBprevRightWheelPWM\fP = 0"
 .br
 .ti -1c
-.RI "int \fBprevLeftHandPWM\fP = 0"
+.RI "unsigned int \fBprevLeftHandPWM\fP = 0"
 .br
 .ti -1c
-.RI "int \fBprevRightHandPWM\fP = 0"
+.RI "unsigned int \fBprevRightHandPWM\fP = 0"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -165,23 +150,6 @@ Inherits \fBTimerCallback::Runnable\fP\&.
 Изменяет скважность PWM сигналов управляющих моторами гусениц на данные из protobuf буфера\&. 
 .SS "void PeripheralController::checkMotorsTime ()\fC [private]\fP"
 Проверяет время работы моторов по значениям из protobuf буффера, по достижению времени менее 10мс отключает конкретный мотор\&. 
-.SS "void PeripheralController::getChangeEncoderAngle (unsigned char addrA, unsigned char addrB, unsigned char const byte, unsigned char const previousByte, int *const angle)\fC [inline]\fP, \fC [private]\fP"
-Получает изменение угла поворота мотора по энкодеру\&. 
-.PP
-\fBParameters\fP
-.RS 4
-\fI*angle\fP Указатель на переменную хранящую угол для мотора 
-.br
-\fIaddrA\fP Адрес входа A энкодера на входном регистре, в адресе пин указан битом в байте\&. 
-.br
-\fIaddrB\fP Адрес входа B энкодера на входном регистре, в адресе пин указан битом в байте\&. 
-.br
-\fIbyte\fP Байт данных считанный из входного регистра 
-.br
-\fIpreviousByte\fP Предыдущий байт данных считанный из входного регистра 
-.RE
-.PP
-
 .SS "void PeripheralController::initPWM ()\fC [private]\fP"
 Инициализирует программные и аппаратные PWM сигналы указанные в структуре настроек экземпляра класса\&. 
 .SS "void PeripheralController::initRegisters ()\fC [private]\fP"
@@ -211,7 +179,24 @@ Inherits \fBTimerCallback::Runnable\fP\&.
 .SS "void PeripheralController::pigpioInit ()\fC [private]\fP"
 Инициализирует библиотеку pigpio 
 .SS "void PeripheralController::readRegisterData ()\fC [private]\fP"
-Считывает данные из входных регистров\&. 
+Считывает байты данных из входных регистров\&. 
+.SS "void PeripheralController::refreshEncoderData (\fBEncoder\fP * encoder, unsigned char addrA, unsigned char addrB, unsigned char const byte, unsigned char const previousByte)\fC [inline]\fP, \fC [private]\fP"
+Получает изменение угла поворота мотора по энкодеру\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fI*angle\fP Указатель на переменную хранящую угол для мотора 
+.br
+\fIaddrA\fP Адрес входа A энкодера на входном регистре, в адресе пин указан битом в байте\&. 
+.br
+\fIaddrB\fP Адрес входа B энкодера на входном регистре, в адресе пин указан битом в байте\&. 
+.br
+\fIbyte\fP Байт данных считанный из входного регистра 
+.br
+\fIpreviousByte\fP Предыдущий байт данных считанный из входного регистра 
+.RE
+.PP
+
 .SS "unsigned char PeripheralController::rightOutRegisterToByte ()\fC [private]\fP"
 Собирает байт данных для записи в правый регистр из protobuf буфера\&. 
 .PP
@@ -235,43 +220,33 @@ Implements \fBTimerCallback::Runnable\fP\&.
 .PP 
 .SS "AMUR::AmurControls* PeripheralController::controlsPeri\fC [private]\fP"
 
-.SS "int PeripheralController::handLeftInternalAngle\fC [private]\fP"
-
-.SS "int PeripheralController::handLeftOuterAngle\fC [private]\fP"
-
-.SS "int PeripheralController::handRightInternalAngle\fC [private]\fP"
-
-.SS "int PeripheralController::handRightOuterAngle\fC [private]\fP"
+.SS "\fBMotorController\fP* PeripheralController::motors\fC [private]\fP"
 
 .SS "\fBPeripheralSettings\fP PeripheralController::peripheralSettings\fC [private]\fP"
 
 .SS "\fBTimerCallback\fP PeripheralController::peripheralTimer\fC [private]\fP"
 
-.SS "int PeripheralController::prevLeftHandPWM = 0\fC [private]\fP"
+.SS "unsigned int PeripheralController::prevLeftHandPWM = 0\fC [private]\fP"
 
 .SS "unsigned char PeripheralController::prevLeftHC165 = 0x00\fC [private]\fP"
 
 .SS "unsigned char PeripheralController::prevLeftHC595 = 0x00\fC [private]\fP"
 
-.SS "int PeripheralController::prevLeftWheelPWM = 0\fC [private]\fP"
+.SS "unsigned int PeripheralController::prevLeftWheelPWM = 0\fC [private]\fP"
 
-.SS "int PeripheralController::prevRightHandPWM = 0\fC [private]\fP"
+.SS "unsigned int PeripheralController::prevRightHandPWM = 0\fC [private]\fP"
 
 .SS "unsigned char PeripheralController::prevRightHC165 = 0x00\fC [private]\fP"
 
 .SS "unsigned char PeripheralController::prevRightHC595 = 0x00\fC [private]\fP"
 
-.SS "int PeripheralController::prevRightWheelPWM = 0\fC [private]\fP"
+.SS "unsigned int PeripheralController::prevRightWheelPWM = 0\fC [private]\fP"
 
 .SS "\fBPWMController\fP* PeripheralController::pwm\fC [private]\fP"
 
 .SS "\fBRegisterController\fP* PeripheralController::registers\fC [private]\fP"
 
 .SS "AMUR::AmurSensors* PeripheralController::sensorsPeri\fC [private]\fP"
-
-.SS "int PeripheralController::wheelLeftAngle\fC [private]\fP"
-
-.SS "int PeripheralController::wheelRightAngle\fC [private]\fP"
 
 
 .SH "Author"

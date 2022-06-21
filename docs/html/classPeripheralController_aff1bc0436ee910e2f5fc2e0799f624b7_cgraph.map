@@ -1,13 +1,23 @@
 <map id="PeripheralController::readRegisterData" name="PeripheralController::readRegisterData">
-<area shape="rect" id="node1" title=" " alt="" coords="5,104,140,145"/>
-<area shape="rect" id="node2" href="$classPeripheralController.html#aff5d54a759ab8c428894fabc591330dc" title=" " alt="" coords="196,5,331,47"/>
-<area shape="rect" id="node4" href="$classRegisterController.html#a032a7042c44aa81a22d000af04622abb" title=" " alt="" coords="201,71,326,112"/>
-<area shape="rect" id="node7" href="$classRegisterController.html#a2c6a55f8180a6c202e86caa6f48fdb3b" title=" " alt="" coords="201,136,326,177"/>
-<area shape="rect" id="node11" href="$classPeripheralController.html#abebb42d848f082ff326cb7c3696d37eb" title=" " alt="" coords="188,201,339,243"/>
-<area shape="rect" id="node3" href="$classPeripheralController.html#ae5243fe6fd0f546bf53de1c80860bee4" title=" " alt="" coords="387,5,557,47"/>
-<area shape="rect" id="node5" href="$classHC165.html#abd8ac488340ad70f14389057985dc21c" title=" " alt="" coords="413,79,531,106"/>
-<area shape="rect" id="node6" href="$classHC165.html#a5b6252dcfeeafcdca486e77b086fd8b7" title=" " alt="" coords="627,81,726,107"/>
-<area shape="rect" id="node8" href="$classHC165.html#a6de9011b7ff472fa562e41ca5f3de936" title=" " alt="" coords="402,137,542,163"/>
-<area shape="rect" id="node9" href="$classHC165.html#a5f0c507ffc6832c6717da8146e6674c2" title=" " alt="" coords="605,135,748,162"/>
-<area shape="rect" id="node10" href="$classHC165.html#a5b3bc03d7666bcc4e219228e1479fc6b" title=" " alt="" coords="607,186,746,213"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,541,140,582"/>
+<area shape="rect" id="node2" href="$classPeripheralController.html#aff5d54a759ab8c428894fabc591330dc" title=" " alt="" coords="196,253,331,294"/>
+<area shape="rect" id="node14" href="$classRegisterController.html#a032a7042c44aa81a22d000af04622abb" title=" " alt="" coords="201,507,326,549"/>
+<area shape="rect" id="node17" href="$classRegisterController.html#a2c6a55f8180a6c202e86caa6f48fdb3b" title=" " alt="" coords="201,573,326,614"/>
+<area shape="rect" id="node21" href="$classPeripheralController.html#abebb42d848f082ff326cb7c3696d37eb" title=" " alt="" coords="188,638,339,679"/>
+<area shape="rect" id="node3" href="$classMotor.html#abbdc3fdfd63502b965a740fa6349772c" title=" " alt="" coords="420,5,547,32"/>
+<area shape="rect" id="node4" href="$classMotorController.html#a6a9d18b1d8bb735d7622666aff780388" title=" " alt="" coords="401,57,566,98"/>
+<area shape="rect" id="node5" href="$classMotorController.html#a7d5a42634633f73c1e60adcc7c05fc3c" title=" " alt="" coords="401,122,566,163"/>
+<area shape="rect" id="node6" href="$classMotorController.html#a61c26a3602d11f8852158357f4386de7" title=" " alt="" coords="401,187,566,229"/>
+<area shape="rect" id="node7" href="$classMotorController.html#ac3f6548c2e5ecd31e58fb6f088c6dc50" title=" " alt="" coords="401,253,566,294"/>
+<area shape="rect" id="node8" href="$classMotorController.html#ae4bbe32aa6b41ef6add0e1abbe081826" title=" " alt="" coords="387,319,580,345"/>
+<area shape="rect" id="node9" href="$classMotorController.html#aa87e30a7989129264bfdab2eba1bd133" title=" " alt="" coords="398,370,569,411"/>
+<area shape="rect" id="node10" href="$classPeripheralController.html#aa06c83f82f59a7d03d48cf4ea464e9b5" title=" " alt="" coords="412,435,555,477"/>
+<area shape="rect" id="node11" href="$classEncoder.html#a55c7c659afadd1b6037739b3983f8ee0" title=" " alt="" coords="630,377,769,404"/>
+<area shape="rect" id="node12" href="$classEncoder.html#ac87eeb157ef901a974fff5703ced1496" title=" " alt="" coords="630,428,769,455"/>
+<area shape="rect" id="node13" href="$classEncoder.html#a50ef336bb95a8519a5d110bd97d1b599" title=" " alt="" coords="642,479,757,505"/>
+<area shape="rect" id="node15" href="$classHC165.html#abd8ac488340ad70f14389057985dc21c" title=" " alt="" coords="424,523,543,549"/>
+<area shape="rect" id="node16" href="$classHC165.html#a5b6252dcfeeafcdca486e77b086fd8b7" title=" " alt="" coords="650,529,749,556"/>
+<area shape="rect" id="node18" href="$classHC165.html#a6de9011b7ff472fa562e41ca5f3de936" title=" " alt="" coords="413,580,553,607"/>
+<area shape="rect" id="node19" href="$classHC165.html#a5f0c507ffc6832c6717da8146e6674c2" title=" " alt="" coords="628,580,771,607"/>
+<area shape="rect" id="node20" href="$classHC165.html#a5b3bc03d7666bcc4e219228e1479fc6b" title=" " alt="" coords="630,631,769,657"/>
 </map>

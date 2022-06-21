@@ -1,4 +1,4 @@
-.TH "LogicController" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.TH "LogicController" 3 "Tue Jun 21 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -32,6 +32,9 @@ LogicController \- Класс логики управления роботом
 .RI "void \fBprintHeadInfo\fP ()"
 .br
 .ti -1c
+.RI "void \fBfillFieldsByConfig\fP ()"
+.br
+.ti -1c
 .RI "void \fBworker\fP ()"
 .br
 .in -1c
@@ -51,13 +54,13 @@ LogicController \- Класс логики управления роботом
 .RI "\fBNetworkController\fP * \fBnetwork\fP"
 .br
 .ti -1c
-.RI "std::string \fBaddress\fP = '176\&.193\&.245\&.203:7777'"
+.RI "std::string \fBaddress\fP = '127\&.0\&.0\&.1:7777'"
 .br
 .ti -1c
-.RI "AMUR::AmurSensors * \fBsensors\fP"
+.RI "AMUR::AmurSensors \fBsensors\fP"
 .br
 .ti -1c
-.RI "AMUR::AmurControls * \fBcontrols\fP"
+.RI "AMUR::AmurControls \fBcontrols\fP"
 .br
 .ti -1c
 .RI "AMUR::AmurControls \fBcontrolsPrev\fP"
@@ -92,19 +95,21 @@ LogicController \- Класс логики управления роботом
 .RE
 .PP
 
+.SS "void LogicController::fillFieldsByConfig ()\fC [private]\fP"
+Функция проверяющая и заполняющая значения полей из конфиг файла 
 .SS "void LogicController::printHeadInfo ()\fC [private]\fP"
 Функция печати основной информации о программе 
 .SS "void LogicController::worker ()\fC [private]\fP"
 Главный цикл 
 .SH "Member Data Documentation"
 .PP 
-.SS "std::string LogicController::address = '176\&.193\&.245\&.203:7777'\fC [private]\fP"
+.SS "std::string LogicController::address = '127\&.0\&.0\&.1:7777'\fC [private]\fP"
 
 .SS "\fBConfigProcessor\fP* LogicController::config\fC [private]\fP"
 
 .SS "const char* LogicController::configName = 'amur\&.cfg'\fC [private]\fP"
 
-.SS "AMUR::AmurControls* LogicController::controls\fC [private]\fP"
+.SS "AMUR::AmurControls LogicController::controls\fC [private]\fP"
 
 .SS "AMUR::AmurControls LogicController::controlsPrev\fC [private]\fP"
 
@@ -112,7 +117,7 @@ LogicController \- Класс логики управления роботом
 
 .SS "\fBPeripheralController\fP* LogicController::periphery\fC [private]\fP"
 
-.SS "AMUR::AmurSensors* LogicController::sensors\fC [private]\fP"
+.SS "AMUR::AmurSensors LogicController::sensors\fC [private]\fP"
 
 .SS "bool LogicController::workerStopped = false\fC [private]\fP"
 

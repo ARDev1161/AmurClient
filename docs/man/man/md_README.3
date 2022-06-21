@@ -1,27 +1,35 @@
-.TH "md_README" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.TH "md_README" 3 "Tue Jun 21 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-md_README \- Client software for Amur distribution board (ADB-0\&.42) 
-This is application for communicate with robot on RPi base with \fCAmurClient\fP\&.
-.SH "Requirements:"
+md_README \- README 
+
 .PP
-1) CMake - for install read: https://snapcraft.io/install/cmake/raspbian 2) Protobuf & gRPC - for install read: https://grpc.io/docs/languages/cpp/quickstart/ need install in system(/usr/local) 3) PiGPIO - for install read: http://abyz.me.uk/rpi/pigpio/download.html 4) libconfig (not used, will be added in the future) 5) GStreamer (not used, will be added in the future)
-.SH "Compile AmurClient"
+.SH "Client software for Amur distribution board (ADB-0\&.42)"
 .PP
-git clone https://github.com/ARDev1161/AmurClient.git cd AmurClient mkdir bin && cd bin
+This is application for communicate with robot on RPi base with Amur distribution board\&. 
+.br
+.PP
+\fC\fP \fC\fP
+.PP
+\fC\fP \fC\fP 
+.SS "Requirements:"
+1) CMake - for install read: https://snapcraft.io/install/cmake/raspbian 2) Protobuf & gRPC - for install read: https://grpc.io/docs/languages/cpp/quickstart/ need install in system(/usr/local) 3) PiGPIO - for install read: http://abyz.me.uk/rpi/pigpio/download.html 4) libconfig - for install:
+.PP
+sudo apt-get install libconfig++-dev -y
+.PP
+5) GStreamer (not used, will be added in the future)
+.SS "Compile AmurClient"
+git clone https://github.com/ARDev1161/AmurClient.git --recurse-submodules cd AmurClient mkdir bin && cd bin
 .PP
 cmake -DCMAKE_BUILD_TYPE=Release -DGRPC_FETCHCONTENT=OFF \&.\&./
 .PP
 cmake --build \&. -- -j4
-.SH "Sensors of Amur:"
-.PP
+.SS "Sensors of Amur:"
 1) Camera - OV5647 2) Inertial sensor - MPU-9250 3) Encoders wheel: left, right - HOA0901 4) Encoders hand internal: left, right - HOA0901 5) Encoders hand outter: left, right - HOA0901 6) ADC module - ADS1115(address - 0x48) 7) RTC module - DS3231(address - 0x68) with AT24C32(address - 0x57) 8) Barometer - BMP-280 9) Battery voltage
-.SH "Controls of Amur:"
-.PP
-1) ServoX, ServoY - MG90S 2) Motor wheel: left, right 3) Motor hand internal: left, right 4) Motor hand outter: left, right
-.SH "GPIO using:"
-.PP
+.SS "Controls of Amur:"
+1) ServoX, ServoY - MG90S 2) \fBMotor\fP wheel: left, right 3) \fBMotor\fP hand internal: left, right 4) \fBMotor\fP hand outter: left, right
+.SS "GPIO using:"
 .IP "\(bu" 2
 GPIO4 - Data from 74\fBHC165\fP
 .IP "\(bu" 2

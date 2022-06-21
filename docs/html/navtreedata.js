@@ -25,19 +25,21 @@
 var NAVTREE =
 [
   [ "AmurClient", "index.html", [
-    [ "Client software for Amur distribution board (ADB-0.42)", "md_README.html", [
-      [ "Requirements:", "md_README.html#autotoc_md1", null ],
-      [ "Compile AmurClient", "md_README.html#autotoc_md2", null ],
-      [ "Sensors of Amur:", "md_README.html#autotoc_md3", null ],
-      [ "Controls of Amur:", "md_README.html#autotoc_md4", null ],
-      [ "GPIO using:", "md_README.html#autotoc_md5", [
-        [ "GPIO freePins header(from left to right):", "md_README.html#autotoc_md6", null ],
-        [ "SPI0 header(from up to down):", "md_README.html#autotoc_md7", null ],
-        [ "I2C1 header(from left to right):", "md_README.html#autotoc_md8", null ],
-        [ "UART0 header(from left to right):", "md_README.html#autotoc_md9", null ],
-        [ "Voltage jumper(for peripheral devices - Vpd):", "md_README.html#autotoc_md10", null ],
-        [ "74HC595 using:", "md_README.html#autotoc_md11", null ],
-        [ "74HC165 using:", "md_README.html#autotoc_md12", null ]
+    [ "README", "md_README.html", [
+      [ "Client software for Amur distribution board (ADB-0.42)", "md_README.html#autotoc_md0", [
+        [ "Requirements:", "md_README.html#autotoc_md1", null ],
+        [ "Compile AmurClient", "md_README.html#autotoc_md2", null ],
+        [ "Sensors of Amur:", "md_README.html#autotoc_md3", null ],
+        [ "Controls of Amur:", "md_README.html#autotoc_md4", null ],
+        [ "GPIO using:", "md_README.html#autotoc_md5", [
+          [ "GPIO freePins header(from left to right):", "md_README.html#autotoc_md6", null ],
+          [ "SPI0 header(from up to down):", "md_README.html#autotoc_md7", null ],
+          [ "I2C1 header(from left to right):", "md_README.html#autotoc_md8", null ],
+          [ "UART0 header(from left to right):", "md_README.html#autotoc_md9", null ],
+          [ "Voltage jumper(for peripheral devices - Vpd):", "md_README.html#autotoc_md10", null ],
+          [ "74HC595 using:", "md_README.html#autotoc_md11", null ],
+          [ "74HC165 using:", "md_README.html#autotoc_md12", null ]
+        ] ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -45,9 +47,10 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
+        [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", null ],
+        [ "Typedefs", "functions_type.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -64,7 +67,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AmurClient_8cpp.html",
-"server_8h.html"
+"classPilot.html#a98d31f1241822db3b5cea5eff6e0668b",
+"structRegisterSettings.html#a4b4f1d6a6429f4759df92019e1b9c040"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

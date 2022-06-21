@@ -1,4 +1,4 @@
-<map id="PeripheralController::getChangeEncoderAngle" name="PeripheralController::getChangeEncoderAngle">
+<map id="MotorController::getWheelRight" name="MotorController::getWheelRight">
 <area shape="rect" id="node1" title=" " alt="" coords="1007,35,1177,76"/>
 <area shape="rect" id="node2" href="$classPeripheralController.html#aff5d54a759ab8c428894fabc591330dc" title=" " alt="" coords="824,35,959,76"/>
 <area shape="rect" id="node3" href="$classPeripheralController.html#aff1bc0436ee910e2f5fc2e0799f624b7" title=" " alt="" coords="641,35,776,76"/>

@@ -1,4 +1,4 @@
-.TH "I2C" 3 "Thu Jul 8 2021" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.TH "I2C" 3 "Tue Jun 21 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -16,12 +16,83 @@ I2C \- Класс работы с интерфейсом \fBI2C\fP\&.
 .RI "\fBI2C\fP ()"
 .br
 .ti -1c
-.RI "void \fBinit\fP ()"
+.RI "int \fBopen\fP ()"
+.br
+.ti -1c
+.RI "int \fBclose\fP (unsigned handle)"
+.br
+.ti -1c
+.RI "int \fBscanBus\fP (int gSCL, int gSDA)"
+.br
+.ti -1c
+.RI "int \fBread\fP (\fBbyte_t\fP handle, \fBbyte_t\fP value)"
+.br
+.ti -1c
+.RI "int \fBwrite\fP (\fBbyte_t\fP handle, \fBbyte_t\fP value)"
+.br
+.ti -1c
+.RI "int \fBwriteBit\fP (\fBbyte_t\fP handle, bool value)"
+.br
+.ti -1c
+.RI "int \fBreadRegByte\fP (\fBbyte_t\fP handle, \fBbyte_t\fP value)"
+.br
+.ti -1c
+.RI "int \fBwriteRegByte\fP (\fBbyte_t\fP handle, \fBbyte_t\fP value)"
+.br
+.ti -1c
+.RI "int \fBreadRegWord\fP (\fBbyte_t\fP handle, int value)"
+.br
+.ti -1c
+.RI "int \fBwriteRegWord\fP (\fBbyte_t\fP handle, int value)"
+.br
+.ti -1c
+.RI "int \fBexchangeRegWord\fP (\fBbyte_t\fP handle, int value)"
+.br
+.ti -1c
+.RI "int \fBreadRegBlock\fP (unsigned handle, unsigned i2cReg, char *buf)"
+.br
+.ti -1c
+.RI "int \fBwriteRegBlock\fP (unsigned handle, unsigned i2cReg, char *buf, unsigned count)"
+.br
+.ti -1c
+.RI "int \fBexchangeRegBlock\fP (unsigned handle, unsigned i2cReg, char *buf, unsigned count)"
+.br
+.ti -1c
+.RI "int \fBreadRegI2CBlock\fP (unsigned handle, unsigned i2cReg, char *buf, unsigned count)"
+.br
+.ti -1c
+.RI "int \fBwriteRegI2CBlock\fP (unsigned handle, unsigned i2cReg, char *buf, unsigned count)"
+.br
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "typedef unsigned char \fBbyte_t\fP"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBparse_I2C\fP (int \fBSCL\fP, int \fBSDA\fP)"
 .br
 .in -1c
 .SS "Private Attributes"
 
 .in +1c
+.ti -1c
+.RI "int \fBSCL\fP"
+.br
+.ti -1c
+.RI "int \fBSDA\fP"
+.br
+.ti -1c
+.RI "int \fBxSCL\fP"
+.br
+.ti -1c
+.RI "int \fBr\fP"
+.br
 .ti -1c
 .RI "int \fBfd\fP"
 .br
@@ -44,13 +115,49 @@ I2C \- Класс работы с интерфейсом \fBI2C\fP\&.
 Класс работы с интерфейсом \fBI2C\fP\&. 
 
 Данный класс инкапсулирует взаимодействие с интерфейсом \fBI2C\fP\&. 
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef unsigned char \fBI2C::byte_t\fP\fC [private]\fP"
+
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "I2C::I2C ()"
 Создаёт экземпляр класса для работы с интерфейсом \fBI2C\fP\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "void I2C::init ()"
+.SS "int I2C::close (unsigned handle)"
+
+.SS "int I2C::exchangeRegBlock (unsigned handle, unsigned i2cReg, char * buf, unsigned count)"
+
+.SS "int I2C::exchangeRegWord (\fBbyte_t\fP handle, int value)"
+
+.SS "int I2C::open ()"
+
+.SS "void I2C::parse_I2C (int SCL, int SDA)\fC [private]\fP"
+
+.SS "int I2C::read (\fBbyte_t\fP handle, \fBbyte_t\fP value)"
+
+.SS "int I2C::readRegBlock (unsigned handle, unsigned i2cReg, char * buf)"
+
+.SS "int I2C::readRegByte (\fBbyte_t\fP handle, \fBbyte_t\fP value)"
+
+.SS "int I2C::readRegI2CBlock (unsigned handle, unsigned i2cReg, char * buf, unsigned count)"
+
+.SS "int I2C::readRegWord (\fBbyte_t\fP handle, int value)"
+
+.SS "int I2C::scanBus (int gSCL, int gSDA)"
+
+.SS "int I2C::write (\fBbyte_t\fP handle, \fBbyte_t\fP value)"
+
+.SS "int I2C::writeBit (\fBbyte_t\fP handle, bool value)"
+
+.SS "int I2C::writeRegBlock (unsigned handle, unsigned i2cReg, char * buf, unsigned count)"
+
+.SS "int I2C::writeRegByte (\fBbyte_t\fP handle, \fBbyte_t\fP value)"
+
+.SS "int I2C::writeRegI2CBlock (unsigned handle, unsigned i2cReg, char * buf, unsigned count)"
+
+.SS "int I2C::writeRegWord (\fBbyte_t\fP handle, int value)"
 
 .SH "Member Data Documentation"
 .PP 
@@ -60,7 +167,15 @@ I2C \- Класс работы с интерфейсом \fBI2C\fP\&.
 
 .SS "int I2C::fd\fC [private]\fP"
 
+.SS "int I2C::r\fC [private]\fP"
+
 .SS "int I2C::result\fC [private]\fP"
+
+.SS "int I2C::SCL\fC [private]\fP"
+
+.SS "int I2C::SDA\fC [private]\fP"
+
+.SS "int I2C::xSCL\fC [private]\fP"
 
 
 .SH "Author"

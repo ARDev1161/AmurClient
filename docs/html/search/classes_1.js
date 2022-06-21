@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['encodersettings_203',['EncoderSettings',['../structEncoderSettings.html',1,'']]]
+  ['encoder_400',['Encoder',['../classEncoder.html',1,'']]],
+  ['encodersettings_401',['EncoderSettings',['../structEncoderSettings.html',1,'']]]
 ];

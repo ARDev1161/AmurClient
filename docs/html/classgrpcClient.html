@@ -98,14 +98,14 @@ Collaboration diagram for grpcClient:</div>
 <div class="dyncontent">
 <div class="center"><img src="classgrpcClient__coll__graph.png" border="0" usemap="#agrpcClient_coll__map" alt="Collaboration graph"/></div>
 <map name="agrpcClient_coll__map" id="agrpcClient_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,172,200"/>
+<area shape="rect" title=" " alt="" coords="5,5,172,229"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac18eea0e12d4b1e998e649b8dd7e1dd0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgrpcClient.html#ac18eea0e12d4b1e998e649b8dd7e1dd0">grpcClient</a> (std::shared_ptr&lt; grpc::Channel &gt; channel, AMUR::AmurControls *<a class="el" href="classgrpcClient.html#a1ac5714797747ea22e0219564720196a">controls</a>, AMUR::AmurSensors *const <a class="el" href="classgrpcClient.html#a3a7bbd6ad088f69dded69c60d6d7ac28">sensors</a>)</td></tr>
-<tr class="separator:ac18eea0e12d4b1e998e649b8dd7e1dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2d4be911d7fa904ebda9609e2bc3810"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgrpcClient.html#aa2d4be911d7fa904ebda9609e2bc3810">grpcClient</a> (std::shared_ptr&lt; grpc::Channel &gt; channel, AMUR::AmurControls *<a class="el" href="classgrpcClient.html#a1ac5714797747ea22e0219564720196a">controls</a>, AMUR::AmurSensors *const <a class="el" href="classgrpcClient.html#a3a7bbd6ad088f69dded69c60d6d7ac28">sensors</a>, bool tryConnectIfFailed=true)</td></tr>
+<tr class="separator:aa2d4be911d7fa904ebda9609e2bc3810"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a41c802a2dbee85ce0259c3af494ad4"><td class="memItemLeft" align="right" valign="top">grpc::Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgrpcClient.html#a9a41c802a2dbee85ce0259c3af494ad4">DataExchange</a> ()</td></tr>
 <tr class="separator:a9a41c802a2dbee85ce0259c3af494ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a569dfe1c1968b7ee3f40c351c19f51"><td class="memItemLeft" align="right" valign="top">grpc::Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgrpcClient.html#a7a569dfe1c1968b7ee3f40c351c19f51">DataStreamExchange</a> ()</td></tr>
@@ -125,12 +125,16 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a1ac5714797747ea22e0219564720196a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ae335b34c0043d59d3c04881c1ababc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgrpcClient.html#a9ae335b34c0043d59d3c04881c1ababc">stoppedStream</a> = true</td></tr>
 <tr class="separator:a9ae335b34c0043d59d3c04881c1ababc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac66864e70c3cfb98d44e46ac1d85b27a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgrpcClient.html#ac66864e70c3cfb98d44e46ac1d85b27a">retryConnect</a></td></tr>
+<tr class="separator:ac66864e70c3cfb98d44e46ac1d85b27a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa79424b941ba460ff1c2f591634b96f8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgrpcClient.html#aa79424b941ba460ff1c2f591634b96f8">retryDelayMilliseconds</a> = 1000</td></tr>
+<tr class="separator:aa79424b941ba460ff1c2f591634b96f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a8a26f672c439bd439b62f6f648f882"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgrpcClient.html#a9a8a26f672c439bd439b62f6f648f882">muClient</a></td></tr>
 <tr class="separator:a9a8a26f672c439bd439b62f6f648f882"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ac18eea0e12d4b1e998e649b8dd7e1dd0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac18eea0e12d4b1e998e649b8dd7e1dd0">&#9670;&nbsp;</a></span>grpcClient()</h2>
+<a id="aa2d4be911d7fa904ebda9609e2bc3810"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2d4be911d7fa904ebda9609e2bc3810">&#9670;&nbsp;</a></span>grpcClient()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -151,7 +155,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">AMUR::AmurSensors *const&#160;</td>
-          <td class="paramname"><em>sensors</em>&#160;</td>
+          <td class="paramname"><em>sensors</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>tryConnectIfFailed</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -201,7 +211,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classgrpcClient_a7a569dfe1c1968b7ee3f40c351c19f51_icgraph.png" border="0" usemap="#aclassgrpcClient_a7a569dfe1c1968b7ee3f40c351c19f51_icgraph" alt=""/></div>
 <map name="aclassgrpcClient_a7a569dfe1c1968b7ee3f40c351c19f51_icgraph" id="aclassgrpcClient_a7a569dfe1c1968b7ee3f40c351c19f51_icgraph">
 <area shape="rect" title=" " alt="" coords="645,42,856,69"/>
-<area shape="rect" href="classNetworkController.html#a0a23911025a48814505b4f9abcacd839" title=" " alt="" coords="465,35,597,76"/>
+<area shape="rect" href="classNetworkController.html#a4fb7019ae7f9692b1f96385608b11ab6" title=" " alt="" coords="465,35,597,76"/>
 <area shape="rect" href="classLogicController.html#ad02314f4890c68a236516131e598718d" title=" " alt="" coords="235,5,397,47"/>
 <area shape="rect" href="classLogicController.html#adebf682fbc49020f4d382211084726d4" title=" " alt="" coords="215,71,417,98"/>
 <area shape="rect" href="classLogicController.html#a351da730659ddfcea0a7eeb23c37eddb" title=" " alt="" coords="5,5,167,47"/>
@@ -283,6 +293,50 @@ Here is the caller graph for this function:</div>
       <table class="memname">
         <tr>
           <td class="memname">std::mutex grpcClient::muClient</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac66864e70c3cfb98d44e46ac1d85b27a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac66864e70c3cfb98d44e46ac1d85b27a">&#9670;&nbsp;</a></span>retryConnect</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool grpcClient::retryConnect</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa79424b941ba460ff1c2f591634b96f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa79424b941ba460ff1c2f591634b96f8">&#9670;&nbsp;</a></span>retryDelayMilliseconds</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int grpcClient::retryDelayMilliseconds = 1000</td>
         </tr>
       </table>
   </td>

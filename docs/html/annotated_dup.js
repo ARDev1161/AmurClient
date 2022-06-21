@@ -1,6 +1,7 @@
 var annotated_dup =
 [
     [ "ConfigProcessor", "classConfigProcessor.html", "classConfigProcessor" ],
+    [ "Encoder", "classEncoder.html", "classEncoder" ],
     [ "EncoderSettings", "structEncoderSettings.html", "structEncoderSettings" ],
     [ "grpcClient", "classgrpcClient.html", "classgrpcClient" ],
     [ "grpcServer", "classgrpcServer.html", "classgrpcServer" ],
@@ -8,9 +9,13 @@ var annotated_dup =
     [ "HC595", "classHC595.html", "classHC595" ],
     [ "I2C", "classI2C.html", "classI2C" ],
     [ "LogicController", "classLogicController.html", "classLogicController" ],
+    [ "Motor", "classMotor.html", "classMotor" ],
+    [ "MotorController", "classMotorController.html", "classMotorController" ],
+    [ "MotorSettings", "structMotorSettings.html", "structMotorSettings" ],
     [ "NetworkController", "classNetworkController.html", "classNetworkController" ],
     [ "PeripheralController", "classPeripheralController.html", "classPeripheralController" ],
     [ "PeripheralSettings", "structPeripheralSettings.html", "structPeripheralSettings" ],
+    [ "Pilot", "classPilot.html", "classPilot" ],
     [ "PWMController", "classPWMController.html", "classPWMController" ],
     [ "PWMPins", "structPWMPins.html", "structPWMPins" ],
     [ "RegisterController", "classRegisterController.html", "classRegisterController" ],
@@ -18,5 +23,6 @@ var annotated_dup =
     [ "SPI", "classSPI.html", "classSPI" ],
     [ "Timer", "classTimer.html", "classTimer" ],
     [ "TimerCallback", "classTimerCallback.html", "classTimerCallback" ],
-    [ "UART", "classUART.html", "classUART" ]
+    [ "UART", "classUART.html", "classUART" ],
+    [ "Vector2", "classVector2.html", "classVector2" ]
 ];

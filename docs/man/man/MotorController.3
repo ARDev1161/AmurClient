@@ -1,0 +1,98 @@
+.TH "MotorController" 3 "Tue Jun 21 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MotorController
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <motorcontroller\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMotorController\fP (\fBMotorSettings\fP *motor, \fBEncoderSettings\fP *encoder)"
+.br
+.ti -1c
+.RI "\fB~MotorController\fP ()"
+.br
+.ti -1c
+.RI "\fBMotor\fP * \fBgetWheelLeft\fP () const"
+.br
+.ti -1c
+.RI "\fBMotor\fP * \fBgetWheelRight\fP () const"
+.br
+.ti -1c
+.RI "\fBMotor\fP * \fBgetHandInternalLeft\fP () const"
+.br
+.ti -1c
+.RI "\fBMotor\fP * \fBgetHandInternalRight\fP () const"
+.br
+.ti -1c
+.RI "\fBMotor\fP * \fBgetHandOuterLeft\fP () const"
+.br
+.ti -1c
+.RI "\fBMotor\fP * \fBgetHandOuterRight\fP () const"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBMotor\fP * \fBwheelLeft\fP"
+.br
+.ti -1c
+.RI "\fBMotor\fP * \fBwheelRight\fP"
+.br
+.ti -1c
+.RI "\fBMotor\fP * \fBhandInternalLeft\fP"
+.br
+.ti -1c
+.RI "\fBMotor\fP * \fBhandInternalRight\fP"
+.br
+.ti -1c
+.RI "\fBMotor\fP * \fBhandOuterLeft\fP"
+.br
+.ti -1c
+.RI "\fBMotor\fP * \fBhandOuterRight\fP"
+.br
+.in -1c
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MotorController::MotorController (\fBMotorSettings\fP * motor, \fBEncoderSettings\fP * encoder)"
+
+.SS "MotorController::~MotorController ()"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBMotor\fP * MotorController::getHandInternalLeft () const"
+
+.SS "\fBMotor\fP * MotorController::getHandInternalRight () const"
+
+.SS "\fBMotor\fP * MotorController::getHandOuterLeft () const"
+
+.SS "\fBMotor\fP * MotorController::getHandOuterRight () const"
+
+.SS "\fBMotor\fP * MotorController::getWheelLeft () const"
+
+.SS "\fBMotor\fP * MotorController::getWheelRight () const"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBMotor\fP* MotorController::handInternalLeft\fC [private]\fP"
+
+.SS "\fBMotor\fP* MotorController::handInternalRight\fC [private]\fP"
+
+.SS "\fBMotor\fP* MotorController::handOuterLeft\fC [private]\fP"
+
+.SS "\fBMotor\fP* MotorController::handOuterRight\fC [private]\fP"
+
+.SS "\fBMotor\fP* MotorController::wheelLeft\fC [private]\fP"
+
+.SS "\fBMotor\fP* MotorController::wheelRight\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

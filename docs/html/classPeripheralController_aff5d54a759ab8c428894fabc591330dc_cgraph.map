@@ -1,4 +1,14 @@
 <map id="PeripheralController::parseBytesHC165" name="PeripheralController::parseBytesHC165">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,140,47"/>
-<area shape="rect" id="node2" href="$classPeripheralController.html#ae5243fe6fd0f546bf53de1c80860bee4" title=" " alt="" coords="188,5,359,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,221,140,262"/>
+<area shape="rect" id="node2" href="$classMotor.html#abbdc3fdfd63502b965a740fa6349772c" title=" " alt="" coords="221,5,348,32"/>
+<area shape="rect" id="node3" href="$classMotorController.html#a6a9d18b1d8bb735d7622666aff780388" title=" " alt="" coords="202,57,367,98"/>
+<area shape="rect" id="node4" href="$classMotorController.html#a7d5a42634633f73c1e60adcc7c05fc3c" title=" " alt="" coords="202,122,367,163"/>
+<area shape="rect" id="node5" href="$classMotorController.html#a61c26a3602d11f8852158357f4386de7" title=" " alt="" coords="202,187,367,229"/>
+<area shape="rect" id="node6" href="$classMotorController.html#ac3f6548c2e5ecd31e58fb6f088c6dc50" title=" " alt="" coords="202,253,367,294"/>
+<area shape="rect" id="node7" href="$classMotorController.html#ae4bbe32aa6b41ef6add0e1abbe081826" title=" " alt="" coords="188,319,381,345"/>
+<area shape="rect" id="node8" href="$classMotorController.html#aa87e30a7989129264bfdab2eba1bd133" title=" " alt="" coords="199,370,370,411"/>
+<area shape="rect" id="node9" href="$classPeripheralController.html#aa06c83f82f59a7d03d48cf4ea464e9b5" title=" " alt="" coords="213,435,356,477"/>
+<area shape="rect" id="node10" href="$classEncoder.html#a55c7c659afadd1b6037739b3983f8ee0" title=" " alt="" coords="429,392,568,419"/>
+<area shape="rect" id="node11" href="$classEncoder.html#ac87eeb157ef901a974fff5703ced1496" title=" " alt="" coords="429,443,568,469"/>
+<area shape="rect" id="node12" href="$classEncoder.html#a50ef336bb95a8519a5d110bd97d1b599" title=" " alt="" coords="441,493,556,520"/>
 </map>

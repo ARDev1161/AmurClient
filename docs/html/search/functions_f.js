@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['worker_338',['worker',['../classLogicController.html#a49666b935f10b9aefeee99077a952c57',1,'LogicController']]],
-  ['writebyte_339',['writeByte',['../classHC595.html#a63c42adab55a32f20af566d2053f6841',1,'HC595::writeByte()'],['../classRegisterController.html#aae49df122c629aa9fd50fbc0e5b8d244',1,'RegisterController::writeByte()']]],
-  ['writeconfig_340',['writeConfig',['../classConfigProcessor.html#a595de1ab2a476755b9323f4d8b394e1e',1,'ConfigProcessor']]],
-  ['writeencodersangles_341',['writeEncodersAngles',['../classPeripheralController.html#abebb42d848f082ff326cb7c3696d37eb',1,'PeripheralController']]],
-  ['writeregisterdata_342',['writeRegisterData',['../classPeripheralController.html#a0b0a71910f66d989beeaf4d1c5c4effc',1,'PeripheralController']]]
+  ['timer_607',['Timer',['../classTimer.html#a5f16e8da27d2a5a5242dead46de05d97',1,'Timer']]],
+  ['timerevent_608',['timerEvent',['../classTimer.html#a116ad1e71f65837f56a3a5ce8742bede',1,'Timer::timerEvent()'],['../classTimerCallback.html#a3b63e155e306f886aca03cce38aace21',1,'TimerCallback::timerEvent()']]],
+  ['translateduty_609',['translateDuty',['../classPWMController.html#acf94d4dd0c4f6d4a487b0c38712b7598',1,'PWMController::translateDuty(unsigned int duty, unsigned int gpioRange)'],['../classPWMController.html#ac0a5963a1836b3d71fb7fd4abf4447e3',1,'PWMController::translateDuty(unsigned int duty)'],['../classPWMController.html#aecc43a59cd748871c68f52635097a137',1,'PWMController::translateDuty(int duty, int newMax)']]]
 ];

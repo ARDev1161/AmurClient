@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "ConfigProcessor", "classConfigProcessor.html", null ],
+    [ "Encoder", "classEncoder.html", null ],
     [ "EncoderSettings", "structEncoderSettings.html", null ],
     [ "RegisterSettings::General", "structRegisterSettings_1_1General.html", null ],
     [ "grpcClient", "classgrpcClient.html", null ],
@@ -10,8 +11,12 @@ var hierarchy =
     [ "RegisterSettings::HC595Pins", "structRegisterSettings_1_1HC595Pins.html", null ],
     [ "I2C", "classI2C.html", null ],
     [ "LogicController", "classLogicController.html", null ],
+    [ "Motor", "classMotor.html", null ],
+    [ "MotorController", "classMotorController.html", null ],
+    [ "MotorSettings", "structMotorSettings.html", null ],
     [ "NetworkController", "classNetworkController.html", null ],
     [ "PeripheralSettings", "structPeripheralSettings.html", null ],
+    [ "Pilot", "classPilot.html", null ],
     [ "PWMController", "classPWMController.html", null ],
     [ "PWMPins", "structPWMPins.html", null ],
     [ "RegisterController", "classRegisterController.html", null ],
@@ -26,5 +31,6 @@ var hierarchy =
     [ "Timer", "classTimer.html", [
       [ "TimerCallback", "classTimerCallback.html", null ]
     ] ],
-    [ "UART", "classUART.html", null ]
+    [ "UART", "classUART.html", null ],
+    [ "Vector2", "classVector2.html", null ]
 ];

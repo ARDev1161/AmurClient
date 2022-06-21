@@ -1,4 +1,4 @@
 <map id="PeripheralController" name="PeripheralController">
-<area shape="rect" id="node1" title="Класс управления периферией робота" alt="" coords="5,145,184,619"/>
-<area shape="rect" id="node2" href="$classTimerCallback_1_1Runnable.html" title="Runnable class for overloading run function." alt="" coords="12,5,177,97"/>
+<area shape="rect" id="node1" title="Класс управления периферией робота" alt="" coords="5,145,177,677"/>
+<area shape="rect" id="node2" href="$classTimerCallback_1_1Runnable.html" title="Runnable class for overloading run function." alt="" coords="9,5,174,97"/>
 </map>

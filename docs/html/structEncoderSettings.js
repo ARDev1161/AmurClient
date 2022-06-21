@@ -1,6 +1,6 @@
 var structEncoderSettings =
 [
     [ "encoderSectorsCount", "structEncoderSettings.html#aeaa4ac485e2e1b545be1e058ebc34d07", null ],
-    [ "maxMotorSpeed", "structEncoderSettings.html#aedaf6168fd0daeb43761d7d268f47ac7", null ],
-    [ "sampleRate", "structEncoderSettings.html#ad949b919e9de3b9c89fa115be7533db1", null ]
+    [ "maxSpeed", "structEncoderSettings.html#a8b277992a6a68e6b25f400d0b292e542", null ],
+    [ "sampleRate", "structEncoderSettings.html#a420cd9ab69de0f1ea98ebcbf54a0572e", null ]
 ];
