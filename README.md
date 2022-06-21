@@ -26,7 +26,7 @@ This is application for communicate with robot on RPi base with Amur distributio
   5) GStreamer (not used, will be added in the future)
 
 ## Compile AmurClient
-  	git clone https://github.com/ARDev1161/AmurClient.git
+  	git clone https://github.com/ARDev1161/AmurClient.git --recurse-submodules
 	cd AmurClient
 	mkdir bin && cd bin
 	
