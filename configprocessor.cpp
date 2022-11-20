@@ -8,7 +8,7 @@ ConfigProcessor::ConfigProcessor(std::string configName):
     configName(configName)
 {
     setOptionsConfig();
-    readConfig(configName);
+    read(configName);
 }
 
 /*!
@@ -19,7 +19,7 @@ ConfigProcessor::ConfigProcessor()
     configName = "amur.cfg";
 
     setOptionsConfig();
-    readConfig(configName);
+    read(configName);
 }
 
 /*!
@@ -41,7 +41,7 @@ int ConfigProcessor::setOptionsConfig()
   \param[in] file Config filename.
   \return 0 if success. 1 if I/O or parse error.
 */
-int ConfigProcessor::readConfig(std::string configName)
+int ConfigProcessor::read(std::string configName)
 {
     // Read the file. If there is an error, report it and exit.
     try
@@ -70,7 +70,7 @@ int ConfigProcessor::readConfig(std::string configName)
   Write configuration to file.
   \return 0 if success. 1 if I/O error.
 */
-int ConfigProcessor::writeConfig()
+int ConfigProcessor::write()
 {
     // Write out the updated configuration.
       try
@@ -92,7 +92,7 @@ int ConfigProcessor::writeConfig()
   \param[out] out Value of parameter.
   \return Code of execution. Normal - 0, if file not found - 1.
 */
-int ConfigProcessor::searchString(std::string settingName, std::string &out)
+int ConfigProcessor::search(std::string settingName, std::string &out)
 {
     // Lookup for name and version settings in configuration file.
     try
@@ -113,7 +113,7 @@ int ConfigProcessor::searchString(std::string settingName, std::string &out)
   \param[out] out Value of parameter.
   \return Code of execution. Normal - 0, if file not found - 1.
 */
-int ConfigProcessor::searchInt(std::string settingName, int &out)
+int ConfigProcessor::search(std::string settingName, int &out)
 {
     // Lookup for name and version settings in configuration file.
     try
@@ -134,7 +134,7 @@ int ConfigProcessor::searchInt(std::string settingName, int &out)
   \param[out] out Value of parameter.
   \return Code of execution. Normal - 0, if file not found - 1.
 */
-int ConfigProcessor::searchDouble(std::string settingName, double &out)
+int ConfigProcessor::search(std::string settingName, double &out)
 {
     // Lookup for name and version settings in configuration file.
     try
@@ -155,7 +155,7 @@ int ConfigProcessor::searchDouble(std::string settingName, double &out)
   \param[out] out Value of parameter.
   \return Code of execution. Normal - 0, if file not found - 1.
 */
-int ConfigProcessor::searchBool(std::string settingName, bool &out)
+int ConfigProcessor::search(std::string settingName, bool &out)
 {
     // Lookup for name and version settings in configuration file.
     try
@@ -176,7 +176,7 @@ int ConfigProcessor::searchBool(std::string settingName, bool &out)
   \param[in] value Value of parameter.
   \return Code of execution. Normal - 0, if file not found - 1.
 */
-int ConfigProcessor::rewriteString(std::string settingName, std::string value)
+int ConfigProcessor::rewrite(std::string settingName, std::string value)
 {
     // Write parameter. If there is an error, report it and exit.
     try
@@ -199,7 +199,7 @@ int ConfigProcessor::rewriteString(std::string settingName, std::string value)
   \param[in] value Value of parameter.
   \return Code of execution. Normal - 0, if file not found - 1.
 */
-int ConfigProcessor::rewriteInt(std::string settingName, int value)
+int ConfigProcessor::rewrite(std::string settingName, int value)
 {
     // Write parameter. If there is an error, report it and exit.
     try
@@ -222,7 +222,7 @@ int ConfigProcessor::rewriteInt(std::string settingName, int value)
   \param[in] value Value of parameter.
   \return Code of execution. Normal - 0, if file not found - 1.
 */
-int ConfigProcessor::rewriteDouble(std::string settingName, double value)
+int ConfigProcessor::rewrite(std::string settingName, double value)
 {
     // Write parameter. If there is an error, report it and exit.
     try
@@ -245,7 +245,7 @@ int ConfigProcessor::rewriteDouble(std::string settingName, double value)
   \param[in] value Value of parameter.
   \return Code of execution. Normal - 0, if file not found - 1.
 */
-int ConfigProcessor::rewriteBool(std::string settingName, bool value)
+int ConfigProcessor::rewrite(std::string settingName, bool value)
 {
     // Write parameter. If there is an error, report it and exit.
     try

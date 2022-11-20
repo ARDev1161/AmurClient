@@ -33,7 +33,7 @@ LogicController::~LogicController()
 void LogicController::fillFieldsByConfig()
 {
     std::string ip ;
-    int result = config->searchString("Amur.Network.address", ip);
+    int result = config->search("Amur.Network.address", ip);
     if(ip != ""){
         this->address = ip;
     }
@@ -45,7 +45,7 @@ void LogicController::fillFieldsByConfig()
 int LogicController::printVersion()
 {
     std::string version;
-    if(config->searchString("version", version) == 0)
+    if(config->search("version", version) == 0)
         std::cout << "Version: " << version << std::endl;
     else
         return -1;

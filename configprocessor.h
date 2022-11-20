@@ -23,23 +23,23 @@ public:
     ConfigProcessor();
 
     int setOptionsConfig ();
-    int readConfig (std::string configName);
-    int writeConfig();
+    int read (std::string configName);
+    int write();
 
-    int searchString(std::string settingName, std::string &out);
-    int searchInt(std::string settingName, int &out);
-    int searchDouble(std::string settingName, double &out);
-    int searchBool(std::string settingName, bool &out);
+    int search(std::string settingName, std::string &out);
+    int search(std::string settingName, int &out);
+    int search(std::string settingName, double &out);
+    int search(std::string settingName, bool &out);
 
-    int rewriteString(std::string settingName, std::string value);
-    int rewriteInt(std::string settingName, int value);
-    int rewriteDouble(std::string settingName, double value);
-    int rewriteBool(std::string settingName, bool value);
+    int rewrite(std::string settingName, std::string value);
+    int rewrite(std::string settingName, int value);
+    int rewrite(std::string settingName, double value);
+    int rewrite(std::string settingName, bool value);
 
-    int addString(std::string settingName, std::string value);
-    int addInt(std::string settingName, int value);
-    int addDouble(std::string settingName, double value);
-    int addBool(std::string settingName, bool value);
+    int add(std::string settingName, std::string value);
+    int add(std::string settingName, int value);
+    int add(std::string settingName, double value);
+    int add(std::string settingName, bool value);
 
     void getRoot();
     std::string getConfigFilename() const;
