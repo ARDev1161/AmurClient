@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['uart_610',['UART',['../classUART.html#a68e7e88d2a13f5da85f0fde1ef98515f',1,'UART']]],
-  ['unregistereventrunnable_611',['unregisterEventRunnable',['../classTimerCallback.html#ae9046915d4bcc19c2b1b764131b6f46e',1,'TimerCallback']]],
-  ['update_612',['update',['../classEncoder.html#a50ef336bb95a8519a5d110bd97d1b599',1,'Encoder']]],
-  ['updatedata_613',['updateData',['../classPeripheralController.html#af9aea905ecb0d39ff392531ea03a698a',1,'PeripheralController']]],
-  ['updatelocalpath_614',['UpdateLocalPath',['../classPilot.html#a49131bdb67f4d3c33ef8a27af6ee1ec3',1,'Pilot']]]
+  ['timer_625',['Timer',['../classTimer.html#a5f16e8da27d2a5a5242dead46de05d97',1,'Timer']]],
+  ['timerevent_626',['timerEvent',['../classTimer.html#a116ad1e71f65837f56a3a5ce8742bede',1,'Timer::timerEvent()'],['../classTimerCallback.html#a3b63e155e306f886aca03cce38aace21',1,'TimerCallback::timerEvent()']]],
+  ['translateduty_627',['translateDuty',['../classPWMController.html#acf94d4dd0c4f6d4a487b0c38712b7598',1,'PWMController::translateDuty(unsigned int duty, unsigned int gpioRange)'],['../classPWMController.html#ac0a5963a1836b3d71fb7fd4abf4447e3',1,'PWMController::translateDuty(unsigned int duty)'],['../classPWMController.html#aecc43a59cd748871c68f52635097a137',1,'PWMController::translateDuty(int duty, int newMax)']]]
 ];

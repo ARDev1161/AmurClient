@@ -1,4 +1,4 @@
-.TH "LogicController" 3 "Tue Jun 21 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.TH "LogicController" 3 "Sun Nov 20 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -29,7 +29,7 @@ LogicController \- Класс логики управления роботом
 
 .in +1c
 .ti -1c
-.RI "void \fBprintHeadInfo\fP ()"
+.RI "int \fBprintVersion\fP ()"
 .br
 .ti -1c
 .RI "void \fBfillFieldsByConfig\fP ()"
@@ -97,8 +97,8 @@ LogicController \- Класс логики управления роботом
 
 .SS "void LogicController::fillFieldsByConfig ()\fC [private]\fP"
 Функция проверяющая и заполняющая значения полей из конфиг файла 
-.SS "void LogicController::printHeadInfo ()\fC [private]\fP"
-Функция печати основной информации о программе 
+.SS "int LogicController::printVersion ()\fC [private]\fP"
+Функция печати версии программы 
 .SS "void LogicController::worker ()\fC [private]\fP"
 Главный цикл 
 .SH "Member Data Documentation"

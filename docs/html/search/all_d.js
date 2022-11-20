@@ -33,7 +33,7 @@ var searchData=
   ['printendmoving_208',['PrintEndMoving',['../classPilot.html#aa26d8d467ac983091bbd3b8d85397c26',1,'Pilot']]],
   ['printfooter_209',['PrintFooter',['../classPilot.html#afa4287a18a3a6c7740f5744850fb33c7',1,'Pilot']]],
   ['printheader_210',['PrintHeader',['../classPilot.html#aa8ecf4edb23a1f07bb3c5e64ceacc7d5',1,'Pilot']]],
-  ['printheadinfo_211',['printHeadInfo',['../classLogicController.html#af30fc2aa3b7a3d6e5dd830d0f67e1b7b',1,'LogicController']]],
+  ['printversion_211',['printVersion',['../classLogicController.html#a6847ae339d6d14786baf2af3fe2325d6',1,'LogicController']]],
   ['pulse_212',['pulse',['../classHC165.html#a5b6252dcfeeafcdca486e77b086fd8b7',1,'HC165::pulse()'],['../classHC595.html#a621bdd795a0e38a3359da1a6e49557f6',1,'HC595::pulse()']]],
   ['pwm_213',['pwm',['../classPeripheralController.html#a473952a2ea7871ea243ae9c44241b275',1,'PeripheralController']]],
   ['pwmcontroller_214',['PWMController',['../classPWMController.html',1,'PWMController'],['../classPWMController.html#afd077fde38a5693184a19cccafa340b7',1,'PWMController::PWMController()']]],

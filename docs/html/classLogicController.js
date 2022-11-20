@@ -5,7 +5,7 @@ var classLogicController =
     [ "connectToServer", "classLogicController.html#ad02314f4890c68a236516131e598718d", null ],
     [ "connectToServer", "classLogicController.html#a351da730659ddfcea0a7eeb23c37eddb", null ],
     [ "fillFieldsByConfig", "classLogicController.html#a7b59b7775ce02221b8eb709ca3b4b3cc", null ],
-    [ "printHeadInfo", "classLogicController.html#af30fc2aa3b7a3d6e5dd830d0f67e1b7b", null ],
+    [ "printVersion", "classLogicController.html#a6847ae339d6d14786baf2af3fe2325d6", null ],
     [ "worker", "classLogicController.html#a49666b935f10b9aefeee99077a952c57", null ],
     [ "address", "classLogicController.html#a0ee8e0cacc8549da2c9088a76070c509", null ],
     [ "config", "classLogicController.html#a4be7553f654f707cd45e4ce29d025c18", null ],

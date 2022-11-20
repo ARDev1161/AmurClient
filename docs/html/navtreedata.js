@@ -67,8 +67,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AmurClient_8cpp.html",
-"classPilot.html#a98d31f1241822db3b5cea5eff6e0668b",
-"structRegisterSettings.html#a4b4f1d6a6429f4759df92019e1b9c040"
+"classPilot.html#a84e31a6bf5396fd6295e7a60d717c9ab",
+"structPWMPins.html#ac5881ffc97d7182fbcb84cd018ac1ac1"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

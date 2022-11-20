@@ -1,4 +1,4 @@
-.TH "ConfigProcessor" 3 "Tue Jun 21 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.TH "ConfigProcessor" 3 "Sun Nov 20 2022" "Version 0.42" "AmurClient" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,7 +12,7 @@ ConfigProcessor
 
 .in +1c
 .ti -1c
-.RI "\fBConfigProcessor\fP (const char *\fBconfigName\fP)"
+.RI "\fBConfigProcessor\fP (std::string \fBconfigName\fP)"
 .br
 .ti -1c
 .RI "\fBConfigProcessor\fP ()"
@@ -21,94 +21,262 @@ ConfigProcessor
 .RI "int \fBsetOptionsConfig\fP ()"
 .br
 .ti -1c
-.RI "int \fBreadConfig\fP (const char *\fBconfigName\fP)"
+.RI "int \fBreadConfig\fP (std::string \fBconfigName\fP)"
 .br
 .ti -1c
-.RI "int \fBwriteConfig\fP (const char *\fBconfigName\fP)"
+.RI "int \fBwriteConfig\fP ()"
 .br
 .ti -1c
-.RI "std::string \fBconfigSearchString\fP (const char *settingName)"
+.RI "int \fBsearchString\fP (std::string settingName, std::string &out)"
 .br
 .ti -1c
-.RI "int \fBconfigSearchInt\fP (const char *settingName)"
+.RI "int \fBsearchInt\fP (std::string settingName, int &out)"
 .br
 .ti -1c
-.RI "double \fBconfigSearchDouble\fP (const char *settingName)"
+.RI "int \fBsearchDouble\fP (std::string settingName, double &out)"
+.br
+.ti -1c
+.RI "int \fBsearchBool\fP (std::string settingName, bool &out)"
+.br
+.ti -1c
+.RI "int \fBrewriteString\fP (std::string settingName, std::string value)"
+.br
+.ti -1c
+.RI "int \fBrewriteInt\fP (std::string settingName, int value)"
+.br
+.ti -1c
+.RI "int \fBrewriteDouble\fP (std::string settingName, double value)"
+.br
+.ti -1c
+.RI "int \fBrewriteBool\fP (std::string settingName, bool value)"
+.br
+.ti -1c
+.RI "int \fBaddString\fP (std::string settingName, std::string value)"
+.br
+.ti -1c
+.RI "int \fBaddInt\fP (std::string settingName, int value)"
+.br
+.ti -1c
+.RI "int \fBaddDouble\fP (std::string settingName, double value)"
+.br
+.ti -1c
+.RI "int \fBaddBool\fP (std::string settingName, bool value)"
 .br
 .ti -1c
 .RI "void \fBgetRoot\fP ()"
 .br
 .ti -1c
-.RI "const char * \fBgetConfigFilename\fP () const"
+.RI "std::string \fBgetConfigFilename\fP () const"
 .br
 .ti -1c
-.RI "void \fBsetConfigFilename\fP (const char *newConfigName)"
+.RI "void \fBsetConfigFilename\fP (std::string newConfigName)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "std::vector< std::string > \fBsplitPath\fP (std::string path)"
 .br
 .in -1c
 .SS "Private Attributes"
 
 .in +1c
 .ti -1c
-.RI "const char * \fBconfigName\fP"
+.RI "std::string \fBconfigName\fP"
 .br
+.RI "Setuped config filename\&. "
 .ti -1c
 .RI "libconfig::Config \fBconfig\fP"
 .br
-.ti -1c
-.RI "libconfig::Setting & \fBroot\fP = config\&.getRoot()"
-.br
+.RI "Libconfig instance\&. "
 .in -1c
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "ConfigProcessor::ConfigProcessor (const char * configName)"
+.SS "ConfigProcessor::ConfigProcessor (std::string configName)"
+Constructor with custom config filename\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfile\fP Config filename\&. 
+.RE
+.PP
 
 .SS "ConfigProcessor::ConfigProcessor ()"
-
+Constructor with default config filename\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "double ConfigProcessor::configSearchDouble (const char * settingName)"
+.SS "int ConfigProcessor::addBool (std::string settingName, bool value)"
 
-.SS "int ConfigProcessor::configSearchInt (const char * settingName)"
+.SS "int ConfigProcessor::addDouble (std::string settingName, double value)"
 
-.SS "std::string ConfigProcessor::configSearchString (const char * settingName)"
-Поиск настройки в конфигурационном файле по имени\&. 
-.PP
-\fBParameters\fP
-.RS 4
-\fIfile\fP Имя настройки в конфигурационном файле\&. 
-.RE
-.PP
+.SS "int ConfigProcessor::addInt (std::string settingName, int value)"
 
-.SS "const char * ConfigProcessor::getConfigFilename () const"
-Возвращает имя конфигурационного файла\&. 
+.SS "int ConfigProcessor::addString (std::string settingName, std::string value)"
+
+.SS "std::string ConfigProcessor::getConfigFilename () const"
+Return config filename\&. 
 .SS "void ConfigProcessor::getRoot ()"
 
-.SS "int ConfigProcessor::readConfig (const char * configName)"
-Чтение параметров конфигурации из config файла\&. 
+.SS "int ConfigProcessor::readConfig (std::string configName)"
+Read configuration from file\&. 
 .PP
 \fBParameters\fP
 .RS 4
-\fIfile\fP Имя файла конфигурации\&. 
+\fIfile\fP Config filename\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+0 if success\&. 1 if I/O or parse error\&. 
 .RE
 .PP
 
-.SS "void ConfigProcessor::setConfigFilename (const char * newConfigName)"
-Изменяет имя конфигурационного файла\&. 
+.SS "int ConfigProcessor::rewriteBool (std::string settingName, bool value)"
+Write boolean parameter to configuration\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsettingName\fP Address of parameter in configuration\&. 
+.br
+\fIvalue\fP Value of parameter\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Code of execution\&. Normal - 0, if file not found - 1\&. 
+.RE
+.PP
+
+.SS "int ConfigProcessor::rewriteDouble (std::string settingName, double value)"
+Write double parameter to configuration\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsettingName\fP Address of parameter in configuration\&. 
+.br
+\fIvalue\fP Value of parameter\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Code of execution\&. Normal - 0, if file not found - 1\&. 
+.RE
+.PP
+
+.SS "int ConfigProcessor::rewriteInt (std::string settingName, int value)"
+Write integer parameter to configuration\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsettingName\fP Address of parameter in configuration\&. 
+.br
+\fIvalue\fP Value of parameter\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Code of execution\&. Normal - 0, if file not found - 1\&. 
+.RE
+.PP
+
+.SS "int ConfigProcessor::rewriteString (std::string settingName, std::string value)"
+Write string parameter to configuration\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsettingName\fP Address of parameter in configuration\&. 
+.br
+\fIvalue\fP Value of parameter\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Code of execution\&. Normal - 0, if file not found - 1\&. 
+.RE
+.PP
+
+.SS "int ConfigProcessor::searchBool (std::string settingName, bool & out)"
+Get bool parameter from configuration\&. param[in] settingName Address of parameter in configuration\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIout\fP Value of parameter\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Code of execution\&. Normal - 0, if file not found - 1\&. 
+.RE
+.PP
+
+.SS "int ConfigProcessor::searchDouble (std::string settingName, double & out)"
+Get double parameter from configuration\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsettingName\fP Address of parameter in configuration\&. 
+.br
+\fIout\fP Value of parameter\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Code of execution\&. Normal - 0, if file not found - 1\&. 
+.RE
+.PP
+
+.SS "int ConfigProcessor::searchInt (std::string settingName, int & out)"
+Get integer parameter from configuration\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsettingName\fP Address of parameter in configuration\&. 
+.br
+\fIout\fP Value of parameter\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Code of execution\&. Normal - 0, if file not found - 1\&. 
+.RE
+.PP
+
+.SS "int ConfigProcessor::searchString (std::string settingName, std::string & out)"
+Get string parameter from configuration\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsettingName\fP Address of parameter in configuration\&. 
+.br
+\fIout\fP Value of parameter\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Code of execution\&. Normal - 0, if file not found - 1\&. 
+.RE
+.PP
+
+.SS "void ConfigProcessor::setConfigFilename (std::string newConfigName)"
+Setup config filename\&. 
 .SS "int ConfigProcessor::setOptionsConfig ()"
-Инициализация libconfig\&. 
+Initialize libconfig\&. 
 .PP
 \fBParameters\fP
 .RS 4
-\fIfile\fP Имя файла конфигурации\&. 
+\fIfile\fP Config filename\&. 
 .RE
 .PP
 
-.SS "int ConfigProcessor::writeConfig (const char * configName)"
-Запись параметров конфигурации в config файл\&. 
+.SS "std::vector<std::string> ConfigProcessor::splitPath (std::string path)\fC [private]\fP"
+
+.SS "int ConfigProcessor::writeConfig ()"
+Write configuration to file\&. 
 .PP
-\fBParameters\fP
+\fBReturns\fP
 .RS 4
-\fIfile\fP Имя файла конфигурации\&. 
+0 if success\&. 1 if I/O error\&. 
 .RE
 .PP
 
@@ -116,10 +284,12 @@ ConfigProcessor
 .PP 
 .SS "libconfig::Config ConfigProcessor::config\fC [private]\fP"
 
-.SS "const char* ConfigProcessor::configName\fC [private]\fP"
+.PP
+Libconfig instance\&. 
+.SS "std::string ConfigProcessor::configName\fC [private]\fP"
 
-.SS "libconfig::Setting& ConfigProcessor::root = config\&.getRoot()\fC [private]\fP"
-
+.PP
+Setuped config filename\&. 
 
 .SH "Author"
 .PP 

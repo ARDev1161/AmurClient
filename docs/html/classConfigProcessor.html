@@ -85,6 +85,7 @@ $(document).ready(function(){initNavTree('classConfigProcessor.html',''); initRe
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classConfigProcessor-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -98,47 +99,70 @@ Collaboration diagram for ConfigProcessor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classConfigProcessor__coll__graph.png" border="0" usemap="#aConfigProcessor_coll__map" alt="Collaboration graph"/></div>
 <map name="aConfigProcessor_coll__map" id="aConfigProcessor_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,161,259"/>
+<area shape="rect" title=" " alt="" coords="5,5,145,259"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a09fe56d6b694cf537a8479f44e615a9b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a09fe56d6b694cf537a8479f44e615a9b">ConfigProcessor</a> (const char *<a class="el" href="classConfigProcessor.html#a3892fba09b183683d84f7d3e0f2fff64">configName</a>)</td></tr>
-<tr class="separator:a09fe56d6b694cf537a8479f44e615a9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1480157abb26931735fda235094bd22d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a1480157abb26931735fda235094bd22d">ConfigProcessor</a> (std::string <a class="el" href="classConfigProcessor.html#aad0adfb8780c15a6f089daf793cbba3d">configName</a>)</td></tr>
+<tr class="separator:a1480157abb26931735fda235094bd22d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5168059dfc8094a8b91d96ee88e95ace"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a5168059dfc8094a8b91d96ee88e95ace">ConfigProcessor</a> ()</td></tr>
 <tr class="separator:a5168059dfc8094a8b91d96ee88e95ace"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b12e4fd79e5b8679f61e98de92889df"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a6b12e4fd79e5b8679f61e98de92889df">setOptionsConfig</a> ()</td></tr>
 <tr class="separator:a6b12e4fd79e5b8679f61e98de92889df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab99f6383f5cf58fd374b20815991a9f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#ab99f6383f5cf58fd374b20815991a9f7">readConfig</a> (const char *<a class="el" href="classConfigProcessor.html#a3892fba09b183683d84f7d3e0f2fff64">configName</a>)</td></tr>
-<tr class="separator:ab99f6383f5cf58fd374b20815991a9f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a595de1ab2a476755b9323f4d8b394e1e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a595de1ab2a476755b9323f4d8b394e1e">writeConfig</a> (const char *<a class="el" href="classConfigProcessor.html#a3892fba09b183683d84f7d3e0f2fff64">configName</a>)</td></tr>
-<tr class="separator:a595de1ab2a476755b9323f4d8b394e1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4348c04f108a9906e2508ad28470b498"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a4348c04f108a9906e2508ad28470b498">configSearchString</a> (const char *settingName)</td></tr>
-<tr class="separator:a4348c04f108a9906e2508ad28470b498"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6137b024b7216bf64ad6707e82caca76"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a6137b024b7216bf64ad6707e82caca76">configSearchInt</a> (const char *settingName)</td></tr>
-<tr class="separator:a6137b024b7216bf64ad6707e82caca76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab961c866035766abb7682c308ce9271c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#ab961c866035766abb7682c308ce9271c">configSearchDouble</a> (const char *settingName)</td></tr>
-<tr class="separator:ab961c866035766abb7682c308ce9271c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6751f38e8f84cf251ca4bf6b7a54292e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a6751f38e8f84cf251ca4bf6b7a54292e">readConfig</a> (std::string <a class="el" href="classConfigProcessor.html#aad0adfb8780c15a6f089daf793cbba3d">configName</a>)</td></tr>
+<tr class="separator:a6751f38e8f84cf251ca4bf6b7a54292e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaa0b9fd530ada28a0e01566093d13d2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#adaa0b9fd530ada28a0e01566093d13d2">writeConfig</a> ()</td></tr>
+<tr class="separator:adaa0b9fd530ada28a0e01566093d13d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1cc7156e5a04a607c9e0276a2021a0a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#aa1cc7156e5a04a607c9e0276a2021a0a">searchString</a> (std::string settingName, std::string &amp;out)</td></tr>
+<tr class="separator:aa1cc7156e5a04a607c9e0276a2021a0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af70f5e29fb73324323e6d21a4fa816e6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#af70f5e29fb73324323e6d21a4fa816e6">searchInt</a> (std::string settingName, int &amp;out)</td></tr>
+<tr class="separator:af70f5e29fb73324323e6d21a4fa816e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d78f8e00dce6261abad62a45a5f8c97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a6d78f8e00dce6261abad62a45a5f8c97">searchDouble</a> (std::string settingName, double &amp;out)</td></tr>
+<tr class="separator:a6d78f8e00dce6261abad62a45a5f8c97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40488e0457ab5b0202b4ed2e9e7bd9f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a40488e0457ab5b0202b4ed2e9e7bd9f7">searchBool</a> (std::string settingName, bool &amp;out)</td></tr>
+<tr class="separator:a40488e0457ab5b0202b4ed2e9e7bd9f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e38c3e61994d94f58559b8f41081e51"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a3e38c3e61994d94f58559b8f41081e51">rewriteString</a> (std::string settingName, std::string value)</td></tr>
+<tr class="separator:a3e38c3e61994d94f58559b8f41081e51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38fbaf78bf86d814fd8e5f7d98fa0a32"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a38fbaf78bf86d814fd8e5f7d98fa0a32">rewriteInt</a> (std::string settingName, int value)</td></tr>
+<tr class="separator:a38fbaf78bf86d814fd8e5f7d98fa0a32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a288842cf53e14ae62400096d65c8cf60"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a288842cf53e14ae62400096d65c8cf60">rewriteDouble</a> (std::string settingName, double value)</td></tr>
+<tr class="separator:a288842cf53e14ae62400096d65c8cf60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a805d78551c4cf8deace870ac6382ebf9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a805d78551c4cf8deace870ac6382ebf9">rewriteBool</a> (std::string settingName, bool value)</td></tr>
+<tr class="separator:a805d78551c4cf8deace870ac6382ebf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac67a2d9c4130f17c5a3e4d7109c14c3c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#ac67a2d9c4130f17c5a3e4d7109c14c3c">addString</a> (std::string settingName, std::string value)</td></tr>
+<tr class="separator:ac67a2d9c4130f17c5a3e4d7109c14c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84209aa0c0db138d9b1beb36612c0a41"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a84209aa0c0db138d9b1beb36612c0a41">addInt</a> (std::string settingName, int value)</td></tr>
+<tr class="separator:a84209aa0c0db138d9b1beb36612c0a41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68e5a86095b5d1c1892780e4fd9ac7f1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a68e5a86095b5d1c1892780e4fd9ac7f1">addDouble</a> (std::string settingName, double value)</td></tr>
+<tr class="separator:a68e5a86095b5d1c1892780e4fd9ac7f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefb75c22db5952e9c618671030c2b710"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#aefb75c22db5952e9c618671030c2b710">addBool</a> (std::string settingName, bool value)</td></tr>
+<tr class="separator:aefb75c22db5952e9c618671030c2b710"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1300ab443a260769f4adc32a661c5a75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a1300ab443a260769f4adc32a661c5a75">getRoot</a> ()</td></tr>
 <tr class="separator:a1300ab443a260769f4adc32a661c5a75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5eecb656e1171a6e6576abfd152a21fa"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a5eecb656e1171a6e6576abfd152a21fa">getConfigFilename</a> () const</td></tr>
-<tr class="separator:a5eecb656e1171a6e6576abfd152a21fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62884420d070398ce6473578d16346e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a62884420d070398ce6473578d16346e7">setConfigFilename</a> (const char *newConfigName)</td></tr>
-<tr class="separator:a62884420d070398ce6473578d16346e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af91e261f2e514c9ff0a6363ff5b9ae90"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#af91e261f2e514c9ff0a6363ff5b9ae90">getConfigFilename</a> () const</td></tr>
+<tr class="separator:af91e261f2e514c9ff0a6363ff5b9ae90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b3e1d04f02a2ca299829196f15d930d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a4b3e1d04f02a2ca299829196f15d930d">setConfigFilename</a> (std::string newConfigName)</td></tr>
+<tr class="separator:a4b3e1d04f02a2ca299829196f15d930d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a61fbdb5e1a2733c5ea3509fc9ae3d574"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a61fbdb5e1a2733c5ea3509fc9ae3d574">splitPath</a> (std::string path)</td></tr>
+<tr class="separator:a61fbdb5e1a2733c5ea3509fc9ae3d574"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a3892fba09b183683d84f7d3e0f2fff64"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a3892fba09b183683d84f7d3e0f2fff64">configName</a></td></tr>
-<tr class="separator:a3892fba09b183683d84f7d3e0f2fff64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad0adfb8780c15a6f089daf793cbba3d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#aad0adfb8780c15a6f089daf793cbba3d">configName</a></td></tr>
+<tr class="memdesc:aad0adfb8780c15a6f089daf793cbba3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setuped config filename.  <a href="classConfigProcessor.html#aad0adfb8780c15a6f089daf793cbba3d">More...</a><br /></td></tr>
+<tr class="separator:aad0adfb8780c15a6f089daf793cbba3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab86df02087086358651384907683a70b"><td class="memItemLeft" align="right" valign="top">libconfig::Config&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#ab86df02087086358651384907683a70b">config</a></td></tr>
+<tr class="memdesc:ab86df02087086358651384907683a70b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libconfig instance.  <a href="classConfigProcessor.html#ab86df02087086358651384907683a70b">More...</a><br /></td></tr>
 <tr class="separator:ab86df02087086358651384907683a70b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59e1b046ef03ad84e9c936e3c890b66b"><td class="memItemLeft" align="right" valign="top">libconfig::Setting &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classConfigProcessor.html#a59e1b046ef03ad84e9c936e3c890b66b">root</a> = config.getRoot()</td></tr>
-<tr class="separator:a59e1b046ef03ad84e9c936e3c890b66b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a09fe56d6b694cf537a8479f44e615a9b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a09fe56d6b694cf537a8479f44e615a9b">&#9670;&nbsp;</a></span>ConfigProcessor() <span class="overload">[1/2]</span></h2>
+<a id="a1480157abb26931735fda235094bd22d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1480157abb26931735fda235094bd22d">&#9670;&nbsp;</a></span>ConfigProcessor() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -146,19 +170,25 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">ConfigProcessor::ConfigProcessor </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
+          <td class="paramtype">std::string&#160;</td>
           <td class="paramname"><em>configName</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Constructor with custom config filename. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">file</td><td>Config filename. </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classConfigProcessor_a09fe56d6b694cf537a8479f44e615a9b_cgraph.png" border="0" usemap="#aclassConfigProcessor_a09fe56d6b694cf537a8479f44e615a9b_cgraph" alt=""/></div>
-<map name="aclassConfigProcessor_a09fe56d6b694cf537a8479f44e615a9b_cgraph" id="aclassConfigProcessor_a09fe56d6b694cf537a8479f44e615a9b_cgraph">
+<div class="center"><img src="classConfigProcessor_a1480157abb26931735fda235094bd22d_cgraph.png" border="0" usemap="#aclassConfigProcessor_a1480157abb26931735fda235094bd22d_cgraph" alt=""/></div>
+<map name="aclassConfigProcessor_a1480157abb26931735fda235094bd22d_cgraph" id="aclassConfigProcessor_a1480157abb26931735fda235094bd22d_cgraph">
 <area shape="rect" title=" " alt="" coords="5,35,224,61"/>
-<area shape="rect" href="classConfigProcessor.html#ab99f6383f5cf58fd374b20815991a9f7" title=" " alt="" coords="273,5,457,32"/>
+<area shape="rect" href="classConfigProcessor.html#a6751f38e8f84cf251ca4bf6b7a54292e" title=" " alt="" coords="273,5,457,32"/>
 <area shape="rect" href="classConfigProcessor.html#a6b12e4fd79e5b8679f61e98de92889df" title=" " alt="" coords="272,57,459,98"/>
 </map>
 </div>
@@ -179,13 +209,14 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Constructor with default config filename. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classConfigProcessor_a5168059dfc8094a8b91d96ee88e95ace_cgraph.png" border="0" usemap="#aclassConfigProcessor_a5168059dfc8094a8b91d96ee88e95ace_cgraph" alt=""/></div>
 <map name="aclassConfigProcessor_a5168059dfc8094a8b91d96ee88e95ace_cgraph" id="aclassConfigProcessor_a5168059dfc8094a8b91d96ee88e95ace_cgraph">
 <area shape="rect" title=" " alt="" coords="5,35,224,61"/>
-<area shape="rect" href="classConfigProcessor.html#ab99f6383f5cf58fd374b20815991a9f7" title=" " alt="" coords="273,5,457,32"/>
+<area shape="rect" href="classConfigProcessor.html#a6751f38e8f84cf251ca4bf6b7a54292e" title=" " alt="" coords="273,5,457,32"/>
 <area shape="rect" href="classConfigProcessor.html#a6b12e4fd79e5b8679f61e98de92889df" title=" " alt="" coords="272,57,459,98"/>
 </map>
 </div>
@@ -193,112 +224,133 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab961c866035766abb7682c308ce9271c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab961c866035766abb7682c308ce9271c">&#9670;&nbsp;</a></span>configSearchDouble()</h2>
+<a id="aefb75c22db5952e9c618671030c2b710"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefb75c22db5952e9c618671030c2b710">&#9670;&nbsp;</a></span>addBool()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double ConfigProcessor::configSearchDouble </td>
+          <td class="memname">int ConfigProcessor::addBool </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>settingName</em></td><td>)</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>settingName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classConfigProcessor_ab961c866035766abb7682c308ce9271c_icgraph.png" border="0" usemap="#aclassConfigProcessor_ab961c866035766abb7682c308ce9271c_icgraph" alt=""/></div>
-<map name="aclassConfigProcessor_ab961c866035766abb7682c308ce9271c_icgraph" id="aclassConfigProcessor_ab961c866035766abb7682c308ce9271c_icgraph">
-<area shape="rect" title=" " alt="" coords="497,5,696,47"/>
-<area shape="rect" href="classLogicController.html#af30fc2aa3b7a3d6e5dd830d0f67e1b7b" title=" " alt="" coords="256,13,449,39"/>
-<area shape="rect" href="classLogicController.html#adebf682fbc49020f4d382211084726d4" title=" " alt="" coords="5,13,208,39"/>
-</map>
-</div>
 
 </div>
 </div>
-<a id="a6137b024b7216bf64ad6707e82caca76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6137b024b7216bf64ad6707e82caca76">&#9670;&nbsp;</a></span>configSearchInt()</h2>
+<a id="a68e5a86095b5d1c1892780e4fd9ac7f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68e5a86095b5d1c1892780e4fd9ac7f1">&#9670;&nbsp;</a></span>addDouble()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int ConfigProcessor::configSearchInt </td>
+          <td class="memname">int ConfigProcessor::addDouble </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>settingName</em></td><td>)</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>settingName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classConfigProcessor_a6137b024b7216bf64ad6707e82caca76_icgraph.png" border="0" usemap="#aclassConfigProcessor_a6137b024b7216bf64ad6707e82caca76_icgraph" alt=""/></div>
-<map name="aclassConfigProcessor_a6137b024b7216bf64ad6707e82caca76_icgraph" id="aclassConfigProcessor_a6137b024b7216bf64ad6707e82caca76_icgraph">
-<area shape="rect" title=" " alt="" coords="497,5,711,32"/>
-<area shape="rect" href="classLogicController.html#af30fc2aa3b7a3d6e5dd830d0f67e1b7b" title=" " alt="" coords="256,5,449,32"/>
-<area shape="rect" href="classLogicController.html#adebf682fbc49020f4d382211084726d4" title=" " alt="" coords="5,5,208,32"/>
-</map>
-</div>
 
 </div>
 </div>
-<a id="a4348c04f108a9906e2508ad28470b498"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4348c04f108a9906e2508ad28470b498">&#9670;&nbsp;</a></span>configSearchString()</h2>
+<a id="a84209aa0c0db138d9b1beb36612c0a41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84209aa0c0db138d9b1beb36612c0a41">&#9670;&nbsp;</a></span>addInt()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string ConfigProcessor::configSearchString </td>
+          <td class="memname">int ConfigProcessor::addInt </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>settingName</em></td><td>)</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>settingName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Поиск настройки в конфигурационном файле по имени. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">file</td><td>Имя настройки в конфигурационном файле. </td></tr>
-  </table>
-  </dd>
-</dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classConfigProcessor_a4348c04f108a9906e2508ad28470b498_icgraph.png" border="0" usemap="#aclassConfigProcessor_a4348c04f108a9906e2508ad28470b498_icgraph" alt=""/></div>
-<map name="aclassConfigProcessor_a4348c04f108a9906e2508ad28470b498_icgraph" id="aclassConfigProcessor_a4348c04f108a9906e2508ad28470b498_icgraph">
-<area shape="rect" title=" " alt="" coords="497,35,696,76"/>
-<area shape="rect" href="classLogicController.html#a7b59b7775ce02221b8eb709ca3b4b3cc" title=" " alt="" coords="271,5,434,47"/>
-<area shape="rect" href="classLogicController.html#af30fc2aa3b7a3d6e5dd830d0f67e1b7b" title=" " alt="" coords="256,71,449,98"/>
-<area shape="rect" href="classLogicController.html#adebf682fbc49020f4d382211084726d4" title=" " alt="" coords="5,42,208,69"/>
-</map>
-</div>
 
 </div>
 </div>
-<a id="a5eecb656e1171a6e6576abfd152a21fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5eecb656e1171a6e6576abfd152a21fa">&#9670;&nbsp;</a></span>getConfigFilename()</h2>
+<a id="ac67a2d9c4130f17c5a3e4d7109c14c3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac67a2d9c4130f17c5a3e4d7109c14c3c">&#9670;&nbsp;</a></span>addString()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char * ConfigProcessor::getConfigFilename </td>
+          <td class="memname">int ConfigProcessor::addString </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>settingName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af91e261f2e514c9ff0a6363ff5b9ae90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af91e261f2e514c9ff0a6363ff5b9ae90">&#9670;&nbsp;</a></span>getConfigFilename()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ConfigProcessor::getConfigFilename </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Возвращает имя конфигурационного файла. </p>
+<p>Return config filename. </p>
 
 </div>
 </div>
@@ -319,8 +371,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ab99f6383f5cf58fd374b20815991a9f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab99f6383f5cf58fd374b20815991a9f7">&#9670;&nbsp;</a></span>readConfig()</h2>
+<a id="a6751f38e8f84cf251ca4bf6b7a54292e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6751f38e8f84cf251ca4bf6b7a54292e">&#9670;&nbsp;</a></span>readConfig()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -328,32 +380,331 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">int ConfigProcessor::readConfig </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
+          <td class="paramtype">std::string&#160;</td>
           <td class="paramname"><em>configName</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Чтение параметров конфигурации из config файла. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Read configuration from file. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">file</td><td>Имя файла конфигурации. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">file</td><td>Config filename. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if success. 1 if I/O or parse error. </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classConfigProcessor_ab99f6383f5cf58fd374b20815991a9f7_icgraph.png" border="0" usemap="#aclassConfigProcessor_ab99f6383f5cf58fd374b20815991a9f7_icgraph" alt=""/></div>
-<map name="aclassConfigProcessor_ab99f6383f5cf58fd374b20815991a9f7_icgraph" id="aclassConfigProcessor_ab99f6383f5cf58fd374b20815991a9f7_icgraph">
+<div class="center"><img src="classConfigProcessor_a6751f38e8f84cf251ca4bf6b7a54292e_icgraph.png" border="0" usemap="#aclassConfigProcessor_a6751f38e8f84cf251ca4bf6b7a54292e_icgraph" alt=""/></div>
+<map name="aclassConfigProcessor_a6751f38e8f84cf251ca4bf6b7a54292e_icgraph" id="aclassConfigProcessor_a6751f38e8f84cf251ca4bf6b7a54292e_icgraph">
 <area shape="rect" title=" " alt="" coords="272,5,456,32"/>
-<area shape="rect" href="classConfigProcessor.html#a09fe56d6b694cf537a8479f44e615a9b" title=" " alt="" coords="5,5,224,32"/>
+<area shape="rect" href="classConfigProcessor.html#a1480157abb26931735fda235094bd22d" title=" " alt="" coords="5,5,224,32"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a62884420d070398ce6473578d16346e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62884420d070398ce6473578d16346e7">&#9670;&nbsp;</a></span>setConfigFilename()</h2>
+<a id="a805d78551c4cf8deace870ac6382ebf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a805d78551c4cf8deace870ac6382ebf9">&#9670;&nbsp;</a></span>rewriteBool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ConfigProcessor::rewriteBool </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>settingName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write boolean parameter to configuration. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">settingName</td><td>Address of parameter in configuration. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>Value of parameter. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Code of execution. Normal - 0, if file not found - 1. </dd></dl>
+
+</div>
+</div>
+<a id="a288842cf53e14ae62400096d65c8cf60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a288842cf53e14ae62400096d65c8cf60">&#9670;&nbsp;</a></span>rewriteDouble()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ConfigProcessor::rewriteDouble </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>settingName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write double parameter to configuration. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">settingName</td><td>Address of parameter in configuration. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>Value of parameter. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Code of execution. Normal - 0, if file not found - 1. </dd></dl>
+
+</div>
+</div>
+<a id="a38fbaf78bf86d814fd8e5f7d98fa0a32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38fbaf78bf86d814fd8e5f7d98fa0a32">&#9670;&nbsp;</a></span>rewriteInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ConfigProcessor::rewriteInt </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>settingName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write integer parameter to configuration. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">settingName</td><td>Address of parameter in configuration. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>Value of parameter. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Code of execution. Normal - 0, if file not found - 1. </dd></dl>
+
+</div>
+</div>
+<a id="a3e38c3e61994d94f58559b8f41081e51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e38c3e61994d94f58559b8f41081e51">&#9670;&nbsp;</a></span>rewriteString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ConfigProcessor::rewriteString </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>settingName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write string parameter to configuration. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">settingName</td><td>Address of parameter in configuration. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>Value of parameter. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Code of execution. Normal - 0, if file not found - 1. </dd></dl>
+
+</div>
+</div>
+<a id="a40488e0457ab5b0202b4ed2e9e7bd9f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40488e0457ab5b0202b4ed2e9e7bd9f7">&#9670;&nbsp;</a></span>searchBool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ConfigProcessor::searchBool </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>settingName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool &amp;&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get bool parameter from configuration. param[in] settingName Address of parameter in configuration. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>Value of parameter. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Code of execution. Normal - 0, if file not found - 1. </dd></dl>
+
+</div>
+</div>
+<a id="a6d78f8e00dce6261abad62a45a5f8c97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d78f8e00dce6261abad62a45a5f8c97">&#9670;&nbsp;</a></span>searchDouble()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ConfigProcessor::searchDouble </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>settingName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double &amp;&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get double parameter from configuration. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">settingName</td><td>Address of parameter in configuration. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>Value of parameter. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Code of execution. Normal - 0, if file not found - 1. </dd></dl>
+
+</div>
+</div>
+<a id="af70f5e29fb73324323e6d21a4fa816e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af70f5e29fb73324323e6d21a4fa816e6">&#9670;&nbsp;</a></span>searchInt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ConfigProcessor::searchInt </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>settingName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get integer parameter from configuration. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">settingName</td><td>Address of parameter in configuration. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>Value of parameter. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Code of execution. Normal - 0, if file not found - 1. </dd></dl>
+
+</div>
+</div>
+<a id="aa1cc7156e5a04a607c9e0276a2021a0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1cc7156e5a04a607c9e0276a2021a0a">&#9670;&nbsp;</a></span>searchString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ConfigProcessor::searchString </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>settingName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get string parameter from configuration. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">settingName</td><td>Address of parameter in configuration. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>Value of parameter. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Code of execution. Normal - 0, if file not found - 1. </dd></dl>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classConfigProcessor_aa1cc7156e5a04a607c9e0276a2021a0a_icgraph.png" border="0" usemap="#aclassConfigProcessor_aa1cc7156e5a04a607c9e0276a2021a0a_icgraph" alt=""/></div>
+<map name="aclassConfigProcessor_aa1cc7156e5a04a607c9e0276a2021a0a_icgraph" id="aclassConfigProcessor_aa1cc7156e5a04a607c9e0276a2021a0a_icgraph">
+<area shape="rect" title=" " alt="" coords="488,42,684,69"/>
+<area shape="rect" href="classLogicController.html#a7b59b7775ce02221b8eb709ca3b4b3cc" title=" " alt="" coords="267,5,429,47"/>
+<area shape="rect" href="classLogicController.html#a6847ae339d6d14786baf2af3fe2325d6" title=" " alt="" coords="256,71,440,98"/>
+<area shape="rect" href="classLogicController.html#adebf682fbc49020f4d382211084726d4" title=" " alt="" coords="5,42,208,69"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4b3e1d04f02a2ca299829196f15d930d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b3e1d04f02a2ca299829196f15d930d">&#9670;&nbsp;</a></span>setConfigFilename()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -361,13 +712,13 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void ConfigProcessor::setConfigFilename </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
+          <td class="paramtype">std::string&#160;</td>
           <td class="paramname"><em>newConfigName</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Изменяет имя конфигурационного файла. </p>
+<p>Setup config filename. </p>
 
 </div>
 </div>
@@ -385,9 +736,9 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Инициализация libconfig. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Initialize libconfig. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">file</td><td>Имя файла конфигурации. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">file</td><td>Config filename. </td></tr>
   </table>
   </dd>
 </dl>
@@ -397,14 +748,40 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classConfigProcessor_a6b12e4fd79e5b8679f61e98de92889df_icgraph.png" border="0" usemap="#aclassConfigProcessor_a6b12e4fd79e5b8679f61e98de92889df_icgraph" alt=""/></div>
 <map name="aclassConfigProcessor_a6b12e4fd79e5b8679f61e98de92889df_icgraph" id="aclassConfigProcessor_a6b12e4fd79e5b8679f61e98de92889df_icgraph">
 <area shape="rect" title=" " alt="" coords="272,5,459,47"/>
-<area shape="rect" href="classConfigProcessor.html#a09fe56d6b694cf537a8479f44e615a9b" title=" " alt="" coords="5,13,224,39"/>
+<area shape="rect" href="classConfigProcessor.html#a1480157abb26931735fda235094bd22d" title=" " alt="" coords="5,13,224,39"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a595de1ab2a476755b9323f4d8b394e1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a595de1ab2a476755b9323f4d8b394e1e">&#9670;&nbsp;</a></span>writeConfig()</h2>
+<a id="a61fbdb5e1a2733c5ea3509fc9ae3d574"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61fbdb5e1a2733c5ea3509fc9ae3d574">&#9670;&nbsp;</a></span>splitPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; ConfigProcessor::splitPath </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adaa0b9fd530ada28a0e01566093d13d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaa0b9fd530ada28a0e01566093d13d2">&#9670;&nbsp;</a></span>writeConfig()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -412,18 +789,12 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">int ConfigProcessor::writeConfig </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>configName</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Запись параметров конфигурации в config файл. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">file</td><td>Имя файла конфигурации. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Write configuration to file. </p><dl class="section return"><dt>Returns</dt><dd>0 if success. 1 if I/O error. </dd></dl>
 
 </div>
 </div>
@@ -448,10 +819,12 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p>Libconfig instance. </p>
+
 </div>
 </div>
-<a id="a3892fba09b183683d84f7d3e0f2fff64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3892fba09b183683d84f7d3e0f2fff64">&#9670;&nbsp;</a></span>configName</h2>
+<a id="aad0adfb8780c15a6f089daf793cbba3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad0adfb8780c15a6f089daf793cbba3d">&#9670;&nbsp;</a></span>configName</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -460,7 +833,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const char* ConfigProcessor::configName</td>
+          <td class="memname">std::string ConfigProcessor::configName</td>
         </tr>
       </table>
   </td>
@@ -470,27 +843,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a59e1b046ef03ad84e9c936e3c890b66b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59e1b046ef03ad84e9c936e3c890b66b">&#9670;&nbsp;</a></span>root</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">libconfig::Setting&amp; ConfigProcessor::root = config.getRoot()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>Setuped config filename. </p>
 
 </div>
 </div>

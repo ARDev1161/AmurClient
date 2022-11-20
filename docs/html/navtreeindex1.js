@@ -1,5 +1,14 @@
 var NAVTREEINDEX1 =
 {
+"classPilot.html#a84e31a6bf5396fd6295e7a60d717c9ab":[1,0,15,51],
+"classPilot.html#a8532a44db33b98b6df52232c8eb54b4a":[1,0,15,16],
+"classPilot.html#a853632bb5e923728409d98ae43e09a8b":[1,0,15,90],
+"classPilot.html#a866189f5bfca0c1ed6c31452381d7bb5":[1,0,15,56],
+"classPilot.html#a86745035f9205c317da326ace99cff61":[1,0,15,4],
+"classPilot.html#a8700dca9c7e83fae1b4bb5706ca75070":[1,0,15,40],
+"classPilot.html#a8b0a7a5872d1e8f2c896b29ea8e9b879":[1,0,15,20],
+"classPilot.html#a8da1d78c29bc7e4760e85ad5a0cbda6b":[1,0,15,26],
+"classPilot.html#a91d8bf040928697763c0dc2ac6bf2237":[1,0,15,19],
 "classPilot.html#a98d31f1241822db3b5cea5eff6e0668b":[1,0,15,73],
 "classPilot.html#a9a85094cb0a574e44242d3caf315852c":[1,0,15,58],
 "classPilot.html#a9ed03b29106a09928576dd69c108dda6":[1,0,15,7],
@@ -136,8 +145,8 @@ var NAVTREEINDEX1 =
 "encoder_8h.html":[2,0,1,4],
 "encoder_8h_source.html":[2,0,1,4],
 "files.html":[2,0],
-"functions.html":[1,3,0,0],
 "functions.html":[1,3,0],
+"functions.html":[1,3,0,0],
 "functions_b.html":[1,3,0,1],
 "functions_c.html":[1,3,0,2],
 "functions_d.html":[1,3,0,3],
@@ -240,14 +249,5 @@ var NAVTREEINDEX1 =
 "structMotorSettings.html#a4e25689180193cacbc7ce5eea0c0986c":[1,0,11,1],
 "structPWMPins.html":[1,0,17],
 "structPWMPins.html#a55f24b2ba794300cc0b4b09cd71ef490":[1,0,17,3],
-"structPWMPins.html#a775aaa7f1860d4b151a581b63ee21615":[1,0,17,0],
-"structPWMPins.html#ac5881ffc97d7182fbcb84cd018ac1ac1":[1,0,17,1],
-"structPWMPins.html#af436220a2fb80efd4b2940b93cd81ffe":[1,0,17,2],
-"structPeripheralSettings.html":[1,0,14],
-"structPeripheralSettings.html#a1f09cab4b41352c56e2a3ab277ba8f01":[1,0,14,3],
-"structPeripheralSettings.html#a326ba5c3b61ef396e4e5c1edf7671860":[1,0,14,0],
-"structPeripheralSettings.html#a749b14c55321c1d4cf470d4af5c9e5a2":[1,0,14,1],
-"structPeripheralSettings.html#a8de9175a86f1ddf8688fa9418b9a15cf":[1,0,14,2],
-"structRegisterSettings.html":[1,0,19],
-"structRegisterSettings.html#a2e8cc0d8494b67b327139d6ce56adcd7":[1,0,19,5]
+"structPWMPins.html#a775aaa7f1860d4b151a581b63ee21615":[1,0,17,0]
 };

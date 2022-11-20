@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['v2cos_615',['v2cos',['../classVector2.html#a39e6a12017d3795e58508ea3f3e398d2',1,'Vector2']]],
-  ['v2rotation_616',['v2rotation',['../classVector2.html#af14e7d38f9c33602e655616d75e6fef6',1,'Vector2']]],
-  ['v2scalar_617',['v2scalar',['../classVector2.html#af639fd44305185b776b77e096f26335e',1,'Vector2']]],
-  ['v2sub_618',['v2sub',['../classVector2.html#a1042acfe07d066d26c4a61035b6a266d',1,'Vector2']]],
-  ['v2sum_619',['v2sum',['../classVector2.html#a62151c9d49a39942f9c065527fa1dd18',1,'Vector2']]],
-  ['vector2_620',['Vector2',['../classVector2.html#a1741e501f350f0690202dbcb60508b47',1,'Vector2']]]
+  ['uart_628',['UART',['../classUART.html#a68e7e88d2a13f5da85f0fde1ef98515f',1,'UART']]],
+  ['unregistereventrunnable_629',['unregisterEventRunnable',['../classTimerCallback.html#ae9046915d4bcc19c2b1b764131b6f46e',1,'TimerCallback']]],
+  ['update_630',['update',['../classEncoder.html#a50ef336bb95a8519a5d110bd97d1b599',1,'Encoder']]],
+  ['updatedata_631',['updateData',['../classPeripheralController.html#af9aea905ecb0d39ff392531ea03a698a',1,'PeripheralController']]],
+  ['updatelocalpath_632',['UpdateLocalPath',['../classPilot.html#a49131bdb67f4d3c33ef8a27af6ee1ec3',1,'Pilot']]]
 ];

@@ -1,5 +1,14 @@
 var NAVTREEINDEX2 =
 {
+"structPWMPins.html#ac5881ffc97d7182fbcb84cd018ac1ac1":[1,0,17,1],
+"structPWMPins.html#af436220a2fb80efd4b2940b93cd81ffe":[1,0,17,2],
+"structPeripheralSettings.html":[1,0,14],
+"structPeripheralSettings.html#a1f09cab4b41352c56e2a3ab277ba8f01":[1,0,14,3],
+"structPeripheralSettings.html#a326ba5c3b61ef396e4e5c1edf7671860":[1,0,14,0],
+"structPeripheralSettings.html#a749b14c55321c1d4cf470d4af5c9e5a2":[1,0,14,1],
+"structPeripheralSettings.html#a8de9175a86f1ddf8688fa9418b9a15cf":[1,0,14,2],
+"structRegisterSettings.html":[1,0,19],
+"structRegisterSettings.html#a2e8cc0d8494b67b327139d6ce56adcd7":[1,0,19,5],
 "structRegisterSettings.html#a4b4f1d6a6429f4759df92019e1b9c040":[1,0,19,4],
 "structRegisterSettings.html#aa1bdcb00b15da5a3bbecadf233e1d21d":[1,0,19,3],
 "structRegisterSettings_1_1General.html":[1,0,19,0],

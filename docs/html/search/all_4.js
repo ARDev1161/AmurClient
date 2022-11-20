@@ -1,12 +1,11 @@
 var searchData=
 [
-  ['elapsedtime_66',['elapsedTime',['../classEncoder.html#a3130986d0e37c2f434d7e37f2d6a3daf',1,'Encoder']]],
-  ['enable_67',['enable',['../classHC595.html#a7f481bc9c481208707de4e3a78d41159',1,'HC595']]],
-  ['enableclock_68',['enableClock',['../classHC165.html#a5b3bc03d7666bcc4e219228e1479fc6b',1,'HC165']]],
-  ['enableregisters_69',['enableRegisters',['../classRegisterController.html#a01b35ad5a2ac0b37c6ddd2ca8f5f9f74',1,'RegisterController']]],
-  ['encoder_70',['Encoder',['../classEncoder.html',1,'']]],
-  ['encoder_71',['encoder',['../classMotor.html#ab2df419587462b5bf04c001499b26e77',1,'Motor']]],
-  ['encoder_72',['Encoder',['../classEncoder.html#ab09ca76b5fe20e49079396fe908a5516',1,'Encoder']]],
+  ['elapsedtime_67',['elapsedTime',['../classEncoder.html#a3130986d0e37c2f434d7e37f2d6a3daf',1,'Encoder']]],
+  ['enable_68',['enable',['../classHC595.html#a7f481bc9c481208707de4e3a78d41159',1,'HC595']]],
+  ['enableclock_69',['enableClock',['../classHC165.html#a5b3bc03d7666bcc4e219228e1479fc6b',1,'HC165']]],
+  ['enableregisters_70',['enableRegisters',['../classRegisterController.html#a01b35ad5a2ac0b37c6ddd2ca8f5f9f74',1,'RegisterController']]],
+  ['encoder_71',['Encoder',['../classEncoder.html',1,'Encoder'],['../classEncoder.html#ab09ca76b5fe20e49079396fe908a5516',1,'Encoder::Encoder()']]],
+  ['encoder_72',['encoder',['../classMotor.html#ab2df419587462b5bf04c001499b26e77',1,'Motor']]],
   ['encoder_2ecpp_73',['encoder.cpp',['../encoder_8cpp.html',1,'']]],
   ['encoder_2eh_74',['encoder.h',['../encoder_8h.html',1,'']]],
   ['encodersectorscount_75',['encoderSectorsCount',['../structEncoderSettings.html#aeaa4ac485e2e1b545be1e058ebc34d07',1,'EncoderSettings']]],

@@ -1,24 +1,4 @@
 var searchData=
 [
-  ['getconfigfilename_500',['getConfigFilename',['../classConfigProcessor.html#a5eecb656e1171a6e6576abfd152a21fa',1,'ConfigProcessor']]],
-  ['getcurrent_501',['getCurrent',['../classMotor.html#a8444b26529817c82f3de9d08e025614b',1,'Motor']]],
-  ['getencoder_502',['getEncoder',['../classMotor.html#abbdc3fdfd63502b965a740fa6349772c',1,'Motor']]],
-  ['getencoderangle_503',['getEncoderAngle',['../classEncoder.html#a00e7f4aa2be80fd22354ff3208a1c841',1,'Encoder']]],
-  ['getfreqhardware_504',['getFreqHardware',['../classPWMController.html#a3a901a6260a296a97b7f5b72f3e5215b',1,'PWMController']]],
-  ['gethandinternalleft_505',['getHandInternalLeft',['../classMotorController.html#a6a9d18b1d8bb735d7622666aff780388',1,'MotorController']]],
-  ['gethandinternalright_506',['getHandInternalRight',['../classMotorController.html#a7d5a42634633f73c1e60adcc7c05fc3c',1,'MotorController']]],
-  ['gethandouterleft_507',['getHandOuterLeft',['../classMotorController.html#a61c26a3602d11f8852158357f4386de7',1,'MotorController']]],
-  ['gethandouterright_508',['getHandOuterRight',['../classMotorController.html#ac3f6548c2e5ecd31e58fb6f088c6dc50',1,'MotorController']]],
-  ['getmod_509',['getMod',['../classVector2.html#a3177dfb03a1f7ddd74d13e8936a96283',1,'Vector2']]],
-  ['getparamsfrominifile_510',['GetParamsFromIniFile',['../classPilot.html#a162f3f3440d370d978f0fb0046ee2c5d',1,'Pilot']]],
-  ['getpwmrange_511',['getPwmRange',['../classPWMController.html#aff637e1e25e809c1109c4177b43374d8',1,'PWMController']]],
-  ['getroot_512',['getRoot',['../classConfigProcessor.html#a1300ab443a260769f4adc32a661c5a75',1,'ConfigProcessor']]],
-  ['getrpm_513',['getRPM',['../classEncoder.html#ad8acf81b41e3a35af9c7e308ee537ef7',1,'Encoder']]],
-  ['getsamplerate_514',['getSampleRate',['../classEncoder.html#a097f812f2e683dda602a486ad9e2df55',1,'Encoder']]],
-  ['getwheelleft_515',['getWheelLeft',['../classMotorController.html#ae4bbe32aa6b41ef6add0e1abbe081826',1,'MotorController']]],
-  ['getwheelright_516',['getWheelRight',['../classMotorController.html#aa87e30a7989129264bfdab2eba1bd133',1,'MotorController']]],
-  ['getx_517',['getX',['../classVector2.html#a1b240405c9903a099aa5b172c1168361',1,'Vector2']]],
-  ['gety_518',['getY',['../classVector2.html#a3fb75e1cf0b53ffff70257efcfa74ce8',1,'Vector2']]],
-  ['gpioinit_519',['gpioInit',['../classHC595.html#acff98d8a13e9ba501da2bb69080bb3c0',1,'HC595']]],
-  ['grpcclient_520',['grpcClient',['../classgrpcClient.html#aa2d4be911d7fa904ebda9609e2bc3810',1,'grpcClient']]]
+  ['fillfieldsbyconfig_508',['fillFieldsByConfig',['../classLogicController.html#a7b59b7775ce02221b8eb709ca3b4b3cc',1,'LogicController']]]
 ];

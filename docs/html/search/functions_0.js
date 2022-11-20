@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['build_5fdate_472',['build_date',['../AmurClient_8cpp.html#a05beec69e1cdcc75a0b64f2422bb14f3',1,'AmurClient.cpp']]],
-  ['build_5ftime_473',['build_time',['../AmurClient_8cpp.html#a8ed92c8a33fca226fd3017b273fea9f7',1,'AmurClient.cpp']]],
-  ['bumpersoff_474',['BumpersOff',['../classPilot.html#afddb64de1387209a3202af98948a561f',1,'Pilot']]]
+  ['addbool_480',['addBool',['../classConfigProcessor.html#aefb75c22db5952e9c618671030c2b710',1,'ConfigProcessor']]],
+  ['adddouble_481',['addDouble',['../classConfigProcessor.html#a68e5a86095b5d1c1892780e4fd9ac7f1',1,'ConfigProcessor']]],
+  ['addint_482',['addInt',['../classConfigProcessor.html#a84209aa0c0db138d9b1beb36612c0a41',1,'ConfigProcessor']]],
+  ['addstring_483',['addString',['../classConfigProcessor.html#ac67a2d9c4130f17c5a3e4d7109c14c3c',1,'ConfigProcessor']]]
 ];

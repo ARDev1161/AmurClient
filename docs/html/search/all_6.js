@@ -2,7 +2,7 @@ var searchData=
 [
   ['general_85',['general',['../structRegisterSettings.html#aa1bdcb00b15da5a3bbecadf233e1d21d',1,'RegisterSettings']]],
   ['general_86',['General',['../structRegisterSettings_1_1General.html',1,'RegisterSettings']]],
-  ['getconfigfilename_87',['getConfigFilename',['../classConfigProcessor.html#a5eecb656e1171a6e6576abfd152a21fa',1,'ConfigProcessor']]],
+  ['getconfigfilename_87',['getConfigFilename',['../classConfigProcessor.html#af91e261f2e514c9ff0a6363ff5b9ae90',1,'ConfigProcessor']]],
   ['getcurrent_88',['getCurrent',['../classMotor.html#a8444b26529817c82f3de9d08e025614b',1,'Motor']]],
   ['getencoder_89',['getEncoder',['../classMotor.html#abbdc3fdfd63502b965a740fa6349772c',1,'Motor']]],
   ['getencoderangle_90',['getEncoderAngle',['../classEncoder.html#a00e7f4aa2be80fd22354ff3208a1c841',1,'Encoder']]],
