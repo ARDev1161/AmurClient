@@ -21,46 +21,46 @@ ConfigProcessor
 .RI "int \fBsetOptionsConfig\fP ()"
 .br
 .ti -1c
-.RI "int \fBreadConfig\fP (std::string \fBconfigName\fP)"
+.RI "int \fBread\fP (std::string \fBconfigName\fP)"
 .br
 .ti -1c
-.RI "int \fBwriteConfig\fP ()"
+.RI "int \fBwrite\fP ()"
 .br
 .ti -1c
-.RI "int \fBsearchString\fP (std::string settingName, std::string &out)"
+.RI "int \fBsearch\fP (std::string settingName, std::string &out)"
 .br
 .ti -1c
-.RI "int \fBsearchInt\fP (std::string settingName, int &out)"
+.RI "int \fBsearch\fP (std::string settingName, int &out)"
 .br
 .ti -1c
-.RI "int \fBsearchDouble\fP (std::string settingName, double &out)"
+.RI "int \fBsearch\fP (std::string settingName, double &out)"
 .br
 .ti -1c
-.RI "int \fBsearchBool\fP (std::string settingName, bool &out)"
+.RI "int \fBsearch\fP (std::string settingName, bool &out)"
 .br
 .ti -1c
-.RI "int \fBrewriteString\fP (std::string settingName, std::string value)"
+.RI "int \fBrewrite\fP (std::string settingName, std::string value)"
 .br
 .ti -1c
-.RI "int \fBrewriteInt\fP (std::string settingName, int value)"
+.RI "int \fBrewrite\fP (std::string settingName, int value)"
 .br
 .ti -1c
-.RI "int \fBrewriteDouble\fP (std::string settingName, double value)"
+.RI "int \fBrewrite\fP (std::string settingName, double value)"
 .br
 .ti -1c
-.RI "int \fBrewriteBool\fP (std::string settingName, bool value)"
+.RI "int \fBrewrite\fP (std::string settingName, bool value)"
 .br
 .ti -1c
-.RI "int \fBaddString\fP (std::string settingName, std::string value)"
+.RI "int \fBadd\fP (std::string settingName, std::string value)"
 .br
 .ti -1c
-.RI "int \fBaddInt\fP (std::string settingName, int value)"
+.RI "int \fBadd\fP (std::string settingName, int value)"
 .br
 .ti -1c
-.RI "int \fBaddDouble\fP (std::string settingName, double value)"
+.RI "int \fBadd\fP (std::string settingName, double value)"
 .br
 .ti -1c
-.RI "int \fBaddBool\fP (std::string settingName, bool value)"
+.RI "int \fBadd\fP (std::string settingName, bool value)"
 .br
 .ti -1c
 .RI "void \fBgetRoot\fP ()"
@@ -106,19 +106,19 @@ Constructor with custom config filename\&.
 Constructor with default config filename\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "int ConfigProcessor::addBool (std::string settingName, bool value)"
+.SS "int ConfigProcessor::add (std::string settingName, bool value)"
 
-.SS "int ConfigProcessor::addDouble (std::string settingName, double value)"
+.SS "int ConfigProcessor::add (std::string settingName, double value)"
 
-.SS "int ConfigProcessor::addInt (std::string settingName, int value)"
+.SS "int ConfigProcessor::add (std::string settingName, int value)"
 
-.SS "int ConfigProcessor::addString (std::string settingName, std::string value)"
+.SS "int ConfigProcessor::add (std::string settingName, std::string value)"
 
 .SS "std::string ConfigProcessor::getConfigFilename () const"
 Return config filename\&. 
 .SS "void ConfigProcessor::getRoot ()"
 
-.SS "int ConfigProcessor::readConfig (std::string configName)"
+.SS "int ConfigProcessor::read (std::string configName)"
 Read configuration from file\&. 
 .PP
 \fBParameters\fP
@@ -132,7 +132,7 @@ Read configuration from file\&.
 .RE
 .PP
 
-.SS "int ConfigProcessor::rewriteBool (std::string settingName, bool value)"
+.SS "int ConfigProcessor::rewrite (std::string settingName, bool value)"
 Write boolean parameter to configuration\&. 
 .PP
 \fBParameters\fP
@@ -148,7 +148,7 @@ Code of execution\&. Normal - 0, if file not found - 1\&.
 .RE
 .PP
 
-.SS "int ConfigProcessor::rewriteDouble (std::string settingName, double value)"
+.SS "int ConfigProcessor::rewrite (std::string settingName, double value)"
 Write double parameter to configuration\&. 
 .PP
 \fBParameters\fP
@@ -164,7 +164,7 @@ Code of execution\&. Normal - 0, if file not found - 1\&.
 .RE
 .PP
 
-.SS "int ConfigProcessor::rewriteInt (std::string settingName, int value)"
+.SS "int ConfigProcessor::rewrite (std::string settingName, int value)"
 Write integer parameter to configuration\&. 
 .PP
 \fBParameters\fP
@@ -180,7 +180,7 @@ Code of execution\&. Normal - 0, if file not found - 1\&.
 .RE
 .PP
 
-.SS "int ConfigProcessor::rewriteString (std::string settingName, std::string value)"
+.SS "int ConfigProcessor::rewrite (std::string settingName, std::string value)"
 Write string parameter to configuration\&. 
 .PP
 \fBParameters\fP
@@ -196,7 +196,7 @@ Code of execution\&. Normal - 0, if file not found - 1\&.
 .RE
 .PP
 
-.SS "int ConfigProcessor::searchBool (std::string settingName, bool & out)"
+.SS "int ConfigProcessor::search (std::string settingName, bool & out)"
 Get bool parameter from configuration\&. param[in] settingName Address of parameter in configuration\&. 
 .PP
 \fBParameters\fP
@@ -210,7 +210,7 @@ Code of execution\&. Normal - 0, if file not found - 1\&.
 .RE
 .PP
 
-.SS "int ConfigProcessor::searchDouble (std::string settingName, double & out)"
+.SS "int ConfigProcessor::search (std::string settingName, double & out)"
 Get double parameter from configuration\&. 
 .PP
 \fBParameters\fP
@@ -226,7 +226,7 @@ Code of execution\&. Normal - 0, if file not found - 1\&.
 .RE
 .PP
 
-.SS "int ConfigProcessor::searchInt (std::string settingName, int & out)"
+.SS "int ConfigProcessor::search (std::string settingName, int & out)"
 Get integer parameter from configuration\&. 
 .PP
 \fBParameters\fP
@@ -242,7 +242,7 @@ Code of execution\&. Normal - 0, if file not found - 1\&.
 .RE
 .PP
 
-.SS "int ConfigProcessor::searchString (std::string settingName, std::string & out)"
+.SS "int ConfigProcessor::search (std::string settingName, std::string & out)"
 Get string parameter from configuration\&. 
 .PP
 \fBParameters\fP
@@ -271,7 +271,7 @@ Initialize libconfig\&.
 
 .SS "std::vector<std::string> ConfigProcessor::splitPath (std::string path)\fC [private]\fP"
 
-.SS "int ConfigProcessor::writeConfig ()"
+.SS "int ConfigProcessor::write ()"
 Write configuration to file\&. 
 .PP
 \fBReturns\fP
