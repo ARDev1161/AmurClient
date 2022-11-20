@@ -1,12 +1,19 @@
 #include "configprocessor.h"
 
-ConfigProcessor::ConfigProcessor(const char *configName):
+/*!
+  Constructor with custom config filename.
+  \param[in] file Config filename.
+*/
+ConfigProcessor::ConfigProcessor(std::string configName):
     configName(configName)
 {
     setOptionsConfig();
     readConfig(configName);
 }
 
+/*!
+  Constructor with default config filename.
+*/
 ConfigProcessor::ConfigProcessor()
 {
     configName = "amur.cfg";
@@ -16,8 +23,8 @@ ConfigProcessor::ConfigProcessor()
 }
 
 /*!
-  Инициализация libconfig.
-\param[in] file Имя файла конфигурации.
+  Initialize libconfig.
+\param[in] file Config filename.
 */
 int ConfigProcessor::setOptionsConfig()
 {
@@ -30,16 +37,17 @@ int ConfigProcessor::setOptionsConfig()
 }
 
 /*!
-  Чтение параметров конфигурации из config файла.
-\param[in] file Имя файла конфигурации.
+  Read configuration from file.
+  \param[in] file Config filename.
+  \return 0 if success. 1 if I/O or parse error.
 */
-int ConfigProcessor::readConfig(const char *configName)
+int ConfigProcessor::readConfig(std::string configName)
 {
     // Read the file. If there is an error, report it and exit.
     try
     {
       std::cout << "Reading config file: " << configName << std::endl;
-      config.readFile(configName);
+      config.readFile(configName.c_str());
     }
     // Inform user about IOException.
     catch(const libconfig::FileIOException &fioex)
@@ -59,15 +67,15 @@ int ConfigProcessor::readConfig(const char *configName)
 }
 
 /*!
-  Запись параметров конфигурации в config файл.
-\param[in] file Имя файла конфигурации.
+  Write configuration to file.
+  \return 0 if success. 1 if I/O error.
 */
-int ConfigProcessor::writeConfig(const char *configName)
+int ConfigProcessor::writeConfig()
 {
     // Write out the updated configuration.
       try
       {
-        config.writeFile(configName);
+        config.writeFile(configName.c_str());
         std::cerr << "Configuration successfully written to: " << configName << std::endl;
       }
       catch(const libconfig::FileIOException &fioex)
@@ -79,64 +87,217 @@ int ConfigProcessor::writeConfig(const char *configName)
 }
 
 /*!
-  Поиск настройки в конфигурационном файле по имени.
-\param[in] file Имя настройки в конфигурационном файле.
+  Get string parameter from configuration.
+  \param[in] settingName Address of parameter in configuration.
+  \param[out] out Value of parameter.
+  \return Code of execution. Normal - 0, if file not found - 1.
 */
-std::string ConfigProcessor::configSearchString(const char *settingName)
+int ConfigProcessor::searchString(std::string settingName, std::string &out)
 {
     // Lookup for name and version settings in configuration file.
     try
     {
-      return config.lookup(settingName);
+      out = static_cast<std::string>( config.lookup(settingName).c_str() );
     }
     catch(const libconfig::SettingNotFoundException &nfex)
     {
       std::cerr << "No setting in configuration file: " << settingName << std::endl;
-      return 0; // EXIT_FAILURE
+      return EXIT_FAILURE; // EXIT_FAILURE
     }
+    return (EXIT_SUCCESS);
 }
-
-int ConfigProcessor::configSearchInt(const char *settingName)
-{
-    // Lookup for name and version settings in configuration file.
-    try
-    {
-      return config.lookup(settingName);
-    }
-    catch(const libconfig::SettingNotFoundException &nfex)
-    {
-      std::cerr << "No setting in configuration file: " << settingName << std::endl;
-      return 0; // EXIT_FAILURE
-    }
-}
-
-double ConfigProcessor::configSearchDouble(const char *settingName)
-{
-    // Lookup for name and version settings in configuration file.
-    try
-    {
-      return config.lookup(settingName);
-    }
-    catch(const libconfig::SettingNotFoundException &nfex)
-    {
-      std::cerr << "No setting in configuration file: " << settingName << std::endl;
-      return 0; // EXIT_FAILURE
-    }
-}
-
 
 /*!
-  Возвращает имя конфигурационного файла.
+  Get integer parameter from configuration.
+  \param[in] settingName Address of parameter in configuration.
+  \param[out] out Value of parameter.
+  \return Code of execution. Normal - 0, if file not found - 1.
 */
-const char *ConfigProcessor::getConfigFilename() const
+int ConfigProcessor::searchInt(std::string settingName, int &out)
+{
+    // Lookup for name and version settings in configuration file.
+    try
+    {
+      out = static_cast<int>(config.lookup(settingName));
+    }
+    catch(const libconfig::SettingNotFoundException &nfex)
+    {
+      std::cerr << "No setting in configuration file: " << settingName << std::endl;
+      return EXIT_FAILURE; // EXIT_FAILURE
+    }
+    return (EXIT_SUCCESS);
+}
+
+/*!
+  Get double parameter from configuration.
+  \param[in] settingName Address of parameter in configuration.
+  \param[out] out Value of parameter.
+  \return Code of execution. Normal - 0, if file not found - 1.
+*/
+int ConfigProcessor::searchDouble(std::string settingName, double &out)
+{
+    // Lookup for name and version settings in configuration file.
+    try
+    {
+      out = static_cast<double>(config.lookup(settingName));
+    }
+    catch(const libconfig::SettingNotFoundException &nfex)
+    {
+      std::cerr << "No setting in configuration file: " << settingName << std::endl;
+      return EXIT_FAILURE; // EXIT_FAILURE
+    }
+    return (EXIT_SUCCESS);
+}
+
+/*!
+  Get bool parameter from configuration.
+  param[in] settingName Address of parameter in configuration.
+  \param[out] out Value of parameter.
+  \return Code of execution. Normal - 0, if file not found - 1.
+*/
+int ConfigProcessor::searchBool(std::string settingName, bool &out)
+{
+    // Lookup for name and version settings in configuration file.
+    try
+    {
+      out = static_cast<bool>(config.lookup(settingName));
+    }
+    catch(const libconfig::SettingNotFoundException &nfex)
+    {
+      std::cerr << "No setting in configuration file: " << settingName << std::endl;
+      return EXIT_FAILURE; // EXIT_FAILURE
+    }
+    return (EXIT_SUCCESS);
+}
+
+/*!
+  Write string parameter to configuration.
+  \param[in] settingName Address of parameter in configuration.
+  \param[in] value Value of parameter.
+  \return Code of execution. Normal - 0, if file not found - 1.
+*/
+int ConfigProcessor::rewriteString(std::string settingName, std::string value)
+{
+    // Write parameter. If there is an error, report it and exit.
+    try
+    {
+        libconfig::Setting &param = config.lookup(settingName);
+        param = value;
+    }
+    // Inform user about IOException.
+    catch(const libconfig::SettingNotFoundException &ex)
+    {
+      std::cerr << "Parameter not found!: " << settingName << std::endl;
+      return(EXIT_FAILURE);
+    }
+    return EXIT_SUCCESS;
+}
+
+/*!
+  Write integer parameter to configuration.
+  \param[in] settingName Address of parameter in configuration.
+  \param[in] value Value of parameter.
+  \return Code of execution. Normal - 0, if file not found - 1.
+*/
+int ConfigProcessor::rewriteInt(std::string settingName, int value)
+{
+    // Write parameter. If there is an error, report it and exit.
+    try
+    {
+        libconfig::Setting &param = config.lookup(settingName);
+        param = value;
+    }
+    // Inform user about IOException.
+    catch(const libconfig::SettingNotFoundException &ex)
+    {
+      std::cerr << "Parameter not found!: " << settingName << std::endl;
+      return(EXIT_FAILURE);
+    }
+    return EXIT_SUCCESS;
+}
+
+/*!
+  Write double parameter to configuration.
+  \param[in] settingName Address of parameter in configuration.
+  \param[in] value Value of parameter.
+  \return Code of execution. Normal - 0, if file not found - 1.
+*/
+int ConfigProcessor::rewriteDouble(std::string settingName, double value)
+{
+    // Write parameter. If there is an error, report it and exit.
+    try
+    {
+        libconfig::Setting &param = config.lookup(settingName);
+        param = value;
+    }
+    // Inform user about IOException.
+    catch(const libconfig::SettingNotFoundException &ex)
+    {
+      std::cerr << "Parameter not found!: " << settingName << std::endl;
+      return(EXIT_FAILURE);
+    }
+    return EXIT_SUCCESS;
+}
+
+/*!
+  Write boolean parameter to configuration.
+  \param[in] settingName Address of parameter in configuration.
+  \param[in] value Value of parameter.
+  \return Code of execution. Normal - 0, if file not found - 1.
+*/
+int ConfigProcessor::rewriteBool(std::string settingName, bool value)
+{
+    // Write parameter. If there is an error, report it and exit.
+    try
+    {
+        libconfig::Setting &param = config.lookup(settingName);
+        param = value;
+    }
+    // Inform user about IOException.
+    catch(const libconfig::SettingNotFoundException &ex)
+    {
+      std::cerr << "Parameter not found!: " << settingName << std::endl;
+      return(EXIT_FAILURE);
+    }
+    return EXIT_SUCCESS;
+}
+
+//int ConfigProcessor::addString(std::string settingName, std::string value)
+//{
+//    // TODO
+//    return EXIT_SUCCESS;
+//}
+
+//int ConfigProcessor::addInt(std::string settingName, int value)
+//{
+//    // TODO
+//    return EXIT_SUCCESS;
+//}
+
+//int ConfigProcessor::addDouble(std::string settingName, double value)
+//{
+//    // TODO
+//    return EXIT_SUCCESS;
+//}
+
+//int ConfigProcessor::addBool(std::string settingName, bool value)
+//{
+//    // TODO
+//    return EXIT_SUCCESS;
+//}
+
+/*!
+  Return config filename.
+*/
+std::string ConfigProcessor::getConfigFilename() const
 {
     return configName;
 }
 
 /*!
-  Изменяет имя конфигурационного файла.
+  Setup config filename.
 */
-void ConfigProcessor::setConfigFilename(const char *newConfigName)
+void ConfigProcessor::setConfigFilename(std::string newConfigName)
 {
     configName = newConfigName;
 }

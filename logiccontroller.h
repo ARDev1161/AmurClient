@@ -28,7 +28,7 @@ class LogicController
     AMUR::AmurControls controls;
     AMUR::AmurControls controlsPrev;
 
-    void printHeadInfo();
+    int printVersion();
     void fillFieldsByConfig();
 
     void worker();
