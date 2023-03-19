@@ -79,6 +79,7 @@ configure_file(
 add_subdirectory(network)
 add_subdirectory(modules)
 add_subdirectory(timer)
+add_subdirectory(config)
 #add_subdirectory(logic)
 
 include_directories(
