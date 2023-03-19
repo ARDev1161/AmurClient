@@ -28,6 +28,14 @@ var hierarchy =
       [ "grpcServer", "classgrpcServer.html", null ]
     ] ],
     [ "SPI", "classSPI.html", null ],
+    [ "testing::Test", null, [
+      [ "getType", "classgetType.html", null ],
+      [ "isType", "classisType.html", null ],
+      [ "readConfig", "classreadConfig.html", null ],
+      [ "rewriteSetting", "classrewriteSetting.html", null ],
+      [ "searchSetting", "classsearchSetting.html", null ],
+      [ "writeConfig", "classwriteConfig.html", null ]
+    ] ],
     [ "Timer", "classTimer.html", [
       [ "TimerCallback", "classTimerCallback.html", null ]
     ] ],

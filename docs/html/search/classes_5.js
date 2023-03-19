@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logiccontroller_407',['LogicController',['../classLogicController.html',1,'']]]
+  ['logiccontroller_444',['LogicController',['../classLogicController.html',1,'']]]
 ];

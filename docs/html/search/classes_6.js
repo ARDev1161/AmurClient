@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['motor_408',['Motor',['../classMotor.html',1,'']]],
-  ['motorcontroller_409',['MotorController',['../classMotorController.html',1,'']]],
-  ['motorsettings_410',['MotorSettings',['../structMotorSettings.html',1,'']]]
+  ['motor_445',['Motor',['../classMotor.html',1,'']]],
+  ['motorcontroller_446',['MotorController',['../classMotorController.html',1,'']]],
+  ['motorsettings_447',['MotorSettings',['../structMotorSettings.html',1,'']]]
 ];

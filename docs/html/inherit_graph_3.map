@@ -1,3 +1,9 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classgrpcClient.html" title=" " alt="" coords="5,5,85,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,132,99,159"/>
+<area shape="rect" id="node2" href="$classgetType.html" title=" " alt="" coords="164,5,232,32"/>
+<area shape="rect" id="node3" href="$classisType.html" title=" " alt="" coords="168,56,228,83"/>
+<area shape="rect" id="node4" href="$classreadConfig.html" title=" " alt="" coords="157,107,239,133"/>
+<area shape="rect" id="node5" href="$classrewriteSetting.html" title=" " alt="" coords="147,157,249,184"/>
+<area shape="rect" id="node6" href="$classsearchSetting.html" title=" " alt="" coords="147,208,249,235"/>
+<area shape="rect" id="node7" href="$classwriteConfig.html" title=" " alt="" coords="155,259,241,285"/>
 </map>

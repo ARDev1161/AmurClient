@@ -1,7 +1,7 @@
-<map id="configprocessor.cpp" name="configprocessor.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="92,5,229,32"/>
-<area shape="rect" id="node2" href="$configprocessor_8h.html" title=" " alt="" coords="99,80,222,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,155,100,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="125,155,197,181"/>
-<area shape="rect" id="node5" title=" " alt="" coords="221,155,279,181"/>
+<map id="config/configprocessor.cpp" name="config/configprocessor.cpp">
+<area shape="rect" id="node1" title=" " alt="" coords="62,5,237,32"/>
+<area shape="rect" id="node2" href="$configprocessor_8h.html" title=" " alt="" coords="88,80,211,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,155,77,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="102,155,197,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="221,155,280,181"/>
 </map>

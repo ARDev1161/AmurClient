@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['general_399',['General',['../structRegisterSettings_1_1General.html',1,'RegisterSettings']]],
-  ['grpcclient_400',['grpcClient',['../classgrpcClient.html',1,'']]],
-  ['grpcserver_401',['grpcServer',['../classgrpcServer.html',1,'']]]
+  ['general_434',['General',['../structRegisterSettings_1_1General.html',1,'RegisterSettings']]],
+  ['gettype_435',['getType',['../classgetType.html',1,'']]],
+  ['grpcclient_436',['grpcClient',['../classgrpcClient.html',1,'']]],
+  ['grpcserver_437',['grpcServer',['../classgrpcServer.html',1,'']]]
 ];

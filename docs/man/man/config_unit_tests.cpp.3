@@ -1,0 +1,258 @@
+.TH "tests/unit_tests/config_unit_tests.cpp" 3 "Sun Mar 19 2023" "Version 0.42" "AmurClient" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+tests/unit_tests/config_unit_tests.cpp
+.SH SYNOPSIS
+.br
+.PP
+\fC#include '\&.\&./\&.\&./config/configprocessor\&.h'\fP
+.br
+\fC#include <filesystem>\fP
+.br
+\fC#include <fstream>\fP
+.br
+\fC#include <gtest/gtest\&.h>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBreadConfig\fP"
+.br
+.ti -1c
+.RI "class \fBwriteConfig\fP"
+.br
+.ti -1c
+.RI "class \fBisType\fP"
+.br
+.ti -1c
+.RI "class \fBgetType\fP"
+.br
+.ti -1c
+.RI "class \fBsearchSetting\fP"
+.br
+.ti -1c
+.RI "class \fBrewriteSetting\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTEST_F\fP (\fBreadConfig\fP, emptyFilename)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBreadConfig\fP, notExist)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBreadConfig\fP, exist)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBreadConfig\fP, wrongFormat)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBwriteConfig\fP, wrongPath)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBwriteConfig\fP, emptyPath)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBwriteConfig\fP, existedFile)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBwriteConfig\fP, removedFile)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBisType\fP, emptySettingName)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBisType\fP, noSetting)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBisType\fP, checkScalar)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBisType\fP, checkNonScalar)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBisType\fP, checkNumber)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBisType\fP, checkNonNumber)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBisType\fP, checkAggregate)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBisType\fP, checkNonAggregate)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBgetType\fP, emptySettingName)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBgetType\fP, checkBool)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBgetType\fP, checkFloat)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBgetType\fP, checkInt)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBgetType\fP, checkInt64)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBgetType\fP, checkString)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBgetType\fP, checkGroup)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBgetType\fP, checkArray)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBgetType\fP, checkList)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBsearchSetting\fP, emptySettingName)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBsearchSetting\fP, nonexistedName)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBsearchSetting\fP, searchString)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBsearchSetting\fP, searchInt)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBsearchSetting\fP, searchFloat)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBsearchSetting\fP, searchBool)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBrewriteSetting\fP, emptySettingName)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBrewriteSetting\fP, notExisted)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBrewriteSetting\fP, nonString)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBrewriteSetting\fP, String)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBrewriteSetting\fP, nonInteger)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBrewriteSetting\fP, Integer)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBrewriteSetting\fP, nonFloat)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBrewriteSetting\fP, Float)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBrewriteSetting\fP, nonBool)"
+.br
+.ti -1c
+.RI "\fBTEST_F\fP (\fBrewriteSetting\fP, Bool)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (getConfigName, setAndGet)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "TEST (getConfigName, setAndGet)"
+
+.SS "TEST_F (\fBgetType\fP, checkArray)"
+
+.SS "TEST_F (\fBgetType\fP, checkBool)"
+
+.SS "TEST_F (\fBgetType\fP, checkFloat)"
+
+.SS "TEST_F (\fBgetType\fP, checkGroup)"
+
+.SS "TEST_F (\fBgetType\fP, checkInt)"
+
+.SS "TEST_F (\fBgetType\fP, checkInt64)"
+
+.SS "TEST_F (\fBgetType\fP, checkList)"
+
+.SS "TEST_F (\fBgetType\fP, checkString)"
+
+.SS "TEST_F (\fBgetType\fP, emptySettingName)"
+
+.SS "TEST_F (\fBisType\fP, checkAggregate)"
+
+.SS "TEST_F (\fBisType\fP, checkNonAggregate)"
+
+.SS "TEST_F (\fBisType\fP, checkNonNumber)"
+
+.SS "TEST_F (\fBisType\fP, checkNonScalar)"
+
+.SS "TEST_F (\fBisType\fP, checkNumber)"
+
+.SS "TEST_F (\fBisType\fP, checkScalar)"
+
+.SS "TEST_F (\fBisType\fP, emptySettingName)"
+
+.SS "TEST_F (\fBisType\fP, noSetting)"
+
+.SS "TEST_F (\fBreadConfig\fP, emptyFilename)"
+
+.SS "TEST_F (\fBreadConfig\fP, exist)"
+
+.SS "TEST_F (\fBreadConfig\fP, notExist)"
+
+.SS "TEST_F (\fBreadConfig\fP, wrongFormat)"
+
+.SS "TEST_F (\fBrewriteSetting\fP, Bool)"
+
+.SS "TEST_F (\fBrewriteSetting\fP, emptySettingName)"
+
+.SS "TEST_F (\fBrewriteSetting\fP, Float)"
+
+.SS "TEST_F (\fBrewriteSetting\fP, Integer)"
+
+.SS "TEST_F (\fBrewriteSetting\fP, nonBool)"
+
+.SS "TEST_F (\fBrewriteSetting\fP, nonFloat)"
+
+.SS "TEST_F (\fBrewriteSetting\fP, nonInteger)"
+
+.SS "TEST_F (\fBrewriteSetting\fP, nonString)"
+
+.SS "TEST_F (\fBrewriteSetting\fP, notExisted)"
+
+.SS "TEST_F (\fBrewriteSetting\fP, String)"
+
+.SS "TEST_F (\fBsearchSetting\fP, emptySettingName)"
+
+.SS "TEST_F (\fBsearchSetting\fP, nonexistedName)"
+
+.SS "TEST_F (\fBsearchSetting\fP, searchBool)"
+
+.SS "TEST_F (\fBsearchSetting\fP, searchFloat)"
+
+.SS "TEST_F (\fBsearchSetting\fP, searchInt)"
+
+.SS "TEST_F (\fBsearchSetting\fP, searchString)"
+
+.SS "TEST_F (\fBwriteConfig\fP, emptyPath)"
+
+.SS "TEST_F (\fBwriteConfig\fP, existedFile)"
+
+.SS "TEST_F (\fBwriteConfig\fP, removedFile)"
+
+.SS "TEST_F (\fBwriteConfig\fP, wrongPath)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AmurClient from the source code\&.

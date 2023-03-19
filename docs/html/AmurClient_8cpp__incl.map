@@ -1,12 +1,12 @@
 <map id="AmurClient.cpp" name="AmurClient.cpp">
 <area shape="rect" id="node1" title=" " alt="" coords="1019,5,1129,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="991,401,1063,427"/>
-<area shape="rect" id="node3" href="$logiccontroller_8h.html" title=" " alt="" coords="1067,80,1179,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="1262,155,1329,181"/>
+<area shape="rect" id="node3" href="$logiccontroller_8h.html" title=" " alt="" coords="1077,80,1189,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="1302,155,1369,181"/>
 <area shape="rect" id="node5" title=" " alt="" coords="5,237,65,263"/>
 <area shape="rect" id="node6" href="$peripheralcontroller_8h.html" title=" " alt="" coords="563,155,758,181"/>
 <area shape="rect" id="node24" href="$networkcontroller_8h.html" title=" " alt="" coords="1318,237,1499,263"/>
-<area shape="rect" id="node31" href="$configprocessor_8h.html" title=" " alt="" coords="1065,155,1187,181"/>
+<area shape="rect" id="node31" href="$configprocessor_8h.html" title=" " alt="" coords="1065,155,1227,181"/>
 <area shape="rect" id="node7" title=" " alt="" coords="723,237,785,263"/>
 <area shape="rect" id="node8" href="$TimerCallback_8h.html" title=" " alt="" coords="296,237,455,263"/>
 <area shape="rect" id="node13" title=" " alt="" coords="809,229,939,271"/>
