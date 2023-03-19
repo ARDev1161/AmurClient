@@ -1,16 +1,19 @@
 cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
 
 project(AmurClient VERSION 0.88 LANGUAGES C CXX)
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
-#option(AMURCLIENT_TESTING "Включить модульное тестирование" ON)
-#option(AMURCLIENT_COVERAGE "Включить измерение покрытия кода тестами" OFF)
+option(AMURCLIENT_TESTING "Enable unit testing" ON)
+#option(AMURCLIENT_COVERAGE "Enable counting tests coverage" OFF)
 
-#enable_testing()
-#find_package(GTest REQUIRED)
+# Load tests
+if(AMURCLIENT_TESTING)
+    enable_testing()
+    add_subdirectory(tests)
+endif()
 
 if(NOT IS_SUBPROJECT)
     find_package(Doxygen)
@@ -68,8 +71,6 @@ if(NOT CMAKE_CXX_EXTENSIONS)
     set(CMAKE_CXX_EXTENSIONS OFF)
 endif()
 
-find_library(libСonfig_LIB config++)
-
 # Copy config from source to build
 configure_file(
         amur.cfg.in
@@ -92,8 +93,8 @@ set(LOGIC_CONTROLLER
    )
 
 set(CONFIG_PROCESSOR
-    configprocessor.h
-    configprocessor.cpp
+    config/configprocessor.h
+    config/configprocessor.cpp
    )
 
 add_executable(AmurClient AmurClient.cpp

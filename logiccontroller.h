@@ -7,7 +7,7 @@
 // Controllers headers
 #include "modules/peripheralcontroller.h"
 #include "network/networkcontroller.h"
-#include "configprocessor.h"
+#include "config/configprocessor.h"
 
 /*!
     \brief Класс логики управления роботом
