@@ -39,10 +39,8 @@ jobs:
       run: sudo ./.github/workflows/scripts/libconfig-install.sh
     
     - name: Setup Protobuf & gRPC   
-      run: sudo ./.github/workflows/scripts/grpc.sh
-#       uses: eWaterCycle/setup-grpc@v5
-#       with:
-#         grpc-version: 1.48.2
+      run: sudo apt install -y protobuf-compiler libgrpc++-dev
+#       run: sudo ./.github/workflows/scripts/grpc.sh
     
     - name: Build AmurClient
       # Build your program with the given configuration
