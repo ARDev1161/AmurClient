@@ -38,8 +38,8 @@ jobs:
     - name: Setup libconfig
       run: sudo ./.github/workflows/scripts/libconfig-install.sh
     
-    - name: Setup Protobuf & gRPC
-      run: sudo ./.github/workflows/scripts/grpc.sh
+#     - name: Setup Protobuf & gRPC
+#       run: sudo ./.github/workflows/scripts/grpc.sh
     
     - name: Build AmurClient
       # Build your program with the given configuration
