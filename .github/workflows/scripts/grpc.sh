@@ -4,7 +4,7 @@ export MY_INSTALL_DIR=$HOME/.local
 mkdir -p $MY_INSTALL_DIR
 export PATH="$MY_INSTALL_DIR/bin:$PATH"
 
-sudo apt install -y build-essential autoconf automake libtool pkg-config curl make g++ unzip
+sudo apt install -y build-essential autoconf automake libtool pkg-config curl make g++ unzip protobuf-compiler
 
 echo "Installing gRPC"
 git clone --recurse-submodules -b v1.52.0 --depth 1 --shallow-submodules https://github.com/grpc/grpc
