@@ -4,6 +4,7 @@ export MY_INSTALL_DIR=$HOME/.local
 mkdir -p $MY_INSTALL_DIR
 export PATH="$MY_INSTALL_DIR/bin:$PATH"
 
+sudo apt-get remove -y protobuf-compiler
 sudo apt install -y build-essential autoconf automake libtool pkg-config curl make g++ unzip
 
 echo "Installing gRPC"
