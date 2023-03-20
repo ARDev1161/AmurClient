@@ -39,7 +39,7 @@ jobs:
       run: sudo ./.github/workflows/scripts/libconfig-install.sh
     
     - name: Setup Protobuf & gRPC   
-      run: sudo apt install -y protobuf-compiler libgrpc++-dev
+      run: sudo apt install -y protobuf-compiler libgrpc++-dev libgrpc-dev libgrpc++1
 #       run: sudo ./.github/workflows/scripts/grpc.sh
     
     - name: Build AmurClient
