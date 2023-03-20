@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Extract tag name
       id: tag
@@ -38,9 +38,12 @@ jobs:
     - name: Setup libconfig
       run: sudo ./.github/workflows/scripts/libconfig-install.sh
 
-    - name: Setup ProtoBuf & gRPC
-      run: sudo ./.github/workflows/scripts/grpc.sh
-
+    - name: Setup ProtoBuf & gRPC   
+      uses: eWaterCycle/setup-grpc@v5
+      with:
+        grpc-version: 1.51.1
+#       run: sudo ./.github/workflows/scripts/grpc.sh   
+    
     - name: Build AmurClient
       # Build your program with the given configuration
       run: sudo ./.github/workflows/scripts/AmurClient-build.sh
