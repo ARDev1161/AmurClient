@@ -66,10 +66,10 @@ jobs:
         format: deb
         package: ./.github/workflows/package/deb.yaml
 
-    - name: notification
-      if: cancelled() == false
-      uses: xinthink/action-telegram@v1.1
-      with:
-        botToken: ${{ secrets.BotToken }}
-        chatId: ${{ secrets.ChatID }}
-        jobStatus: ${{ job.status }}
+#     - name: notification
+#       if: cancelled() == false
+#       uses: xinthink/action-telegram@v1.1
+#       with:
+#         botToken: ${{ secrets.BotToken }}
+#         chatId: ${{ secrets.ChatID }}
+#         jobStatus: ${{ job.status }}
