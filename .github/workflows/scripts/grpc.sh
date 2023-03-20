@@ -19,3 +19,19 @@ cmake -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF \
 make -j4
 sudo make install
 popd
+
+echo "Installing Protocol Buffers"
+git clone https://github.com/protocolbuffers/protobuf.git
+cd protobuf
+git submodule update --init --recursive
+./autogen.sh
+./configure
+make
+make check
+sudo make install
+sudo ldconfig # refresh shared library cache.
+
+pkg-config --cflags protobuf         # print compiler flags
+pkg-config --libs protobuf           # print linker flags
+pkg-config --cflags --libs protobuf  # print both
+
