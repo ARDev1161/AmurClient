@@ -41,7 +41,7 @@ jobs:
     - name: Setup Protobuf & gRPC   
       uses: eWaterCycle/setup-grpc@v5
       with:
-        grpc-version: 1.51.1
+        grpc-version: 1.48.2
     
     - name: Build AmurClient
       # Build your program with the given configuration
