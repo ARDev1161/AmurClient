@@ -38,8 +38,8 @@ jobs:
     - name: Setup libconfig
       run: sudo ./.github/workflows/scripts/libconfig-install.sh
     
-    - name: Install Protoc
-      uses: arduino/setup-protoc@v1
+    - name: Install Protobuf
+      run: sudo apt install -y protobuf-compiler
     
     - name: Setup gRPC   
       uses: eWaterCycle/setup-grpc@v5
