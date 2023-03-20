@@ -19,32 +19,3 @@ cmake -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF \
 make -j4
 make install
 popd
-
-# echo "Installing Protocol Buffers"
-# git clone https://github.com/protocolbuffers/protobuf.git
-# cd protobuf
-# git submodule update --init --recursive
-# ./autogen.sh
-# ./configure
-# make
-# make check
-# sudo make install
-# sudo ldconfig # refresh shared library cache.
-
-# pkg-config --cflags protobuf         # print compiler flags
-# pkg-config --libs protobuf           # print linker flags
-# pkg-config --cflags --libs protobuf  # print both
-
-
-# git clone --recurse-submodules -b v1.38.0 https://github.com/grpc/grpc
-
-
-# echo "Installing Abseil"
-# mkdir -p third_party/abseil-cpp/cmake/build
-# pushd third_party/abseil-cpp/cmake/build
-# cmake -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR \
-#       -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
-#       ../..
-# make -j4
-# make install
-# popd
