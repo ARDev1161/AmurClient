@@ -1,37 +1,48 @@
 #!/bin/bash
 
-export MY_INSTALL_DIR=$HOME/.local
-mkdir -p $MY_INSTALL_DIR
-export PATH="$MY_INSTALL_DIR/bin:$PATH"
+apt-get install -y \
+protobuf-compiler \
+protobuf-compiler-grpc \
+protobuf-c-compiler \
+libprotobuf-dev \
+libprotobuf-c-dev \
+libgrpc++-dev \
+libgrpc++1 \
+libgrpc6
 
-sudo apt-get remove -y protobuf-compiler
-sudo apt install -y build-essential autoconf automake libtool pkg-config curl make g++ unzip
 
-echo "Installing gRPC"
-git clone --recurse-submodules -b v1.52.0 --depth 1 --shallow-submodules https://github.com/grpc/grpc
+# export MY_INSTALL_DIR=$HOME/.local
+# mkdir -p $MY_INSTALL_DIR
+# export PATH="$MY_INSTALL_DIR/bin:$PATH"
 
-cd grpc
-mkdir -p cmake/build
-pushd cmake/build
-cmake -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF \
-      -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR \
-      ../..
-make -j4
-sudo make install
-popd
+# sudo apt-get remove -y protobuf-compiler
+# sudo apt install -y build-essential autoconf automake libtool pkg-config curl make g++ unzip
 
-echo "Installing Protocol Buffers"
-git clone https://github.com/protocolbuffers/protobuf.git
-cd protobuf
-git submodule update --init --recursive
-./autogen.sh
-./configure
-make
-make check
-sudo make install
-sudo ldconfig # refresh shared library cache.
+# echo "Installing gRPC"
+# git clone --recurse-submodules -b v1.52.0 --depth 1 --shallow-submodules https://github.com/grpc/grpc
 
-pkg-config --cflags protobuf         # print compiler flags
-pkg-config --libs protobuf           # print linker flags
-pkg-config --cflags --libs protobuf  # print both
+# cd grpc
+# mkdir -p cmake/build
+# pushd cmake/build
+# cmake -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF \
+#       -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR \
+#       ../..
+# make -j4
+# sudo make install
+# popd
+
+# echo "Installing Protocol Buffers"
+# git clone https://github.com/protocolbuffers/protobuf.git
+# cd protobuf
+# git submodule update --init --recursive
+# ./autogen.sh
+# ./configure
+# make
+# make check
+# sudo make install
+# sudo ldconfig # refresh shared library cache.
+
+# pkg-config --cflags protobuf         # print compiler flags
+# pkg-config --libs protobuf           # print linker flags
+# pkg-config --cflags --libs protobuf  # print both
 
