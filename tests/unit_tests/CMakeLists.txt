@@ -4,6 +4,15 @@ endif()
 
 set(TESTS
     config_unit_tests.cpp
+#    timer_test.cpp
+
+#    modules/encoder_test.cpp
+#    modules/motorcontroller_test.cpp
+
+    modules/registers/hc165_test.cpp
+#    modules/registers/hc595_mock.h
+#    modules/registers/hc595_test.cpp
+#    modules/registers/registercontroller_test.cpp
 )
 
 add_executable(amurcontroller_unit_tests ${TESTS})
