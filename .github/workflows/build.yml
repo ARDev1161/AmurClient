@@ -39,7 +39,8 @@ jobs:
       run: sudo ./.github/workflows/scripts/thirdparty-install.sh
     
     - name: Setup gRPC
-      run: sudo ./.github/workflows/scripts/grpc.sh
+      uses: eWaterCycle/setup-grpc@v5
+#       run: sudo ./.github/workflows/scripts/grpc.sh
     
     - name: Build AmurClient
       # Build your program with the given configuration
