@@ -40,6 +40,8 @@ jobs:
     
     - name: Setup gRPC
       uses: eWaterCycle/setup-grpc@v5
+      with:
+        grpc-version: 1.51.1
 #       run: sudo ./.github/workflows/scripts/grpc.sh
     
     - name: Build AmurClient
