@@ -44,6 +44,11 @@ jobs:
         grpc-version: 1.51.1
 #       run: sudo ./.github/workflows/scripts/grpc.sh
     
+    - name: Copy grpc to system default
+      run: |
+        sudo rsync -a $GRPC_ROOT/ /usr/local
+        sudo ldconfig
+          
     - name: Build AmurClient
       # Build your program with the given configuration
       run: sudo ./.github/workflows/scripts/AmurClient-build.sh
