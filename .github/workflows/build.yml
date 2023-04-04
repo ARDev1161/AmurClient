@@ -16,7 +16,7 @@ jobs:
     # well on Windows or Mac.  You can convert this to a matrix build if you need
     # cross-platform coverage.
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
     - uses: actions/checkout@v3
@@ -35,10 +35,10 @@ jobs:
     - name: Make all workflow scripts executable
       run: chmod -R a+x .github/workflows/scripts
 
-    - name: Setup libconfig
-      run: sudo ./.github/workflows/scripts/libconfig-install.sh
+    - name: Setup libs
+      run: sudo ./.github/workflows/scripts/thirdparty-install.sh
     
-    - name: Setup Protobuf & gRPC
+    - name: Setup gRPC
       run: sudo ./.github/workflows/scripts/grpc.sh
     
     - name: Build AmurClient
@@ -51,11 +51,11 @@ jobs:
         path: /home/runner/work/AmurClient
         key: ${{ runner.os }}-AmurClient
 
-    #- name: Test
-      #working-directory: ${{github.workspace}}/build
-      # Execute tests defined by the CMake configuration.
-      # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
-      #run: ctest -C ${{env.BUILD_TYPE}}
+    - name: Test
+      working-directory: ${{github.workspace}}/build
+      Execute tests defined by the CMake configuration.
+      See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
+      run: ctest -C ${{env.BUILD_TYPE}}
 
     - name: Debian packaging
       uses: kentik/pkg@v1.0.0-rc7
