@@ -92,5 +92,6 @@ void LogicController::connectToServer(std::string host, unsigned int port)
 */
 void LogicController::connectToServer()
 {
+    network->startArpingService(arpingPort);
     network->runClient(address);
 }

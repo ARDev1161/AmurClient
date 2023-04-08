@@ -7,6 +7,14 @@ NetworkController::NetworkController(AMUR::AmurControls* const controls, AMUR::A
     this->sensors = sensors;
 }
 
+int NetworkController::startArpingService(int arpingPort)
+{
+    if(!arpService)
+        arpService = new Arper(arpingPort);
+
+    return arpService->startArpingService(connected);
+}
+
 int NetworkController::runClient(std::string &server_address, bool tryConnectIfFailed)
 {
     // Instantiate the client. It requires a channel, out of which the actual RPCs
@@ -22,6 +30,8 @@ int NetworkController::runClient(std::string &server_address, bool tryConnectIfF
 
         clientStatus = client.DataStreamExchange();
         std::cout << "State is OK?: " << clientStatus.ok() << std::endl;
+        if(clientStatus.ok())
+            connected = true;
      }
     );
     thr.detach();

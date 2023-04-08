@@ -77,6 +77,7 @@ configure_file(
         amur.cfg
         )
 
+add_subdirectory(system)
 add_subdirectory(network)
 add_subdirectory(modules)
 add_subdirectory(timer)

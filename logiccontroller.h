@@ -23,6 +23,7 @@ class LogicController
 
     // Server settings
     std::string address = "127.0.0.1:7777";
+    int arpingPort = 7776;
 
     AMUR::AmurSensors sensors;
     AMUR::AmurControls controls;

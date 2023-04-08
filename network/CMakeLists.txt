@@ -15,23 +15,27 @@ set(SERVER_LIB
     server.cpp 
     server.h
    )
+
+set(ARPER
+    arper.h
+    arper.cpp
+)
    
 set(NETWORK_LIB 
     networkcontroller.cpp 
     networkcontroller.h 
+    ${ARPER}
     ${CLIENT_LIB} 
     ${SERVER_LIB} 
     ${PROTOS_LIB}
    )
 
-add_library(NetworkController
+add_library(${PROJECT_NAME}
             STATIC
             ${NETWORK_LIB}
             )
 
-target_link_libraries(NetworkController AMURProtos)
-
-#add_executable(TestNetController main.cpp)
-#target_link_libraries(TestNetController NetworkController
-    #AMURProtos
-    #)
+target_link_libraries(${PROJECT_NAME}
+    AMURProtos
+    System
+)
