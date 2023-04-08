@@ -7,6 +7,31 @@ option objc_class_prefix = "AMUR";
 
 package AMUR;
 
+message Credentials{
+    message NetworkInfo{
+         string ipAddress = 2;
+         string macAddress = 3;
+    }
+    message SystemInfo{
+         string machineID = 1;
+         string uuid = 4;
+         string serialBoard = 5;
+         string serialProduct = 6;
+         string serialChassis = 7;
+    }
+    message Auth{
+         string algorithm = 1;
+         string sign = 2;
+    }
+    NetworkInfo network = 1;
+    SystemInfo system = 2;
+    Auth auth = 3;
+}
+message AuthStatus{
+    bool connectionAllowed = 1;
+    string infoString = 2;
+}
+
 message AmurControls{
  message CameraServos{
      int32 xAngle = 1; // -90 to 90, from left to right
@@ -110,6 +135,14 @@ message AmurSensors{
    HandEncoders handEncoders = 5;
    Temperature temperature = 6;
    Misc misc = 7;
+}
+
+service Authentication{
+    // Exchanging credentials Amurcore <--> AmurClient
+    rpc CredentialsExchange (Credentials) returns (Credentials);
+
+    // Exchange permission responses
+    rpc AnswerExchange (AuthStatus) returns (AuthStatus);
 }
 
 service ClientOnRobot{
