@@ -6,62 +6,173 @@ Arper::Arper(int arpingPort):
 
 }
 
-int Arper::parseArpMsg()
+int Arper::getArpMsg()
 {
     arpMessage = "AMUR:";
     arpMessage += System::Info::getMachineID();
     return 0;
 }
 
-int Arper::broadcastMsg(int broadcast_port, std::string &broadcastMsg)
+int Arper::setSockParams(int arping_port)
 {
     // Creating socket
-    int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-    if (sockfd == -1) {
-        std::cerr << "Failed to create socket." << std::endl;
+    bcast_sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+    if (bcast_sockfd == -1) {
+        perror("Failed to create broadcast socket");
         return -1;
     }
-
-    // Allow sending broadcast messages
-    int optval = 1;
-    if (setsockopt(sockfd, SOL_SOCKET, SO_BROADCAST, &optval, sizeof optval) == -1) {
-        std::cerr << "Failed to set socket options." << std::endl;
+    // Creating socket
+    recv_sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+    if (recv_sockfd == -1) {
+        perror("Failed to create recieve socket");
         return -2;
     }
 
-    // Setting the address and port
-    struct sockaddr_in addr;
-    std::memset(&addr, 0, sizeof addr);
-    addr.sin_family = AF_INET;
-    addr.sin_port = htons(broadcast_port);
-    addr.sin_addr.s_addr = htonl(INADDR_BROADCAST);
+    int optval = 1;
+    // Allow sending broadcast messages
+    if (setsockopt(bcast_sockfd, SOL_SOCKET, SO_BROADCAST, &optval, sizeof optval) == -1) {
+        perror("Failed to set broadcast socket options");
+        return -3;
+    }
+    // Allow reusing address
+    if (setsockopt(recv_sockfd, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof optval) == -1) {
+        perror("Failed to set recieve socket options");
+        return -4;
+    }
 
-    // Send message
-    if (sendto(sockfd, broadcastMsg.c_str(), broadcastMsg.length(), 0, (struct sockaddr *)&addr, sizeof addr) == -1) {
-        std::cerr << "Failed to send ARP broadcast message." << std::endl;
+    // Setting the address and port for bcast
+    std::memset(&bcast_addr, 0, sizeof bcast_addr);
+    bcast_addr.sin_family = AF_INET;
+    bcast_addr.sin_port = htons(arping_port);
+    bcast_addr.sin_addr.s_addr = htonl(INADDR_BROADCAST);
+
+    // Setting the address and port for recieve
+    std::memset(&recv_addr, 0, sizeof recv_addr);
+    recv_addr.sin_family = AF_INET;
+    recv_addr.sin_port = htons(arping_port);
+    recv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
+
+    // Bind to address & port
+    if (bind(recv_sockfd, (struct sockaddr *)&recv_addr, sizeof recv_addr) == -1) {
+        perror("Failed to bind recieve socket");
         return -3;
     }
 
-    close(sockfd);
+    return 0;
+}
+
+int Arper::sendBroadcastMsg(std::string &broadcastMsg)
+{
+    // Send message
+    if (sendto(bcast_sockfd, broadcastMsg.c_str(), broadcastMsg.length(), 0, (struct sockaddr *)&bcast_addr, sizeof bcast_addr) == -1) {
+        perror("Failed to send ARP broadcast message");
+        return -1;
+    }
+
+    close(bcast_sockfd);
     return 0;
 }
 
 int Arper::startArpingService(bool &connected)
 {
-    int res = 0;
-    res = parseArpMsg();
+    if(getArpMsg() != 0)
+        return -1;
+
+    if(setSockParams(arpingPort) != 0)
+        return -2;
 
     // Send arm msg loop thread
-    std::thread sender([&]()
+    std::thread BCastSender([&]()
     {
         // Send arp message every second if not connected
         while(!connected){
-            broadcastMsg(arpingPort, arpMessage);
+            sendBroadcastMsg(arpMessage);
             std::this_thread::sleep_for(1000ms);
         }
     });
-    sender.detach();
+    BCastSender.detach();
 
-    return res;
+
+    // Wait answer msg from server
+    std::thread AnswerReciever([&]()
+    {
+        // Wait arp message if not connected
+        while (true) {
+            char buffer[1024];
+            memset(buffer, 0, sizeof buffer);
+
+            struct sockaddr_in control_addr;
+            socklen_t control_addr_len = sizeof(control_addr);
+
+            ssize_t recvlen = recvfrom(recv_sockfd, buffer, sizeof(buffer), 0, (struct sockaddr *)&control_addr, &control_addr_len);
+            if (recvlen < 0) {
+                perror("Failed to receive message");
+                continue;
+            }
+
+            // Process message if it have preambula - "AMUR:"
+            std::string message(buffer);
+            std::string separator = ":";
+            size_t pos = message.find(separator);
+            if("OK" == message.substr(0, pos)){
+                message.erase(0, pos + separator.length());
+                int curGRPCPort = stoi(message.substr(0, message.find(separator)));
+
+                // Находим или создаем клиента
+                bool controlMachineFound = false;
+                for (ControlMachine* control : controlMachineAddresses) {
+                    if (control->address().sin_addr.s_addr == control_addr.sin_addr.s_addr) {
+                        control->setLastSeen(std::chrono::system_clock::now());
+                        controlMachineFound = true;
+                        break;
+                    }
+                }
+                if (!controlMachineFound) {
+                    ControlMachine* control = new ControlMachine(control_addr, curGRPCPort);
+                    control->setLastSeen(std::chrono::system_clock::now());
+                    controlMachineAddresses.push_back(control);
+                }
+            }
+        }
+    });
+    AnswerReciever.detach();
+
+
+    std::thread AnswerSender([&]()
+    {
+        while(true){
+            for(auto controlAddress: controlMachineAddresses){
+                // Отправляем сообщение "OK"
+                std::string message = "READY";
+                if (sendto(bcast_sockfd, message.c_str(), message.length(), 0, (struct sockaddr *)&controlAddress->address(), sizeof(controlAddress->address())) == -1) {
+                    std::cerr << "Failed to send message." << std::endl;
+                }
+            }
+            std::this_thread::sleep_for(100ms);
+        }
+    });
+    AnswerSender.detach();
+
+    return 0;
 }
 
+
+std::chrono::system_clock::time_point ControlMachine::getLastSeen() const
+{
+    return last_seen;
+}
+
+void ControlMachine::setLastSeen(std::chrono::system_clock::time_point newLast_seen)
+{
+    last_seen = newLast_seen;
+}
+
+sockaddr_in& ControlMachine::address()
+{
+    return m_address;
+}
+
+void ControlMachine::setAddress(const sockaddr_in &newAddress)
+{
+    m_address = newAddress;
+}

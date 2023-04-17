@@ -12,7 +12,7 @@ LogicController::LogicController()
     periphery = new PeripheralController(&controls, &sensors);
     network = new NetworkController(&controls, &sensors);
 
-    network->runClient(address);
+    connectToServer();
     worker();
 }
 
@@ -53,8 +53,6 @@ int LogicController::printVersion()
     return 0;
 }
 
-
-
 /*!
   Главный цикл
 */
@@ -93,5 +91,5 @@ void LogicController::connectToServer(std::string host, unsigned int port)
 void LogicController::connectToServer()
 {
     network->startArpingService(arpingPort);
-    network->runClient(address);
+//    network->runClient(address);
 }
