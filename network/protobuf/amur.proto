@@ -7,31 +7,6 @@ option objc_class_prefix = "AMUR";
 
 package AMUR;
 
-message Credentials{
-    message NetworkInfo{
-         string ipAddress = 2;
-         string macAddress = 3;
-    }
-    message SystemInfo{
-         string machineID = 1;
-         string uuid = 4;
-         string serialBoard = 5;
-         string serialProduct = 6;
-         string serialChassis = 7;
-    }
-    message Auth{
-         string algorithm = 1;
-         string sign = 2;
-    }
-    NetworkInfo network = 1;
-    SystemInfo system = 2;
-    Auth auth = 3;
-}
-message AuthStatus{
-    bool connectionAllowed = 1;
-    string infoString = 2;
-}
-
 message AmurControls{
  message CameraServos{
      int32 xAngle = 1; // -90 to 90, from left to right
@@ -137,12 +112,22 @@ message AmurSensors{
    Misc misc = 7;
 }
 
-service Authentication{
-    // Exchanging credentials Amurcore <--> AmurClient
-    rpc CredentialsExchange (Credentials) returns (Credentials);
+// Manager - control machine, with AmurCore
+message ManagerCredentials{
+    string serverIP = 1; // IP address of server
+    string NetMask = 2;
+    string serverName = 3;
+    uint32 portGRPC = 4;
+    uint32 portGStreamer = 5; // Port for recieving video stream
+    string hashSum = 6; // Hash summ of packet
+}
 
-    // Exchange permission responses
-    rpc AnswerExchange (AuthStatus) returns (AuthStatus);
+// Robot - controlled/execution machine, with AmurClient
+message RobotCredentials{
+    string clientIP = 1; // IP address of robot
+    string clientMAC = 2; // MAC address of network interface
+    string hashedSerialID = 3; // Hashed serial ID of robot
+    string hashSum = 4; // Hash summ of packet
 }
 
 service ClientOnRobot{
@@ -151,6 +136,9 @@ service ClientOnRobot{
 
     //Bidirectional stream
     rpc DataStreamExchange (stream AmurSensors) returns (stream AmurControls);
+
+    //Broadcast message & waiting clients answers
+    rpc SendServerCredentials (ManagerCredentials) returns (stream RobotCredentials);
 }
 
 service ServerOnRobot{

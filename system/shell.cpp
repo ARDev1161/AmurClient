@@ -14,6 +14,11 @@ std::string exec(const std::string &cmd) {
   while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
     result += buffer.data();
   }
+
+  // Removing last \n
+  if(result.back() == '\n')
+    result.pop_back();
+
   return result;
 }
 

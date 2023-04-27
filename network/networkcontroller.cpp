@@ -7,12 +7,17 @@ NetworkController::NetworkController(AMUR::AmurControls* const controls, AMUR::A
     this->sensors = sensors;
 }
 
-int NetworkController::startArpingService(int arpingPort)
+int NetworkController::startArpingService(int bcastPort, int arpingPort)
 {
     if(!arpService)
-        arpService = new Arper(arpingPort);
+        arpService = new Arper(controlMachineAddresses, bcastPort, arpingPort);
 
     return arpService->startArpingService(connected);
+}
+
+void NetworkController::stopArpingService()
+{
+    arpService->stopArpingService();
 }
 
 int NetworkController::runClient(std::string &server_address, bool tryConnectIfFailed)
@@ -23,13 +28,14 @@ int NetworkController::runClient(std::string &server_address, bool tryConnectIfF
     // We indicate that the channel isn't authenticated (use of
     // InsecureChannelCredentials()).
 
-    std::thread thr([&]()
+    std::thread thr([&, server_address]()
      {
+        // TODO get server address from controlMachineAddresses
         grpcClient client(grpc::CreateChannel(
             server_address, grpc::InsecureChannelCredentials()), controls, sensors);
 
         clientStatus = client.DataStreamExchange();
-        std::cout << "State is OK?: " << clientStatus.ok() << std::endl;
+//        std::cout << "State is OK?: " << clientStatus.ok() << std::endl;
         if(clientStatus.ok())
             connected = true;
      }
@@ -37,6 +43,23 @@ int NetworkController::runClient(std::string &server_address, bool tryConnectIfF
     thr.detach();
 
     return 0;
+}
+
+int NetworkController::runClient(bool tryConnectToUnverified)
+{
+    if(controlMachineAddresses.empty())
+        return -1;
+
+    ControlMachine *cur = controlMachineAddresses[0];
+    std::string curAddr = cur->getIpAddr();
+    controlMachineAddresses.erase( controlMachineAddresses.begin() );
+
+    if(curAddr == "\0")
+        return -2;
+
+    curAddr += ":" + std::to_string(cur->grpcPort());
+
+    return runClient(curAddr, true);
 }
 
 int NetworkController::runServer(std::string &address_mask)

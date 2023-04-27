@@ -22,8 +22,9 @@ class LogicController
     NetworkController *network;
 
     // Server settings
-    std::string address = "127.0.0.1:7777";
-    int arpingPort = 7776;
+    std::string address = "";
+    int bcastPort = 11111;
+    int arpingPort = 11112;
 
     AMUR::AmurSensors sensors;
     AMUR::AmurControls controls;

@@ -11,6 +11,7 @@ LogicController::LogicController()
 
     periphery = new PeripheralController(&controls, &sensors);
     network = new NetworkController(&controls, &sensors);
+    network->startArpingService(bcastPort, arpingPort);
 
     connectToServer();
     worker();
@@ -90,6 +91,19 @@ void LogicController::connectToServer(std::string host, unsigned int port)
 */
 void LogicController::connectToServer()
 {
-    network->startArpingService(arpingPort);
-//    network->runClient(address);
+    if(address == ""){
+        std::cout << "No IP in config. Wait answer from server..." << std::endl;
+        while(true){
+            if(network->runClient() == 0){
+                std::cout << "Connected" << std::endl;
+                network->stopArpingService();
+                break;
+            }
+            std::this_thread::sleep_for(std::chrono::milliseconds(100)); // Wait 10 milliseconds
+        }
+    }
+    else{
+        network->runClient(address);
+    }
+
 }

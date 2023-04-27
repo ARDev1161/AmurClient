@@ -1,6 +1,8 @@
 #include "arper.h"
 
-Arper::Arper(int arpingPort):
+Arper::Arper(std::vector<ControlMachine*> &controlMachineAddresses, int bcastPort, int arpingPort):
+    controlMachineAddresses(controlMachineAddresses),
+    bcastPort(bcastPort),
     arpingPort(arpingPort)
 {
 
@@ -10,11 +12,16 @@ int Arper::getArpMsg()
 {
     arpMessage = "AMUR:";
     arpMessage += System::Info::getMachineID();
+    if(arpingPort > 0)
+        arpMessage += ":" + std::to_string(arpingPort);
     return 0;
 }
 
-int Arper::setSockParams(int arping_port)
+int Arper::setSockParams(int arping_port, int bcast_port)
 {
+    if(bcast_port <= 0)
+        bcast_port = arping_port;
+
     // Creating socket
     bcast_sockfd = socket(AF_INET, SOCK_DGRAM, 0);
     if (bcast_sockfd == -1) {
@@ -43,7 +50,7 @@ int Arper::setSockParams(int arping_port)
     // Setting the address and port for bcast
     std::memset(&bcast_addr, 0, sizeof bcast_addr);
     bcast_addr.sin_family = AF_INET;
-    bcast_addr.sin_port = htons(arping_port);
+    bcast_addr.sin_port = htons(bcast_port);
     bcast_addr.sin_addr.s_addr = htonl(INADDR_BROADCAST);
 
     // Setting the address and port for recieve
@@ -75,17 +82,19 @@ int Arper::sendBroadcastMsg(std::string &broadcastMsg)
 
 int Arper::startArpingService(bool &connected)
 {
+    started = true;
+
     if(getArpMsg() != 0)
         return -1;
 
-    if(setSockParams(arpingPort) != 0)
+    if(setSockParams(arpingPort, bcastPort) != 0)
         return -2;
 
     // Send arm msg loop thread
     std::thread BCastSender([&]()
     {
         // Send arp message every second if not connected
-        while(!connected){
+        while(!connected && started){
             sendBroadcastMsg(arpMessage);
             std::this_thread::sleep_for(1000ms);
         }
@@ -97,7 +106,7 @@ int Arper::startArpingService(bool &connected)
     std::thread AnswerReciever([&]()
     {
         // Wait arp message if not connected
-        while (true) {
+        while (started) {
             char buffer[1024];
             memset(buffer, 0, sizeof buffer);
 
@@ -137,23 +146,12 @@ int Arper::startArpingService(bool &connected)
     });
     AnswerReciever.detach();
 
-
-    std::thread AnswerSender([&]()
-    {
-        while(true){
-            for(auto controlAddress: controlMachineAddresses){
-                // Отправляем сообщение "OK"
-                std::string message = "READY";
-                if (sendto(bcast_sockfd, message.c_str(), message.length(), 0, (struct sockaddr *)&controlAddress->address(), sizeof(controlAddress->address())) == -1) {
-                    std::cerr << "Failed to send message." << std::endl;
-                }
-            }
-            std::this_thread::sleep_for(100ms);
-        }
-    });
-    AnswerSender.detach();
-
     return 0;
+}
+
+void Arper::stopArpingService()
+{
+    started = false;
 }
 
 
@@ -165,6 +163,47 @@ std::chrono::system_clock::time_point ControlMachine::getLastSeen() const
 void ControlMachine::setLastSeen(std::chrono::system_clock::time_point newLast_seen)
 {
     last_seen = newLast_seen;
+}
+
+std::string ControlMachine::getIpAddr() const
+{
+    return ipAddr;
+}
+
+void ControlMachine::refreshIP()
+{
+    // obviously INET6_ADDRSTRLEN is expected to be larger
+    // than INET_ADDRSTRLEN, but this may be required in case
+    // if for some unexpected reason IPv6 is not supported, and
+    // INET6_ADDRSTRLEN is defined as 0
+    // but this is not very likely and I am aware of no cases of
+    // this in practice (editor)
+    char s[INET6_ADDRSTRLEN > INET_ADDRSTRLEN ? INET6_ADDRSTRLEN : INET_ADDRSTRLEN] = "\0";
+
+    switch(m_address.sin_family) {
+    case AF_INET:
+        inet_ntop(AF_INET, &(m_address.sin_addr), s, INET_ADDRSTRLEN);
+        break;
+
+    case AF_INET6:
+        inet_ntop(AF_INET, &(m_address.sin_addr), s, INET_ADDRSTRLEN);
+        break;
+
+    default:
+        std::cerr << "Unknown AF" << std::endl;
+    }
+
+    ipAddr = s;
+}
+
+int ControlMachine::grpcPort() const
+{
+    return m_grpcPort;
+}
+
+void ControlMachine::setGrpcPort(int newGrpcPort)
+{
+    m_grpcPort = newGrpcPort;
 }
 
 sockaddr_in& ControlMachine::address()
