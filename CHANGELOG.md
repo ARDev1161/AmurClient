@@ -1,3 +1,6 @@
+## 1.0.0 (2023-03-19)
+Minimum stable release
+
 ## v0.88.43 (2023-03-19)
 
 ### Refactor
