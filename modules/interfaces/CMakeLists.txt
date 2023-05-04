@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
 include_directories(spi)
-include_directories(i2c)
+#include_directories(i2c)
 include_directories(uart)
 
 set(SPI
@@ -28,7 +28,7 @@ set(UART
 
 set(INTERFACES
     ${SPI}
-    ${I2C}
+#    ${I2C}
     ${UART}
     )
 

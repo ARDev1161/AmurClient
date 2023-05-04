@@ -34,7 +34,7 @@ int PWMController::softPWMCreate(unsigned int pin)
 int PWMController::softPWMChange(unsigned int pin, unsigned int dutyCycle)
 {
     #if __has_include(<pigpio.h>)
-        return gpioPWM(pin, translateDuty(dutyCycle) ); // Number pin in GPIO notation, 0-31
+        return gpioPWM(pin, translateDuty(dutyCycle, 255) ); // Number pin in GPIO notation, 0-31
     #else
         std::cout << "Soft PWM change on - " << pin << "\t with duty - " << dutyCycle << std::endl;
     #endif
