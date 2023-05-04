@@ -5,7 +5,7 @@
 */
 LogicController::LogicController()
 {
-    config = new ConfigProcessor(); // Load config file
+    config = new ConfigProcessor(configName); // Load config file
     fillFieldsByConfig(); // Fill fields by config file
     printVersion(); // Print info about current AmurClient configuration
 

@@ -51,13 +51,13 @@ class Arper
     struct sockaddr_in bcast_addr;
     struct sockaddr_in recv_addr;
 
+    std::vector<ControlMachine*> &controlMachineAddresses;
+
     int bcastPort = 0;
     int arpingPort = 0;
     std::string arpMessage;
 
-    std::vector<ControlMachine*> &controlMachineAddresses;
-
-    int sendBroadcastMsg(std::string &broadcastMsg);
+    int sendBroadcastMsg(int &sockfd, struct sockaddr_in &addr, std::string &broadcastMsg);
     int getArpMsg();
 
     int setSockParams(int arping_port, int bcast_port = 0);

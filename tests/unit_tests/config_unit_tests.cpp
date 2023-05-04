@@ -437,8 +437,7 @@ TEST_F(rewriteSetting, Bool) {
 
 // Tests for getConfigName & setConfigName functions
 TEST(getConfigName, setAndGet) {
-  ConfigProcessor config;
-  config.setConfigFilename("test_filename_config");
+  ConfigProcessor config("test_filename_config");
   ASSERT_EQ("test_filename_config", config.getConfigFilename());
 }
 

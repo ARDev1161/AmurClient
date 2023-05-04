@@ -26,13 +26,6 @@ class PWMController
         return ((duty * newRange) / pwmRange); // 375000000 - for BCM2711. For non BCM2711 use 250M
     }
 
-    inline unsigned int translateDuty(unsigned int duty){
-        return ((duty * 255) / pwmRange);
-    }
-
-    inline int translateDuty(int duty, int newMax){
-        return ((duty * newMax) / pwmRange);
-    }
 public:
     PWMController();
 

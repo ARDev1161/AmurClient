@@ -62,27 +62,26 @@ int Arper::setSockParams(int arping_port, int bcast_port)
     // Bind to address & port
     if (bind(recv_sockfd, (struct sockaddr *)&recv_addr, sizeof recv_addr) == -1) {
         perror("Failed to bind recieve socket");
-        return -3;
+        return -5;
     }
 
     return 0;
 }
 
-int Arper::sendBroadcastMsg(std::string &broadcastMsg)
+int Arper::sendBroadcastMsg(int &sockfd, struct sockaddr_in &addr, std::string &broadcastMsg)
 {
     // Send message
-    if (sendto(bcast_sockfd, broadcastMsg.c_str(), broadcastMsg.length(), 0, (struct sockaddr *)&bcast_addr, sizeof bcast_addr) == -1) {
+    if (sendto(sockfd, broadcastMsg.c_str(), broadcastMsg.length(), 0, (struct sockaddr *)&addr, sizeof addr) == -1) {
         perror("Failed to send ARP broadcast message");
         return -1;
     }
-
-    close(bcast_sockfd);
     return 0;
 }
 
 int Arper::startArpingService(bool &connected)
 {
     started = true;
+    std::cout << "[INFO] Arping service started" << std::endl;
 
     if(getArpMsg() != 0)
         return -1;
@@ -95,7 +94,7 @@ int Arper::startArpingService(bool &connected)
     {
         // Send arp message every second if not connected
         while(!connected && started){
-            sendBroadcastMsg(arpMessage);
+            sendBroadcastMsg(bcast_sockfd, bcast_addr, arpMessage);
             std::this_thread::sleep_for(1000ms);
         }
     });
@@ -152,6 +151,9 @@ int Arper::startArpingService(bool &connected)
 void Arper::stopArpingService()
 {
     started = false;
+    close(bcast_sockfd);
+    close(recv_sockfd);
+    std::cout << "[INFO] Arping service stopped" << std::endl;
 }
 
 

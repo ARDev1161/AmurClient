@@ -10,8 +10,8 @@
     Данная структура хранит набор настроек для работы с энкодерами.
 */
 struct EncoderSettings{
-    const int encoderSectorsCount = 100; // Count sectors on encoders disk
-    const int maxSpeed = 100;  // Ma speed: rpm
+    const unsigned int encoderSectorsCount = 100; // Count sectors on encoders disk
+    const unsigned int maxSpeed = 100;  // Ma speed: rpm
     const unsigned int sampleRate = ( encoderSectorsCount * maxSpeed ) * 3; // Encoder sampling rate
 };
 

@@ -4,7 +4,7 @@
   Constructor with custom config filename
   \param[in] file Config filename
 */
-ConfigProcessor::ConfigProcessor(const std::string &configName)
+ConfigProcessor::ConfigProcessor(std::string configName)
     : configName(configName) {
   setOptionsConfig();
   readConfig(configName);
@@ -38,6 +38,7 @@ int ConfigProcessor::readConfig(const std::string &configName) {
   catch (const libconfig::FileIOException &fioex) {
     std::cerr << "I/O error while reading config file!!! -> " << configName
               << std::endl;
+    perror("IO error");
     return (EXIT_FAILURE);
   }
   // Inform user about the parse exception.

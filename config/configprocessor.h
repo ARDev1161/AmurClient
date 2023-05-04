@@ -17,7 +17,7 @@ class ConfigProcessor {
   std::vector<std::string> splitPath(std::string path);
 
 public:
-  explicit ConfigProcessor(const std::string &configName = "");
+  explicit ConfigProcessor(std::string configName);
 
   static int setOptionsConfig();
   int readConfig(const std::string &configName);
