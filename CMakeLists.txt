@@ -6,13 +6,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
-option(AMURCLIENT_TESTING "Enable unit testing" ON)
+option(AMURCLIENT_TESTING "Enable unit testing" OFF)
 #option(AMURCLIENT_COVERAGE "Enable counting tests coverage" OFF)
 
 # Load tests
 if(AMURCLIENT_TESTING)
     enable_testing()
     add_subdirectory(tests)
+    message(STATUS "Tests are enabled")
 endif()
 
 if(NOT IS_SUBPROJECT)
